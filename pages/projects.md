@@ -1,14 +1,14 @@
 ---
 layout: page
 show_meta: false
-title: "Style your content!"
-subheadline: "Layouts of Feeling Responsive"
+title: "Projects"
+teaser: "Computers understanding science"
 header:
    image_fullwidth: "header_unsplash_5.jpg"
-permalink: "/design/"
+permalink: "/projects/"
 ---
 <ul>
-    {% for post in site.categories.design %}
+    {% for post in site.categories.project %}
     <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
 </ul>
