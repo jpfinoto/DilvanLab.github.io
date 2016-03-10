@@ -20,7 +20,6 @@ We are a team of very committed people!
 
 ## Principal Investigator
 
-
 {% for post in site.categories.pi %}
   {% include _pagination_small.html %}
 {% endfor %}

@@ -20,7 +20,7 @@ The application of Semantic Web technologies is poised to revolutionize the way 
 
 ## Projects
 
-Current active projects
+Currently active projects
 
 
 {% for post in site.categories.project %}

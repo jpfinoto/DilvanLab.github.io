@@ -1,7 +1,7 @@
 ---
 layout: page
-title:  "ePAD"
-subheadline:  "electronic Physician Annotation Device"
+title:  "Biodiversity "
+subheadline:  "Biodiversity"
 teaser: "The electronic Physician Annotation Device (ePAD) is a Web-based semantic annotation system for making the content in radiological images machine-accessible on the Semantic Web."
 categories:
     - project
@@ -23,13 +23,6 @@ Our group here at USP have done a substantial amount of the design of the Web-ba
 
 There is great potential in applying semantic methods to medical images, which will enable machine-processing of image content in large scale, similar to the paradigm of data-intensive bioinformatics data mining. In addition, this computationally-accessible image data can be linked to genetic data (for instance, from OMIM - Online Mendelian Inheritance in Man) to enable discovery of imaging features that predict the genetic features.
 It's so easy to do. Just define in front matter your image.
-
-## Sub Projects
-
-{% for post in site.categories.subproject %}
-  {% include _pagination_small.html %}
-{% endfor %}
-
 
 ### All Projects
 {: .t60 }
