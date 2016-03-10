@@ -26,7 +26,7 @@ Courses open to everybody over the Internet. The contents are open to everybody:
 
 [Distributed Programming using Java](http://java.icmc.usp.br/course/java/course.xml) - This course is  open to everybody. It covers basic object oriented programming, the Java language and distributed programming.
 
-###Graduate Courses
+### Graduate Courses
 
 Courses given live at at the University of São Paulo (ICMC-USP). This Internet courses are used to support classroom teaching:
 
@@ -40,7 +40,7 @@ Courses given live at at the University of São Paulo (ICMC-USP). This Internet 
 
 [Human Computer Interaction](http://java.icmc.usp.br/course/hci/course.xml) - A graduate course taught at USP about interaction with computer systems. It covers user models, interface design, interface evaluation and new kinds of interfaces.
 
-###Undergraduate Courses
+### Undergraduate Courses
 
 
 [Object Oriented Programming](http://java.icmc.usp.br/course/oop/course.xml) - An undergraduate course taught at USP. It covers basic object oriented programming using the Java language.

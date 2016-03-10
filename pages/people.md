@@ -18,14 +18,14 @@ We are a team of very committed people!
 </ul>
 {% endcomment %}
 
-##Principal Investigator
+## Principal Investigator
 
 
 {% for post in site.categories.pi %}
   {% include _pagination_small.html %}
 {% endfor %}
 
-##Ph.D. Students
+## Ph.D. Students
 
 {% for post in site.categories.phd %}
   {% include _pagination_small.html %}
