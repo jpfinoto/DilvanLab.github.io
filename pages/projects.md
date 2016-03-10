@@ -4,11 +4,10 @@ show_meta: false
 title: "Projects"
 teaser: "Computers understanding science"
 header:
-   image_fullwidth: "header_unsplash_5.jpg"
-permalink: "/projects/"
+   image_fullwidth: "header_drop.jpg"
+permalink: "/project/"
 ---
-<ul>
-    {% for post in site.categories.project %}
-    <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-</ul>
+
+{% for post in site.categories.project %}
+   {% include _pagination_small.html %}
+{% endfor %}

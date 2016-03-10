@@ -13,15 +13,16 @@ widget1:
   image: researchImg-303x182.jpg
   text: 'The basic line of research is Semantic Web technologies applied to Bioinformatics. Java technologies are the tools used.'
 widget2:
+  title: "GitHub Resources"
+  url: 'https://github.com/DilvanLab'
+  image: widget-github-303x182.jpg
+  text: 'Much of our projects code is freely available at GitHub:<ol> <li><a href="https://github.com/DilvanLab" target="_blank"> DilvanLab </a>.</li></ol>'
+widget3:
   title: "Moodle Web Courses"
   url: 'http://java.icmc.usp.br/moodle'
   image: moodle-303x182.png
   text: 'Training using the WWW is a very powerful way of distant learning. Here you have the chance to follow courses, given at University of São Paulo - USP (Brazil), or just access course materials. There are also <a href="/oldcourses">older courses (before 2006)</a> available.'
-widget3:
-  title: "Download Theme"
-  url: 'https://github.com/Phlow/feeling-responsive'
-  image: widget-github-303x182.jpg
-  text: '<em>Feeling Responsive</em> is free and licensed under a MIT License. Make it your own and start building. Grab the <a href="/oldcourses">Bare-Bones-Version</a> for a fresh start or learn how to use it with the <a href="https://github.com/Phlow/feeling-responsive/tree/gh-pages">education-version</a> with sample posts and images. Then tell me via Twitter <a href="http://twitter.com/phlow">@phlow</a>.'
+
 #
 # Use the call for action to show a button on the frontpage
 #
@@ -43,4 +44,3 @@ permalink: /index.html
 #
 homepage: true
 ---
-The ll application of Semantic Web technologies is poised to revolutionize the way people use the internet. That impact will be felt sooner in the Bioinformatics arena, domains like health care, medicine, pharmacology, genetics and biomolecular research are right now beginning to benefit from the Semantic Web revolutionary breakthrough: computers understanding science.

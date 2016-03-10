@@ -7,22 +7,24 @@
   side: left
 
 - title: "Projects"
-  url: "/projects/"
+  url: "/project/"
   side: left
   dropdown:
   - title: "ePAD"
     url: "/project/epad/"
-  - title: "Typography"
-    url: "/project/typography/"
-  - title: "Page/Post"
-    url: "/project/page/"
+  - title: "Biodiversity"
+    url: "/project/biodiversity/"
+  - title: "Domain Expert DSLs"
+    url: "/project/dsl/"
+  - title: "Learning Tools"
+    url: "/project/learning/"
 
 - title: People
   url: "/people/"
   side: left
 
 - title: Dilvan
-  url: "/dilvan/"
+  url: "/people/pi/dilvan/"
   side: left
 
 - title: Publications
