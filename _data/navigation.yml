@@ -31,11 +31,11 @@
   url: "https://www.researchgate.net/profile/Dilvan_Moreira/publications"
   side: left
 
-- title: Blog
+- title: All Content
   url: "/blog/"
   side: left
   dropdown:
-  - title: "Blog Archive"
+  - title: "Archive"
     url: "/blog/archive/"
 
 - title: "Search"
