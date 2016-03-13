@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 7: Subclasses and Inheritance</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Subclasses and Inheritance</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/subclass.html">Creating
+Subclasses</A></H2>
+
+<BLOCKQUOTE>
+<P>To declare a subclass you would write:</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">class SubClass extends SuperClass { . . . }</FONT></PRE>
+</BLOCKQUOTE>
+
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<TR>
+<TD VALIGN=TOP><IMG SRC="gifs/noc++.gif" HSPACE=5 HEIGHT=57 WIDTH=59 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H3>A Java class can have only one direct superclass. Java does not support
+multiple inheritance.</H3>
+</TD>
+</TR>
+</TABLE>
+
+<H4>Seen Hiden Member Variables</H4>
+
+<P>Member variables defined in the subclass hide member variables of the
+same name in the superclass. Consider this superclass and subclass pair:</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">class Super {
+    Number aNumber;
+}
+class Sub extends Super {
+    Float aNumber;
+<TT>}
+super.aNumber</TT></FONT></PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/override.html">Overriding
+Methods</A></H3>
+
+<BLOCKQUOTE>
+<P>A subclass can either completely override the implementation for an
+inherited method or the subclass can enhance the method by adding functionality
+to it.</P>
+
+<H4><IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Replacing
+a Superclass's Method Implementation</FONT></H4>
+
+<H4><IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Adding
+to a Superclass's Method Implementation</FONT></H4>
+
+<H4><IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Methods
+a Subclass Cannot Override</FONT></H4>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">class ChessAlgorithm {
+   . . .
+   final void nextMove(ChessPiece piece) {...}
+   static void mate(ChessPiece piece) {...}
+   . . .
+}</FONT></PRE>
+</BLOCKQUOTE>
+
+<H4><IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Methods
+a Subclass Must Override</FONT></H4>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">abstract class GraphicObject {
+  &nbsp;. . .
+&nbsp;&nbsp;&nbsp;abstract void draw();
+&nbsp;&nbsp;&nbsp;. . .
+}</FONT></PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<UL></UL>
+
+<P>
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="OOPjava.sld8.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="OOPjava.sld8.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>Java Speech Grammar Format</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33FF33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF"><b><font size="5"><a href="../../ref/jsgf/index.html" target="_blank">JSGF 
+  (Java Speech Grammar Format)</a></font></b></font></p>
+<p><font size="4" color="#FFFFFF">The speech recognition systems make it possible 
+  for the computer to hear what a user says and &quot;understand&quot; what was 
+  spoken. The SDK Java technology does not yet support the speech recognition 
+  without restrictions: the ability to hear any speech in any context and understand 
+  it accurately. To reach a reasonable accuracy and answer time, the recognition 
+  limits what might be said through the use of grammars, as seen in the previous
+section. The JSGF format language defines a way to describe what is named as a
+RuleGrammar. It uses a textual representation that might be read and edited by both developers and users through a simple text editor.</font></p>
+<p><font size="4" color="#FFFFFF">The rules have the following structure:</font></p>
+<p align="left"><img src="../../imagens/ilustracoes/jsgf/estrutura_de_uma_regra_jsgf.gif" width="795" height="285"></p>
+<p align="center"> <b>Figure 3 - JSGF rule structure.</b></p>
+<p><font size="4" color="#FFFFFF">If something is said and the recognition is 
+  not above a confidence level, defined through the use of the method <a href="../../ref/api/javax/speech/recognition/RecognizerProperties.html#setConfidenceLevel(float)" target="_blank">setConfidenceLevel</a> 
+  (the default is de 0.5), a <a href="../../ref/api/javax/speech/recognition/ResultListener.html#resultRejected(javax.speech.recognition.ResultEvent)" target="_blank">resultRejected</a> 
+ rejection event will be triggered. Otherwise a <a href="../../ref/api/javax/speech/recognition/ResultListener.html#resultAccepted(javax.speech.recognition.ResultEvent)" target="_blank">resultAccepted</a> 
+  event is created and the method <a href="../../ref/api/javax/speech/recognition/FinalRuleResult.html#getTags()" target="_blank">getTags</a> 
+  returns the identifier(s) of the correspondent rule. Table 8 shows the main 
+  JSGF features:</font></p>
+<table width="94%" border="1">
+  <tr> 
+    <td width="36%"> 
+      <div align="center"><font color="#FFFF00"><b><font size="4">Use</font></b></font></div>
+    </td>
+    <td width="34%"> 
+      <div align="center"><font color="#FFFF00"><b><font size="4">Exemple</font></b></font></div>
+    </td>
+    <td width="30%"> 
+      <div align="center"><font color="#FFFF00"><b><font size="4">What might be 
+        said </font></b></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="36%"><font size="4" color="#FFFFFF">Simple words</font></td>
+    <td width="34%"><font size="4" color="#FFFFFF"><regra1> &lt;rule1&gt; = open 
+      {open};<regra1> </font></td>
+    <td width="30%"><font size="4" color="#FFFFFF">"open"</font></td>
+  </tr>
+  <tr> 
+    <td width="36%"><font size="4" color="#FFFFFF">Whole phrases</font></td>
+    <td width="34%"><font size="4" color="#FFFFFF"><regra2> &lt;rule2&gt; = open 
+      the program {open};</font></td>
+    <td width="30%"><font size="4" color="#FFFFFF">"open the program"</font></td>
+  </tr>
+  <tr> 
+    <td width="36%"><font size="4" color="#FFFFFF">Multiple choices</font></td>
+    <td width="34%"><font size="4" color="#FFFFFF"><regra3> &lt;rule3&gt; = open| 
+      open the program {open};</font></td>
+    <td width="30%"><font size="4" color="#FFFFFF">"open" or "open the program"</font></td>
+  </tr>
+  <tr> 
+    <td width="36%"><font size="4" color="#FFFFFF">Optional words</font></td>
+    <td width="34%"><font size="4" color="#FFFFFF"><regra5> &lt;rule5&gt; = [please] 
+      abrir {open};</font></td>
+    <td width="30%"><font size="4" color="#FFFFFF">"open" or "please open"</font></td>
+  </tr>
+  <tr> 
+    <td width="36%"><font size="4" color="#FFFFFF">Rule referencing</font></td>
+    <td width="34%"><font size="4" color="#FFFFFF"><regra6> &lt;rule6&gt; = <regra5> 
+      &lt;regra5&gt; {open};</font></td>
+    <td width="30%"><font size="4" color="#FFFFFF">The same as rule 5</font></td>
+  </tr>
+  <tr> 
+    <td width="36%"><font size="4" color="#FFFFFF">Enclosing operator *</font></td>
+    <td width="34%"><font size="4" color="#FFFFFF"><regra7> &lt;rule7&gt; = 13579* 
+      times; </font></td>
+    <td width="30%"><font size="4" color="#FFFFFF">"1", "3", "5", "7", "9", "11", 
+      "13", "99", "93", or another number (including none) formed by 1, 3, 5, 
+      7 e 9 in any order followed by times</font></td>
+  </tr>
+  <tr> 
+    <td width="36%"><font size="4" color="#FFFFFF">Enclosing operator +</font></td>
+    <td width="34%"><font size="4" color="#FFFFFF"><regra8> &lt;rule8&gt; = 13579+ 
+      times;</font></td>
+    <td width="30%"><font size="4" color="#FFFFFF">This time a number must be 
+      said following the pattern seen on rule7</font></td>
+  </tr>
+</table>
+<p align="center"><b>Table 8 - Main uses of the JSGF format language.</b></p>
+<p><font size="4" color="#FFFFFF">Next, we have two examples illustrating the 
+  use of this technique.</font></p>
+<p align="right"><a href="../../exemplos/jsgf/jsgf_exemplo1.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p align="right"><a href="../../exemplos/jsgf/teste.gram" target="_blank"> JSGF 
+  file referenced in the above example.</a></p>
+<p align="right"><a href="../../exemplos/jsgf/hello_en.gram" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p>&nbsp;</p>
+<br>
+<br>
+</body>
+</html>

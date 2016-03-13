@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 15: AWT Menus</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Menus</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP>Code
+Example:</H2>
+
+<BLOCKQUOTE>
+<PRE>public class MenuWindow extends Frame {
+    . . .
+    public MenuWindow() {
+        
+        //Build the menu bar.
+        mb = new MenuBar();
+        setMenuBar(mb);
+ 
+        //Build first menu in the menu bar.
+        m1 = new Menu(&quot;Menu 1&quot;, true);
+        mb.add(m1);
+        mi1_1 = new MenuItem(&quot;Menu Item 1_1&quot;);
+        m1.add(mi1_1);
+           . . .
+
+        //Build help menu.
+        m5 = new Menu(&quot;Menu 5&quot;);
+        mb.add(m5); //just setting the help menu doesn't work; must add it
+        mb.setHelpMenu(m5);
+        mi5_1 = new MenuItem(&quot;Menu Item 5_1&quot;);
+        m5.add(mi5_1);
+           . . .
+
+        //Build second menu in the menu bar.
+        m2 = new Menu(&quot;Menu 2&quot;);
+        mb.add(m2);
+        mi2_1 = new CheckboxMenuItem(&quot;Menu Item 2_1&quot;);
+        m2.add(mi2_1);
+ 
+        //Build third menu in the menu bar.
+           . . .
+    }
+    . . .
+    public boolean action(Event event, Object arg) {
+        String str = &quot;Action detected&quot;;
+        if (event.target instanceof MenuItem) {
+            MenuItem mi=(MenuItem)(event.target);
+            str += &quot; on &quot; + arg;
+            if (mi instanceof CheckboxMenuItem) {
+                    str += &quot; (state is &quot; 
+                           + ((CheckboxMenuItem)mi).getState()
+                           + &quot;)&quot;;
+            }
+            MenuContainer parent = mi.getParent();
+            if (parent instanceof Menu) {
+                str += &quot; in &quot; + ((Menu)parent).getLabel();
+            } else {
+                str += &quot; in a container that isn't a Menu&quot;;
+            }
+        }
+        str += &quot;.\n&quot;;
+        <I>...//Display the string in the output area...
+</I>        return false;
+    }</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE>
+<HR></PRE>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld18.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld18.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" -->
+<book id="hypermediaseminars">
+  <bookinfo>
+    <title>Hypermedia Seminars</title>
+
+    <subtitle>Seminars About Hypermedia</subtitle>
+
+    <author>
+      <firstname>Dilvan</firstname>
+
+      <othername>de Abreu</othername>
+
+      <surname>Moreira</surname>
+
+      <email>dilvan@computer.org</email>
+    </author>
+
+    <editor>
+      <firstname>Dilvan</firstname>
+
+      <surname>Moreira</surname>
+    </editor>
+
+    <copyright>
+      <year>2003</year>
+
+      <year>2004</year>
+
+      <holder>Dilvan Moreira</holder>
+    </copyright>
+
+    <edition>First</edition>
+
+    <publisher>
+      <publishername>Dilvan Moreira</publishername>
+
+      <address><city>São Carlos </city><country>Brazil</country></address>
+    </publisher>
+
+    <revhistory>
+      <revision>
+        <revnumber>$Revision: 1.2 $</revnumber>
+
+        <date>$Date: 2004/09/16 21:59:13 $</date>
+      </revision>
+    </revhistory>
+
+    <pubdate>September 2004</pubdate>
+  </bookinfo>
+
+  <chapter id="seminars_goals">
+    <title>Seminars Goals</title>
+
+    <section id="seminar_goals_goals">
+      <title>Goals</title>
+
+      <para>Research the state-of-the-art relating the multimedia and
+      hypermedia technologies with other computer technologies, such as
+      computer networks, data banks, distributed systems and information
+      visualization.</para>
+
+      <para>This course gives the students the opportunity to research in
+      detail the field in which they will be doing their graduate work in
+      relation to other fields in computing. The course will work mainly with
+      presentations of papers from multimedia and hypermedia conferences and
+      magazines. The presentations can be done by the teacher, students or,
+      whenever possible, invited experts.</para>
+
+      <para>Topics of interest include: Multimedia Data banks, Multimedia
+      Protocols, Multimedia Operating Systems, Multimedia Distributed
+      Systems,Multimedia Interfaces, Systems to Support Multimedia
+      Collaborative Work, Multimedia Data Storage and Retrieval, Visualization
+      of Hypermedia and Multimedia Information, Hypermedia and Multimedia
+      Document Modeling and Authoring, Automatic Authoring of Hypertext
+      Structures, Hypertext Engineering, Multimedia Documents Evaluation,
+      Hypertext Structures Evaluation, Multimedia and Hypermedia Applications
+      in Education, Software Engineering, Cooperative Work, among
+      others.</para>
+    </section>
+  </chapter>
+
+  <chapter id="assignments" role="assignments">
+    <title>Assignments</title>
+
+    <section id="assignments_basic_seminar">
+      <title>Basic Seminar</title>
+
+      <para>Seminar covering the student basic research field.</para>
+    </section>
+
+    <section id="assignments_specifiic_seminar">
+      <title>Specific Seminar</title>
+
+      <para>Seminar covering the student work proposal.</para>
+    </section>
+  </chapter>
+</book>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-default-dtd-file:"/home/ldp/SGML/emacs/book-cnc-2.0.ced"
+End:
+-->

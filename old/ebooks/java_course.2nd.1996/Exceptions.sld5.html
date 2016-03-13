@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Exceptions Slide 5: Catching and handling exceptions</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="Description" CONTENT="Copyrighted material for a Java Course">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Exceptions:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Catching and handling exceptions</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/exceptions/handling.html">Catching
+and Handling Exceptions</A></H2>
+
+<BLOCKQUOTE>
+<H3><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/exceptions/try.html">The
+try Block</A></H3>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">try { Java statements }</FONT></PRE>
+
+<P>It should enclose the exception-throwing statements.</P>
+
+<PRE>try {
+&nbsp;&nbsp;&nbsp;int i;
+&nbsp;&nbsp;&nbsp;pStr = new PrintStream( new BufferedOutputStream( new FileOutputStream(&quot;OutFile.txt&quot;)));
+&nbsp;&nbsp;&nbsp;for (i = 0; i &lt; size; i++)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pStr.println(&quot;Value at: &quot; + i + &quot; = &quot; + victor.elementAt(i));
+}</PRE>
+</BLOCKQUOTE>
+
+<H3><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/exceptions/catch.html">The
+catch Block(s)</A></H3>
+
+<BLOCKQUOTE>
+<PRE>try {
+    . . .
+} catch (Throwable e) {
+    . . .
+} catch ( . . . ) {
+    . . .
+} . . .</PRE>
+
+<PRE><FONT COLOR="#800000">catch (<I>SomeThrowableObject</I> <I>variableName</I>) {
+    <I>Java statements
+</I>}</FONT></PRE>
+
+<P><B><TT><FONT COLOR="#0000FF"><FONT SIZE=+1>variableName:</FONT></FONT></TT></B>
+is the name by which the handler can refer to the exception caught by the
+handler.</P>
+
+<BLOCKQUOTE>
+<PRE>e.getMessage()
+</PRE>
+</BLOCKQUOTE>
+
+<P>You access the instance variables and methods of exceptions in the same
+manner that you do with other objects.</P>
+
+<BLOCKQUOTE>
+<PRE>try {
+    . . .
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.err.println(&quot;Caught ArrayIndexOutOfBoundsException: &quot; + e.getMessage());
+} catch (IOException e) {
+    System.err.println(&quot;Caught IOException: &quot; + e.getMessage());
+}</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Exceptions.sld6.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Exceptions.sld6.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -18,6 +18,8 @@
     url: "/project/dsl/"
   - title: "Learning Tools"
     url: "/project/learning/"
+  - title: "Finished Projects"
+    url: "/finishedProjects/"
 
 - title: People
   url: "/people/"

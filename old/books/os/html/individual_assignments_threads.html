@@ -1,0 +1,56 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Threads</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="individual_assignments.html" title="Chapter&nbsp;10.&nbsp;Individual Assignments - Laboratory"><link rel="prev" href="individual_assignments_pipes.html" title="2.&nbsp;Pipes"><link rel="next" href="individual_assignments_threads_synchronization.html" title="4.&nbsp;Threads Synchronization"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Threads</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="individual_assignments_pipes.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Individual Assignments - Laboratory</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_threads_synchronization.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="individual_assignments_threads"></a>3.&nbsp;Threads</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Threads</p><p>The following functions are from the Linux threads library based on the POSIX 1003.b standard:</p><pre class="programlisting">
+  pthread_create - Adds a new thread of control to the current process.
+
+  sched_yield - Causes the current thread to yield its execution in 
+                favor of another thread with the same or greater priority.
+
+  pthread_exit - Terminates a thread.
+
+  pthread_join - Blocks the calling thread until a specified thread
+                terminates.
+          </pre></li></ul></div><div class="orderedlist"><ol type="1"><li><p>The following program creates two threads. Each prints the name of a city a number of times, with a random delay between the prints. Run it a number of times.</p><pre class="programlisting">#include &lt;pthread.h&gt;
+/* 
+* Code of the threads 
+*/ 
+  void* printPlace(void* name) 
+  { 
+     int aux1, aux2, aux3, count; 
+    /* Find number of loops */ 
+     if (strcmp(name, "Jamaica")==0) 
+        count= 5; 
+     else count=10; 
+        /* Main loop */ 
+        for (aux1=0; aux1 &lt; count; aux1++) 
+        { 
+            /* Print Name */ 
+            printf("%d %s\n", aux1, name); 
+            /* Create a variable delay */ 
+            for (aux2= rand()/10000; aux2 &gt; 0; aux2--) 
+                for(aux3=10; aux3 &gt; 0; aux3--); 
+            /* Yields control */ 
+            /* sched_yield(); */ 
+        } pthread_exit(0); 
+  }
+  
+  void main()
+  { 
+      /* Variables that keep the threads ids */ 
+         pthread_t simpleThread1, simpleThread2; 
+      /* Maximum concurrence level */ 
+         pthread_setconcurrency(100); 
+         printf("Concurrency %d\n", pthread_getconcurrency()); 
+      /* Create first thread */ 
+         pthread_create(&amp;simpleThread1, 0, printPlace, "Java"); 
+      /* Create second thread */ 
+         pthread_create(&amp;simpleThread2, 0, printPlace, "Fiji"); 
+      /* Wait until all threads stop */ 
+         pthread_join(simpleThread1, 0); pthread_join(simpleThread2, 0); 
+      /* Wait until a specific thread stops */ 
+      /* pthread_join(simpleThread1, 0); */ 
+  } 
+
+          </pre><p>To compile the program:</p><pre class="programlisting">cc threads.c -o threads -lpthread</pre></li><li><p>Each time you run the program it prints out a random list with the cities. Explain how it works What is the function of lines:</p><pre class="programlisting">pthread_join(simpleThread1, 0);
+pthread_join(simpleThread2, 0);          </pre></li><li><p>Uncomment the line:</p><pre class="programlisting">/* sched_yield(); */          </pre><p>Run the program. What happens? Why?</p><p>Undo the change you have done.</p></li><li><p>Change the name "Java" on the following line for "Jamaica":</p><pre class="programlisting">pthread_create(simpleThread1, 0, printPlace,"Java");</pre><p>Run the program. Now comment the lines:</p><pre class="programlisting">pthread_join(simpleThread1, 0);
+pthread_join(simpleThread2, 0);         </pre><p>And uncomment the line:</p><pre class="programlisting">/*   pthread_join(simpleThread1, 0);       */</pre><p>Run the program. What happens to simpleThread1?</p></li></ol></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="individual_assignments_pipes.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="individual_assignments.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_threads_synchronization.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Pipes&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Threads Synchronization</td></tr></table></div></body></html>

@@ -1,0 +1,48 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>1.&nbsp;Basic Exercises 1</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="exercises.html" title="Chapter&nbsp;20.&nbsp;Exercises"><link rel="prev" href="exercises.html" title="Chapter&nbsp;20.&nbsp;Exercises"><link rel="next" href="exercises_exercises_2.html" title="2.&nbsp;Basic Exercises 2"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.&nbsp;Basic Exercises 1</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="exercises.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;20.&nbsp;Exercises</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="exercises_exercises_2.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="exercises.html">Exercises</a></span> &gt; <span class="breadcrumb-node">Basic Exercises 1</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="exercises_exercises_1"></a>1.&nbsp;Basic Exercises 1</h2></div></div></div><div class="orderedlist"><ol type="1"><li><p>Um &#8216;signed data type&#8217; possui um n&uacute;mero de valores
+            dispon&iacute;veis &#8216;n&atilde;o-zero&#8217; positivos e negativos
+            diferentes.</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>1.a.</td><td><p>Verdadeiro</p></td></tr><tr><td>1.b.</td><td><p>Falso</p></td></tr></tbody></table></div></li><li><p>Escolha o identificador v&aacute;lido:</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>2.a.</td><td><p>Big01LongStringWithMeaninglessName</p></td></tr><tr><td>2.b.</td><td><p>$int</p></td></tr><tr><td>2.c.</td><td><p>bytes</p></td></tr><tr><td>2.d.</td><td><p>$1</p></td></tr><tr><td>2.e.</td><td><p>finalist</p></td></tr></tbody></table></div></li><li><p>Quais das seguintes representa&ccedil;&otilde;es s&atilde;o v&aacute;lidas para a
+            entrada do m&eacute;todo main() de uma aplica&ccedil;&atilde;o?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>3.a.</td><td><p>public static void main()</p></td></tr><tr><td>3.b.</td><td><p>public static void main(String arg[])</p></td></tr><tr><td>3.c.</td><td><p>public void main(String [] arg)</p></td></tr><tr><td>3.d.</td><td><p>public static void main(String[] args)</p></td></tr><tr><td>3.e.</td><td><p>public static int main(String [] arg)</p></td></tr></tbody></table></div></li><li><p>Se todos os tr&ecirc;s elementos (import, declara&ccedil;&atilde;o de package
+            and classes) ocorrerem em um arquivo fonte, eles devem aparecer em
+            que ordem?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>4.a.</td><td><p>Imports, declara&ccedil;&atilde;o de package, classes</p></td></tr><tr><td>4.b.</td><td><p>Classes, imports, declara&ccedil;&atilde;o de package</p></td></tr><tr><td>4.c.</td><td><p>Declara&ccedil;&atilde;o de Package deve aparecer primeiro; a ordem
+                  para imports e defini&ccedil;&atilde;o de class n&atilde;o &eacute; significativa</p></td></tr><tr><td>4.d.</td><td><p>Declara&ccedil;&atilde;o de package, imports, classes.</p></td></tr><tr><td>4.e.</td><td><p>Imports devem aparecer antes; a ordem para declara&ccedil;&atilde;o
+                  de package e defini&ccedil;&atilde;o de class n&atilde;o &eacute; significante</p></td></tr></tbody></table></div></li><li><p>Considere a seguinte linha de c&oacute;digo:</p><pre class="programlisting">     int  x[] = new int [25];</pre><p>Ap&oacute;s a execu&ccedil;&atilde;o, qual(is) afirma&ccedil;&atilde;o(&otilde;es) &eacute;(s&atilde;o)
+            verdadeiras?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>5.a.</td><td><p>x[24] &eacute; 0</p></td></tr><tr><td>5.b.</td><td><p>x[24] &eacute; indefinido</p></td></tr><tr><td>5.c.</td><td><p>x[25] &eacute; 0</p></td></tr><tr><td>5.d.</td><td><p>x[0] &eacute; nulo</p></td></tr><tr><td>5.e.</td><td><p>x.length &eacute; 25</p></td></tr></tbody></table></div></li><li><p>Considere a seguinte aplica&ccedil;&atilde;o:</p><pre class="programlisting">1.    class Q6  {
+2.        public static void main(String args[])  { 
+3.            Holder h = new Holder(); 
+4.            h.held = 100; 
+5.            h.bump(h);
+6.            System.out.println(h.held); 
+7.        } 
+8.    }
+9.        
+10.   class Holder { 
+11.       public int held;
+12.       public void bump(Holder theHolder) { theHolder.held++; } 
+13.   }</pre><p>Qual valor &eacute; impresso na linha 6?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>6.a.</td><td><p>0</p></td></tr><tr><td>6.b.</td><td><p>1</p></td></tr><tr><td>6.c.</td><td><p>100</p></td></tr><tr><td>6.d.</td><td><p>101</p></td></tr></tbody></table></div></li><li><p>Considere a seguinte aplica&ccedil;&atilde;o:</p><pre class="programlisting">1.    class Q7  { 
+2.        public static void main(String args[ ]) { 
+3.            double d = 12.3; 
+4.            Decrementer dec = new Decrementer(); 
+5.            dec.decrement(d); 
+6.            System.out.println(d); 
+7.        } 
+8.    } 
+9.        
+10.   class Decrementer { 
+11.       public void decrement(double decMe)  { decMe = decMe &#8211; 1.0; } 
+12.   } </pre><p>Qual valor &eacute; impresso na linha 6?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>7.a.</td><td><p>0.0</p></td></tr><tr><td>7.b.</td><td><p>-1.0</p></td></tr><tr><td>7.c.</td><td><p>12.3</p></td></tr><tr><td>7.d.</td><td><p>11.3</p></td></tr></tbody></table></div></li><li><p>Como se for&ccedil;a a &#8216;garbage collection&#8217; de um
+            objeto?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>8.a.</td><td><p>Garbage collection n&atilde;o pode ser forced</p></td></tr><tr><td>8.b.</td><td><p>Call System.gc()</p></td></tr><tr><td>8.c.</td><td><p>Call System.gc(), passando na refer&ecirc;ncia para o objeto
+                  a ser &#8216;garbage-collected&#8217;</p></td></tr><tr><td>8.d.</td><td><p>Call Runtime.gc()</p></td></tr><tr><td>8.e.</td><td><p>Setar todas referencias para o objeto para novos
+                  valores (Ex: null)</p></td></tr></tbody></table></div></li><li><p>Qual a faixa de valores que pode ser designada para uma
+            vari&aacute;vel do tipo short?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>9.a.</td><td><p>depende do hardware</p></td></tr><tr><td>9.b.</td><td><p>0 a 216 - 1</p></td></tr><tr><td>9.c.</td><td><p>0 a 232 - 1</p></td></tr><tr><td>9.d.</td><td><p>-215 a 215 &#8211; 1</p></td></tr><tr><td>9.e.</td><td><p>-231 a 231 &#8211; 1</p></td></tr></tbody></table></div></li><li><p>Qual &eacute; a faixa de valores que pode ser designada para uma
+            vari&aacute;vel do tipo byte?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>10.a.</td><td><p>depende do hardware</p></td></tr><tr><td>10.b.</td><td><p>0 a 28 - 1</p></td></tr><tr><td>10.c.</td><td><p>0 a 216 - 1</p></td></tr><tr><td>10.d.</td><td><p>&#8211;27 a 27 &#8211; 1</p></td></tr><tr><td>10.e.</td><td><p>&#8211;215 a 215 &#8211; 1</p></td></tr></tbody></table></div></li></ol></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="exercises.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="exercises.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="exercises_exercises_2.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;20.&nbsp;Exercises&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;2.&nbsp;Basic Exercises 2</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

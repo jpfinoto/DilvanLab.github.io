@@ -1,0 +1,168 @@
+<html><head><title>Java Speech Grammar Format</title></head>
+<!--Very first of destination files in entire book-->
+<body BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#990000" ALINK="#333399" VLINK="#333399">
+<!--#include virtual="/products/java-media/include/speechGlobal.html"-->
+
+
+<!-- <pre>TOC  Prev  <a href="Preface.html">Next</a>  <a href="javabook.htm"></a></pre> -->
+
+<blockquote>
+
+<P>&nbsp;</P>
+
+<p align="center"><i><font size=7>
+Java<sup><font size=-2>TM</font></sup> Speech Grammar Format Specification
+</font></i></p>
+
+<p align="center"><B>
+Version 1.0 - October 26, 1998
+</B></p>
+
+<P>&nbsp;</P>
+<p>The Java<SUP><font size="-2">TM</font></SUP> Speech 
+Grammar Format is a platform-independent, vendor-independent 
+textual representation of grammars for use in speech 
+recognition. Grammars are used by speech recognizers 
+to determine what the recognizer should listen for, 
+and so describe the utterances a user may say. JSGF 
+adopts the style and conventions of the Java programming 
+language in addition to use of traditional grammar 
+notations.
+</p>
+<P>&nbsp;</P>
+
+
+<a name="440"></a>
+ 
+<p><a name="441"></a><hr size=7 noshade>
+<h1 align="right"><font size="+4">
+Contents
+
+<BR>&nbsp;
+</font></h1>
+<dl><DD>
+&nbsp;
+<a href="Preface.html#1140">Preface	</a>
+<dl>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="Preface.html#2469">	Technical Scope	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="Preface.html#2489">	Web Resources	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="Preface.html#2494">	Mailing Lists	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="Preface.html#2503">	Revision History	</a>
+</dl>
+<DD>
+&nbsp;
+<a href="Contrib.html#1140">Contributions	</a>
+</dl><dl>
+<DD>
+&nbsp;
+<a href="JSGF.html#11803">1.	Introduction	</a>
+<dl>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#16281">1.1	Related Documentation	</a>
+</dl>
+<DD>
+&nbsp;
+<a href="JSGF.html#16447">2.	Definitions	</a>
+<dl>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#16562">2.1	Grammar Names and Package Names	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#16587">2.2	Rulenames	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#16890">2.3	Tokens	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#16628">2.4	Comments	</a>
+</dl>
+<DD>
+&nbsp;
+<a href="JSGF.html#16559">3.	Grammar Header	</a>
+<dl>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#20955">3.1	Self-Identifying Header	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#20957">3.2	Grammar Name Declaration	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#16460">3.3	Import	</a>
+</dl>
+<DD>
+&nbsp;
+<a href="JSGF.html#14185">4.	Grammar Body	</a>
+<dl>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#20071">4.1	Rule Definitions	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#20480">4.2	Rule Expansions	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#14588">4.3	Composition	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#16086">4.4	Grouping	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#14660">4.5	Unary Operators	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#15057">4.6	Tags	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#16211">4.7	Precedence	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#14102">4.8	Recursion	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#20689">4.9	Uses of <a href="openObjectId JSGF.doc:2 20689"><code>&lt;NULL&gt;</code> and <code>&lt;VOID&gt;</code>	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#19654">4.10	Documentation Comments	</a>
+</dl>
+<DD>
+&nbsp;
+<a href="JSGF.html#14439">5.	Examples	</a>
+<dl>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#17971">5.1	Example 1: Simple Command and Control	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#17514">5.2	Example 2: Resolving Names	</a>
+<DD>
+&nbsp; &nbsp; &nbsp;
+<a href="JSGF.html#19936">5.3	Example 3: Documentation Comments	</a>
+</dl>
+</dl>
+
+
+<!-- This inserts footnotes-->
+
+<HR width="30%" noshade align="center">
+<P align="center">
+<font size=-1>Java<SUP><font size="-2">TM</font></sup> Speech Grammar Format Specification<br>
+<a href="Copyright.html">Copyright &#169 1997-1998 Sun Microsystems, Inc.</a>
+All rights reserved<br>
+Send comments or corrections to <a href="mailto:javaspeech-comments@sun.com">javaspeech-comments@sun.com</a>
+</font>
+</P>
+
+
+</blockquote>
+</body></html>

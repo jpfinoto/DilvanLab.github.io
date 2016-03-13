@@ -1,0 +1,7 @@
+grammar teste;
+
+public <1> = hi {hi};
+
+public <2> = how are you doing {how};
+
+public <3> = bye {bye};

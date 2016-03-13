@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Applets Slide 3: Overview</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Applets:</FONT> </FONT><B><FONT COLOR="#0000FF">Overview</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/applet/overview/security.html">What
+applets can do</A></H2>
+
+<UL>
+<UL>
+<LI>Applets can make network connections to the host they came from. </LI>
+
+<LI>Applets running within a Web browser can easily cause HTML documents
+to be displayed. </LI>
+
+<LI>Applets can invoke public methods of other applets on the same page.
+</LI>
+
+<LI>Applets that are loaded from the local file system have none of the
+restrictions that applets loaded over the network do. </LI>
+
+<LI>Although most applets stop running once you leave their page, they
+don't have to. </LI>
+</UL>
+</UL>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/applet/overview/html.html">Adding
+an Applet to an HTML Page</A> </H2>
+
+<BLOCKQUOTE>
+<H3>The Simplest Possible &lt;APPLET&gt; Tag </H3>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">&lt;APPLET CODE=<I>AppletSubclass</I>.class WIDTH=<I>anInt</I> HEIGHT=<I>anInt</I>&gt;
+&lt;/APPLET&gt;</FONT>
+</PRE>
+</BLOCKQUOTE>
+
+<H3>Specifying the Applet Directory with CODEBASE </H3>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">&lt;APPLET CODE=<I>AppletSubclass</I>.class CODEBASE=<I>aURL
+</I>        WIDTH=<I>anInt</I> HEIGHT=<I>anInt</I>&gt;
+&lt;/APPLET&gt;</FONT></PRE>
+
+<PRE>&lt;applet code=Simple.class codebase=example/ width=500 height=20&gt;
+&lt;/applet&gt;
+</PRE>
+</BLOCKQUOTE>
+
+<H3>Specifying Parameters with the &lt;PARAM&gt; Tag </H3>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">&lt;APPLET CODE=<I>AppletSubclass</I>.class WIDTH=<I>anInt</I> HEIGHT=<I>anInt</I>&gt;
+&lt;PARAM NAME=<I>parameter1Name</I> VALUE=<I>aValue</I>&gt;
+&lt;PARAM NAME=<I>parameter2Name</I> VALUE=<I>anotherValue</I>&gt;
+&lt;/APPLET&gt;</FONT>
+</PRE>
+
+<PRE>&lt;applet code=AppletButton.class codebase=example width=350 height=60&gt;
+&lt;param name=windowType value=BorderWindow&gt;
+&lt;param name=windowText value=&quot;BorderLayout&quot;&gt;
+&lt;param name=buttonText value=&quot;Click here to see a BorderLayout in action&quot;&gt;
+. . .
+&lt;/applet&gt;
+</PRE>
+</BLOCKQUOTE>
+
+<H3>Specifying Text to be Displayed by Java-Deficient Browsers </H3>
+
+<BLOCKQUOTE>
+<PRE>&lt;applet code=AppletButton.class codebase=example width=350 height=60&gt;
+&lt;param name=windowType value=BorderWindow&gt;
+&lt;param name=windowText value=&quot;BorderLayout&quot;&gt;
+Your browser can't run 1.0 Java applets,
+so here's a picture of the window the program brings up:&lt;/em&gt;
+&lt;/applet&gt;
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Applets.sld4.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Applets.sld4.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

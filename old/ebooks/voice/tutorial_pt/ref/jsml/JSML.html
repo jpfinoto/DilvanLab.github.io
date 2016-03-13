@@ -1,0 +1,1031 @@
+<html><head><title>Java Speech Markup Language</title></head>
+<!--Very last of destination files in entire book-->
+<body BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#990000" ALINK="#333399" VLINK="#333399">
+<!--#include virtual="/products/java-media/include/speechGlobal.html"-->
+
+<pre><a href="index.html">TOC</a>  <a href="Contrib.html">Prev</a>  Next  <!--Index--></pre>
+
+<HR>
+
+<a name="11803"></a><h1>
+</h1><a name="17081"></a><h1>Java Speech Markup 
+Language Specification
+</h1>
+<hr width="30%" align="center">
+<a name="17082"></a><h2>1.0	 Introduction </h2>
+<a name="14911"></a>A speech synthesizer provides a computer with the ability to speak. Users and 
+applications provide text to a speech synthesizer, which is then converted to audio.
+<p><a name="15126"></a><img src="JSML.doc.ancA.gif" width="595" height="101">
+<p><a name="15129"></a><P align="center">
+<em>
+Figure 1	: Text from an application is converted to audio output
+</em><p><a name="15115"></a>Speech synthesizers are developed to produce natural-sounding speech output. 
+However, natural human speech is a complex process, and the ability of speech 
+synthesizers to mimic human speech is limited in many ways. For example, 
+speech synthesizers do not "understand" what they say, so they do not always use 
+the right style or phrasing and do not provide the same nuances as people.
+<p><a name="15116"></a>The <em>Java<SUP>TM</SUP> Speech Markup Language</em> (JSML) allows applications to annotate 
+text with additional information that can improve the quality and naturalness of 
+synthesized speech. JSML documents can include <em>structural</em> information about 
+paragraphs and sentences. JSML allows control of the <em>production</em> of synthesized 
+speech, including the pronunciation of words and phrases, the emphasis of words 
+(stressing or accenting), the placements of boundaries and pauses, and the control 
+of pitch and speaking rate. Finally, JSML allows <em>markers</em> to be embedded in text 
+and allows synthesizer-specific controls.
+<p><a name="14977"></a>For the example in <a href="JSML.html#15129">Figure 1</a>, we might use JSML tags to indicate the start and end 
+of the sentence and to emphasize the word "can":
+<p><ul><a name="15127"></a>
+<code>&lt;SENT&gt;Computers &lt;EMP&gt;can&lt;/EMP&gt; speak.&lt;/SENT&gt;
+</code>
+<BR><P></ul>
+<a name="16584"></a><h3>1.1	 Role of JSML</h3>
+<a name="16586"></a>JSML has been developed to support as many types of applications as possible, 
+and to support text markup in many different languages. To make this possible, 
+JSML marks general information about the text and, whenever possible, uses 
+cross-language properties.
+<p><a name="17345"></a>Although JSML may be used for text in Japanese, Spanish, Tamil, Thai, English, 
+and nearly all modern languages, a single JSML document should contain text for 
+only a single language. Applications are therefore responsible for management 
+and control of speech synthesizers if output of multiple languages is required.
+<p><a name="17346"></a>JSML can be used by a wide range of applications to speak text from equally 
+varied sources, including email, database information, web pages, and word 
+processor documents. <a href="JSML.html#17357">Figure 2</a> illustrates the basic steps in this process.
+<p><a name="17349"></a><img src="JSML.doc.anc1.gif" width="576" height="181">
+<p><a name="17357"></a><P align="center">
+<em>
+Figure 2	: JSML Process
+</em><p><a name="17363"></a>The application is responsible for converting the source information to JSML text 
+using any special knowledge it has about the content and format of the source 
+information. For example, an email application can provide the ability to read 
+email messages aloud by converting messages to JSML. This could involve the 
+conversion of email header information (sender, subject, date, etc.) to a speakable 
+form and might also involve special processing of text in the body of the message 
+(for handling attachments, indented text, special abbreviations, etc.) Here is a 
+sample of an email message converted to JSML:
+<p><ul><a name="18500"></a>
+<code>&lt;PARA&gt;Message from &lt;EMP&gt;Alan Schwarz&lt;/EMP&gt; about new 
+synthesis technology.<br>
+Arrived at &lt;SAYAS CLASS="time"&gt;2pm&lt;/SAYAS&gt; today.&lt;/PARA&gt;
+</code>
+<BR><P><a name="18507"></a>
+<code>&lt;PARA&gt;I've attached a diagram showing the new way we do 
+speech synthesis.&lt;/PARA&gt;
+</code>
+<BR><P><a name="18512"></a>
+<code>&lt;PARA&gt;Regards, Alan.&lt;/PARA&gt;
+</code>
+<BR><P></ul><a name="17364"></a>Similarly, a web browser could provide the ability to speak web pages by 
+converting them to JSML. This process would involve conversion from HTML 
+(HyperText Markup Language), the basic format of the web, to JSML. Readers 
+may notice that JSML and HTML have a similar form. This similarity is because 
+the formats share a common ancestor: Standard Generalized Markup Language 
+(SGML). However, their roles are different. HTML is specialized for visual 
+display of information, whereas JSML is for speaking information.
+<p>
+<hr width="30%" align="center">
+<a name="14914"></a><h2>2.0	 Markup in JSML </h2>
+
+<a name="14711"></a><h3>2.1	 Basic Markup</h3>
+<a name="15269"></a>The special text in the following example is the <em>text markup</em>.
+<p><ul><a name="15268"></a>
+<code>&lt;SENT&gt;Computers &lt;EMP&gt;can&lt;/EMP&gt; speak.&lt;/SENT&gt;
+</code>
+<BR><P></ul><a name="15266"></a>This style will be familiar to you if you have used HTML, SGML, or XML. 
+<code>&lt;SENT&gt;</code> indicates the start of a sentence element and <code>&lt;/SENT&gt;</code> ends that 
+sentence. Similarly, <code>&lt;EMP&gt;</code> and <code>&lt;/EMP&gt;</code> mark a region to be <em>emphasized</em>.
+<p><a name="15140"></a><code>SENT</code> and <code>EMP</code> are referred to as <em>elements</em>. JSML defines eight elements. The 
+following sections describe elements and other JSML markup in more detail.
+<p>
+<a name="11841"></a><h3>2.2	 Container Elements</h3>
+<a name="17371"></a>JSML elements are either container elements or empty elements. A <em>container 
+element</em> has a balanced start tag and end tag (e.g., <code>&lt;SENT&gt;</code> and <code>&lt;/SENT&gt;</code>). The 
+text appearing between the start and end tags is the <em>contained text</em> as shown in 
+<a href="JSML.html#16592">Figure 3</a>. An element's start-tag defines the type of element and may contain one 
+or more attributes. All end-tags have the same name as their matching start-tag.
+<p><a name="16591"></a><img src="JSML.doc.anc.gif" width="409" height="158">
+<p><a name="16592"></a><P align="center">
+<em>
+Figure 3	: Elements and Attributes
+</em><p>
+<a name="17387"></a><h4>2.2.1	 Attributes</h4>
+<a name="9571"></a>Attributes are used to provide additional information about an element. Each 
+JSML element has a set of defined attribute names and, in some cases, the 
+attribute value is restricted to certain strings. For example, an <code>EMP</code> element can 
+mark words with a <code>LEVEL</code> attribute value of <code>strong</code>:
+<p><ul><a name="9572"></a>
+<code>Ich bin ein &lt;EMP LEVEL="strong"&gt;Berliner!&lt;/EMP&gt;
+</code>
+<BR><P></ul>
+<a name="16578"></a><h4>2.2.2	 Element Nesting</h4>
+<a name="16579"></a>Some JSML elements allow the contained text to contain other elements. This is 
+referred to as <em>nesting</em>.
+<p><ul><a name="16580"></a>
+<code>&lt;PARA&gt; text with &lt;EMP&gt; more text &lt;/EMP&gt; &lt;/PARA&gt;
+</code>
+<BR><P></ul><a name="16581"></a>Nested elements cannot overlap or intertwine. For example, the following is not 
+legal:
+<p><ul><a name="16582"></a>
+<code>&lt;PARA&gt; text with &lt;EMP&gt; more text &lt;/PARA&gt; &lt;/EMP&gt;
+</code>
+<BR><P></ul>
+<a name="11889"></a><h3>2.3	 Empty Elements</h3>
+<a name="16365"></a>An empty element has only one tag and does not contain any text. For example, 
+the following results in a large break/pause in the speech at the point that the 
+element occurs:
+<p><ul><a name="16366"></a>
+<code>A loud noise was heard, &lt;BREAK SIZE="large"/&gt;and the room 
+became quiet.
+</code>
+<BR><P></ul><a name="9637"></a>Because it doesn't mark any text, an empty element like <code>BREAK</code> doesn't need an 
+end-tag. Rather, the "/&gt;" marks the end of the start-tag and of the element. Like 
+the container elements, empty elements can include attributes to provide 
+additional information (for example, SIZE="large" above).
+<p>
+<a name="15212"></a><h3>2.4	 Names</h3>
+<a name="17409"></a>All JSML element and attribute names are uppercase. All JSML attribute values 
+are case sensitive. Furthermore, the naming of elements and attributes and the 
+values of attributes are independent. Consequently, it is possible for an element to 
+have an attribute of the same name (though none currently do).
+<p>
+<a name="15245"></a><h3>2.5	 White Space</h3>
+<a name="16594"></a>Within an element's start- and end-tags, single white space characters can 
+optionally be replaced by multiple white space characters without changing the 
+semantics of the element.
+<p><a name="15246"></a>White space contained between an element's start- and end-tags, or not contained 
+by any element, is passed to the speech synthesizer and may affect speech output.
+<p>
+<a name="15247"></a><h3>2.6	 Undefined Names</h3>
+<a name="17414"></a>Elements or attributes with undefined names are ignored by the speech 
+synthesizer. This feature is useful in automatic generation and processing of 
+JSML. For example, a web browser could generate the following:
+<p><ul><a name="17415"></a>
+<code>&lt;URL ORIG="http://acme.com"&gt;URL is ACME dot com&lt;/URL&gt;
+</code>
+<BR><P></ul><a name="17417"></a>In this example, the <code>ORIG</code> attribute is used to preserve the original URL. The 
+contained text will be spoken by the speech synthesizer but the URL element tags 
+will be ignored, because they are not defined in JSML and therefore not known to 
+the synthesizer.
+<p><a name="17418"></a>This mechanism does allow speech synthesizers to extend the JSML element set 
+by interpreting these additional elements specially. However, application 
+developers should be aware that elements not specified in JSML are not portable 
+across synthesizers and platforms.
+<p>
+<a name="15215"></a><h3>2.7	 JSML Document Structure</h3>
+<a name="17427"></a>JSML is a subset of XML<a href="#17426"><sup>1</sup></a> (Extensible Markup Language), which is a simple 
+dialect of SGML. By being a subset of XML, JSML gains a standardized, 
+extensible syntax that is not tied to the Java Speech API (JSAPI). This means that:
+<p><ul><li><a name="17428"></a>JSML is readable and editable by both humans and computers.
+<br><br><li><a name="17429"></a>General XML editors can be used to simplify writing JSML.
+<br><br><li><a name="17430"></a>JSML markup is very regular and easy for a synthesizer to parse.
+<br><br><li><a name="17431"></a>Text containing JSML can be prepared by hand using non-JSAPI-specific 
+editors.
+<br><br></ul><a name="15216"></a>Although it is not necessary to know about XML to understand JSML or to use 
+JSML, the following may be of interest. If JSML text starts with:
+<p><ul><a name="15218"></a>
+<code>&lt;?XML version="1.0" encoding="UCS-2"?&gt;
+</code>
+<BR><P><a name="15219"></a>
+<code>&lt;JSML&gt;
+</code>
+<BR><P></ul><a name="15220"></a>and ends with:
+<p><ul><a name="15221"></a>
+<code>&lt;/JSML&gt;
+</code>
+<BR><P></ul><a name="15222"></a>then the JSML is a well-formed XML document. This means that a speech 
+synthesizer can use a generic XML parser on JSML text. If a synthesizer supplies 
+the parser with a DTD (Document Type Definition) for JSML, then the 
+synthesizer's work is significantly reduced. These openning and closing elements 
+are optional in JSML documents.
+<p><a name="15223"></a>Having a DTD allows the application to use the full power of XML for generating 
+text, for example, entity references that can act as a shorthand for repetitive 
+JSML, and then to use generic text processing tools for generating the JSML.
+<p>
+<a name="16624"></a><h4>2.7.1	 Splitting JSML Documents</h4>
+<a name="16626"></a>A JSML document must be syntactically complete. Every start tag must be an 
+empty element (no end tag required) or have a matching end tag. If text is split 
+into multiple JSML documents to be spoken in sequence, then the text should be 
+split between paragraphs or perhaps between sentences. This is because each 
+document will be spoken independently and important phrasing and pitch 
+information will be affected by inappropriate boundaries.
+<p>
+<a name="16536"></a><h3>2.8	 Escaping/Quoting Text</h3>
+<a name="16537"></a>If text to be spoken contains a less-than sign ("&lt;", which is <code>\u003C</code>) or an 
+ampersand ("&amp;", which is <code>\u0026</code>), then the text needs to be <em>escaped</em> or <em>quoted</em> 
+to prevent the possibility of some of the text being mistaken for JSML tags. There 
+are several methods available:
+<p><ul><li><a name="16538"></a>Individual less-than signs may be replaced with one of the following 
+character sequences (without the quotes): "<code>&amp;lt;</code>", "<code>&amp;#60;</code>", or 
+"<code>&amp;#x003C;</code>".
+<br><br><li><a name="16539"></a>Individual ampersands may be replaced with one of the following 
+character sequences (without the quotes): "<code>&amp;amp;</code>", "<code>&amp;#38;</code>", or 
+"<code>&amp;#x0026;</code>".
+<br><br><li><a name="16540"></a>A <code>CDATA</code> section can be placed around the entire text.
+<br><br></ul><a name="16541"></a>A <code>CDATA</code> section has the general form of:
+<p><ul><a name="16542"></a>
+<code>&lt;![CDATA[the text that is being escaped]]&gt;
+</code>
+<BR><P></ul><a name="16543"></a>The text that is being escaped can contain any character sequence that is not the 
+"]]&gt;" sequence.
+<p><a name="16544"></a>A <code>CDATA</code> section can be used on text that is contained by an element, for example:
+<p><ul><a name="16545"></a>
+<code>&lt;EMP&gt;Joe Doe &lt;!CDATA[&lt;joe.doe@acme.com&gt;]]&gt;&lt;/EMP&gt;
+</code>
+<BR><P></ul><a name="16546"></a>and on text that is not contained by an element, for example:
+<p><ul><a name="16547"></a>
+<code>&lt;![CDATA[X &lt; Y is a boolean expression.]]&gt;
+</code>
+<BR><P></ul><a name="16548"></a>Synthesizers handle <code>CDATA</code> sections by stripping away the <code>&lt;![CDATA[</code> and <code>]]&gt;</code> 
+markup and not parsing the <code>CDATA</code> section's contents for JSML.
+<p>
+<a name="15911"></a><h3>2.9	 Comments</h3>
+<a name="15912"></a>A JSML comment begins with a <code>&lt;!--</code> character sequence and ends with a <code>--&gt;</code> 
+character sequence and may contain any text except the two-character sequence 
+<code>--</code>.
+<p><a name="15913"></a>Comments can be placed within text that is to be spoken (the comments will not 
+be spoken).
+<p><ul><a name="15915"></a>
+<code>How now brown &lt;!-- This is an example comment --&gt; cow.
+</code>
+<BR><P></ul><a name="15916"></a>Comments may not be placed within elements.
+<p>
+<hr width="30%" align="center">
+<a name="15249"></a><h2>3.0	 JSML Elements </h2>
+<a name="15422"></a>JSML syntax consists of structural, production, and miscellaneous elements. The 
+following table presents an overview of JSML's elements. These elements are 
+defined in detail in the following sections. The section on structural elements also 
+describes <em>implicit paragraph marking</em>, which is an alternative to the <code>PARA</code> 
+element.
+<p><a name="17476"></a><Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><td><a name="15796"></a><B>Element<br>
+Function
+</B>
+&nbsp;<td><a name="15798"></a><B>Element<br>
+Name
+</B>
+&nbsp;<td><a name="15858"></a><B>Element<br>
+Type
+</B>
+&nbsp;<td><a name="15800"></a><B>Element<br>
+Description
+</B>
+&nbsp;
+<tr><td colspan=1 rowspan=2><a name="17466"></a>Structure
+
+&nbsp;<td><a name="17468"></a><CODE>PARA
+</CODE>
+&nbsp;<td><a name="17470"></a>Container
+
+&nbsp;<td><a name="17472"></a>Specifies that the contained text is a paragraph.
+
+&nbsp;
+<tr><td><a name="15804"></a><CODE>SENT
+</CODE>
+&nbsp;<td><a name="15860"></a>Container
+
+&nbsp;<td><a name="15806"></a>Specifies that the contained text is a sentence.
+
+&nbsp;
+<tr><td colspan=1 rowspan=4><a name="15878"></a>Production
+
+&nbsp;<td><a name="15880"></a><CODE>SAYAS
+</CODE>
+&nbsp;<td><a name="15882"></a>Container
+
+&nbsp;<td><a name="15884"></a>Specifies how to say the contained text.
+
+&nbsp;
+<tr><td><a name="15828"></a><CODE>EMP
+</CODE>
+&nbsp;<td><a name="15868"></a>Both
+
+&nbsp;<td><a name="15830"></a>Specifies emphasis for the contained text or 
+immediately following text.
+
+&nbsp;
+<tr><td><a name="15834"></a><CODE>BREAK
+</CODE>
+&nbsp;<td><a name="15870"></a>Empty
+
+&nbsp;<td><a name="15836"></a>Specifies a break in the speech.
+
+&nbsp;
+<tr><td><a name="17634"></a><CODE>PROS
+</CODE>
+&nbsp;<td><a name="17636"></a>Container
+
+&nbsp;<td><a name="17638"></a>Specifies a prosodic property, such as baseline 
+pitch, rate, or volume, for the contained text.
+
+&nbsp;
+<tr><td colspan=1 rowspan=2><a name="15850"></a>Miscellaneous
+
+&nbsp;<td><a name="15852"></a><CODE>MARKER
+</CODE>
+&nbsp;<td><a name="15876"></a>Empty
+
+&nbsp;<td><a name="15854"></a>Requests a notification when speech reaches 
+the marker.
+
+&nbsp;
+<tr><td><a name="15896"></a><CODE>ENGINE
+</CODE>
+&nbsp;<td><a name="15898"></a>Container
+
+&nbsp;<td><a name="15900"></a>Native instructions to a specified speech 
+synthesizer.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+
+<p>
+<hr width="30%" align="center">
+<a name="15250"></a><h2>4.0	 Structural Elements </h2>
+
+<a name="16056"></a><h3>4.1	 PARA<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><th colspan=2 rowspan=1><a name="18155"></a><CODE>PARA 
+</CODE>
+&nbsp;<td><a name="16048"></a>Container element that marks the contained text as a paragraph.
+
+&nbsp;
+<tr><td><a name="18157"></a><CODE>
+</CODE>
+&nbsp;<td><a name="16050"></a><CODE>MARK 
+</CODE>
+&nbsp;<td><a name="16054"></a>Optional attribute that requests a notification when the synthesizer's 
+production of audio reaches this element's contained text. Its value is the 
+text to be made available when the notification occurs.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</h3>
+<a name="16057"></a>The <code>PARA</code> element declares a range of text to be a paragraph. For example:
+<p><ul><a name="16059"></a>
+<code>&lt;PARA&gt;This a short paragraph.&lt;/PARA&gt;&lt;PARA&gt;The subject has 
+changed, so this is a new paragraph.&lt;/PARA&gt;
+</code>
+<BR><P></ul><a name="16067"></a><code>PARA</code> elements do not contain other <code>PARA</code> elements; that is, <code>PARA</code> elements do not 
+embed or nest. For example, the following is not legal:
+<p><ul><a name="16068"></a>
+<code>&lt;PARA&gt;The raven spoke.
+</code>
+<BR><P><a name="16069"></a>
+<code>&lt;PARA&gt;I've come from Norway at the command of the king. 
+He sues for peace.&lt;/PARA&gt;
+</code>
+<BR><P><a name="16070"></a>
+<code>&lt;/PARA&gt;
+</code>
+<BR><P></ul>
+<a name="10199"></a><h3>4.2	 Implicit Paragraph Marking</h3>
+<a name="17999"></a>In JSML, a blank line (that is, a line that contains only whitespace characters) that 
+separates one block of text from another is treated the same as explicitly marking 
+the block as a paragraph. Strictly speaking, a blank line is not an element, 
+however, it does serve the same function as the <code>PARA</code> element. 
+<p><a name="18115"></a>The following fragments result in the same speech:
+<p><ul><a name="18000"></a>
+<code>She went to school and passed the tests.
+</code>
+<BR><P><a name="14132"></a>
+<code>When she returned to her bicycle, the sun had set.
+</code>
+<BR><P></ul><a name="14133"></a>and
+<p><ul><a name="14134"></a>
+<code>&lt;PARA&gt;She went to school and passed the tests.&lt;/PARA&gt; 
+&lt;PARA&gt;When she returned home, the sun had set.&lt;/PARA&gt;
+</code>
+<BR><P></ul><a name="14136"></a>and
+<p><ul><a name="14137"></a>
+<code>&lt;PARA&gt;She went to school and passed the tests.&lt;/PARA&gt;
+</code>
+<BR><P><a name="12693"></a>
+<code>&lt;PARA&gt;When she returned home, the sun had set.&lt;/PARA&gt;
+</code>
+<BR><P></ul><a name="12695"></a>and
+<p><ul><a name="12697"></a>
+<code>&lt;PARA&gt;She went to school and passed the tests.
+</code>
+<BR><P><a name="12700"></a>
+<code>When she returned home, the sun had set.&lt;/PARA&gt;
+</code>
+<BR><P></ul><a name="10208"></a>A blank line can be created by any of the following or by inserting white space 
+(that is, any combination of spaces, <code>\u0020</code>, horizontal tabulations, <code>\u0009</code>, and 
+ideographic spaces, <code>\u3000</code>) in any of the following:
+<p><ul><li><a name="10209"></a>Consecutive carriage return and line feed pairs (that is, <code>\u000D</code> <code>\u000A</code> 
+<code>\u000D</code> <code>\u000A</code>)
+<br><br><li><a name="10210"></a>Consecutive line feeds/newlines (that is, <code>\u000A</code> <code>\u000A</code>)
+<br><br><li><a name="10285"></a>Consecutive Unicode line separators (that is, <code>\u2028</code> <code>\u2028</code>)
+<br><br><li><a name="10286"></a>A single Unicode paragraph separator (that is, <code>\u2029</code>)
+<br><br></ul>
+<a name="16219"></a><h3>4.3	 SENT<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><th colspan=2 rowspan=1><a name="18241"></a><CODE>SENT 
+</CODE>
+&nbsp;<td><a name="16211"></a>Container element that marks the contained text as a sentence.
+
+&nbsp;
+<tr><td><a name="18149"></a><CODE>
+</CODE>
+&nbsp;<td><a name="18247"></a><CODE>MARK 
+</CODE>
+&nbsp;<td><a name="16217"></a>Optional attribute that requests a notification when the synthesizer's 
+production of audio reaches this element's contained text. Its value is the 
+text to be made available when the notification occurs.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</h3>
+<a name="16220"></a>The <code>SENT</code> element declares a range of text to be a sentence. For example:
+<p><ul><a name="16222"></a>
+<code>&lt;SENT&gt;C'est la vie.&lt;/SENT&gt;
+</code>
+<BR><P></ul><a name="16223"></a><code>SENT</code> elements do not contain other <code>SENT</code> elements, that is, <code>SENT</code> elements do not 
+embed or nest. For example, the following is not legal:
+<p><ul><a name="16224"></a>
+<code>&lt;SENT&gt;He said, &lt;SENT&gt;"I leave tomorrow."&lt;/SENT&gt;&lt;/SENT&gt;
+</code>
+<BR><P></ul>
+<hr width="30%" align="center">
+<a name="15256"></a><h2>5.0	 Production Elements </h2>
+
+<a name="16176"></a><h3>5.1	 SAYAS<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><th colspan=2 rowspan=1><a name="18339"></a><CODE>SAYAS 
+</CODE>
+&nbsp;<td><a name="18354"></a>Container element that says how to pronounce a word or short phrase. 
+One of the SUB, CLASS, or PHON attributes is required.
+
+&nbsp;
+<tr><td colspan=1 rowspan=4><a name="18368"></a><CODE>
+</CODE>
+&nbsp;<td><a name="18384"></a><CODE>SUB 
+</CODE>
+&nbsp;<td><a name="18396"></a>Optional attribute having a value of the text that is to be spoken as a 
+substitute for the contained text.
+
+&nbsp;
+<tr><td><a name="18388"></a><CODE>CLASS 
+</CODE>
+&nbsp;<td><a name="18398"></a>Optional attribute indicating how to pronounce the contained text. Values: 
+date, digits, literal, number, time.
+
+&nbsp;
+<tr><td><a name="18392"></a><CODE>PHON 
+</CODE>
+&nbsp;<td><a name="18400"></a>Optional attribute having a value of a string of IPA (International Phonetic 
+Alphabet) characters or the Java \uXXXX representation of the Unicode 
+IPA characters that are to be spoken instead of the contained text.
+
+&nbsp;
+<tr><td><a name="18347"></a><CODE>MARK 
+</CODE>
+&nbsp;<td><a name="18358"></a>Optional attribute that requests a notification when the synthesizer's 
+production of audio reaches this element's contained text. Its value is the 
+text to be made available when the notification occurs.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</h3>
+<a name="16177"></a>It is frequently difficult for a synthesizer to determine how to pronounce 
+abbreviations, acronyms, proper names (particularly those originating in a 
+language that is different from that of the synthesizer), domain-specific jargon, 
+and homographs<a href="#16301"><sup>2</sup></a>. If an application has information that resolves a difficulty, it 
+can provide that information to the synthesizer by using the <code>SAYAS</code> element.
+<p>
+<a name="16178"></a><h4>5.1.1	 SUB (Substitute)</h4>
+<a name="16303"></a>The <code>SUB</code> attribute defines substitute text to be spoken instead of the contained 
+text. For example:
+<p><ul><a name="16312"></a>
+<code>&lt;SAYAS SUB="I triple E"&gt;IEEE&lt;/SAYAS&gt;
+</code>
+<BR><P></ul>
+<a name="16313"></a><h4>5.1.2	 CLASS </h4>
+<a name="16314"></a>When the <code>CLASS</code> attribute value is <code>date</code>, the contained text should be pronounced 
+as a date. For example:
+<p><ul><a name="16181"></a>
+<code>&lt;SAYAS CLASS="date"&gt;Jan. 1952&lt;/SAYAS&gt;<br>
+&lt;!--spoken as January nineteen fifty-two --&gt;
+</code>
+<BR><P></ul><a name="16182"></a>Note that simply stating that something is a date does not always yield the desired 
+pronunciation. A <code>SUB</code> attribute may be required. For example, 4/3/97 is 
+ambiguous in:
+<p><ul><a name="16183"></a>
+<code>&lt;SAYAS CLASS="date"&gt;4/3/97&lt;/SAYAS&gt;
+</code>
+<BR><P></ul><a name="16184"></a>It might be spoken as "April third nineteen ninety-seven" or as "March fourth 
+nineteen ninety-seven." It is unambiguous if a <code>SUB</code> attribute is used:
+<p><ul><a name="16185"></a>
+<code>&lt;SAYAS SUB="March fourth nineteen ninety-seven"&gt;4/3/97<br>
+&lt;/SAYAS&gt;
+</code>
+<BR><P></ul><a name="16186"></a>When the <code>CLASS</code> attribute value is <code>literal</code>, the letters, digits, and other 
+characters of the contained text should be spoken individually. In English, this is 
+effectively doing spelling. This is useful for speaking many acronyms and for 
+speaking numbers as digits. For example:
+<p><ul><a name="16187"></a>
+<code>&lt;SAYAS CLASS="literal"&gt;JSML&lt;/SAYAS&gt;<br>
+&lt;!-spoken as J S M L --&gt;
+</code>
+<BR><P><a name="16188"></a>
+<code>&lt;SAYAS CLASS="literal"&gt;12&lt;/SAYAS&gt;&lt;!--spoken as one two--&gt;
+</code>
+<BR><P><a name="16190"></a>
+<code>&lt;SAYAS CLASS="literal"&gt;100%&lt;/SAYAS&gt; &lt;!--might be spoken 
+as one zero zero percent sign--&gt;
+</code>
+<BR><P></ul><a name="16191"></a>When the <code>CLASS</code> attribute value is <code>number</code>, the contained text should be 
+pronounced as a number. For example:
+<p><ul><a name="16192"></a>
+<code>&lt;SAYAS CLASS="number"&gt;12&lt;/SAYAS&gt; &lt;!--spoken as twelve--&gt;
+</code>
+<BR><P></ul>
+<a name="16316"></a><h4>5.1.3	 PHON (Phonetic Pronunciation)</h4>
+<a name="16193"></a>The <code>PHON</code> attribute uses the International Phonetic Alphabet (IPA) character 
+subset of Unicode to define a sequence of sounds. IPA characters are represented 
+by codes from <code>\u0250</code> to <code>\u02AF</code>, by modifiers from <code>\u02B0</code> to <code>\u02FF</code>, by 
+diacritics from <code>\u0300</code> to <code>\u036F</code>, and by certain Latin, Greek and symbol 
+characters from the range <code>\u0000</code> to <code>\u017F</code>. Details of the Unicode IPA support 
+are provided in <em>The Unicode Standard, Version 2.0</em> (The Unicode Consortium, 
+Addison-Wesley Developers Press, 1996).
+<p><a name="16194"></a>The following examples are equivalent:
+<p><ul><a name="16195"></a>
+<code>&lt;SAYAS PHON="<IMG SRC="phonetics.gif" width="82" height="15">"&gt; phonetics &lt;/SAYAS&gt;
+</code>
+<BR><P><a name="16196"></a>
+<code>&lt;SAYAS PHON="\u0066\u006F\u028A\u006E\u025B<br>
+\u0074\u026A\u006B\u0073"&gt; phonetics &lt;/SAYAS&gt;
+</code>
+<BR><P></ul><a name="16197"></a>Note that sounds from outside the language of the synthesizer may not be 
+reproduced accurately.
+<p>
+<a name="16198"></a><h4>5.1.4	 Nesting</h4>
+<a name="16333"></a>Elements cannot be nested within the contents of a <code>SAYAS</code>.
+<p><a name="16199"></a>Legal example:
+<p><ul><a name="16200"></a>
+<code>&lt;PROS RATE="-30%"&gt;&lt;SAYAS SUB="sun dot com"&gt;sun.com<br>
+&lt;/SAYAS&gt;&lt;/PROS&gt;
+</code>
+<BR><P></ul><a name="16201"></a>Illegal example:
+<p><ul><a name="16202"></a>
+<code>&lt;SAYAS SUB="sun dot com"&gt;&lt;PROS RATE="-30%"&gt;sun.com<br>
+&lt;/PROS&gt;&lt;/SAYAS&gt;
+</code>
+<BR><P></ul>
+<a name="15974"></a><h3>5.2	 EMP<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><th colspan=2 rowspan=1><a name="18163"></a><CODE>EMP 
+</CODE>
+&nbsp;<td><a name="15962"></a>Element that specifies a level of emphasis for the contained text (if used 
+as a container element) or the following word (if used as an empty 
+element). LEVEL="moderate" is the default attribute.
+
+&nbsp;
+<tr><td colspan=1 rowspan=2><a name="18165"></a><CODE>
+</CODE>
+&nbsp;<td><a name="15964"></a><CODE>LEVEL 
+</CODE>
+&nbsp;<td><a name="15966"></a>Required attribute that indicates the level of emphasis. Values: strong, 
+moderate, none, or reduced. LEVEL="moderate" is the default 
+attribute.
+
+&nbsp;
+<tr><td><a name="15968"></a><CODE>MARK 
+</CODE>
+&nbsp;<td><a name="15972"></a>Optional attribute that requests a notification when the synthesizer's 
+production of audio reaches this element's contained text. Its value is the 
+text to be made available when the notification occurs.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</h3>
+<a name="15975"></a>The <code>EMP</code> element specifies that a range of text should be spoken with emphasis. 
+The <code>LEVEL</code> attribute's values are <code>strong</code> (for strong emphasis), <code>moderate</code> (for 
+some emphasis), <code>none</code> (for no emphasis), and <code>reduced</code> (for a reduction in 
+emphasis).
+<p><a name="15976"></a>For example:
+<p><ul><a name="15977"></a>
+<code>Clap your &lt;EMP&gt;hands.&lt;/EMP&gt;
+</code>
+<BR><P><a name="15978"></a>
+<code>Clap your &lt;EMP LEVEL="moderate"&gt;hands.&lt;/EMP&gt;
+</code>
+<BR><P></ul><a name="15979"></a>The <code>EMP</code> element can also be an empty element, where it specifies that the 
+immediately following text<a href="#15982"><sup>3</sup></a> is to be emphasized.
+<p><a name="15983"></a>The following examples have the same effect as above:
+<p><ul><a name="15984"></a>
+<code>Clap your &lt;EMP/&gt;hands.
+</code>
+<BR><P><a name="15985"></a>
+<code>Clap your &lt;EMP LEVEL="moderate" MARK="hands"/&gt; hands.
+</code>
+<BR><P></ul>
+<a name="15948"></a><h3>5.3	 BREAK<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><th colspan=2 rowspan=1><a name="18173"></a><CODE>BREAK 
+</CODE>
+&nbsp;<td><a name="15932"></a>Empty element that marks a break in the speech. SIZE="medium" is 
+the default attribute if neither SIZE or MSECS is provided.
+
+&nbsp;
+<tr><td colspan=1 rowspan=3><a name="18175"></a><CODE>
+</CODE>
+&nbsp;<td><a name="15941"></a><CODE>MSECS 
+</CODE>
+&nbsp;<td><a name="15943"></a>Optional attribute having a value of an integral number of milliseconds.
+
+&nbsp;
+<tr><td><a name="15945"></a><CODE>SIZE 
+</CODE>
+&nbsp;<td><a name="15947"></a>Optional attribute having one of the following relative values: none, 
+small, medium, or large. 
+
+&nbsp;
+<tr><td><a name="16238"></a><CODE>MARK 
+</CODE>
+&nbsp;<td><a name="16242"></a>Optional attribute that requests a notification when the synthesizer's 
+production of audio reaches this element's contained text. Its value is the 
+text to be made available when the notification occurs.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</h3>
+<a name="15949"></a>The <code>BREAK</code> element is an empty element that is used to mark phrasing boundaries 
+in the speech output. To indicate what type of break is desired, the element can 
+include a <code>SIZE</code> attribute or a <code>MSECS</code> attribute, but not both. A <code>SIZE</code> attribute 
+indicates a break that is relative to the characteristics of the current speech, and a 
+<code>MSECS</code> attribute indicates a pause for an absolute amount of time.
+<p><a name="15950"></a>Where possible, the break should be defined by a <code>SIZE</code> rather than a <code>MSECS</code>, 
+because, in most languages, breaks are produced by special movements in pitch, 
+by timing changes, and often with a pause. Those factors are significantly affected 
+by speaking context. For example, a 300 millisecond break in fast speech sounds 
+more significant than it does in slow speech.
+<p><a name="15951"></a>Examples:
+<p><ul><a name="15952"></a>
+<code>&lt;BREAK/&gt;
+</code>
+<BR><P><a name="15953"></a>
+<code>&lt;BREAK <code>SIZE</code>="small" MARK="145"/&gt;
+</code>
+<BR><P><a name="15954"></a>
+<code>&lt;BREAK MSECS="300"/&gt;
+</code>
+<BR><P></ul>
+<a name="17533"></a><h3>5.4	 PROS<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><th colspan=2 rowspan=1><a name="18413"></a><CODE>PROS 
+</CODE>
+&nbsp;<td><a name="18446"></a>Element that specifies prosodic information for the contained text. At 
+least one of the RATE, PITCH, RANGE, and VOL attributes is required.
+
+&nbsp;
+<tr><td colspan=1 rowspan=5><a name="18419"></a><CODE>
+</CODE>
+&nbsp;<td><a name="18421"></a><CODE>RATE 
+</CODE>
+&nbsp;<td><a name="18470"></a>Optional numeric attribute that sets the speaking rate in words per minute. 
+See the text following this table for the type of values allowed.
+
+&nbsp;
+<tr><td><a name="18427"></a><CODE>VOL 
+</CODE>
+&nbsp;<td><a name="18472"></a>Optional numeric attribute that sets the output volume on a scale of 0.0 to 
+1.0 where 0.0 is silence and 1.0 is maximum loudness. See the text 
+following this table for the type of values allowed.
+
+&nbsp;
+<tr><td><a name="18462"></a><CODE>PITCH 
+</CODE>
+&nbsp;<td><a name="18474"></a>Optional numeric attribute that sets the baseline pitch in Hertz. See the 
+text following this table for the type of values allowed.
+
+&nbsp;
+<tr><td><a name="18433"></a><CODE>RANGE 
+</CODE>
+&nbsp;<td><a name="18476"></a>Optional numeric attribute that sets the pitch range in Hertz. See the text 
+following this table for the type of values allowed.
+
+&nbsp;
+<tr><td><a name="18439"></a><CODE>MARK 
+</CODE>
+&nbsp;<td><a name="18478"></a>Optional attribute that requests a notification when the synthesizer's 
+production of audio reaches this element's contained text. Its value is the 
+text to be made available when the notification occurs.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+ </h3>
+<a name="17534"></a>The <code>PROS</code> element provides prosody control for JSML. Prosody is a collection of 
+features of speech that includes its timing, intonation and phrasing. Proper control 
+of prosody can improve the understandability and naturalness of speech. They are 
+better viewed as being "hints" to the synthesizer. Most of the attributes of the 
+<code>PROS</code> tag accept numeric values. These values are floating point numbers of the 
+form 23, 10.8, or -0.55.
+<p><a name="17563"></a>The <code>RATE</code> attribute is defined in words per minute and can have values of the 
+following forms:<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><td><a name="17537"></a>n
+
+&nbsp;<td><a name="17542"></a>Sets the speaking rate to n
+
+&nbsp;
+<tr><td><a name="17544"></a>+n
+
+&nbsp;<td><a name="17546"></a>Increases the speaking rate by n
+
+&nbsp;
+<tr><td><a name="17548"></a>-n
+
+&nbsp;<td><a name="17550"></a>Decreases the speaking rate by n
+
+&nbsp;
+<tr><td><a name="17552"></a>+n%
+
+&nbsp;<td><a name="17554"></a>Increases the speaking rate by n percent
+
+&nbsp;
+<tr><td><a name="17556"></a>-n%
+
+&nbsp;<td><a name="17558"></a>Decreases the speaking rate by n percent
+
+&nbsp;
+<tr><td><a name="17560"></a>reset
+
+&nbsp;<td><a name="17562"></a>Sets the speaking rate to the default
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+
+<p><a name="17589"></a>For example,
+<p><ul><a name="18118"></a>
+<code><code>&lt;PROS RATE="150"&gt;text at 150 words per minute&lt;/PROS&gt;
+</code></code>
+<BR><P></ul><a name="17691"></a>The <code>VOL</code> attribute can have values of the following forms:<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><td><a name="17668"></a>n
+
+&nbsp;<td><a name="17670"></a>Sets the volume to n (between 0.0 and 1.0 inclusive)
+
+&nbsp;
+<tr><td><a name="17672"></a>+n
+
+&nbsp;<td><a name="17674"></a>Increases the volume by n (to a final value no larger than 1.0)
+
+&nbsp;
+<tr><td><a name="17676"></a>-n
+
+&nbsp;<td><a name="17678"></a>Decreases the volume by n (to a final value no smaller than 0.0)
+
+&nbsp;
+<tr><td><a name="17680"></a>+n%
+
+&nbsp;<td><a name="17682"></a>Increases the volume by n percent
+
+&nbsp;
+<tr><td><a name="17684"></a>-n%
+
+&nbsp;<td><a name="17686"></a>Decreases the volume by n percent
+
+&nbsp;
+<tr><td><a name="17688"></a>reset
+
+&nbsp;<td><a name="17690"></a>Sets the volume to the default
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+
+<p><a name="17662"></a>The <code>PITCH</code> and <code>RANGE</code> attributes can have values of the following forms:<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><td><a name="17566"></a>n
+
+&nbsp;<td><a name="17568"></a>Sets the baseline pitch or pitch range to n Hertz
+
+&nbsp;
+<tr><td><a name="17570"></a>+n
+
+&nbsp;<td><a name="17572"></a>Increases the baseline pitch or pitch range by n Hertz
+
+&nbsp;
+<tr><td><a name="17574"></a>-n
+
+&nbsp;<td><a name="17576"></a>Decreases the baseline pitch or pitch range by n Hertz
+
+&nbsp;
+<tr><td><a name="17578"></a>+n%
+
+&nbsp;<td><a name="17580"></a>Increases the baseline pitch or pitch range by n percent
+
+&nbsp;
+<tr><td><a name="17582"></a>-n%
+
+&nbsp;<td><a name="17584"></a>Decreases the baseline pitch or pitch range by n percent
+
+&nbsp;
+<tr><td><a name="17586"></a>reset
+
+&nbsp;<td><a name="17588"></a>Sets the baseline pitch or pitch range to the default
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+
+<p><a name="17616"></a>Musically-inclined developers might think of pitch in semitones and octaves. A 
+semitone rise in pitch is approximately +5.9% and a semitone drop is -5.6%. A 
+two-semitone shift is +12.2% or -10.9%. A one-octave shift (12 semitones) is 
+100% or -50%, that is, doubling or halving pitch.<a href="#17619"><sup>4</sup></a>
+<p><a name="17620"></a>While speaking a sentence, pitch moves up and down in natural speech to convey 
+extra information about what is being said. The baseline pitch represents the 
+normal minimum pitch of a sentence. The pitch range represents the amount of 
+variation in pitch above the baseline. Setting the baseline pitch and pitch range 
+can affect whether speech sounds monotonous (small range) or dynamic (large 
+range).
+<p><a name="17712"></a><img src="JSML.doc.anc3.gif" width="403" height="246">
+<p><a name="17713"></a><P align="center">
+<em>
+Figure 4	: Baseline Pitch and Pitch Range
+</em><p><a name="17714"></a>Normal baseline pitch for a female voice is between 140Hz and 280Hz, with a 
+pitch range of 80Hz or more. Male voices are typically lower: baseline of 70-
+140Hz, with a range of 40-80Hz.
+<p><a name="17628"></a>Note that in all cases, relative values increase the portability of JSML across 
+speaking voices and synthesizers. Relative settings allow users to apply the same 
+JSML to different voices (<em>e.g</em>., male and female voices with very different pitch 
+ranges) and to set a local preference for speaking rate. For example, some users 
+set the speaking rate very high (300 words per minute or faster) so they can listen 
+to a lot of text very quickly. 
+<p><a name="17629"></a>Example:
+<p><ul><a name="17630"></a>
+<code>The &lt;EMP/&gt;ACME Trading Corporation, &lt;PROS 
+RANGE="-30%"&gt;which supplies cartoon goods,&lt;/PROS&gt; was 
+purchased yesterday for &lt;PROS RATE="-20%" VOL="+15%"&gt; 
+$2,060,000 &lt;/PROS&gt; by &lt;EMP&gt; Road Runner &lt;/EMP&gt; 
+Incorporated.
+</code>
+<BR><P></ul>
+<hr width="30%" align="center">
+<a name="15261"></a><h2>6.0	 Other Elements </h2>
+
+<a name="16036"></a><h3>6.1	 MARKER<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><th colspan=2 rowspan=1><a name="18201"></a><CODE>MARKER 
+</CODE>
+&nbsp;<td><a name="16031"></a>Empty element that requests a notification when the synthesizer's 
+production of audio reaches the marker. The MARK attribute is required.
+
+&nbsp;
+<tr><td><a name="18203"></a><CODE>
+</CODE>
+&nbsp;<td><a name="16033"></a><CODE>MARK 
+</CODE>
+&nbsp;<td><a name="16035"></a>Required attribute having a value of the text to be made available when a 
+marker event occurs.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</h3>
+<a name="16037"></a>The <code>MARKER</code> element requests a notification from the speech synthesizer to the 
+application when the <code>MARK</code> is reached during the synthesizer's production of 
+audio for the text.
+<p><a name="16039"></a>Example:
+<p><ul><a name="16040"></a>
+<code>Answer &lt;MARKER MARK="yes_no_prompt"/&gt; yes or no.
+</code>
+<BR><P></ul>
+<a name="16012"></a><h3>6.2	 ENGINE<Table Border="3" CELLSPACING=5 CELLPADDING=6 align="center" bgcolor="#f0f0f0">
+<caption></caption>
+<tr><th colspan=2 rowspan=1><a name="18220"></a><CODE>ENGINE 
+</CODE>
+&nbsp;<td><a name="15993"></a>Container element that provides information from the required DATA 
+attribute to the synthesizer identified by the required ENGID attribute
+
+&nbsp;
+<tr><td colspan=1 rowspan=3><a name="18211"></a><CODE>
+</CODE>
+&nbsp;<td><a name="16512"></a><CODE>ENGID 
+</CODE>
+&nbsp;<td><a name="16514"></a>Identifier for a speech synthesizer or a comma-separated set of speech 
+synthesizer identifiers. 
+
+&nbsp;
+<tr><td><a name="15995"></a><CODE>DATA 
+</CODE>
+&nbsp;<td><a name="15997"></a>Required attribute having a value of the information for the synthesizer. 
+
+&nbsp;
+<tr><td><a name="16006"></a><CODE>MARK 
+</CODE>
+&nbsp;<td><a name="16010"></a>Optional attribute that requests a notification when the synthesizer's 
+production of audio reaches this element's contained text. Its value is the 
+text to be made available when the notification occurs.
+
+&nbsp;
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</h3>
+<a name="16013"></a>This <code>ENGINE</code> element allows applications to utilize a synthesizer's special 
+capabilities. The element provides information, the value of the <code>DATA</code> attribute, to 
+any speech synthesizers that are identified by the <code>ENGID</code> attribute. The 
+information is generally a command in an engine-specific syntax. 
+<p><a name="16836"></a><code>ENGINE</code> is a container element that is treated specially by a speech synthesizer 
+that matches any engine specified in the <code>ENGID</code>. A matching engine should 
+substitute the <code>DATA</code> for the text contained within the element. Other engines 
+should ignore the <code>DATA</code> and instead process the contained text. For example, given 
+the code
+<p><ul><a name="16837"></a>
+<code>I am &lt;ENGINE ENGID="Acme Voice" DATA="Mr. Acme"&gt; someone 
+else&lt;/ENGINE&gt;
+</code>
+<BR><P></ul><a name="16523"></a>an Acme voice synthesizer will say "I am Mr. Acme" and all other speech 
+synthesizers will say "I am someone else." A JSML document can contain 
+ENGINE elements for any number of synthesizers. These elements can be nested.
+<p><a name="18837"></a>Less-than signs ("&lt;") or ampersands ("&amp;") in a DATA attribute must be escaped 
+to avoid being mistaken for JSML (see <a href="JSML.html#16536"><em>Escaping/Quoting Text</em></a>).
+<p><a name="18841"></a>For example;
+<p><ul><a name="17770"></a>
+<code>&lt;ENGINE ENGID="Croaker 1.0" DATA="&amp;lt;ribbit=1&gt;" 
+MARK="frog start"&gt; no frog sound &lt;/ENGINE&gt;
+</code>
+<BR><P></ul><a name="15278"></a>
+<p>
+
+<hr>
+<sup>1</sup><!--"Footnote" is same tag as body.-->
+<a name="17426"></a>World Wide Web Consortium Working Draft <em>Extensible Markup Language Version</em> 1.0 
+(August 7, 1997) at <a href="http://www.w3.org/TR/WD-xml-lang">http://www.w3.org/TR/WD-xml-lang</a>
+<p><sup>2</sup><!--"Footnote" is same tag as body.-->
+<a name="16301"></a>Words with the same spelling but different pronunciations. For example, "I will <strong>read</strong> it." and 
+"I have <strong>read</strong> it."
+<p><sup>3</sup><!--"Footnote" is same tag as body.-->
+<a name="15982"></a>The meaning of "immediately following text" is language dependent. English speech 
+synthesizers will emphasize the next word.
+<p><sup>4</sup><!--"Footnote" is same tag as body.-->
+<a name="17619"></a>Percentages for 1 to 12 semitone pitch rises are +5.9%, +12.2%, +18.9%, +26.0%, +33.5%, 
++41.4%, +50%, +58.7, +68.2%, +78.2%, +88.8%, +100%.<br>
+Decreases are -5.6%, -10.9%, -15.9%, -20.6%, -25.1%, -29.3%, -33.3%, -37.0%, -40.5%, 
+-43.9%, -47.0%, -50.0%.
+<p><!-- This inserts footnotes--><p>
+<HR>
+<pre><a href="index.html">TOC</a>  <a href="Contrib.html">Prev</a>  Next  <!--Index--></pre>
+<font size=-1>Java Speech Markup Language Specification (HTML generated by hunt on August 29, 1997)<br>
+<a href="Copyright.html">Copyright &#169 1997 Sun Microsystems, Inc.</a>
+All rights reserved<br>
+Please send any comments or corrections to <a href="mailto:javaspeech-comments@sun.com">javaspeech-comments@sun.com</a>
+</font>
+</body></html>

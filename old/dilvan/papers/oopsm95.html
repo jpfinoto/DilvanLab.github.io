@@ -1,0 +1,41 @@
+
+<HTML> <HEAD>
+<TITLE>OOPS Messenger - July 1995</TITLE>
+</HEAD>
+<BODY BGCOLOR="FFFFFF">
+<A NAME=HEADING1></A>
+<P>
+<A NAME=HEADING1-0></A>
+<CENTER>
+<H1> A Leaf-Cell Generator for Silicon Compilers</H1>
+<BR>
+<FONT SIZE=4> D. de Abreu Moreira &amp; L.T. Walczowski</FONT><P>
+<I> Electronic Engineering Laboratories, University of Kent, Canterbury, Kent, U.K.</I><P>
+</CENTER>
+<BR><BR> <P>
+ A program for the design of leaf cells for silicon compilers of digital VLSI (Very Large Scale Integrated) circuits, is being developed. This program uses rule based reasoning and genetic algorithmic search techniques, whenever each is appropriate. Leaf cells are subcircuits of a complexity comparable with SSI (Small Scale Integration) components such as one-bit adders, flip-flops or multiplexers. They typically contain between 10 to 100 transistors. Silicon compilers can use libraries of ready designed leaf cells or each leaf cell can be automatically generated <A HREF=#MARKER-9-1>[1]</A> by synthesis tools such as the program we are developing. The main advantage of the synthesis approach is that circuit performance will not be sacrificed since a new, optimal layout will be produced whatever the complexity of the circuit and whenever the fabrication process is upgraded.<P>
+ The program uses rule based modules to put together basic circuits, check design rules, check designs constraints and to control each of these constituent tasks. An optimization algorithm, in this case a genetic algorithm <A HREF=#MARKER-9-3>[3]</A>, optimizes the layout, under the control of the rule system. The program is divided into modules that can run together either on the same computer or distributed across a network of computers using a client-server model. <P>
+ OOP is used to ease the design tasks and to allow a smooth interconnection of the two different models (rule based reasoning and algorithmic optimization) keeping the two implementations separate. This encapsulation allows the optimization algorithm to be changed in the future without affecting the rest of the program. For instance, the current algorithm can be replaced with one based on simulated annealing or something more specific and targeted to a specific class of layout. We can experiment with new rules and inference engines and compare their efficiency accurately, whilst the rest of the system remains the same. The system distribution in client-server modules mimics the OOP organisation with hidden implementation and message passing. Classes represent the service hierarchy. Implementing services in this fashion makes the framework of services available in the modules, such as sockets or inference engines, cleaner and more extensible <A HREF=#MARKER-9-2>[2]</A>.<P>
+ We have found C++ to be a very good language for implementing OOP applications, since it is fast and compatible with existing C code. However, the development of new concepts in it is slow and difficult. During the program prototyping phase, changes are inevitable. The two most damaging changes are the ones that affect class scope and/or class interface. In comparison, due to the nature of OOP design, changes within a method's implementation (of which there are the greatest number) are far less of a problem.<P>
+ The key problem is the determination of the scope and generality of classes and interfaces in a program. This is a weakness in developing programs in OOP - if you make a misjudgment at the design stage, it can effect the whole program and require a major change later. Even after you have acquired some experience in forecasting how specialised a class should be, you may still end up having to split it into two other classes, one that is more general then the former and one that is more specialised. The main problem when you do this is that the two new classes can interact in unexpected ways with the other classes already in place, whereas the old class would have been reasonably well debugged and quite stable.<P>
+ Changes in the generality of a class interface come from having to make a method more or less general, which in turn requires ascending or descending the place it is defined in the class hierarchy. Such changes are far less error prone than splitting a class but, in the same way, affect the class interface. One method that successfully tackles this is experimentation and thus, prototyping. In this task, we follow these guidelines:<P>
+<UL>
+<LI>A method should be implemented as early as possible in the class hierarchy, even if it isn't used at that level.<P>
+<LI>A method should be as general as possible, in order to avoid it having to be repeated in a similar way down the class hierarchy, even if it means a small loss in performance.<P>
+<LI>If necessary, <I>dummy</I> classes can be used to provide a more natural hierarchy.<P>
+</UL>
+ But experimentation is still very necessary. Once the class hierarchy is correct (or better still, if you can find a ready library with a hierarchy that can reasonably solve your problems) the rest of the program follows very naturally.<P>
+ One obvious way to reduce the above problem is rapid prototyping <A HREF=#MARKER-9-4>[5]</A> in an environment which is more flexible and friendly to changes. A commercial Smalltalk system, CLOS (Common Lisp Object System) <A HREF=#MARKER-9-5>[6]</A> or CASE based tools would provide the kind of environment that would support such rapid development and experimentation. Unfortunately both the cost of these kind of tools and the lack of tradition in using them in the VLSI CAD software development community, means that they are not usually available on general purpose CAD workstations.<P>
+<A NAME=HEADING1-15></A>
+<H2> References:</H2>
+<DL compact>
+<DT>[1]<DD><A NAME=MARKER-9-1></A>Y-C. Hsieh, C-Y. Hwamg, Y-L. Lin, and Y-C. Hsu, "LiB: A CMOS cell compiler," <I>IEEE Transactions on CAD,</I> Vol.10, No. 8, August 1991, pp. 994-1005.<P>
+<DT>[2]<DD><A NAME=MARKER-9-2></A>W. Bower, C. Seaquist, and W. Wolf, "A Framework for Industrial Layout Generators," <I>IEEE Transactions on CAD, </I>Vol. 10, No. 5, May 1991, pp 596-603.<P>
+<DT>[3]<DD><A NAME=MARKER-9-3></A>D. E. Goldberg, <I>Genetic Algorithms in Search, Optimization, and Machine Learning, </I>Addison-Wesley, Reading Massachusetts, 1989.<P>
+<DT>[4]<DD>B. Czejdo, C. F. Eick and M. Taylor, "Integrating Sets, Rules and Data in an Object-Oriented Environment," <I>IEEE Expert, </I>february 1993, pp. 59-66.<P>
+<DT>[5]<DD><A NAME=MARKER-9-4></A>M. M. Tanik, and R. T. Yeh, "Rapid Prototyping in Software Development",<I> IEEE Computer, </I>may 1989, pp 9-10.<P>
+<DT>[6]<DD><A NAME=MARKER-9-5></A>S. E. Keene,<I> Object-Oriented Programming in Common Lisp</I>, Addison Wesley, Reading Massachusetts, 1989.<I></I><P>
+</DL>
+
+</BODY>
+</HTML> 

@@ -1,0 +1,169 @@
+/pgCountOld.html .<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Second Homework Assigment</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<CENTER><P><IMG SRC="../../gifs/green_orange.gif" HEIGHT=3 WIDTH=670 ALIGN=CENTER></P></CENTER>
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="../../gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER>Distributed Programming using Java<BR>
+Second Assigment</H1>
+</TD>
+
+<TD><IMG SRC="../../gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<CENTER><P><IMG SRC="../../gifs/green_orange.gif" HEIGHT=3 WIDTH=670 ALIGN=CENTER></P></CENTER>
+
+<H2><BR>
+<BR>
+<IMG SRC="../../gifs/smallredball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>Second
+Homework Assigment (due 28 October):</H2>
+
+<UL>
+<P>This assigment is to be done by groups of up to three students. Each
+group has to do one of the programs bellow. Please send me an e-mail with
+the program you want to do:</P>
+
+<H3><IMG SRC="../../gifs/smallyellowball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>FTP
+server</H3>
+
+<UL>
+<P>This program should implement a FTP server and a client. Including at
+least the commands:</P>
+
+<UL>
+<LI><TT>ls </TT>- List the current directory in the server.</LI>
+
+<LI><TT>cd </TT>- Go to a directory in the server.</LI>
+
+<LI><TT>lls </TT>- List the current directory in the client.</LI>
+
+<LI><TT>lcd </TT>- Go to a directory in the client.</LI>
+
+<LI><TT>put </TT>- Put a file in the server current directory.</LI>
+
+<LI><TT>mput </TT>- Put all files that match a wildcard in the server current
+directory.</LI>
+
+<LI><TT>get </TT>- Get a file from the server current directory.</LI>
+
+<LI><TT>mget </TT>- Get all files that match a wildcard from the server
+current directory.</LI>
+</UL>
+
+<P>It just have to work with <TT>anonymous </TT>ftp and with only <TT>bin
+</TT>mode.</P>
+</UL>
+
+<H3><IMG SRC="../../gifs/smallyellowball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>LISP
+Server</H3>
+
+<UL>
+<P>This program should implement a LISP interpreter that is able to get
+LISP commands from a Telnet connection and send back its results also through
+the same Telnet connection. The server must be able to handle more than
+one client at the same time. All clients will share the same memory space
+(they can read each other variables)</P>
+
+<P>The LISP interpreter must be able to parse and execute, at least, the
+following lisp commands:</P>
+
+<UL>
+<PRE>(CAR &lt;list&gt;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X= &lt;string&gt;, &lt;list&gt; or &lt;real&gt;
+(CDR &lt;list&gt;)
+(PRINTLN X)
+(LIST X {X} )
+(SET &lt;string&gt; X)
+(GET &lt;string&gt;)</PRE>
+
+<PRE>For instance:</PRE>
+
+<UL>
+<PRE><FONT COLOR="#800000">Client:</FONT> (PRINTLN (CAR (CDR (LIST AB CD EF))))
+<FONT COLOR="#800000">Server:</FONT> CD
+<FONT COLOR="#800000">Client:</FONT> (PRINTLN (CDR (CAR (LIST (LIST HY HJ I) HJ))))
+<FONT COLOR="#800000">Server:</FONT> (HJ I)
+<FONT COLOR="#800000">Client:</FONT> (SET LIXO AB)
+<FONT COLOR="#800000">Server:</FONT> AB
+<FONT COLOR="#800000">Client:</FONT> (GET LIXO)
+<FONT COLOR="#800000">Server:</FONT> AB</PRE>
+</UL>
+</UL>
+</UL>
+
+<H3><IMG SRC="../../gifs/smallyellowball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>SQL
+server</H3>
+
+<UL>
+<P>This program should implement a SQL interpreter that is able to get
+SQL commands from a Telnet connection and send back its results also through
+the same Telnet connection. The server must be able to handle more than
+one client at the same time. All clients will share the same database.</P>
+</UL>
+
+<UL>
+<P>The server has to implement, at least, the following SQL commands:</P>
+
+<UL>
+<PRE>CREATE TABLE table_name (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col_name &lt;type&gt;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. . .)</PRE>
+
+<PRE>DROP TABLE table_name</PRE>
+
+<PRE>INSERT INTO table_name (col_name1, col_name2, ...)
+   VALUES (value1, value2, ...)</PRE>
+
+<PRE>DELETE FROM table_name WHERE col_name &lt;operator&gt; value
+&nbsp;&nbsp;&nbsp;[ AND|OR col_name &lt;operator&gt; value ]</PRE>
+
+<PRE>SELECT FROM table_name WHERE col_name &lt;operator&gt; value
+&nbsp;&nbsp;&nbsp;[ AND|OR col_name &lt;operator&gt; value ]</PRE>
+
+<P>&lt;type&gt; can be: string, int and real.</P>
+
+<P>&lt;operator&gt; can be: =, &gt;, &lt;, &gt;=, &lt;=</P>
+</UL>
+
+<P>For more information about SQL sintaxe see an <A HREF="http://TS.adm.ilstu.edu:80/cgi-bin/bookmgr/bookmgr.cmd/BOOKS/DSNAP0B2/1.2">IBM
+SQL guide</A>.</P>
+</UL>
+
+<H3><IMG SRC="../../gifs/smallyellowball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>Students'
+proposed project</H3>
+
+<UL>
+<P><IMG SRC="../../gifs/smallgreenball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8><A HREF="prop_2.html">Distributed
+parallel computing application</A>.</P>
+</UL>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="../../pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="../../Welcome.html"><IMG SRC="../../gifs/top.gif" HSPACE=5 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="../../Welcome.html">Contents</A></FONT></B></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="../../gifs/comments.gif" HSPACE=5 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

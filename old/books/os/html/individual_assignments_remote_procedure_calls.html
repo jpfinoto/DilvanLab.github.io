@@ -1,0 +1,51 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>7.&nbsp;Remote Procedure Calls</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="individual_assignments.html" title="Chapter&nbsp;10.&nbsp;Individual Assignments - Laboratory"><link rel="prev" href="individual_assignments_datagram_sockets.html" title="6.&nbsp;Datagram Sockets"><link rel="next" href="group_assignments.html" title="Chapter&nbsp;11.&nbsp;Group Assignments - Homeworks"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">7.&nbsp;Remote Procedure Calls</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="individual_assignments_datagram_sockets.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Individual Assignments - Laboratory</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="group_assignments.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="individual_assignments_remote_procedure_calls"></a>7.&nbsp;Remote Procedure Calls</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Remote Procedure Calls</p><p>The task is to implement the Time server using RPCs. It has two procedures <span class="emphasis"><em>bin_time</em></span> , that returns the current time as a long int, and <span class="emphasis"><em>str_time</em></span>, that convert the time from long int to string.</p></li></ul></div><div class="orderedlist"><ol type="1"><li><p>Compile the following XDR description of the procedures:</p><pre class="programlisting">
+        program TIME_PROG {
+            version TIME_VERS {
+                long BIN_TIME(void) = 1;   /* Procedure number 1 */
+                string STR_TIME(long) = 2; /* Procedure number 2 */
+            } = 1;                         /* Version number 1   */
+        } = 0x31234567;                    /* Program number 0x31234567 */
+          </pre></li><li><p>Use rpcgen to generate the stub files, sample files and Makefile:</p><pre class="programlisting">rpcgen -a -C time.xdr          </pre></li><li><p>Add to the sample files the code to implement the application:</p><p>To the server file:</p><pre class="programlisting">        long * bin_time_1_svc(void *argp, struct svc_req *rqstp)
+        {
+                static long  result;
+
+               
+                result= time((time_t *) 0);
+               
+
+                return (&amp;result);
+        }
+
+        char ** str_time_1_svc(long *argp, struct svc_req *rqstp)
+        {
+                static char * result;
+                
+               
+                static tstr[128];
+                long t, hour, min, sec;
+
+                t= *argp;
+                sec= t % 60;   t /= 60;
+                min= t % 60;   t /= 60;
+                hour= t % 24;
+                sprintf(tstr, "hora %u:%u:%u", hour, min, sec);
+                result= tstr;
+               
+
+                return (&amp;result);
+        }      </pre><p>To the client file:</p><pre class="programlisting">        void time_prog_1(char *host)
+        {
+            ...
+            result_1 = bin_date_1((void *)&amp;bin_date_1_arg, clnt);
+            if (result_1 == (long *) NULL) 
+                clnt_perror(clnt, "call failed");
+            result_2 = str_date_1((long *) result_1, clnt);
+            if (result_2 == (char **) NULL)
+                clnt_perror(clnt, "call failed");
+
+                           printf("Time: %u %s\n", *result_1, *result_2);
+
+                       }
+         ... </pre></li><li><p>Compile and run the application:</p><pre class="programlisting">make makefile.time </pre></li><li><p>Make a clear description of the way this program works.</p></li><li><p>What are the advantages and disadvantages of using RPCs over sockets?</p></li><li><p>Rewrite the calculator program you wrote for the last laboratory assignment substituting the datagrams sockets for RPCs.</p></li></ol></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="individual_assignments_datagram_sockets.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="individual_assignments.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="group_assignments.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">6.&nbsp;Datagram Sockets&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;11.&nbsp;Group Assignments - Homeworks</td></tr></table></div></body></html>

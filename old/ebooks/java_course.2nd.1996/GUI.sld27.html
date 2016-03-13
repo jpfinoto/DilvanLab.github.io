@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 27: Layout Managers</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Layout
+Managers</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/layout/custom.html">Custom
+Layout Manager</A></H2>
+</UL>
+
+<BLOCKQUOTE>
+<CENTER><TABLE>
+<TR>
+<TD><IMG SRC="gifs/GUI28.gif" HEIGHT=193 WIDTH=207>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+
+<TD><IMG SRC="gifs/GUI29.gif" HEIGHT=225 WIDTH=399><BR>
+</TD>
+</TR>
+</TABLE></CENTER>
+
+<BLOCKQUOTE>
+<H3><BR>
+To create a new Layout Manager:</H3>
+
+<BLOCKQUOTE>
+<P>A layout manager has just to implement the LayoutManager Interface.</P>
+</BLOCKQUOTE>
+
+<H3>The LayoutManager interface:</H3>
+
+<DL>
+<DL>
+<DT><TT>public void addLayoutComponent(String name, Component comp)</TT>
+</DT>
+
+<DD>Called only by the Container <TT>add(name, component)</TT> method.
+Layout managers that don't require that their components have names generally
+do nothing in this method. </DD>
+
+<DT><TT>public void removeLayoutComponent(Component comp)</TT> </DT>
+
+<DD>Called by the Container <TT>remove()</TT> and <TT>removeAll()</TT>
+methods. Layout managers that don't require that their components have
+names generally do nothing in this method, since they can query the container
+for its components using the Container <TT>getComponents()</TT> method.
+</DD>
+
+<DT><TT>public Dimension preferredLayoutSize(Container parent)</TT> </DT>
+
+<DD>Called by the Container <TT>preferredSize()</TT> method. This method
+should calculate the ideal size of the parent, assuming that the components
+it contains will be at or above their preferred sizes.</DD>
+
+<DT><TT>public Dimension minimumLayoutSize(Container parent)</TT> </DT>
+
+<DD>Called by the Container <TT>minimumSize()</TT> method. This method
+should calculate the minimum size of the parent, assuming that the components
+it contains will be at or above their minimum sizes. </DD>
+
+<DT><TT>public void layoutContainer(Container parent)</TT> </DT>
+
+<DD>Called when the container is first displayed, and every time its size
+changes. A layout manager's <TT>layoutContainer()</TT> method doesn't actually
+draw Components. It simply invokes each Component's <TT>resize()</TT>,
+<TT>move()</TT>, and <TT>reshape()</TT> methods to set the Component's
+size and position. <BR>
+<BR>
+<BR>
+</DD>
+</DL>
+</DL>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld28.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld28.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,70 @@
+<!doctype html public "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<title>Computação Paralela e Distribuída</title>
+
+<meta NAME="GENERATOR" CONTENT="Internet Assistant for Word 1.0Z">
+<meta NAME="AUTHOR" CONTENT="Corporate Office">
+<meta NAME="OPERATOR" CONTENT="Corporate Office">
+</head>
+<body BGCOLOR="#FFFFFF">
+<p>
+Computação Científica Paralela e Distribuída
+<hr>
+<p>
+<i><b>1. Objetivo</b></i>
+<p>
+ Particionar uma matriz e realizar operações utilizando
+ técnicas de processamento paralelo e distribuido
+através da linguagem orientada para objetos JAVA<hr>
+<p>
+<i><b>2. Procedimento</b></i>
+<p>
+ Inicialmente, deve-se  gerar dois conjuntos com P elementos do
+tipo (l,k,r<sub>d</sub>)
+<p>
+onde,
+<p>
+l --&gt;  número da linha da célula
+<p>
+k --&gt; número da coluna da célula
+<p>
+r<sub>d</sub> --&gt; valor real associado a célula
+<p>
+ Cada conjunto deve estar contido internamente na metade de uma
+tabela de números reais. Em cada metade da tabela, haverá
+apenas um subconjunto com P elementos
+<p>
+ As entradas do programa são :
+<p>
+L,K --&gt; tamanho da matriz a ser dividida e manipulada pelos processos
+filhos,
+<p>
+P --&gt; quantidade de triplas a serem processadas por cada processo
+filho
+<p>
+N --&gt; (2C+1)<sup>2</sup> é a quantidade de elementos w, da matriz, na
+vizinhança da célula especificada por l e k,  a
+sem somados para obter r calculado, equação 1.
+<p>
+ O programa deve dividir o processamento em dois processos filhos,
+que executarão sobre todas as triplas de seus sub-conjuntos,
+o algoritmo dado por :
+<p>
+<h1 ALIGN="CENTER"><img SRC="peq1.gif" WIDTH="283" HEIGHT="191"> </h1>
+<p>
+ A equação (2) deve ser aplicada a todos os w que
+contribuiram para obter r na equção (1). O algoritmo
+(1) e (2) deve ser aplicada a cada tripla (l,k,r<sub>d</sub>), sequencialmente
+e de forma repetida, até que
+<p>
+<h1 ALIGN="CENTER"><img SRC="peq2.gif" WIDTH="169" HEIGHT="56"> </h1>  
+ para todas as triplas e para algum valor previamente
+especificado.
+<p>
+ Ao final de seu processamento, cada processo filho deve retornar
+ao processo pai as submatrizes finais. A matriz resultante deve
+ser armazenada em disco, bem como todos os dados entrada do programa.
+<hr>
+</body>
+</html>

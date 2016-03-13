@@ -1,0 +1,57 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>1.&nbsp;Equality Properties</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="object_contract.html" title="Chapter&nbsp;16.&nbsp;Object Contract"><link rel="prev" href="object_contract.html" title="Chapter&nbsp;16.&nbsp;Object Contract"><link rel="next" href="object_contract_hashing.html" title="2.&nbsp;Hashing"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.&nbsp;Equality Properties</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="object_contract.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;16.&nbsp;Object Contract</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="object_contract_hashing.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="object_contract.html">Object Contract</a></span> &gt; <span class="breadcrumb-node">Equality Properties</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="object_contract_equality_properties"></a>1.&nbsp;Equality Properties</h2></div></div></div><p>Every class extends Object, and therefore inherits all of its
+      methods. Two of these are particularly important and consequential in
+      all programs, the method for testing equality:</p><pre class="programlisting">public boolean equals (Object o)</pre><p>and the method for generating a hash code:</p><pre class="programlisting">public int hashCode ()</pre><p>Equality Properties:</p><div class="orderedlist"><ol type="1"><li><p><span class="bold"><strong>Reflexivity</strong></span> - means that an
+          object always equals itself.</p></li><li><p><span class="bold"><strong>Symmetry</strong></span> - means that when a
+          equals b ,b equals -a.</p></li><li><p><span class="bold"><strong>Transitivity</strong></span> - means that
+          when a equals b and b equals c, a also equals c.</p></li></ol></div><p>Consider a simple class that implements a two-dimensional
+      point:</p><pre class="programlisting">    public class Point {
+        private final int x;
+        private final int y;
+        public Point (int x,int y){
+            this.x =x;this.y =y;
+        }
+        public boolean equals (Object o){
+            if (!(o instanceof Point))
+                return false;
+            Point p =(Point)o;
+            return p.x ==x &amp;&amp;p.y ==y;
+        }
+        &#8230;
+    }</pre><p>Now suppose we add the notion of a colour:</p><pre class="programlisting">    public class ColourPoint extends Point {
+        private Colour colour;
+        public ColourPoint (int x,int y,Colour colour){
+            super (x,y);
+            this.colour =colour;
+        }
+        &#8230;
+    }</pre><p>What should the equals method of ColourPoint look like? We could
+      just inherit equals from Point, but then two ColourPoints will be deemed
+      equal even if they have different colours. We could override it like
+      this:</p><pre class="programlisting">    public boolean equals (Object o){
+        if (!(o instanceof ColourPoint))
+            return false;
+        ColourPoint cp =(ColourPoint)o;
+        return super.equals (o)&amp;&amp;cp.colour.equals(colour);
+    }</pre><p>This seemingly inoffensive method actually violates the
+      requirement of symmetry. To see why, consider a point and a colour
+      point:</p><pre class="programlisting">    Point p =new Point (1,2);
+    ColourPoint cp =new ColourPoint (1,2,Colour.RED);</pre><p>Now <span class="command"><strong>p.equals(cp)</strong></span> will return true, but
+      <span class="command"><strong>cp.equals(p)</strong></span> will return false! The problem is that
+      these two expressions use different equals methods: the first uses the
+      method from Point, which ignores colour, and the second uses the method
+      from ColourPoint.</p><p>It turns out that there is <span class="emphasis"><em>no solution</em></span> to
+      this problem: it&#8217;s a fundamental problem of inheritance. You can&#8217;t write
+      a good equals method for ColourPoint if it inherits from Point .</p><p>However, if you implement ColourPoint using Point in its
+      representation, so that a ColourPoint is no longer treated as a Point,
+      the problem goes away. See Bloch&#8217;s book for details.</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="object_contract.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="object_contract.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="object_contract_hashing.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;16.&nbsp;Object Contract&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;2.&nbsp;Hashing</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

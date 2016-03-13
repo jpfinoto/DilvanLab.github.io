@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 6: URLs</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">URLs</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/urls/creatingUrls.html">Creating
+a URL</A></H2>
+
+<BLOCKQUOTE>
+<H4>Simplest way:</H4>
+
+<BLOCKQUOTE>
+<PRE>http://www.gamelan.com/</PRE>
+
+<PRE><FONT COLOR="#800000">URL gamelan = new URL(&quot;http://www.gamelan.com/&quot;);</FONT></PRE>
+</BLOCKQUOTE>
+
+<H4>Creating a URL Relative to Another</H4>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">URL gamelan = new URL(&quot;http://www.gamelan.com/&quot;);
+URL gamelanNetwork = new URL(gamelan, &quot;Gamelan.network.html&quot;);
+URL gamelanNetworkBottom = new URL(gamelanNetwork, &quot;#BOTTOM&quot;);</FONT></PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/urls/urlInfo.html">Parsing
+a URL</A></H2>
+
+<BLOCKQUOTE>
+<DT><FONT SIZE=+1>getProtocol()</FONT></DT>
+
+<DD>Returns the protocol identifier component of the URL.<BR>
+</DD>
+
+<DT><FONT SIZE=+1>getHost()</FONT></DT>
+
+<DD>Returns the host name component of the URL.<BR>
+</DD>
+
+<DT><FONT SIZE=+1>getPort()</FONT></DT>
+
+<DD>Returns the port number component of the URL.<BR>
+</DD>
+
+<DT><FONT SIZE=+1>getFile()</FONT></DT>
+
+<DD>Returns the filename component of the URL.<BR>
+</DD>
+
+<DT><FONT SIZE=+1>getRef()</FONT></DT>
+
+<DD>Returns the reference component of the URL.<BR>
+</DD>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B> Remember
+that not all URL addresses contain these components.</P>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/urls/readingURL.html">Reading
+Directly from a URL</A></H2>
+
+<BLOCKQUOTE>
+<PRE>&nbsp; class OpenStreamTest {
+  &nbsp;&nbsp;&nbsp;public static void main(String[] args) {
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;URL yahoo = new URL(&quot;http://www.yahoo.com/&quot;);
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DataInputStream dis = new DataInputStream(yahoo.openStream());
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String inputLine;
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while ((inputLine = dis.readLine()) != null) {
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(inputLine);
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dis.close();
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } catch (Exception me) {
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;Exception: &quot; + me);
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+  &nbsp;&nbsp;&nbsp;}
+  }</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld7.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld7.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

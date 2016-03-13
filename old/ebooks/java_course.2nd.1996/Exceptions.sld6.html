@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Exceptions Slide 6: Catching and handling exceptions</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="Description" CONTENT="Copyrighted material for a Java Course">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Exceptions:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Catching and handling exceptions</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Specialized
+Handler</FONT></H2>
+
+<P>If you write a handler for a &quot;leaf&quot; class (a class with no
+subclasses), you've written a specialized handler: it will only handle
+exceptions of that specific type.</P>
+
+<BLOCKQUOTE>
+<PRE>try {
+    . . .
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.err.println(&quot;Caught ArrayIndexOutOfBoundsException: &quot; + e.getMessage());
+} catch (IOException e) {
+    System.err.println(&quot;Caught IOException: &quot; + e.getMessage());
+}</PRE>
+</BLOCKQUOTE>
+
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">General
+Handler</FONT></H2>
+
+<P>If you write a handler for a &quot;node&quot; class (a class with subclasses),
+you've written a general handler: it will handle any exception whose type
+is the node class or any of its subclasses.</P>
+
+<BLOCKQUOTE>
+<PRE>try {
+    . . .
+} catch (Exception e) {
+    System.err.println(&quot;Exception caught: &quot; + e.getMessage());
+}
+
+
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<CENTER><P><IMG SRC="gifs/Exceptions3.gif" HEIGHT=258 WIDTH=495></P></CENTER>
+
+<BLOCKQUOTE>
+<H3><BR>
+<BR>
+<BR>
+</H3>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Exceptions.sld7.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Exceptions.sld7.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

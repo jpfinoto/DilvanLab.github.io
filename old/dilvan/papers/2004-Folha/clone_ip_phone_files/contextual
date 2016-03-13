@@ -1,0 +1,10 @@
+ca_portal = 162 ;
+ca_partner = 40001 ;
+ca_type = 1;
+ca_no_cache = Math.floor(1000000*Math.random());
+var TR_array = [[0]];
+var ca_page = document.location;
+
+if( document.getElementById ){
+	document.write("<scr" + "ipt language='javascript' type='text\/javascript' src='http:\/\/context-01.terespondo.com\/contextual_ads_query.php?url=" + ca_page + "&co=BR&portal=" + ca_portal + "&type=" + ca_type +  "&no_trcache=" + ca_no_cache + "'><\/scr" + "ipt>");
+}

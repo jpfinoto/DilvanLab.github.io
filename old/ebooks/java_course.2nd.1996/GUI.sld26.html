@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 26: Layout Managers</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Layout
+Managers</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/layout/gridbag.html">GridBagLayout</A></H2>
+
+<CENTER><TABLE>
+<TR>
+<TD><IMG SRC="gifs/GUI26.gif" HEIGHT=173 WIDTH=260>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+
+<TD><IMG SRC="gifs/GUI27.gif" HEIGHT=214 WIDTH=318></TD>
+</TR>
+</TABLE></CENTER>
+
+<BLOCKQUOTE>
+<H3>Behavior:</H3>
+
+<BLOCKQUOTE>
+<P>GridBagLayout places components in a grid of rows and columns, allowing
+specified components to span multiple rows or columns. Not all rows or
+columns have to have the same height or width.</P>
+</BLOCKQUOTE>
+
+<H3>Specifying Constraints: </H3>
+
+<BLOCKQUOTE>
+<P>GridBagLayout specifies the size and position characteristics of its
+components is by specifying constraints for each component:</P>
+
+<PRE>GridBagLayout gridbag = new GridBagLayout();
+GridBagConstraints c = new GridBagConstraints();
+setLayout(gridbag);
+
+//...Set instance variables in the GridBagConstraints instance... 
+gridbag.setConstraints(theComponent, c); 
+add(theComponent);</PRE>
+
+<H4>GridBagConstraints instance variables: </H4>
+
+<BLOCKQUOTE>
+<PRE>gridx, gridy, gridwidth, gridheight, fill, ipadx, ipady,
+insets, anchor, weightx, weighty.</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H3>Code Example:</H3>
+</BLOCKQUOTE>
+
+<PRE>              GridBagLayout gridbag = new GridBagLayout();
+              GridBagConstraints c = new GridBagConstraints();
+              setLayout(gridbag);
+             
+              c.fill = GridBagConstraints.BOTH;
+              c.gridheight = 2;
+              c.weighty = 1.0;
+              Button button = new Button(name);
+              gridbag.setConstraints(button, c);
+              add(button);
+
+
+</PRE>
+</BLOCKQUOTE>
+
+<P>              
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld27.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld27.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

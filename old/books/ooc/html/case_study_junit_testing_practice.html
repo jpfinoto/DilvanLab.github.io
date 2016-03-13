@@ -1,0 +1,24 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>6.&nbsp;Testing Practice</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="case_study_junit.html" title="Chapter&nbsp;13.&nbsp;Case Study: JUnit"><link rel="prev" href="case_study_junit_adding_new_code.html" title="5.&nbsp;Adding New Code"><link rel="next" href="case_study_junit_lecture_notes.html" title="7.&nbsp;Lecture Notes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.&nbsp;Testing Practice</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="case_study_junit_adding_new_code.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;13.&nbsp;Case Study: JUnit</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="case_study_junit_lecture_notes.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="case_study_junit.html">Case Study: JUnit</a></span> &gt; <span class="breadcrumb-node">Testing Practice</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="case_study_junit_testing_practice"></a>6.&nbsp;Testing Practice</h2></div></div></div><p>Martin Fowler makes this easy for you. He says, "Whenever you are
+      tempted to type something into a print statement or a debugger
+      expression, write it as a test instead."</p><p>Here are a couple of the times that you will receive a reasonable
+      return on your testing investment:</p><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>During Development-</strong></span> When you
+          need to add new functionality to the system, write the tests first.
+          Then, you will be done developing when the test runs.</p></li><li><p><span class="bold"><strong>During Debugging-</strong></span> When
+          someone discovers a defect in your code, first write a test that
+          will succeed if the code is working. Then debug until the test
+          succeeds.</p></li></ul></div><p>One word of caution about your tests: <span class="emphasis"><em>Once you get them
+      running, make sure they stay running</em></span>.</p><p>Ideally, you would run every test in your suite every time you
+      change a method.</p><p>Practically, your suite will soon grow too large to run all the
+      time. But make sure you run every test at least once a day: overnight,
+      during lunch, during one of those long meetings&#8230;</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="case_study_junit_adding_new_code.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="case_study_junit.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="case_study_junit_lecture_notes.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">5.&nbsp;Adding New Code&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;7.&nbsp;Lecture Notes</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

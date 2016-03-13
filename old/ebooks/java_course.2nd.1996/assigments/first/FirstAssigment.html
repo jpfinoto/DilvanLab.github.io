@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Homework Assigments</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<CENTER><P><IMG SRC="../../gifs/green_orange.gif" HEIGHT=3 WIDTH=670 ALIGN=CENTER></P></CENTER>
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="../../gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER>Distributed Programming using Java<BR>
+First Assigment</H1>
+</TD>
+
+<TD><IMG SRC="../../gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<CENTER><P><IMG SRC="../../gifs/green_orange.gif" HEIGHT=3 WIDTH=670 ALIGN=CENTER></P></CENTER>
+
+<H2><BR>
+<BR>
+<IMG SRC="../../gifs/smallredball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>First
+Homework Assigment (due 23 September):</H2>
+
+<UL>
+<P>This assigment is to be done by groups of up to three students. Each
+group has to do one of the programs bellow. Please send me an e-mail with
+the name of the students in the group and the program you want to do:</P>
+
+<H3><IMG SRC="../../gifs/smallyellowball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>String
+changer</H3>
+
+<UL>
+<P>This program should read a text file, search for a string and substitute
+this string for another. The input of commands for this program is done
+at the command line:</P>
+
+<PRE>changestr [-h] &quot;string_to_change&quot; &quot;new_string&quot; &lt;file_name&gt;</PRE>
+
+<P>The search and substitute algorithms have to be as eficient as you can
+make them. The -h option prints a small help about thr program.</P>
+</UL>
+
+<H3><IMG SRC="../../gifs/smallyellowball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>Lisp
+interpreter</H3>
+
+<UL>
+<P>This program should must be able to read a text file, parse and execute
+the following lisp commands:</P>
+
+<UL>
+<PRE>(CAR &lt;list&gt;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X= &lt;string&gt; or &lt;list&gt;
+(CDR &lt;list&gt;)
+(PRINTLN X)
+(LIST X {X} )</PRE>
+
+<PRE>For instance, the file may have:</PRE>
+
+<UL>
+<PRE>(PRINTLN (CAR (CDR (LIST AB CD EF))))
+(PRINTLN (CDR (CAR (LIST (LIST HY HJ I) HJ))))</PRE>
+</UL>
+
+<PRE>Output:</PRE>
+
+<UL>
+<PRE>CD
+(HJ I)</PRE>
+</UL>
+</UL>
+</UL>
+
+<H3><IMG SRC="../../gifs/smallyellowball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>Uuencoder</H3>
+
+<UL>
+<P>This program should read a file and encode it in less than 8 bits. It
+should rewrite the file using just the lower part of a byte. The command
+input for it is:</P>
+
+<PRE>uuencoder [-n &lt;number_of_bits_used&gt;] &lt;file_name&gt; &lt;file_name_output&gt;</PRE>
+
+<P>The optional argument -n will give the number of bits used to encode
+the file. The default value (and maximum) is 7 the minimum is 4.</P>
+</UL>
+
+<H3><IMG SRC="../../gifs/smallyellowball.gif" HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8>Interval
+number class</H3>
+
+<UL>
+<P>A new class, derived from Number, that operates with intervals. An interval
+is a real number that has a precision range associated to it. For instance,
+the value of resistence of comercial resistors is given by an interval
+number. A 20K 10% resistor has its value in between 18K and 22K.</P>
+
+<P>This new class has to be able to perform the four basic arithmetic operations:
+adtion, subtraction, multiplication and division. It should have, at least,
+the following:</P>
+
+<PRE>class Interval extends number{
+&nbsp;&nbsp;&nbsp;Interval(float number, float precision);
+&nbsp;&nbsp;&nbsp;Interval(double number, float precision);
+&nbsp;&nbsp;&nbsp;float precision();
+&nbsp;&nbsp;&nbsp;demo();
+&nbsp;&nbsp;&nbsp;Interval add(Interval x);
+&nbsp;&nbsp;&nbsp;static Interval add(Interval x, Interval y);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(The same for sub, mult, div)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Implement all Number methods)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Implement the possible Object methods)
+}</PRE>
+
+<PRE>For 20K 10%: Interval(&lt;number&gt;, &lt;precision%&gt;) eg: Interval(20000, 10)</PRE>
+
+<P>For instance, if one wants to calculate the resistence of two parallel
+resistors:</P>
+
+<PRE>R1= 20K 10% &nbsp;&nbsp;R2= 10K 5%</PRE>
+
+<UL>
+<PRE>Interval r1= new Interval(20000, 10);
+Interval r2= new Interval(10000, 5);
+Interval rp;</PRE>
+
+<PRE>rp= Interval.div( Interval.mult(r1, r2), Interval.add(r1, r2));
+System.out.println(&quot; Parallel: &quot; + r1 + &quot; &quot; + r2 + &quot; = &quot; + rp);</PRE>
+</UL>
+
+<PRE>Output:
+Parallel: 20000 10% 10000 5% = 6662.9 6.7%</PRE>
+
+<P>This class should have a <TT>demo()</TT> method to print out and explain
+its main capabilities. You may add to the class any functionality you think
+is worth.</P>
+</UL>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="../../pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="../../Welcome.html"><IMG SRC="../../gifs/top.gif" HSPACE=5 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="../../Welcome.html">Contents</A></FONT></B></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="../../gifs/comments.gif" HSPACE=5 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

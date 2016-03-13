@@ -1,0 +1,20 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;SQL Server</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="group_assignments.html" title="Chapter&nbsp;11.&nbsp;Group Assignments - Homeworks"><link rel="prev" href="group_assignments_lisp_server.html" title="2.&nbsp;Lisp Server"><link rel="next" href="group_assignments_chat_server.html" title="4.&nbsp;Chat Server"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;SQL Server</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="group_assignments_lisp_server.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;11.&nbsp;Group Assignments - Homeworks</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="group_assignments_chat_server.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="group_assignments_sql_server"></a>3.&nbsp;SQL Server</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>SQL Server</p><p>This program should implement a SQL interpreter that is able to get SQL commands from a Telnet connection and send back its results also through the same Telnet connection. The server must be able to handle more than one client at the same time.</p><p>The server has to implement, at least, the following SQL commands:</p><pre class="programlisting">CREATE TABLE table_name (
+col_name &lt;type&gt;,
+ . . .)
+
+DROP TABLE table_name
+
+INSERT INTO table_namcol_name1, col_name2, ...)
+     VALUES (value1, value2, ...)
+
+DELETE FROM table_name WHERE col_name &lt;operator&gt; value
+        [ AND|OR col_name &lt;operator&gt; value ]
+
+SELECT FROM table_name WHERE col_name &lt;operator&gt; value
+     [ AND|OR col_name &lt;operator&gt; value ]
+
+&lt;type&gt; can be: string.
+
+&lt;operator&gt; can be: =.</pre><p>For more information about SQL syntax see an IBM SQL guide &lt;http://ts.adm.ilstu.edu/cgi-bin/bookmgr/bookmgr.cmd/BOOKS/DSNAP0B2/1.2&gt;.</p><p><span class="bold"><strong>NOTE:</strong></span> The program must use shared memory and threads in its implementation (take care to protected shared memory areas with mutex and/or semaphores). The tables are visible for all users. The program does not need to keep information on files, it does not have to be persistent.</p></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="group_assignments_lisp_server.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="group_assignments.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="group_assignments_chat_server.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Lisp Server&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Chat Server</td></tr></table></div></body></html>

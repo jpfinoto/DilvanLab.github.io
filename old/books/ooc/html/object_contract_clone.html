@@ -1,0 +1,19 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Clone</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="object_contract.html" title="Chapter&nbsp;16.&nbsp;Object Contract"><link rel="prev" href="object_contract_hashing.html" title="2.&nbsp;Hashing"><link rel="next" href="object_contract_lecture_notes.html" title="4.&nbsp;Lecture Notes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Clone</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="object_contract_hashing.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;16.&nbsp;Object Contract</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="object_contract_lecture_notes.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="object_contract.html">Object Contract</a></span> &gt; <span class="breadcrumb-node">Clone</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="object_contract_clone"></a>3.&nbsp;Clone</h2></div></div></div><p>People divide object copy in:</p><div class="itemizedlist"><ul type="disc"><li><p>A <span class="bold"><strong>shallow copy</strong></span> of an object s
+          made by creating a new object whose fields point to the same objects
+          as the old object.</p></li><li><p>A <span class="bold"><strong>deep copy</strong></span> is made by
+          creating a new object also for the objects pointed to by the fields,
+          and perhaps for the objects they point to, and so on.</p></li></ul></div><p>You may assume that you should use the clone method of Object,
+      along with the Cloneable interface.</p><p>Unfortunately the design of this part of Java is not quite right,
+      and it is very difficult to use it well.</p><p>So it is recommend that you implement your own method to clone.
+      See Bloch&#8217;s book for an insightful discussion of the problem.</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="object_contract_hashing.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="object_contract.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="object_contract_lecture_notes.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Hashing&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Lecture Notes</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

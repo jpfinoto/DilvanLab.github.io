@@ -1,0 +1,50 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Basic Exercises 2</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="exercises.html" title="Chapter&nbsp;20.&nbsp;Exercises"><link rel="prev" href="exercises_exercises_1.html" title="1.&nbsp;Basic Exercises 1"><link rel="next" href="exercises_exercises_3.html" title="3.&nbsp;Basic Exercises 3"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Basic Exercises 2</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="exercises_exercises_1.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;20.&nbsp;Exercises</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="exercises_exercises_3.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="exercises.html">Exercises</a></span> &gt; <span class="breadcrumb-node">Basic Exercises 2</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="exercises_exercises_2"></a>2.&nbsp;Basic Exercises 2</h2></div></div></div><div class="orderedlist"><ol type="1"><li><p>Depois da execu&ccedil;&atilde;o do fragmento de c&oacute;digo abaixo, quais s&atilde;o
+            os valores das variaveis 'x', 'a', e 'b'?</p><pre class="programlisting">int x, a = 6, b =7;
+x = a++ + b++;</pre><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>1.a.</td><td><p>x = 15, a = 7, b = 8;</p></td></tr><tr><td>1.b.</td><td><p>x = 15; a = 6, b = 7;</p></td></tr><tr><td>1.c.</td><td><p>x = 13; a = 7; b = 8;</p></td></tr><tr><td>1.d.</td><td><p>x = 13, a = 6; b = 7;</p></td></tr></tbody></table></div></li><li><p>Quais das seguintes Express&otilde;es s&atilde;o legais? (escolha uma ou
+            mais)</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>2.a.</td><td><p>int x = 6; x = !x;</p></td></tr><tr><td>2.b.</td><td><p>int x = 6; if (!(x &gt; 3)) {}</p></td></tr><tr><td>2.c.</td><td><p>int x = 6; x = ~x;</p></td></tr></tbody></table></div></li><li><p>Quais das seguintes express&otilde;es resultam um valor positivo em
+            x? (escolha uma)</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>3.a.</td><td><p>int x = -1; x = x &gt;&gt;&gt; 5;</p></td></tr><tr><td>3.b.</td><td><p>int x = -1; x = x &gt;&gt;&gt; 32;</p></td></tr><tr><td>3.c.</td><td><p>byte x = -1; x = x &gt;&gt;&gt; 5;</p></td></tr><tr><td>3.d.</td><td><p>int x = -1; x = x &gt;&gt; 5;</p></td></tr></tbody></table></div></li><li><p>Quais das seguintes express&otilde;es s&atilde;o legais?</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>4.a.</td><td><p>String x = &#8220;Hello"; int y = 9; x += y;</p></td></tr><tr><td>4.b.</td><td><p>String x = &#8220;Hello"; int y = 9; if (x == y) {}</p></td></tr><tr><td>4.c.</td><td><p>String x = &#8220;Hello"; int y = 9; x = x + y;</p></td></tr><tr><td>4.d.</td><td><p>String x = &#8220;Hello"; int y = 9; y = y + x;</p></td></tr><tr><td>4.e.</td><td><p>String x = null; int y = (x != null) &amp;&amp;
+                  (x.length() &gt; 0) ? x.length() : 0;</p></td></tr></tbody></table></div></li><li><p>Quais dos seguintes fragmentos de c&oacute;digo ser&aacute; compilado com
+            sucesso e imprimir&aacute; na execu&ccedil;&atilde;o a palavra &#8220;Equal"? (escolha uma ou
+            mais)</p><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>5.a.</td><td><p>int x = 100; float y = 100.OF; if (x == y)
+                  {System.out.println(&#8220;Equal");}</p></td></tr><tr><td>5.b.</td><td><p>int x = 100; Integer y = new Integer(100); if (x == y)
+                  {System.out.println(&#8220;Equal");}</p></td></tr><tr><td>5.c.</td><td><p>Integer x = new Integer(100); Integer y = new
+                  Integer(100); if (x == y)
+                  {System.out.println(&#8220;Equal");}</p></td></tr><tr><td>5.d.</td><td><p>String x = new String(&#8220;100");String y = new
+                  String(&#8220;100"); if (x == y) {
+                  System.out.println(&#8220;Equal");}</p></td></tr><tr><td>5.e.</td><td><p>String x = &#8220;100"; String y = &#8220;100"; if (x == y)
+                  {System.out.println(&#8220;Equal");}</p></td></tr></tbody></table></div></li><li><p>Quais os resultados da execu&ccedil;&atilde;o do seguinte c&oacute;digo?</p><pre class="programlisting">1.      public class short { 
+2.          public static void main(String args[]) { 
+3.              StringBuffer s = new StringBuffer(&#8220;Hello"); 
+4.              if ((s.length() &gt; 5) &amp;&amp; 
+5.                  (s.append(&#8220; there&#8255;).equals(&#8220;False"))) 
+6.                  ;  // do nothing 
+7.              System.out.println(&#8220;value is &#8220; + s); 
+8.          }
+9.      }</pre><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>6.a.</td><td><p>A sa&iacute;da &eacute;: Hello</p></td></tr><tr><td>6.b.</td><td><p>A sa&iacute;da &eacute;: Hello there</p></td></tr><tr><td>6.c.</td><td><p>Erro de compila&ccedil;&atilde;o na linha 4 ou 5</p></td></tr><tr><td>6.d.</td><td><p>Nenhuma sa&iacute;da</p></td></tr><tr><td>6.e.</td><td><p>Ocorre uma NullPointerException</p></td></tr></tbody></table></div></li><li><p>Qual resultado da execu&ccedil;&atilde;o do seguinte c&oacute;digo?</p><pre class="programlisting">1.      public class Xor{ 
+2.          public static void main(String args[])  { 
+3.              byte b = 10;  // 0001010 binary 
+4.              byte c = 15;  // 00001111 binary 
+5.              b = (byte)(b ^c); 
+6.              System.out.println(&#8220;b contains &#8220; + b); 
+7.          }
+8.      }</pre><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>7.a.</td><td><p>Sa&iacute;da: b contains 10;</p></td></tr><tr><td>7.b.</td><td><p>Sa&iacute;da: b contains 5;</p></td></tr><tr><td>7.c.</td><td><p>Sa&iacute;da: b contains 250;</p></td></tr><tr><td>7.d.</td><td><p>Sa&iacute;da: b contains 245;</p></td></tr></tbody></table></div></li><li><p>Qual o resultado da tentativa de compilar e executar o
+            seguinte c&oacute;digo?</p><pre class="programlisting">1.      public class Ternary  { 
+2.          public static void main(String args[]) { 
+3.              int x = 4; 
+4.              System.out.println(&#8220;value is &#8220; + 
+5.                  ((x &gt; 4) ? 99.99 : 9)); 
+6.          } 
+7.      } </pre><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>8.a.</td><td><p>Sa&iacute;da: value is 99.99</p></td></tr><tr><td>8.b.</td><td><p>Sa&iacute;da: value is 9</p></td></tr><tr><td>8.c.</td><td><p>Sa&iacute;da: value is 9.0</p></td></tr><tr><td>8.d.</td><td><p>Erro de compila&ccedil;&atilde;o na linha 5</p></td></tr></tbody></table></div></li><li><p>Qual &eacute; a sa&iacute;da deste fragmento de c&oacute;digo?</p><pre class="programlisting">1.      int x = 3; int y = 10; 
+2.      System.out.println(y % x);
+</pre><div class="orderedlist"><table border="0"><col align="left" valign="top"><tbody><tr><td>9.a.</td><td><p>0</p></td></tr><tr><td>9.b.</td><td><p>1</p></td></tr><tr><td>9.c.</td><td><p>2</p></td></tr><tr><td>9.d.</td><td><p>3</p></td></tr></tbody></table></div></li></ol></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="exercises_exercises_1.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="exercises.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="exercises_exercises_3.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Basic Exercises 1&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Basic Exercises 3</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

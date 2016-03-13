@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Applets Slide 5: Creating an Interface.</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Applets:</FONT> </FONT><B><FONT COLOR="#0000FF">Creating
+an Interface</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/applet/ui/param.html">Applet
+Parameters</A> </H2>
+
+<UL>
+<H3><BR>
+<BR>
+Code to suport parameters:</H3>
+
+<UL>
+<PRE>
+public String getParameter(String name)</PRE>
+</UL>
+</UL>
+
+<PRE>          . . .
+          String windowWidthString = getParameter(&quot;WINDOWWIDTH&quot;);
+          if (windowWidthString != null) {
+              try {
+                  requestedWidth = Integer.parseInt(windowWidthString);
+              } catch (NumberFormatException e) {
+                  //Use default width.
+              }
+          }
+</PRE>
+
+<UL>
+<H3><BR>
+<BR>
+Giving information about parameters:</H3>
+</UL>
+
+<PRE>
+          public String[][] getParameterInfo() {
+              String[][] info = {
+                // Parameter Name     Kind of Value   Description
+                  {&quot;imagesource&quot;,     &quot;URL&quot;,          &quot;a directory&quot;},
+                  {&quot;startup&quot;,         &quot;URL&quot;,          &quot;displayed at startup&quot;},
+                  {&quot;background&quot;,      &quot;URL&quot;,          &quot;displayed as background&quot;},
+                  {&quot;startimage&quot;,      &quot;int&quot;,          &quot;start index&quot;},
+                  {&quot;endimage&quot;,        &quot;int&quot;,          &quot;end index&quot;},
+                  {&quot;namepattern&quot;,     &quot;URL&quot;,          &quot;used to generate indexed names&quot;},
+                  {&quot;pause&quot;,           &quot;int&quot;,          &quot;milliseconds&quot;},
+                  {&quot;pauses&quot;,          &quot;ints&quot;,         &quot;milliseconds&quot;},
+                  {&quot;repeat&quot;,          &quot;boolean&quot;,      &quot;repeat or not&quot;},
+                  {&quot;positions&quot;,       &quot;coordinates&quot;,  &quot;path&quot;},
+                  {&quot;soundsource&quot;,     &quot;URL&quot;,          &quot;audio directory&quot;},
+                  {&quot;soundtrack&quot;,      &quot;URL&quot;,          &quot;background music&quot;},
+                  {&quot;sounds&quot;,          &quot;URLs&quot;,         &quot;audio samples&quot;},
+              };
+              return info;
+          }
+
+
+
+
+
+
+</PRE>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Applets.sld6.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Applets.sld6.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

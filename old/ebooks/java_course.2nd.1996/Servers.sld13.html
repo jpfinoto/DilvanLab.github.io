@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 13: Datagrams</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Datagrams</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/datagrams/index.html">Datagrams
+</A></H2>
+
+<BLOCKQUOTE>
+<P>The UDP protocol provides a mode of network communication whereby applications
+send packets of data, called <I>datagrams</I> to one another:</P>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/datagrams/definition.html">What
+Is a Datagram?</A></H2>
+
+<BLOCKQUOTE>
+<H3>Definition:</H3>
+
+<P>A datagram is an independent, self-contained message sent over the network
+whose arrival, arrival time, and content are not guaranteed. </P>
+
+<H3>Java classes:</H3>
+
+<UL>
+<LI>DatagramPacket class.</LI>
+
+<LI>DatagramSocket classe. </LI>
+</UL>
+</BLOCKQUOTE>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/datagrams/clientServer.html">Writing
+a Datagram Client and Server</A></H2>
+
+<BLOCKQUOTE>
+<H3><FONT COLOR="#0000FF">The Quote server</FONT></H3>
+
+<P>It waits for Datagram requestes for quotes ans servers them in Datagram
+packets. Three classes implement the application: </P>
+
+<UL>
+<LI>QuoteServer.</LI>
+
+<LI>QuoteServerThread.</LI>
+
+<LI>QuoteClient. </LI>
+</UL>
+
+<H3><FONT COLOR="#0000FF">The QuoteServer Class</FONT></H3>
+
+<BLOCKQUOTE>
+<P>Just calls the server thread:</P>
+
+<BLOCKQUOTE>
+<PRE>class QuoteServer {
+    public static void main(String[] args) {
+        new QuoteServerThread().start();
+    }
+}
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<CENTER><P><BR>
+<BR>
+</P></CENTER>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld14.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld14.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

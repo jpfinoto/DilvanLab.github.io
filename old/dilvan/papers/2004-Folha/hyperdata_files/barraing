@@ -1,0 +1,88 @@
+function uolbarCombo()
+{
+var uolEst = new Array('www1.uol.com.br/amigosvirtuais/','Amigos Virtuais',
+'batepapo.uol.com.br/','Bate-papo UOL',
+'www1.uol.com.br/bibliot/','Biblioteca',
+'www1.uol.com.br/bichos/','Bichos',
+'blog.uol.com.br/','Blog',
+'busca.uol.com.br/','Busca',
+'noticias.uol.com.br/carros/','Carros',
+'cartoes.uol.com.br/','Cartões',
+'sac.uol.com.br/','Central do Assinante',
+'classificados.uol.com.br/','Classificados',
+'noticias.uol.com.br/saude/','Corpo e Saúde',
+'www1.uol.com.br/criancas/','Crianças',
+'www1.uol.com.br/diversao/','Diversão e Arte',
+'noticias.uol.com.br/economia/','Economia',
+'noticias.uol.com.br/educacao/','Educação',
+'noticias.uol.com.br/empregos/','Empregos',
+'esporte.uol.com.br/','Esporte',
+'www.folha.uol.com.br/','Folha Online',
+'forum.uol.com.br/','Fórum',
+'fotoblog.uol.com.br/','Fotoblog',
+'gay.uol.com.br/','Gay',
+'astral.uol.com.br/','Horóscopo',
+'humor.uol.com.br/','Humor',
+'jogos.uol.com.br','Jogos',
+'noticias.uol.com.br/jornais/','Jornais',
+'noticias.uol.com.br/licaodecasa/','Lição de Casa',
+'noticias.uol.com.br/mundodigital/','Mundo Digital',
+'musica.uol.com.br/','Música',
+'www1.uol.com.br/person/','Personalidades',
+'musica.uol.com.br/radiouol/','Rádio UOL',
+'noticias.uol.com.br/revistas/','Revistas',
+'www3.uol.com.br/servicos/','Serviços',
+'sexo.uol.com.br/','Sexo',
+'shopping.uol.com.br/','Shopping UOL',
+'sites.uol.com.br/','Sites Pessoais',
+'www1.uol.com.br/teen/','Teen',
+'televisao.uol.com.br/','Televisão',
+'www3.uol.com.br/tempo/','Tempo Trânsito Mapas',
+'www2.uol.com.br/tvuol/','TV UOL',
+'noticias.uol.com.br/ultnot/','Últimas Notícias',
+'email.uol.com.br/','UOL Mail Inteligente',
+'noticias.uol.com.br/uolnews/','UOL News',
+'noticias.uol.com.br/vestibuol/','VestibUOL',
+'viagem.uol.com.br/','Viagem',
+'indice.uol.com.br/','Índice completo');
+
+var printer='<option value=0>ÍNDICE PRINCIPAL</option>';
+for(var i=0;i<uolEst.length;i+=2) printer+='<option value='+uolEst[i]+'>'+uolEst[(i+1)]+'</option>';
+return printer;
+}
+
+var form_name_seed;
+var dC = document;
+
+Iid=6;
+form_name_seed = (form_name_seed) ? 2 : 1 ;
+CClara = "#00698C";
+EEscura = "#00495F";
+
+if(!document.getElementById) { forminI = '<form name=fm_uol'+form_name_seed+'>'; formfiM = '</form>'; }
+else { forminI = ''; formfiM = ''; }
+
+dC.write('<style>a.lxy:active, a.lxy:link, a.lxy:visited, a.lxy { font-family:arial;font-size:10px;color:white;text-decoration:none; } a.lxy:hover { text-decoration:underline;color:white; }');
+if (navigator.appName.indexOf('Netscape')==-1) dC.write('a.lxy { height:24px;padding-top:6px;font-family:arial; }');
+else dC.write('a.lxy { height:19px;padding-top:5px;display:block; }');
+dC.write('#bnx1, #bnx2 { text-align:center;border-right:1px solid white;vertical-align:middle; } #bnx1, #bnx0 { background-color:'+EEscura+'; }');
+dC.write('#bnx2, #bnx3 { background-color:'+CClara+';text-align:center; } #uols1, #uols2 { font-family:arial;font-size:10px;width:136px; } </style>');
+
+dC.write('<table cellpadding=0 cellspacing=0 border=0 width=760 id=uolbar><tr>'
++'<td id=bnx0 width=73 align=right><a href=http://www.uol.com.br/ target=_top><img src=http://barra.uol.com.br/b/uol'+Iid+'.gif border=0 width=72 height=24></a></td>'
++'<td id=bnx2 width=65><a href=https://cadastro.uol.com.br/index.html?eos=yes&promo=117570810&sg=300016192&sa=UOL-barra-assine class=lxy style=width:65px; target=_top>ASSINE</a></td>'
++'<td id=bnx1 width=86><a href=http://batepapo.uol.com.br/ class=lxy style=width:86px; target=_top>BATE-PAPO</a></td>'
++'<td id=bnx2 width=62><a href=http://busca.uol.com.br/ class=lxy style=width:62px; target=_top>BUSCA</a></td>'
++'<td id=bnx1 width=156><a href=https://sac.uol.com.br/ class=lxy style=width:156px; target=_top>CENTRAL DO ASSINANTE</a></td>'
++'<td id=bnx2 width=58><a href=http://email.uol.com.br/ class=lxy style=width:58px; target=_top>E-MAIL</a></td>'
++'<td id=bnx1 width=106><a href=http://shopping.uol.com.br/ class=lxy style=width:106px; target=_top>SHOPPING UOL</a></td>'
++'<td id=bnx3 width=148><font face=arial size=1>'+forminI+'<select name=sel_uol0 id=uols'+form_name_seed+' onchange=openEs('+form_name_seed+')>'+ uolbarCombo() +'</select></font>'
++'</td>'+formfiM+'</tr></table>');
+
+function openEs(fn_seed)
+{
+if(!document.getElementById) eval("var op = document.fm_uol"+fn_seed+".sel_uol0[document.fm_uol"+fn_seed+".sel_uol0.selectedIndex].value");
+else op = document.getElementById('uols'+fn_seed)[document.getElementById('uols'+fn_seed).selectedIndex].value;
+if(op!=0&&typeof(top)=='object') parent.top.location = 'http://'+op;
+else if(op!=0) window.open('http://'+op, 'newWin');
+}

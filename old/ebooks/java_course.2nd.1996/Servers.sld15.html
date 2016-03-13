@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 15: Datagrams</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Datagrams</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><BR>
+<BR>
+<BR>
+<BR>
+<FONT COLOR="#0000FF">The QuoteClient Class</FONT></H3>
+
+<BLOCKQUOTE>
+<H4><BR>
+<BR>
+<TT>T</TT>he <TT>main()</TT> method for the client application:</H4>
+
+<BLOCKQUOTE>
+<PRE>
+int port;
+InetAddress address;
+DatagramSocket socket = null;
+DatagramPacket packet;
+byte[] sendBuf = new byte[256];
+</PRE>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<PRE>if (args.length != 2) {
+     System.out.println(&quot;Usage: java DatagramClient &lt;hostname&gt; &lt;port#&gt;&quot;);
+     return;
+}
+</PRE>
+</BLOCKQUOTE>
+
+<H4><BR>
+<BR>
+The client program sends a request to the server: </H4>
+
+<BLOCKQUOTE>
+<PRE>
+address = InetAddress.getByName(args[0]);
+port = Integer.parseInt(args[1]);
+packet = new DatagramPacket(sendBuf, 256, address, port);
+socket.send(packet);
+System.out.println(&quot;Client sent request packet.&quot;);
+</PRE>
+</BLOCKQUOTE>
+
+<H4><BR>
+<BR>
+The client gets a response from the server: </H4>
+
+<BLOCKQUOTE>
+<PRE>packet = new DatagramPacket(sendBuf, 256);
+socket.receive(packet);
+String received = new String(packet.getData(), 0);
+System.out.println(&quot;Client received packet: &quot; + received);
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H3><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<FONT COLOR="#0000FF">Run the Client</FONT></H3>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>
+Quote of the Moment: Life is wonderful. Without it we'd all be dead.</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>
+
+
+
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld16.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld16.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

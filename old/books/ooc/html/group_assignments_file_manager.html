@@ -1,0 +1,40 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>5.&nbsp;File Manager</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="group_assignments.html" title="Chapter&nbsp;22.&nbsp;Group Assignments"><link rel="prev" href="group_assignments_chat.html" title="4.&nbsp;Chat"><link rel="next" href="group_assignments_pacman.html" title="6.&nbsp;PacMan"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.&nbsp;File Manager</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="group_assignments_chat.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;22.&nbsp;Group Assignments</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="group_assignments_pacman.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="group_assignments.html">Group Assignments</a></span> &gt; <span class="breadcrumb-node">File Manager</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="group_assignments_file_manager"></a>5.&nbsp;File Manager</h2></div></div></div><p>The unit FileManager is the only unit for a File Manager
+      Application. The Java File Manager application is designed to provide
+      basic facilities to deal with files in a graphic environment. It allows
+      file system browsing, copying, moving and deleting files and creating
+      folders. It also allows files of a specific type to be associated with
+      an application, and handles opening the file with the proper application
+      when the user requests it.</p><p>To show information, the Java File Manager uses the following
+      format:</p><pre class="programlisting">drw  FileName     FileLength    FileType</pre><p>where the first three letters indicate wether the file is a
+      directory, is readable and writable. The second column is the name of
+      the file, followed by its size and a description of the File Type. This
+      way you could have:</p><pre class="programlisting">-rw  FileManager.java   1324    Java Source File</pre><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10279"></a>5.1.&nbsp;The Menu</h3></div></div></div><p>Commands are given to Java File Manager mainly through Menus.
+        There are:</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10284"></a>5.1.1.&nbsp;The File Menu</h4></div></div></div><p><span class="bold"><strong>Open</strong></span>: Opens the currently
+          selected file (or the one nearest the top if more than one are
+          selected) with the proper application. If the selected file is a
+          directory, updates the file list.</p><p><span class="bold"><strong>Create Folder</strong></span>: Creates a
+          folder with the specified name.</p><p><span class="bold"><strong>Associate</strong></span>: Collects
+          information about the application to be associated with the selected
+          file. A comment about the file type can also be specified.</p><p><span class="bold"><strong>Quit</strong></span>: Quit Java File
+          Manager.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10303"></a>5.1.2.&nbsp;The Edit Menu</h4></div></div></div><p><span class="bold"><strong>Select All</strong></span>: Selects all files
+          in the current directory.</p><p><span class="bold"><strong>Cut</strong></span>: Mark selected files to
+          be moved to a new directory.</p><p><span class="bold"><strong>Copy</strong></span>: Mark selected files to
+          be copied to a new directory.</p><p><span class="bold"><strong>Paste</strong></span>: Copies or moves the
+          marked files, according to if they were copied or cut.</p><p><span class="bold"><strong>Delete</strong></span>: Deletes currently
+          selected files.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10326"></a>5.1.3.&nbsp;The View Menu</h4></div></div></div><p><span class="bold"><strong>-Order by Name</strong></span>: Orders files
+          by Name</p><p><span class="bold"><strong>-Order by Type</strong></span>: Order files
+          by type</p><p><span class="bold"><strong>-Order by length</strong></span>: Order file
+          by length</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10341"></a>5.1.4.&nbsp;The Help Menu</h4></div></div></div><p><span class="bold"><strong>-Help</strong></span>: Shows this
+          message</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10348"></a>5.2.&nbsp;The Tool Bar</h3></div></div></div><p>The buttons Cut, Copy, Paste and Delete shown in the Toolbar are
+        shortcuts for their equivalents in the Edit Menu.</p></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="group_assignments_chat.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="group_assignments.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="group_assignments_pacman.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">4.&nbsp;Chat&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;6.&nbsp;PacMan</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

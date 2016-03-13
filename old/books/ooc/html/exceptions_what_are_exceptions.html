@@ -1,0 +1,119 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>1.&nbsp;What are exceptions?</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="exceptions.html" title="Chapter&nbsp;6.&nbsp;Exceptions"><link rel="prev" href="exceptions.html" title="Chapter&nbsp;6.&nbsp;Exceptions"><link rel="next" href="exceptions_throwing_exceptions.html" title="2.&nbsp;Throwing exceptions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.&nbsp;What
+      are exceptions?</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="exceptions.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;6.&nbsp;Exceptions</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="exceptions_throwing_exceptions.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="exceptions.html">Exceptions</a></span> &gt; <span class="breadcrumb-node">What
+      are exceptions?</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="exceptions_what_are_exceptions"></a>1.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/essential/exceptions/definition.html" target="_top">What
+      are exceptions</a>?</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2360"></a>1.1.&nbsp;Definition</h3></div></div></div><p>An exception is an event that occurs during the execution of a
+        program that disrupts the normal flow of instructions.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2365"></a>1.2.&nbsp;Throwing an exception</h3></div></div></div><p>It happens when an error occurs the method creates an exception
+        object and hands it off to the runtime system.</p><div class="figure"><a name="d0e2370"></a><p class="title"><b>Figure&nbsp;6.1.&nbsp;Call Stack</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/Exceptions4.gif" alt="Call Stack"></div></div></div><br class="figure-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2376"></a>1.3.&nbsp;The exception object</h3></div></div></div><p>The exception object contains information about the exception,
+        including its type and the state of the program when the error
+        occurred.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2381"></a>1.4.&nbsp;Catching an exception</h3></div></div></div><p>It happens when the exception object bubbles up through the call
+        stack until an appropriate exception handler is found. The handler
+        catches the exception.</p><p>The runtime system searches the call stack for a method that
+        contains a block of code that can handle the exception.</p><div class="figure"><a name="d0e2388"></a><p class="title"><b>Figure&nbsp;6.2.&nbsp;Catching an Exception</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/Exceptions5.gif" alt="Catching an Exception"></div></div></div><br class="figure-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2394"></a>1.5.&nbsp;Advantages</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2397"></a>1.5.1.&nbsp;Advantage 1: Separating Error Handling Code from "Regular"
+          Code</h4></div></div></div><div class="table"><a name="d0e2400"></a><p class="title"><b>Table&nbsp;6.1.&nbsp;Advantage 1</b></p><div class="table-contents"><table summary="Advantage 1" border="0"><colgroup><col><col></colgroup><tbody><tr><td><pre class="programlisting">errorCodeType readFile {
+    initialize errorCode = 0;
+    open the file;
+    if (theFileIsOpen) {
+        determine the length of the file;
+        if (gotTheFileLength) {
+            allocate that much memory;
+            if (gotEnoughMemory) {
+                read the file into memory;
+                if (readFailed) {
+                    errorCode = -1;
+                }
+            } else {
+                errorCode = -2;
+            }
+        } else {
+            errorCode = -3;
+        }
+        close the file;
+...  
+}</pre></td><td><pre class="programlisting">readFile {
+    try {
+        open the file;
+        determine its size;
+        allocate that much memory;
+        read the file into memory;
+        close the file;
+    } catch (fileOpenFailed) {
+        doSomething;
+    } catch (sizeDeterminationFailed) {
+        doSomething;
+    } catch (memoryAllocationFailed) {
+        doSomething;
+    } catch (readFailed) {
+        doSomething;
+    } catch (fileCloseFailed) {
+        doSomething;
+    }
+
+
+}</pre></td></tr></tbody></table></div></div><br class="table-break"><p><a class="ulink" href="../audio/Exceptions1.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2416"></a>1.5.2.&nbsp;Advantage 2: Propagating Errors Up the Call Stack</h4></div></div></div><div class="table"><a name="d0e2419"></a><p class="title"><b>Table&nbsp;6.2.&nbsp;Advantage 2</b></p><div class="table-contents"><table summary="Advantage 2" border="1"><colgroup><col><col></colgroup><tbody><tr><td><pre class="programlisting">method1 {
+    errorCodeType error;
+    error = call method2;
+    if (error)
+        doErrorProcessing;
+    else
+        proceed;
+}
+errorCodeType method2 {
+    errorCodeType error;
+    error = call method3;
+    if (error)
+        return error;
+    else
+        proceed;
+}
+errorCodeType method3 {
+    errorCodeType error;
+    error = call readFile;
+    if (error)
+        return error;
+    else
+        proceed;
+}</pre></td><td><pre class="programlisting">method1 {
+    try {
+        call method2;
+    } catch (exception) {
+        doErrorProcessing;
+    }
+}
+method2 throws exception {
+    call method3;
+}
+method3 throws exception {
+    call readFile;
+}
+
+
+
+
+
+
+
+
+
+
+
+</pre></td></tr></tbody></table></div></div><br class="table-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2431"></a>1.5.3.&nbsp;Advantage 3: Grouping Error Types and Error
+          Differentiation</h4></div></div></div><div class="figure"><a name="d0e2434"></a><p class="title"><b>Figure&nbsp;6.3.&nbsp;Advantage 3</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/Exceptions1.gif" width="406" height="197.00000000000003" alt="Advantage 3"></div></div></div><br class="figure-break"><pre class="programlisting">catch (ArrayException e) {
+    . . .
+}
+catch (Exception e) {
+    . . .
+}</pre><p><a class="ulink" href="../audio/Exceptions2.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="exceptions.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="exceptions.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="exceptions_throwing_exceptions.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;6.&nbsp;Exceptions&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;2.&nbsp;Throwing
+      exceptions</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

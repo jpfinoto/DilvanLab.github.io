@@ -1,0 +1,44 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Techniques for Decoupling</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="decoupling.html" title="Chapter&nbsp;14.&nbsp;Decoupling"><link rel="prev" href="decoupling_dependences_specifications.html" title="3.&nbsp;Dependences &amp; Specifications"><link rel="next" href="decoupling_coupling_due_to_share_constraints.html" title="5.&nbsp;Coupling Due to Shared Constraints"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Techniques for Decoupling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="decoupling_dependences_specifications.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;14.&nbsp;Decoupling</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="decoupling_coupling_due_to_share_constraints.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="decoupling.html">Decoupling</a></span> &gt; <span class="breadcrumb-node">Techniques for Decoupling</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="decoupling_techniques_for_decoupling"></a>4.&nbsp;Techniques for Decoupling</h2></div></div></div><p>A dependence is a liability: <span class="emphasis"><em>it expands the scope of
+      what needs to be considered.</em></span></p><p>The most effective way to reduce coupling is:</p><div class="orderedlist"><ol type="1"><li><p>To design the parts so that they are simple and well
+          defined.</p></li><li><p>Bring together aspects of the system that belong together and
+          separate aspects that don&#8217;t.</p></li></ol></div><p>There are also some tactics that can be applied when you already
+      have a candidate decomposition: they involve introducing new parts and
+      altering specifications.</p><p>For now, we&#8217;ll just mention some briefly to give you an idea of
+      what&#8217;s possible:</p><div class="itemizedlist"><ul type="disc"><li><p>Facade</p><p>The facade pattern involves interposing a new implementation
+          part between two sets of parts. The new part s a kind of gatekeeper:
+          every use by a part in the set S of a part in the set B which was
+          previously direct now goes through it.</p><p>Example: introduce a facade that sits between the layers,
+          collects together all the networking that the protocol layer needs
+          (and no more),and presents them to the protocol layer with a
+          higher-level interface.</p></li><li><p>Hide Representation</p><p>A specification can avoid mentioning how data is
+          represented.</p><p>This kind of specification weakening is known as &#8216;data
+          abstraction&#8217;.</p><p>By eliminating the dependence of the using part A on the
+          representation of data in the used part B, it makes it easier to
+          understand the role that B plays in A. It makes it possible to
+          change the representation of data in B without any change to A at
+          all.</p></li><li><p>Polymorphism</p><p>A program part C that provides container objects has a
+          dependence on the program part E that provides the elements of the
+          container.</p><p>To reduce the coupling between C and E, we can make C
+          polymorphic.</p><p>The word &#8216;polymorphic&#8217; means &#8216;many shaped&#8217;, and refers to the
+          fact that C is written without any mention of special properties of
+          E, so that containers of many shapes can be produced according to
+          which E the part C uses.</p></li><li><p>Callbacks</p><p>In the browser, a GUI part might depend on the Main part
+          because it calls a procedure in Main when, for example, a button is
+          pressed.</p><p>This coupling is bad.</p><p>Instead, the Main part might pass the GUI part at runtime a
+          reference to one of its procedures. When this procedure is called by
+          the GUI part, it has the same effect it would have had if the
+          procedure had been named in the text of the GUI part.</p><p>But since the association is only made at runtime, there is no
+          dependence of GUI on Main.</p><p>There will be a dependence of GUI on a specification
+          (Listener, say) that the passed procedure must satisfy.</p><div class="figure"><a name="d0e7191"></a><p class="title"><b>Figure&nbsp;14.5.&nbsp;Callback by a Listener Class.</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/decoupling5.gif" width="374.00000000000006" height="376" alt="Callback by a Listener Class."></div></div></div><br class="figure-break"></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e7197"></a>4.1.&nbsp;Audio</h3></div></div></div><p><a class="ulink" href="../audio/Decoupling4.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+        Portuguese</a></p></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="decoupling_dependences_specifications.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="decoupling.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="decoupling_coupling_due_to_share_constraints.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Dependences &amp; Specifications&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Coupling Due to Shared Constraints</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

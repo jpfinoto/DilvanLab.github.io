@@ -1,0 +1,22 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Aggregation</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="ch09.html" title="Chapter&nbsp;9.&nbsp;Associatons and Collections"><link rel="prev" href="ch09s03.html" title="3.&nbsp;Composition"><link rel="next" href="ch09s05.html" title="5.&nbsp;Core Collection Interfaces"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Aggregation</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="ch09s03.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;9.&nbsp;Associatons and Collections</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="ch09s05.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="ch09.html">Associatons and Collections</a></span> &gt; <span class="breadcrumb-node">Aggregation</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d0e3244"></a>4.&nbsp;Aggregation</h2></div></div></div><p>It is a kind of association where there is a part-&gt;whole
+      relationship among the parts, but the object that represents the whole
+      doesn't owns the objects that makeup the parts.</p><p>Ex: A university owns various departments (e.g., chemistry), and
+      each department has a number of professors. If the university closes,
+      the departments will no longer exist, but the professors in those
+      departments will continue to exist. Therefore, a University can be seen
+      as a composition of departments, whereas departments have an aggregation
+      of professors. In addition, a Professor could work in more than one
+      department, but a department could not be part of more than one
+      university.</p><div class="figure"><a name="d0e3251"></a><p class="title"><b>Figure&nbsp;9.4.&nbsp;Aggregation X Composition</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/Collections3.png" alt="Aggregation X Composition"></div></div></div><br class="figure-break"><p>How do we implement those classes in Java?</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ch09s03.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="ch09.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="ch09s05.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Composition&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Core
+      Collection Interfaces</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

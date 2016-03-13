@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 11: Sockets and Streams</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Sockets and Streams</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><BR>
+<IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">The
+KnockKnockServer Class</FONT></H3>
+
+<BLOCKQUOTE>
+<H4><BR>
+Creates a ServerSocket to listen:</H4>
+
+<BLOCKQUOTE>
+<PRE>try {
+<B>    <FONT COLOR="#800000">serverSocket = new ServerSocket(4444);
+</FONT></B>} catch (IOException e) { ... }
+
+</PRE>
+</BLOCKQUOTE>
+
+<H4>Waits until a clients connects:</H4>
+
+<BLOCKQUOTE>
+<PRE>Socket clientSocket = null;
+try {
+<B>    <FONT COLOR="#800000">clientSocket = serverSocket.accept();
+</FONT></B>} catch (IOException e) { ... }
+
+</PRE>
+</BLOCKQUOTE>
+
+<H4>Open an input and output stream to the socket. </H4>
+
+<BLOCKQUOTE>
+<PRE>DataInputStream is = new DataInputStream(
+                 new BufferedInputStream(<B>clientSocket.getInputStream()</B>));
+PrintStream os = new PrintStream(
+             new BufferedOutputStream(<B>clientSocket.getOutputStream()</B>, 1024), false);
+String inputLine, outputLine;
+KKState kks = new KKState();
+
+</PRE>
+</BLOCKQUOTE>
+
+<H4>Read from and write to the socket. </H4>
+
+<BLOCKQUOTE>
+<PRE>outputLine = kks.processInput(null);
+os.println(outputLine);
+os.flush();
+
+while ((inputLine = is.readLine()) != null) {
+    outputLine = kks.processInput(inputLine);
+    os.println(outputLine);
+    os.flush();
+    if (outputLine.equals(&quot;Bye.&quot;))
+        break;
+}
+
+</PRE>
+</BLOCKQUOTE>
+
+<H4>Close all the input and output streams.</H4>
+
+<BLOCKQUOTE>
+<PRE>os.close();
+is.close();
+clientSocket.close();
+serverSocket.close();
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>
+
+
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld12.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld12.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

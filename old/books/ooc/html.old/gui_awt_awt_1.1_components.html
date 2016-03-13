@@ -1,0 +1,151 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;AWT 1.1 Components</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Object Oriented Computing"><link rel="up" href="gui_awt.html" title="Chapter&nbsp;21.&nbsp;Extra: Graphic User Interface - AWT"><link rel="prev" href="gui_awt_overview.html" title="1.&nbsp;Overview"><link rel="next" href="gui_awt_awt_1.1_menus.html" title="3.&nbsp;AWT 1.1 Menus"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;AWT 1.1 Components</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="gui_awt_overview.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;21.&nbsp;Extra: Graphic User Interface - AWT</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="gui_awt_awt_1.1_menus.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="gui_awt_awt_1.1_components"></a>2.&nbsp;<a href="/library/books/tutorial1.02/ui/components/index.html" target="_top">AWT 1.1 Components</a></h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10285"></a>2.1.&nbsp;<a href="/library/books/tutorial1.02/ui/components/using.html" target="_top">AWT hierarchy</a></h3></div></div></div><p>AWT Component</p><div class="figure"><a name="d0e10291"></a><p class="title"><b>Figure&nbsp;21.4.&nbsp;AWT Hierarchy</b></p><div class="mediaobject"><img src="resources/GUI5.gif" width="560" height="265" alt="AWT Hierarchy"></div></div><p>AWT MenuComponent</p><div class="figure"><a name="d0e10299"></a><p class="title"><b>Figure&nbsp;21.5.&nbsp;AWT MenuComponent Hierarchy</b></p><div class="mediaobject"><img src="resources/GUI5.2.gif" width="553" height="106" alt="AWT MenuComponent Hierarchy"></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Because of cross-platform restrictions, menu-related components aren't full-blown Components</p></td></tr></table></div><p><a href="../audio/Gui7.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10312"></a>2.2.&nbsp;<a href="/library/books/tutorial1.02/ui/components/generalRules.html" target="_top">Rules for Using Components</a></h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10316"></a>2.2.1.&nbsp;How to Add a Component to a Container:</h4></div></div></div><p>For any Component object except a Window to display itself onscreen, you must first add it to a Container object.</p><p>The Container class defines three methods for adding components:</p><div class="itemizedlist"><ul type="disc"><li><p>add(Component comp) method simply requires that you specify the component to add.</p></li><li><p>add(Component comp, int ind) method lets you add an argument specifying the integer position at which the component should be added.</p></li><li><p>add(String pos, Component comp) method has as first argument a layout manager-dependent string that specifies the component's position to the layout manager.</p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Adding a component to a container removes the component from the container it used to be in (if any).</p></td></tr></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10336"></a>2.2.2.&nbsp;What the Component Class Provides</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Basic drawing support.</p><p>Component provides the paint(), update(), and repaint() methods, which enable Components to draw themselves onscreen.</p></li><li><p>Event handling</p><p>Component defines the general-purpose handleEvent() method and a group of methods such as action() that handle specific event types.</p></li><li><p>Appearance control: font</p><p>Component provides methods to get and set the current font, and to get information about the current font.</p></li><li><p>Appearance control: color</p><p>Component provides methods to get and set the foreground and background colors.</p></li><li><p>Image handling</p><p>Component provides the basis for displaying images. Canvases and most Containers can display images.</p></li><li><p>Onscreen size and position control</p><p>Component provides methods that get or set (subject to layout manager oversight) the component's current size and location.</p></li></ul></div><p><a href="../audio/Gui8.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10374"></a>2.3.&nbsp;<a href="/library/books/tutorial1.02/ui/components/button.html" target="_top">Buttons</a></h3></div></div></div><p>The Button class provides a default button implementation. A button is a simple control that generates an action event when the user clicks it.</p><div class="figure"><a name="d0e10380"></a><p class="title"><b>Figure&nbsp;21.6.&nbsp;Buttons</b></p><div class="mediaobject"><img src="resources/GUI6.gif" width="396.00000000000006" height="33" alt="Buttons"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10386"></a>2.3.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">b1 = new Button();
+b1.setLabel("Disable middle button");
+b1.setActionCommand(DISABLE);
+b2 = new Button("Middle button");
+b3 = new Button("Enable middle button");
+b3.setEnabled(false);
+b3.setActionCommand(ENABLE);
+//Listen for actions on buttons 1 and 3.
+b1.addActionListener(this);
+b3.addActionListener(this);
+
+. . .
+
+public void actionPerformed(ActionEvent e) {
+    String command= e.getActionCommand();
+    if (command==DISABLE) { //They clicked "Disable middle button"
+        b2.setEnabled(false);
+        b1.setEnabled(false);
+        b3.setEnabled(true);
+    }
+    if (command == ENABLE) { //They clicked "Enable middle button"
+        b2.setEnabled(true);
+        b1.setEnabled(true);
+        b3.setEnabled(false);
+    }
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10391"></a>2.4.&nbsp;<a href="/library/books/tutorial1.02/ui/components/label.html" target="_top">Labels</a></h3></div></div></div><p>The Label class provides an easy way of putting unselectable text in your program's GUI. Labels are aligned to the left of their drawing area, by default.</p><div class="figure"><a name="d0e10397"></a><p class="title"><b>Figure&nbsp;21.7.&nbsp;Labels</b></p><div class="mediaobject"><img src="resources/GUI11.gif" width="160" height="89" alt="Labels"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10403"></a>2.4.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">Label label1 = new Label();
+label1.setText("Left");
+Label label2 = new Label("Center");
+label2.setAlignment(Label.CENTER);
+Label label3 = new Label("Right", Label.RIGHT);</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10408"></a>2.5.&nbsp;<a href="/library/books/tutorial1.02/ui/components/canvas.html" target="_top">Canvases</a></h3></div></div></div><p>The Canvas class exists to be subclassed. It does nothing on its own; it merely provides a way for you to implement a custom Component</p><div class="figure"><a name="d0e10414"></a><p class="title"><b>Figure&nbsp;21.8.&nbsp;Canvas</b></p><div class="mediaobject"><img src="resources/GUI7.gif" width="161" height="107" alt="Canvas"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10420"></a>2.5.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">class ImageCanvas extends Canvas {
+      Container pappy;
+      Image image;
+      boolean trueSizeKnown = false;
+      Dimension minSize;
+
+      public ImageCanvas(Image image, Container parent, int w, int h) {
+             if (image == null) {
+                 System.err.println("Canvas got invalid image object!");
+                 return;
+             }
+             this.image = image;
+             pappy = parent;
+             minSize = new Dimension(w,h);
+      }
+
+      public Dimension getPreferredSize() { return getMinimumSize();}
+
+      public Dimension getMinimumSize() { return minSize;}
+
+      public void paint (Graphics g) {
+             if (image != null) {
+                 if (!trueSizeKnown) {
+                    int width= image.getWidth(this);
+                    int height= image.getHeight(this)
+                    if ((imageWidth &gt; 0) &amp;&amp; (imageHeight &gt; 0)) {
+                        trueSizeKnown = true; 
+                        //Component-initiated resizing.
+                        minSize = new Dimension(width,height);
+                        setSize(width, height);
+                        pappy.validate();
+                    }
+                 }
+                 g.drawRect(0, 0, minSize.width - 1, minSize.height - 1);
+                 g.drawImage(image, 0, 0, this);
+            }
+      }
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10425"></a>2.6.&nbsp;<a href="/library/books/tutorial1.02/ui/components/checkbox.html" target="_top">Checkboxes</a></h3></div></div></div><p>Checkboxes are two-state buttons that can be either "on" or "off". When the user clicks a checkbox, the checkbox state changes and it generates an action event.</p><div class="figure"><a name="d0e10431"></a><p class="title"><b>Figure&nbsp;21.9.&nbsp;Checkbox</b></p><div class="mediaobject"><img src="resources/GUI8.gif" width="270" height="80" alt="Checkbox"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10437"></a>2.6.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">cb1 = new Checkbox();   //Default state is "off" (false).
+cb1.setLabel("Checkbox 1");
+cb3 = new Checkbox("Checkbox 3");
+cb3.setState(true);     //Set state to "on" (true).
+cbg = new CheckboxGroup();
+cb4 = new Checkbox("Checkbox 4", cbg, false); //initial state: off (false)
+cb5 = new Checkbox("Checkbox 5", cbg, false); //initial state: off
+cb6 = new Checkbox("Checkbox 6", cbg, false); //initial state: off
+</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10442"></a>2.7.&nbsp;<a href="/library/books/tutorial1.02/ui/components/choice.html" target="_top">Choices</a></h3></div></div></div><p>The Choice class provides a menu-like list of choices, accessed by a distinctive button. The user presses the button to bring up a "menu", and then chooses one of the items.</p><div class="figure"><a name="d0e10448"></a><p class="title"><b>Figure&nbsp;21.10.&nbsp;Choice</b></p><div class="mediaobject"><img src="resources/GUI9.gif" width="251.99999999999997" height="122" alt="Choice"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10454"></a>2.7.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">choice = new Choice();
+choice.addItem("ichi");
+choice.addItem("ni");
+choice.addItem("san");
+choice.addItem("yon");
+choice.addItemListener(this);
+
+...
+
+public void itemStateChanged(ItemEvent e) {
+       setLabelText(choice.getSelectedIndex(), 
+                    choice.getSelectedItem());
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10459"></a>2.8.&nbsp;<a href="/library/books/tutorial1.02/ui/components/lists.html" target="_top">Lists</a></h3></div></div></div><p>The List class provides a scrollable area containing selectable text items.</p><div class="figure"><a name="d0e10465"></a><p class="title"><b>Figure&nbsp;21.11.&nbsp;List</b></p><div class="mediaobject"><img src="resources/GUI12.gif" width="511" height="158" alt="List"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10471"></a>2.8.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">//Build lists, which allows multiple selections.
+spanish = new List(4, true); //prefer 4 items visible
+spanish.add("uno");
+. . .
+spanish.add("siete");
+spanish.addActionListener(this);
+spanish.addItemListener(this);
+
+italian = new List(); //Defaults to none visible, only one selectable
+italian.add("uno");
+. . .
+italian.add("sette");
+italian.addActionListener(this);
+italian.addItemListener(this);
+. . .
+public void actionPerformed(ActionEvent e) {
+       List list= (List) e.getSource();
+       String language = (list == spanish) ? "Spanish" : "Italian";
+       output.append("Action event occurred on \""
+                     + list.getSelectedItem() + "\" in " 
+                     + language + ".\n");
+}
+
+public void itemStateChanged(ItemEvent e) {
+       List list= (List) e.getItemSelectable();
+       String language = (list == spanish) ? "Spanish" : "Italian";
+
+       int index = ((Integer)(e.getItem())).intValue();
+       if (e.getStateChange() == ItemEvent.SELECTED) {
+           output.append("Select event occurred on item #"
+                          + index + " (\""
+                          + list.getItem(index) + "\") in "
+                          + language + "." + newline);
+       } else { //the item was deselected
+           output.append("Deselect event occurred on item #"
+                          + index + " (\""
+                          + list.getItem(index) + "\") in "
+                          + language + "." + newline);
+       }
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10476"></a>2.9.&nbsp;<a href="/library/books/tutorial1.02/ui/components/scrollbar.html" target="_top">ScrollPanes</a></h3></div></div></div><p>A ScrollPane manages a single child component, displaying as much of the component as space permits.</p><p>By default, a scroll pane's scrollbars are visible only when they're needed.</p><div class="figure"><a name="d0e10484"></a><p class="title"><b>Figure&nbsp;21.12.&nbsp;ScrollPane</b></p><div class="mediaobject"><img src="resources/GUI14.gif" width="326" height="127.00000000000001" alt="ScrollPane"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10490"></a>2.9.1.&nbsp;Code Example</h4></div></div></div><p>ScrollPane sp1 = new ScrollPane(); sp1.add(aComponent);</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10495"></a>2.9.2.&nbsp;Scrollbar parameters</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>SCROLLBARS_AS_NEEDED</p><p>The default value. Show each scrollbar only when it's needed.</p></li><li><p>SCROLLBARS_ALWAYS</p><p>Always show scrollbars.</p></li><li><p>SCROLLBARS_NEVER</p><p>Never show scrollbars. You might use this option if you don't want the user to directly control what part of the child component is shown.</p></li></ul></div><p>Example</p><pre class="programlisting">ScrollPane sp2 = new ScrollPane(ScrollPane.SCROLLBARS_ALWAYS);</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10518"></a>2.10.&nbsp;<a href="/library/books/tutorial1.02/ui/components/text.html" target="_top">TextComponent</a></h3></div></div></div><p>The TextComponent derived classes, TextArea and TextField, display selectable text and, optionally, allow the user to edit the text.</p><div class="figure"><a name="d0e10524"></a><p class="title"><b>Figure&nbsp;21.13.&nbsp;TextComponent</b></p><div class="mediaobject"><img src="resources/GUI15.gif" width="260" height="134" alt="TextComponent"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10530"></a>2.10.1.&nbsp;TextArea and TextField</h4></div></div></div><p>From TextComponent this classes inherit methods that allow them to set and get the current selection, enable and disable editing, get the currently selected text (or all the text), and set the text.</p><div class="literallayout"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Component<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TextComponent<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--------------+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TextArea&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TextField</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10537"></a>2.10.2.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">//Where instance variables are defined:
+TextField textField;
+TextArea textArea;
+
+public void init() {
+    textField = new TextField(20);
+    textField.addActionListener(this);
+    textArea = new TextArea(5, 20);
+    textArea.setEditable(false);
+
+    ...//Add the two components to the panel. 
+}
+
+public void actionPerformed(ActionEvent evt) {
+    String text = textField.getText();
+    textArea.append(text + "\n");
+    textField.selectAll();
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e10542"></a>2.11.&nbsp;<a href="/library/books/tutorial1.02/ui/components/label.html" target="_top">Menus</a></h3></div></div></div><p>The following applet shows many of the menu features you're likely to use.</p><div class="figure"><a name="d0e10548"></a><p class="title"><b>Figure&nbsp;21.14.&nbsp;Menu</b></p><div class="mediaobject"><img src="resources/GUI13.gif" width="500" height="151" alt="Menu"></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><div class="itemizedlist"><ul type="disc"><li><p>Menus can exist only in menu bars, and menu bars can be attached only to windows (specifically, to Frames).</p></li><li><p>Classes that provide menu functionality do not inherit from Component, since many platforms place severe limits on menu capabilities.</p></li></ul></div></td></tr></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10562"></a>2.11.1.&nbsp;MenuComponent subclasses</h4></div></div></div><div class="figure"><a name="d0e10565"></a><p class="title"><b>Figure&nbsp;21.15.&nbsp;MenuComponent</b></p><div class="mediaobject"><img src="resources/GUI16.gif" width="457" height="96" alt="MenuComponent"></div></div><div class="itemizedlist"><ul type="disc"><li><p>MenuItem</p><p>Each item in a menu is represented by a MenuItem object.</p></li><li><p>CheckboxMenuItem</p><p>Each menu item that contains a checkbox is represented by a CheckboxMenuItem object.</p></li><li><p>Menu</p><p>Each menu is represented by a Menu object. Menu is a subclass of MenuItem so that you can create a submenu by adding one menu to another.</p></li><li><p>Popupmenu</p><p>Represents a popup menu.</p></li><li><p>MenuBar</p><p>The MenuBar class represents the platform-dependent notion of a group of menus attached to a window. MenuBars can not be bound to Panels.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e10597"></a>2.11.2.&nbsp;MenuContainer Interface</h4></div></div></div><p>To be able to contain a MenuComponent, an object must adhere to the MenuContainer interface (Frame, Menu, and MenuBar classes do)</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="gui_awt_overview.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="gui_awt.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="gui_awt_awt_1.1_menus.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Overview&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;AWT 1.1 Menus</td></tr></table></div></body></html>

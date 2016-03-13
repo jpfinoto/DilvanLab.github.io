@@ -1,0 +1,13 @@
+grammar teste;
+
+public <1> = Oi {hi};
+
+public <2> = Como você está {how};
+
+public <3> = Tchau {bye};
+
+public <4> = Suspender {suspend};
+
+public <5> = Desativar {deactivate};
+
+public <6> = Oi computador, eu sou seu mestre{master};

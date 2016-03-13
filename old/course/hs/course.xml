@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../XSL/root.xsl"?>
+
+<course>
+  <id>
+    <title>Hypermedia Seminars</title>
+    <www>http://java.icmc.usp.br</www>    
+    <name>hs</name>
+    <teacher>
+      <name>
+        <first>Dilvan</first>
+        <last>Moreira</last>
+      </name>
+      <email>dilvan@icmc.usp.br</email>
+      <www>http://java.icmc.usp.br/dilvan</www>
+    </teacher>
+    
+  </id>
+
+  <book>hypermediaseminars</book>
+</course>

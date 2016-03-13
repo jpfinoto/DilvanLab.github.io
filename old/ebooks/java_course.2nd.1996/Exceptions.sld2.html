@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Exceptions Slide 2: What are exceptions.</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Exceptions:</FONT>
+</FONT><B><FONT COLOR="#0000FF">What are exceptions</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H4><BR>
+<BR>
+<FONT COLOR="#800080">Advantage 2: Propagating Errors Up the Call Stack</FONT></H4>
+</UL>
+
+<CENTER><TABLE>
+<TR ALIGN=LEFT VALIGN=TOP>
+<TD>
+<PRE><B>method1 {
+</B>    errorCodeType error;
+    error = <B>call method2;
+</B>    if (error)
+        doErrorProcessing;
+    else
+        proceed;
+<B>}
+</B>errorCodeType <B>method2 {
+</B>    errorCodeType error;
+    error = <B>call method3;
+</B>    if (error)
+        return error;
+    else
+        proceed;
+<B>}
+</B>errorCodeType <B>method3 {
+</B>    errorCodeType error;
+    error = <B>call readFile;
+</B>    if (error)
+        return error;
+    else
+        proceed;
+<B>}</B></PRE>
+</TD>
+
+<TD>
+<UL>
+<PRE><B>method1 {
+</B>    try {
+        <B>call method2;
+</B>    } catch (exception) {
+        doErrorProcessing;
+    }
+<B>}
+method2 </B>throws exception <B>{
+    call method3;
+}
+method3</B> throws exception <B>{
+    call readFile;
+}</B></PRE>
+</UL>
+</TD>
+</TR>
+</TABLE></CENTER>
+
+<P><BR>
+</P>
+
+<UL>
+<UL>
+<H4><FONT COLOR="#800080">Advantage 3: Grouping Error Types and Error Differentiation</FONT><BR>
+</H4>
+</UL>
+</UL>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<P><IMG SRC="gifs/Exceptions1.gif" HEIGHT=197 WIDTH=406></P>
+
+<BLOCKQUOTE>
+<PRE>catch (ArrayException e) {
+    . . .
+}</PRE>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<PRE>catch (Exception e) {
+    . . .
+}</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE>
+</PRE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Exceptions.sld3.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Exceptions.sld3.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

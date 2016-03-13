@@ -1,0 +1,99 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Sockets and Streams</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="distributed_programming.html" title="Chapter&nbsp;11.&nbsp;Distributed Programming"><link rel="prev" href="distributed_programming_urls.html" title="2.&nbsp;URLs"><link rel="next" href="distrtibuted_programming_datagrams.html" title="4.&nbsp;Datagrams"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Sockets and Streams</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="distributed_programming_urls.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;11.&nbsp;Distributed Programming</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="distrtibuted_programming_datagrams.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="distributed_programming.html">Distributed Programming</a></span> &gt; <span class="breadcrumb-node">Sockets and Streams</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="distributed_programming_sockets_and_streams"></a>3.&nbsp;Sockets and Streams</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5657"></a>3.1.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/networking/sockets/readingWriting.html" target="_top">Stream
+        Sockets</a></h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5661"></a>3.1.1.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/networking/sockets/definition.html" target="_top">What
+          is a Socket</a>?</h4></div></div></div><p>Definition: A socket is one end-point of a two-way
+          communication link between two programs running on the
+          network.</p><p>Types:</p><div class="itemizedlist"><ul type="disc"><li><p>Stream socket: class Socket.</p></li><li><p>Stream socket (To listen): class ServerSocket.</p></li><li><p>Datagram socket: class DatagramSocket.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5680"></a>3.1.2.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/networking/sockets/readingWriting.html" target="_top">Reading
+          from and Writing to a Stream Socket</a></h4></div></div></div><p>Example:</p><pre class="programlisting">public class EchoTest {
+   public static void main(String[] args) {
+        Socket echoSocket = null;
+        DataOutputStream os = null;
+        DataInputStream is = null;
+        DataInputStream stdIn = new DataInputStream(System.in);
+
+        try {
+              echoSocket = new Socket("taranis", 7);
+              os = new DataOutputStream(echoSocket.getOutputStream());
+              is = new DataInputStream(echoSocket.getInputStream());
+        } catch (UnknownHostException e) { ... }
+        catch (IOException e) { ... }
+
+        if (echoSocket != null &amp;&amp; os != null &amp;&amp; is != null) {
+           try {
+                String userInput;
+
+                while ((userInput = stdIn.readLine()) != null) {
+                     os.writeBytes(userInput);
+                     os.writeByte('\n');
+                     System.out.println("echo: " + is.readLine());
+                }
+                os.close();
+                is.close();
+                echoSocket.close();
+           } catch (IOException e) { ... } 
+        }
+   }
+}</pre><p><a class="ulink" href="../audio/Servers9.asf" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5692"></a>3.1.3.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/networking/sockets/clientServer.html" target="_top">Writing
+          the Server Side of a Stream Socket</a></h4></div></div></div><p>Listening and Communicating:</p><div class="itemizedlist"><ul type="disc"><li><p>Request channel: Server do the listening.</p></li><li><p>Communication channel: Created for each connection.</p></li></ul></div><div class="figure"><a name="d0e5705"></a><p class="title"><b>Figure&nbsp;11.5.&nbsp;Listening and Communicating</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/Servers5.gif" width="482.99999999999994" height="125" alt="Listening and Communicating"></div></div></div><br class="figure-break"><p>Knock Knock Server:</p><pre class="programlisting">Server: Knock! Knock!
+Client: Who's there?
+Server: Turnip
+Client: Turnip who?
+Server: Turnip the heat, it's cold in here! Want another? (y/n)</pre><p>Classes:</p><div class="itemizedlist"><ul type="disc"><li><p>KnockKnockServer: Implements the server</p></li><li><p>KKState: Implements the application. It keeps track of the
+              current joke, the current state and serves up the various text
+              pieces of the joke depending on the current state.</p></li><li><p>KnockKnockClient: Implements the client.</p></li></ul></div><p><a class="ulink" href="../audio/Servers10.asf" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p><p><a class="ulink" href="http://java.sun.com/docs/books/tutorial/networking/sockets/clientServer.html" target="_top">The
+          KnockKnockServer Class</a>:</p><div class="itemizedlist"><ul type="disc"><li><p>Creates a ServerSocket to listen:</p><pre class="programlisting">try {
+    serverSocket = new ServerSocket(4444);
+} catch (IOException e) { ... }</pre></li><li><p>Waits until a clients connects:</p><pre class="programlisting">Socket clientSocket = null;
+try {
+    clientSocket = serverSocket.accept();
+} catch (IOException e) { ... }</pre></li><li><p>Open an input and output stream to the socket:</p><pre class="programlisting">DataInputStream is = new DataInputStream(
+                 new BufferedInputStream(clientSocket.getInputStream()));
+PrintStream os = new PrintStream(
+             new BufferedOutputStream(clientSocket.getOutputStream(), 1024), false);
+String inputLine, outputLine;
+KKState kks = new KKState();
+
+
+</pre></li><li><p>Read from and write to the socket</p><pre class="programlisting">outputLine = kks.processInput(null);
+os.println(outputLine);
+os.flush();
+
+while ((inputLine = is.readLine()) != null) {
+    outputLine = kks.processInput(inputLine);
+    os.println(outputLine);
+    os.flush();
+    if (outputLine.equals("Bye."))
+        break;
+}</pre></li><li><p>Close all the input and output streams:</p><pre class="programlisting">os.close();
+is.close();
+clientSocket.close();
+serverSocket.close();</pre></li></ul></div><p><a class="ulink" href="../audio/Servers11.asf" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p><p><a class="ulink" href="http://java.sun.com/docs/books/tutorial/networking/sockets/clientServer.html" target="_top">The
+          Knock Knock Client</a>:</p><p>Differences from EchoTest:</p><pre class="programlisting">kkSocket = new Socket("taranis", 4444);
+            . . .
+while ((fromServer = is.readLine()) != null) {
+    System.out.println("Server: " + fromServer);
+    if (fromServer.equals("Bye."))
+        break;
+    while ((c = System.in.read()) != '\n') {
+        buf.append((char)c);
+    }
+    System.out.println("Client: " + buf);
+    os.println(buf.toString());
+    os.flush();
+    buf.setLength(0);
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5773"></a>3.2.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/networking/sockets/clientServer.html" target="_top">Supporting
+        Multiple Clients</a></h3></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Requests treated by one execution thread.</p></li><li><p>Individual communication treated by:</p><div class="itemizedlist"><ul type="circle"><li><p>Another process</p></li><li><p>Another thread.</p></li></ul></div></li></ul></div><div class="figure"><a name="d0e5791"></a><p class="title"><b>Figure&nbsp;11.6.&nbsp;Threads in Servers</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/Servers6.gif" width="584" height="336" alt="Threads in Servers"></div></div></div><br class="figure-break"><p><a class="ulink" href="../audio/Servers12.asf" target="_top"><img src="../xml/img/asf.gif">Audio in
+        Portuguese</a></p></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="distributed_programming_urls.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="distributed_programming.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="distrtibuted_programming_datagrams.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;URLs&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Datagrams</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

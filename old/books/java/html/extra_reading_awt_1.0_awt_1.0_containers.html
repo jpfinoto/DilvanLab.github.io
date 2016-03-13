@@ -1,0 +1,83 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;AWT 1.0 Containers</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Distributed Programming using Java"><link rel="up" href="extra_reading_awt_1.0.html" title="Chapter&nbsp;10.&nbsp;Extra Reading: AWT 1.0"><link rel="prev" href="extra_reading_awt_1.0_awt_1.0_menus.html" title="2.&nbsp;AWT 1.0 Menus"><link rel="next" href="extra_reading_awt_1.0_events.html" title="4.&nbsp;Events"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;AWT 1.0 Containers</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="extra_reading_awt_1.0_awt_1.0_menus.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Extra Reading: AWT 1.0</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="extra_reading_awt_1.0_events.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="extra_reading_awt_1.0_awt_1.0_containers"></a>3.&nbsp;AWT 1.0 Containers</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e6304"></a>3.1.&nbsp;<a href="/library/books/tutorial1.02/ui/components/frame.html" target="_top">Frames</a></h3></div></div></div><p>The Frame class provides windows for applets and applications. Every application needs at least one Frame.</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e6310"></a>3.1.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">public class MenuWindow extends Frame {
+       boolean inAnApplet = true;
+       TextArea output;
+
+       public MenuWindow() {
+              //Calls the Frame constructor and adds components to the window.
+       }
+
+       public boolean handleEvent(Event event) {
+              if (event.id == Event.WINDOW_DESTROY)
+                 if (inAnApplet)
+                     dispose();
+                 else
+                     System.exit(0);
+
+              return super.handleEvent(event);
+       }
+       . . .
+       public static void main(String args[]) {
+              MenuWindow window = new MenuWindow();
+              window.inAnApplet = false;
+              window.setTitle("MenuWindow Application");
+              window.pack();
+              window.show();
+       }
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e6315"></a>3.1.2.&nbsp;Other methods provided by Frame</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>String getTitle() and void setTitle(String)</p><p>Returns or sets (respectively) the title of the frame's window.</p></li><li><p>Image getIconImage() and void setIconImage(Image)</p><p>Returns or sets (respectively) the image displayed when the window is iconified.</p></li><li><p>MenuBar getMenuBar() and void setMenuBar(MenuBar)</p><p>Returns or sets (respectively) the menu bar for this Frame.</p></li><li><p>void remove(MenuComponent)</p><p>Removes the specified menu bar from this Frame.</p></li><li><p>int getCursorType() and void setCursor(int)</p><p>Gets the current cursor image or sets the cursor image.</p></li></ul></div><p><a href="../audio/Gui17.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e6348"></a>3.2.&nbsp;<a href="/library/books/tutorial1.02/ui/components/panel.html" target="_top">Panels</a></h3></div></div></div><p>The Panel class is a general-purpose Container subclass. You can use it as-is to hold Components, or you can define a subclass to perform special functionality, such as event handling for the objects the Panel contains.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td colspan="2" align="left" valign="top"><p>The Applet class is a Panel subclass with special hooks to run in a browser or other applet viewer.</p></td></tr></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e6357"></a>3.2.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">Panel p1 = new Panel();
+p1.add(new Button("Button 1"));
+p1.add(new Button("Button 2"));
+p1.add(new Button("Button 3"));</pre><p>A Panel subclass that draws a frame around its contents.</p><div class="figure"><a name="d0e6364"></a><p class="title"><b>Figure&nbsp;10.13.&nbsp;AWT 1.0 Panel Subclass</b></p><div class="mediaobject"><img src="resources/GUI16.gif" width="457" height="96" alt="AWT 1.0 Panel Subclass"></div></div><pre class="programlisting">class FramedArea extends Panel {
+    public FramedArea(CoordinatesDemo controller) {
+        ...//Set the layout manager.
+           //Add any Components this Panel contains...
+    }
+
+    //Ensure that no Component is placed on top of the frame.
+    //The inset values were determined by trail and error.
+    public Insets getInsets() {
+        return new Insets(4,4,5,5);
+    }
+
+    //Draw the frame at this Panel's edges.
+    public void paint(Graphics g) {
+        Dimension d = getSize();
+        Color bg = getBackground();
+ 
+        g.setColor(bg);
+        g.draw3DRect(0, 0, d.width - 1, d.height - 1, true);
+        g.draw3DRect(3, 3, d.width - 7, d.height - 7, false);
+    }
+}</pre><p><a href="../audio/Gui18.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e6376"></a>3.3.&nbsp;<a href="/library/books/tutorial1.02/ui/components/dialog.html" target="_top">Dialogs</a></h3></div></div></div><p>The AWT provides support for dialogs -- windows that are dependent on other windows -- with the Dialog class. It provides a useful subclass, FileDialog,that provides dialogs to help the user open and save files.</p><div class="figure"><a name="d0e6382"></a><p class="title"><b>Figure&nbsp;10.14.&nbsp;AWT 1.0 Dialog</b></p><div class="mediaobject"><img src="resources/GUI10.gif" width="473" height="121.00000000000001" alt="AWT 1.0 Dialog"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e6388"></a>3.3.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">class SimpleDialog extends Dialog {
+      TextField field;
+      DialogWindow parent;
+      Button setButton;
+
+      SimpleDialog(Frame dw, String title) {
+             super(dw, title, false);
+             parent = (DialogWindow)dw;
+           
+             ...//Create and add components, such as the set button.
+           
+             //Initialize this dialog to its preferred size.
+             pack();
+      }
+
+      public boolean action(Event event, Object arg) {
+             if ((event.target == setButton)
+                    | (event.target instanceof TextField))
+                 parent.setText(field.getText());
+             field.selectAll();
+             hide();
+             return true;
+       }
+}
+
+     
+//Here's the code that brings up the dialog: 
+
+if (dialog == null)
+    dialog = new SimpleDialog(this, "A Simple Dialog");
+
+dialog.show();</pre><p><a href="audio/Gui19.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="extra_reading_awt_1.0_awt_1.0_menus.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="extra_reading_awt_1.0.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="extra_reading_awt_1.0_events.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;AWT 1.0 Menus&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Events</td></tr></table></div></body></html>

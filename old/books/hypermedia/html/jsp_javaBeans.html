@@ -1,0 +1,51 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>5.&nbsp;JavaBeans Components</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Hypermedia"><link rel="up" href="jsp.html" title="Chapter&nbsp;5.&nbsp;Java Server Pages"><link rel="prev" href="jsp_functions.html" title="4.&nbsp;Functions"><link rel="next" href="jsp_custom_tags.html" title="6.&nbsp;Using Custom Tags"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.&nbsp;JavaBeans Components</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="jsp_functions.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;5.&nbsp;Java Server Pages</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="jsp_custom_tags.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="jsp_javaBeans"></a>5.&nbsp;JavaBeans Components</h2></div></div></div><p>JavaBeans components are Java classes that can be easily reused and composed together into applications.</p><p>Any Java class that follows certain design conventions is a JavaBeans component:</p><pre class="programlisting">package database
+
+public class BookDB {
+   private String bookId = "0";
+   private BookDBAO database = null;
+
+   public BookDB () {} //<span class="bold"><strong>-&gt; Empty Constructor</strong></span>
+
+   public void <span class="bold"><strong>set</strong></span>BookId(String bookId) {
+      this.bookId = bookId;
+   }
+   public void <span class="bold"><strong>set</strong></span>Database(BookDBAO database) {
+      this.database = database;
+   }
+   public BookDetails <span class="bold"><strong>get</strong></span>BookDetails() throws 
+      BookNotFoundException {
+      return (BookDetails)database.getBookDetails(bookId); 
+   }
+   public List <span class="bold"><strong>get</strong></span>Books() throws BooksNotFoundException {
+     return database.getBooks();
+   }
+   public void buyBooks(ShoppingCart cart) 
+     throws OrderException {
+     database.buyBooks(cart);
+   }
+   public int <span class="bold"><strong>get</strong></span>NumberOfBooks() throws BooksNotFoundException {
+      return database.getNumberOfBooks();
+   }
+}</pre><p></p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1513"></a>5.1.&nbsp;Creating and Using a JavaBeans Component</h3></div></div></div><p>To declare that your JSP page will use a JavaBeans component, you use a jsp:useBean element. There are two forms:</p><pre class="programlisting">&lt;jsp:useBean id="beanName"
+  class="<span class="emphasis"><em>fully_qualified_classname</em></span>" scope="<span class="emphasis"><em>scope</em></span>"/&gt;</pre><p>or</p><pre class="programlisting">&lt;jsp:useBean id="beanName"
+  class="<span class="emphasis"><em>fully_qualified_classname</em></span>" scope="<span class="emphasis"><em>scope</em></span>"&gt;
+  &lt;jsp:setProperty .../&gt;
+&lt;/jsp:useBean&gt;</pre><p>The second form is used when you want to include <span><strong class="command">jsp:setProperty</strong></span> statements, described in the next section, for initializing bean properties.</p><p><span class="bold"><strong>Setting JavaBeans Component Properties</strong></span></p><p>The standard way to set JavaBeans component properties in a JSP page is by using the <span><strong class="command">jsp:setProperty</strong></span> element:</p><div class="table"><a name="d0e1549"></a><p class="title"><b>Table&nbsp;5.2.&nbsp;Valid Bean Property Assignments from String Values</b></p><table summary="Valid Bean Property Assignments from String Values" border="1"><colgroup><col width="50%"><col width="50%"></colgroup><tbody><tr><td><span class="bold"><strong>Value Source</strong></span></td><td><span class="bold"><strong>Element Syntax</strong></span></td></tr><tr><td>String constant</td><td><pre class="programlisting">&lt;jsp:setProperty name="<span class="emphasis"><em>beanName</em></span>" 
+  property="<span class="emphasis"><em>propName</em></span>" value="<span class="emphasis"><em>string constant</em></span>"/&gt;</pre></td></tr><tr><td>Request parameter</td><td><pre class="programlisting">&lt;jsp:setProperty name="<span class="emphasis"><em>beanName</em></span>" 
+  property="<span class="emphasis"><em>propName</em></span>" param="<span class="emphasis"><em>paramName</em></span>"/&gt;</pre></td></tr><tr><td>Request parameter name that matches bean property</td><td><pre class="programlisting">&lt;jsp:setProperty name="<span class="emphasis"><em>beanName</em></span>" 
+  property="<span class="emphasis"><em>propName</em></span>"/&gt; 
+  
+&lt;jsp:setProperty name="<span class="">beanName</span>" 
+  property="<span class="emphasis"><em>*</em></span>"/&gt;</pre></td></tr><tr><td>Expression</td><td><pre class="programlisting">&lt;jsp:setProperty name="<span class="emphasis"><em>beanName</em></span>" 
+  property="<span class="emphasis"><em>propName</em></span>" value="<span class="emphasis"><em>expression</em></span>"/&gt; 
+  
+&lt;jsp:setProperty name="<span class="emphasis"><em>beanName</em></span>" 
+  property="<span class="emphasis"><em>propName</em></span>" &gt; 
+  &lt;jsp:attribute name="<span class="emphasis"><em>value</em></span>"&gt;
+    <span class="emphasis"><em>expression</em></span>
+  &lt;/jsp:attribute&gt; 
+&lt;/jsp:setProperty&gt; </pre></td></tr><tr><td>&nbsp;</td><td><div class="orderedlist"><ol type="1"><li><p><span class="emphasis"><em>beanName</em></span> must be the same as that specified for the id attribute in a <span><strong class="command">useBean</strong></span> element.</p></li><li><p>There must be a <span class="emphasis"><em>setPropName</em></span> method in the JavaBeans component.</p></li><li><p><span class="emphasis"><em>paramName</em></span> must be a request parameter name.</p></li></ol></div></td></tr></tbody></table></div><p>Setting a property in a bean:</p><pre class="programlisting">&lt;c:set var="bid" value="${param.bookId}"/&gt;
+&lt;jsp:setProperty name="bookDB" property="bookId"
+  value="${bid}" /&gt;</pre><p><span class="bold"><strong>Getting JavaBeans Component Properties</strong></span></p><p>The main way to retrieve JavaBeans component properties is by using the JSP expression language. Thus, to retrieve a book title:</p><pre class="programlisting">${bookDB.bookDetails.title}</pre><p>Another way to retrieve component properties is to use the jsp:getProperty element. This element converts the value of the property into a String and inserts the value into the response stream:</p><pre class="programlisting">&lt;jsp:getProperty name="<span class="emphasis"><em>beanName</em></span>" property="<span class="emphasis"><em>propName</em></span>"/&gt;</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="jsp_functions.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="jsp.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="jsp_custom_tags.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">4.&nbsp;Functions&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;6.&nbsp;Using Custom Tags</td></tr></table></div></body></html>

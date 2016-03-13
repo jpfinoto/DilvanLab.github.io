@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 25: Layout Managers</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Layout
+Managers</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/layout/grid.html">GridLayout</A></H2>
+
+<CENTER><P><IMG SRC="gifs/GUI24.gif" BORDER=2 HEIGHT=125 WIDTH=312></P></CENTER>
+
+<CENTER><P><IMG SRC="gifs/GUI25.gif" BORDER=2 HEIGHT=196 WIDTH=381></P></CENTER>
+
+<BLOCKQUOTE>
+<H3><BR>
+<BR>
+Behavior:</H3>
+
+<BLOCKQUOTE>
+<P>GridLayout places components in a grid of cells. Each component takes
+all the available space within its cell, and each cell is exactly the same
+size. If the GridLayout window is risized, the GridLayout changes the cell
+size so that the cells are as large as possible. </P>
+</BLOCKQUOTE>
+
+<H3><BR>
+Code Example:</H3>
+</BLOCKQUOTE>
+
+<PRE>          //Construct a GridLayout with 2 columns and an unspecified number of rows.
+          setLayout(new GridLayout(0,2));
+          setFont(new Font(&quot;Helvetica&quot;, Font.PLAIN, 14));
+             
+          add(new Button(&quot;Button 1&quot;));
+          add(new Button(&quot;2&quot;));
+          add(new Button(&quot;Button 3&quot;));
+          add(new Button(&quot;Long-Named Button 4&quot;));
+          add(new Button(&quot;Button 5&quot;));</PRE>
+
+<BLOCKQUOTE>
+<H3><BR>
+GridLayout constructors:</H3>
+</BLOCKQUOTE>
+
+<PRE>          public GridLayout(int rows, int columns)
+          public GridLayout(int rows, int columns,
+                            int horizontalGap, int verticalGap)</PRE>
+</BLOCKQUOTE>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld26.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld26.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

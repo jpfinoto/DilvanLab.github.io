@@ -1,0 +1,81 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;AWT Containers</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Distributed Programming using Java"><link rel="up" href="graphic_user_interface.html" title="Chapter&nbsp;7.&nbsp;Graphic User Interface"><link rel="prev" href="graphic_user_interface_awt_1.1_menus.html" title="3.&nbsp;AWT 1.1 Menus"><link rel="next" href="graphic_user_interface_events.html" title="5.&nbsp;Events"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;AWT Containers</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="graphic_user_interface_awt_1.1_menus.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;7.&nbsp;Graphic User Interface</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="graphic_user_interface_events.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="graphic_user_interface_awt_1.1_containers"></a>4.&nbsp;AWT Containers</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3799"></a>4.1.&nbsp;Frames</h3></div></div></div><p>The Frame class provides windows for applets and applications. Every application needs at least one Frame.</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3804"></a>4.1.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">public class MenuWindow extends Frame {
+       boolean inAnApplet = true;
+       TextArea output;
+
+       public MenuWindow() {
+              //Calls the Frame constructor and adds components to the window
+              addWindowListener(new WindowAdapter() {
+                   public void windowClosing(WindowEvent e) {
+                      if (inAnApplet) {
+                          dispose();
+                      } else {
+                          System.exit(0);
+                      }
+                   }
+              }
+
+         . . .
+
+         public static void main(String args[]) {
+                MenuWindow window = new MenuWindow();
+                window.inAnApplet = false;
+                window.setTitle("MenuWindow Application");
+                window.setSize(450, 200);
+                window.setVisible(true);
+         }
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3809"></a>4.1.2.&nbsp;Other methods provided by Frame</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>String getTitle() and void setTitle(String)</p><p>Returns or sets (respectively) the title of the frame's window.</p></li><li><p>Image getIconImage() and void setIconImage(Image)</p><p>Returns or sets (respectively) the image displayed when the window is iconified.</p></li><li><p>MenuBar getMenuBar() and void setMenuBar(MenuBar)</p><p>Returns or sets (respectively) the menu bar for this Frame.</p></li><li><p>void remove(MenuComponent)</p><p>Removes the specified menu bar from this Frame.</p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3833"></a>4.2.&nbsp;<a href="/library/books/tutorial1.02/ui/components/panel.html" target="_top">Panels</a></h3></div></div></div><p>The Panel class is a general-purpose Container subclass. You can use it as-is to hold Components, or you can define a subclass to perform special functionality, such as event handling for the objects the Panel contains.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td colspan="2" align="left" valign="top"><p>The Applet class is a Panel subclass with special hooks to run in a browser or other applet viewer.</p></td></tr></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3842"></a>4.2.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">Panel p1 = new Panel();
+p1.add(new Button("Button 1"));
+p1.add(new Button("Button 2"));
+p1.add(new Button("Button 3"));</pre><p>A Panel subclass that draws a frame around its contents.</p><div class="figure"><a name="d0e3849"></a><p class="title"><b>Figure&nbsp;7.16.&nbsp;Panel Subclass</b></p><div class="mediaobject"><img src="resources/GUI16.gif" width="457" height="96" alt="Panel Subclass"></div></div><pre class="programlisting">class FramedArea extends Panel {
+    public FramedArea(CoordinatesDemo controller) {
+        ...//Set the layout manager.
+           //Add any Components this Panel contains...
+    }
+
+    //Ensure that no Component is placed on top of the frame.
+    //The inset values were determined by trail and error.
+    public Insets getInsets() {
+        return new Insets(4,4,5,5);
+    }
+
+    //Draw the frame at this Panel's edges.
+    public void paint(Graphics g) {
+        Dimension d = getSize();
+        Color bg = getBackground();
+ 
+        g.setColor(bg);
+        g.draw3DRect(0, 0, d.width - 1, d.height - 1, true);
+        g.draw3DRect(3, 3, d.width - 7, d.height - 7, false);
+    }
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3857"></a>4.3.&nbsp;<a href="/library/books/tutorial1.02/ui/components/dialog.html" target="_top">Dialogs</a></h3></div></div></div><p>The AWT provides support for dialogs -- windows that are dependent on other windows -- with the Dialog class. It provides a useful subclass, FileDialog,that provides dialogs to help the user open and save files.</p><div class="figure"><a name="d0e3863"></a><p class="title"><b>Figure&nbsp;7.17.&nbsp;Dialog</b></p><div class="mediaobject"><img src="resources/GUI10.gif" width="473" height="121.00000000000001" alt="Dialog"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3869"></a>4.3.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">class SimpleDialog extends Dialog implements ActionListener {
+      TextField field;
+      DialogWindow parent;
+      Button setButton;
+
+      SimpleDialog(Frame dw, String title) {
+            super(dw, title, false);
+            parent = (DialogWindow)dw;
+           
+            ...//Create and add components, such as the set button.
+           
+            //Initialize this dialog to its preferred size.
+            pack();
+      }
+
+      public void actionPerformed(ActionEvent event) {
+             Object source= event.getSource();
+             if ((source == setButton) | (source == field))
+                      parent.setText(field.getText());
+             field.selectAll();
+             setVisible(false);
+      }
+}
+     
+//Here's the code that brings up the dialog: 
+
+if (dialog == null)
+   dialog = new SimpleDialog(this, "A Simple Dialog");
+
+dialog.setVisible(true);</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="graphic_user_interface_awt_1.1_menus.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="graphic_user_interface.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="graphic_user_interface_events.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;AWT 1.1 Menus&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Events</td></tr></table></div></body></html>

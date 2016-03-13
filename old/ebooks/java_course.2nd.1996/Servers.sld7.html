@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 7: URLs</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">URLs</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/urls/connecting.html">Connecting
+to a URL</A></H2>
+
+<BLOCKQUOTE>
+<P><BR>
+<B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B> URLConnection
+is an HTTP-centric class--many of its methods are useful only when working
+with HTTP URLs.</P>
+
+<PRE>try {
+  &nbsp;&nbsp;&nbsp;URL yahoo = new URL(&quot;http://www.yahoo.com/&quot;);
+  &nbsp;&nbsp;&nbsp;yahoo.openConnection();
+  } catch (MalformedURLException e) { // new URL() failed
+  &nbsp;&nbsp;&nbsp;. . .
+  } catch (IOException e) { // openConnection() failed
+  &nbsp;&nbsp;&nbsp;. . .
+  }</PRE>
+</BLOCKQUOTE>
+
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/urls/readingWriting.html">Reading
+from and Writing to a URLConnection</A></H2>
+
+<BLOCKQUOTE>
+<H3><BR>
+Reading from a URLConnection</H3>
+
+<BLOCKQUOTE>
+<PRE>
+import java.net.*;
+import java.io.*;
+
+class ConnectionTest {
+    public static void main(String[] args) {
+        try {
+            URL yahoo = new URL(&quot;http://www.yahoo.com/&quot;);
+            URLConnection yahooConnection = yahoo.openConnection();
+            DataInputStream dis = new DataInputStream(yahooConnection.getInputStream());
+            String inputLine;
+
+            while ((inputLine = dis.readLine()) != null) {
+                System.out.println(inputLine);
+            }
+            dis.close();
+        } catch (MalformedURLException me) {
+            System.out.println(&quot;MalformedURLException: &quot; + me);
+        } catch (IOException ioe) {
+            System.out.println(&quot;IOException: &quot; + ioe);
+        }
+    }
+}</PRE>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<P><BR>
+<BR>
+<BR>
+</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld8.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld8.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 18: AWT Containers</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Containers</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">AWT
+Containers</FONT></H2>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/components/frame.html">Frames</A></H2>
+
+<BLOCKQUOTE>
+<P>The Frame class provides windows for applets and applications. Every
+application needs at least one Frame</P>
+
+<H3>Code Example:</H3>
+</BLOCKQUOTE>
+
+<PRE>          public class MenuWindow extends Frame {
+              boolean inAnApplet = true;
+              TextArea output;
+
+              public MenuWindow() {
+                //Calls the Frame constructor and adds components to the window.
+              }
+
+              public boolean handleEvent(Event event) {
+                  if (event.id == Event.WINDOW_DESTROY) {
+                      if (inAnApplet) {
+                          dispose();
+                      } else {
+                          System.exit(0);
+                      }
+                  } 
+                  return super.handleEvent(event);
+              }
+         . . .
+              public static void main(String args[]) {
+                  MenuWindow window = new MenuWindow();
+                  window.inAnApplet = false;
+                  window.setTitle(&quot;MenuWindow Application&quot;);
+                  window.pack();
+                  window.show();
+              }
+          }</PRE>
+
+<DL>
+<DL>
+<H3>Other methods provided by Frame: </H3>
+
+<DL>
+<DT><TT>String getTitle()</TT> and <TT>void setTitle(String)</TT> </DT>
+
+<DD>Returns or sets (respectively) the title of the frame's window. </DD>
+
+<DT><TT>Image getIconImage()</TT> and <TT>void setIconImage(Image)</TT>
+</DT>
+
+<DD>Returns or sets (respectively) the image displayed when the window
+is iconified. </DD>
+
+<DT><TT>MenuBar getMenuBar()</TT> and <TT>void setMenuBar(MenuBar)</TT>
+</DT>
+
+<DD>Returns or sets (respectively) the menu bar for this Frame. </DD>
+
+<DT><TT>void remove(MenuComponent)</TT> </DT>
+
+<DD>Removes the specified menu bar from this Frame. </DD>
+
+<DT><TT>int getCursorType()</TT> and <TT>void setCursor(int)</TT> </DT>
+
+<DD>Gets the current cursor image or sets the cursor image. </DD>
+</DL>
+</DL>
+</DL>
+</BLOCKQUOTE>
+
+<PRE>
+<HR></PRE>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld19.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld19.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

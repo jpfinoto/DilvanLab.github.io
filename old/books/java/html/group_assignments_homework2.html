@@ -1,0 +1,31 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Homework 2</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Distributed Programming using Java"><link rel="up" href="group_assignments.html" title="Chapter&nbsp;13.&nbsp;Group Assignments"><link rel="prev" href="group_assignments_homework1.html" title="1.&nbsp;Homework 1"><link rel="next" href="group_assignments_homework3.html" title="3.&nbsp;Homework 3"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Homework 2</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="group_assignments_homework1.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;13.&nbsp;Group Assignments</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="group_assignments_homework3.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="group_assignments_homework2"></a>2.&nbsp;Homework 2</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e7521"></a>2.1.&nbsp;FTP Server</h3></div></div></div><p>This program should implement a FTP server and a client. Including at least the commands:</p><div class="itemizedlist"><ul type="disc"><li><p>ls - List the current directory in the server.</p></li><li><p>cd - Go to a directory in the server.</p></li><li><p>lls - List the current directory in the client.</p></li><li><p>lcd - Go to a directory in the client.</p></li><li><p>put - Put a file in the server current directory.</p></li><li><p>mput - Put all files that match a wildcard in the server current directory.</p></li><li><p>get - Get a file from the server current directory.</p></li><li><p>mget - Get all files that match a wildcard from the server current directory.</p></li></ul></div><p>It just have to work with anonymous ftp and with only bin mode.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e7553"></a>2.2.&nbsp;SQL Server</h3></div></div></div><p>This program should implement a SQL interpreter that is able to get SQL commands from a Telnet connection and send back its results also through the same Telnet connection. The server must be able to handle more than one client at the same time. All clients will share the same database.</p><p>The server has to implement, at least, the following SQL commands:</p><pre class="programlisting">CREATE TABLE table_name (
+      col_name &lt;type&gt;,
+       . . .)
+
+DROP TABLE table_name
+
+INSERT INTO table_name (col_name1, col_name2, ...)
+   VALUES (value1, value2, ...)
+
+DELETE FROM table_name WHERE col_name &lt;operator&gt; value
+   [ AND|OR col_name &lt;operator&gt; value ]
+
+SELECT FROM table_name WHERE col_name &lt;operator&gt; value
+   [ AND|OR col_name &lt;operator&gt; value ]
+
+&lt;type&gt; can be: string, int and real.
+&lt;operator&gt; can be: =, &gt;, &lt;, &gt;=, &lt;=</pre><p>For more information about SQL syntax see a book about SQL.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e7564"></a>2.3.&nbsp;Chat Server</h3></div></div></div><p>The program should implement a chat server that is able to attend multiple clients at the same time. It can be implemented by either using a dedicated client or using the Telnet program. It should be able to have at least 10 rooms for conversation. The clients should be able to create new rooms.</p><pre class="programlisting">Commands:
+   list              List the names of all rooms.
+   nickname &lt;name&gt;   Gives a name for the user.
+   join &lt;room name&gt;  Joins a room.
+   \                 Leaves a room (only command
+                     possible inside a room).</pre><p>Events that should be broadcasted for all room members:</p><pre class="programlisting">     New user enters room.
+     Whatever a user types.
+     User leaves room.</pre><p>Examples:</p><pre class="programlisting">   User hotair enters room pingpong.
+   User niceperson: Welcome hotair !
+   User hotair: Hi.
+   ...
+   User hotair: I don't like you, niceperson.
+   User hotair leaves room pingpong.</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="group_assignments_homework1.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="group_assignments.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="group_assignments_homework3.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Homework 1&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Homework 3</td></tr></table></div></body></html>

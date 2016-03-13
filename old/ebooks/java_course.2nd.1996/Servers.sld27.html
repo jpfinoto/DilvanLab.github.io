@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 27: Distributed Objects</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Distributed Objects</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="http://ruby.omg.org/corba.htm">CORBA</A></H2>
+
+<UL>
+<H3><FONT COLOR="#0000FF">Definition:</FONT></H3>
+
+<P>The <A HREF="http://www.omg.org/corba2/cover.htm">Common Object Request
+Broker Architecture</A> (CORBA) is a standard ORB architecture defined
+by the <A HREF="http://www.omg.org/">Object Management Group</A> (An international
+consortium to develop ORB technology).</P>
+</UL>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="http://www.omg.org/corba2/arch2.htm">ORG
+Interfaces</A></H2>
+
+<UL>
+<H3><FONT COLOR="#0000FF">Structure of ORB Interfaces:</FONT></H3>
+
+<UL>
+<CENTER><P><BR>
+<IMG SRC="gifs/Servers10.gif" HEIGHT=317 WIDTH=467><BR>
+</P></CENTER>
+</UL>
+
+<H3>The client side:</H3>
+
+<UL>
+<P><B>OMG IDL stub<BR>
+</B>Stubs generated from an IDL specification depending on the interface
+of the target object. They make calls on the rest of the ORB .</P>
+
+<P><B>Dynamic Invocation interface<BR>
+</B>Interface independent of the target object's interface. It allows the
+dynamic construction of object invocations.</P>
+
+<P><B>ORB Interface<BR>
+</B>The interface that goes directly to the ORB which is the same for all
+ORBs and does not depend on the object's interface or object adapter. </P>
+</UL>
+
+<UL></UL>
+</UL>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld28.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld28.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

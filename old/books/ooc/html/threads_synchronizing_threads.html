@@ -1,0 +1,111 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Synchronizing Threads</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="threads.html" title="Chapter&nbsp;7.&nbsp;Threads"><link rel="prev" href="threads_thread_group.html" title="3.&nbsp;Thread Group"><link rel="next" href="uml.html" title="Chapter&nbsp;8.&nbsp;UML"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Synchronizing
+      Threads</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="threads_thread_group.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;7.&nbsp;Threads</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="uml.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="threads.html">Threads</a></span> &gt; <span class="breadcrumb-node">Synchronizing
+      Threads</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="threads_synchronizing_threads"></a>4.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/essential/threads/multithreaded.html" target="_top">Synchronizing
+      Threads</a></h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2896"></a>4.1.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/essential/threads/synchronization.html" target="_top">Producer/Consumer
+        Scenario</a></h3></div></div></div><pre class="programlisting">class Producer extends Thread {
+    public void run() {
+        for (int i = 0; i &lt; 10; i++) {
+            cubbyhole.put(i);
+            System.out.println("Producer #" + this.number + " put: " + i);
+            try {
+                sleep((int)(Math.random() * 100));
+            } catch (InterruptedException e){}
+        }
+    }
+}</pre><p>The <a class="ulink" href="http://java.sun.com/docs/books/tutorial/essential/threads/synchronization.html" target="_top">Consumer</a>
+        consumes all integers from the CubbyHole as quickly as they become
+        available.</p><pre class="programlisting">class Consumer extends Thread {
+    public void run() {
+        int value = 0;
+        for (int i = 0; i &lt; 10; i++) {
+            value = cubbyhole.get();
+            System.out.println("Consumer #" + this.number + " got: " + value);
+        }
+    }
+}</pre><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2909"></a>4.1.1.&nbsp;Two outcomes</h4></div></div></div><p>Producer is quicker than the Consumer:</p><pre class="programlisting">. . .
+Consumer #1 got: 3
+Producer #1 put: 4
+Producer #1 put: 5
+Consumer #1 got: 5
+. . .</pre><p>Consumer is quicker than the Producer:</p><pre class="programlisting">. . .
+Producer #1 put: 4
+Consumer #1 got: 4
+Consumer #1 got: 4
+Producer #1 put: 5
+. . .</pre><p><a class="ulink" href="../audio/Threads7.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2924"></a>4.2.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/essential/threads/monitors.html" target="_top">Monitors</a></h3></div></div></div><p>Definition: A monitor is associated with a specific data item
+        and functions as a lock on that data.</p><div class="itemizedlist"><ul type="disc"><li><p>When a thread holds the monitor for some data item, other
+            threads are locked out and cannot inspect or modify the
+            data.</p></li><li><p>A unique monitor is associated with every object that has a
+            synchronized method.</p></li></ul></div><pre class="programlisting">class CubbyHole {
+    private int contents;
+    private boolean available = false;
+
+    public synchronized int get() {
+        while (available == false) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+            }
+        }
+        available = false;
+        notify();
+        return contents;
+    }
+
+    public synchronized void put(int value) {
+        while (available == true) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+            }
+        }
+        contents = value;
+        available = true;
+        notify();
+    }
+}</pre><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2939"></a>4.2.1.&nbsp;Control</h4></div></div></div><p>Lock: The thread that called a synchronized method acquires
+          the monitor for the object whose method has been called.</p><p>Object state: No other threads can call a synchronized method
+          on the same object.</p><p>Unlock: When the synchronized method returns, the thread
+          releases the monitor thereby unlocking the object.</p><p><a class="ulink" href="../audio/Threads8.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2952"></a>4.3.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/essential/threads/waitAndNotify.html" target="_top">The
+        wait() and notify() Methods</a></h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2956"></a>4.3.1.&nbsp;The wait() method</h4></div></div></div><p>The wait() method causes the current thread to:</p><div class="orderedlist"><ol type="1"><li><p>Wait until another thread notifies it of a condition
+              change.</p></li><li><p>Release the monitor for the object.</p></li></ol></div><pre class="programlisting">public synchronized int get() {
+    while (available == false) {
+        try {
+            wait();          // waits for notify() call from Producer
+        } catch (InterruptedException e) {
+        }
+    }
+    available = false;
+    notify();
+    return contents;
+}</pre><p>Other versions:</p><pre class="programlisting">wait(long timeout) 
+wait(long timeout, int nanos) </pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2974"></a>4.3.2.&nbsp;The notify() method</h4></div></div></div><p>The notify() method chooses one thread that is waiting on the
+          monitor held by the current thread and wakes it up.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>The Java runtime system makes no commitments or guarantees
+            about which thread will be chosen.</p></td></tr></table></div><pre class="programlisting">public synchronized int get() {
+    while (available == false) {
+        try {
+            wait();
+        } catch (InterruptedException e) {
+        }
+    }
+    available = false;
+    notify();           // notifies Producer
+    return contents;
+}</pre><p>notifyAll():</p><div class="orderedlist"><ol type="1"><li><p>It wakes up all the threads waiting on the same
+              monitor.</p></li><li><p>The awakened threads compete for the monitor.</p></li><li><p>One thread gets the monitor and the others go back to
+              waiting.</p></li></ol></div><p><a class="ulink" href="../audio/Threads9.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="threads_thread_group.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="threads.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="uml.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Thread
+      Group&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;8.&nbsp;UML</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

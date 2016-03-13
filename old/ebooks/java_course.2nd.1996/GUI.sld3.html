@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 3: Overview</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Overview</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/overview/compHierarchy.html">The
+Component Hierarchy:</A><BR>
+</H2>
+
+<PRE><A HREF="overview/index.html">                  </A>             a Frame
+                                  |
+                                 ...
+                                  |
+                             a Converter
+                                  |
+                ----------------------------------
+                |                                |
+      a ConversionPanel (metricPanel)  a ConversionPanel (usaPanel)   
+                |                                |
+        -------------------              -------------------
+        |       |         |              |       |         |
+     a Label    |      a Choice       a Label    |      a Choice
+                |                                |
+          --------------                  --------------
+          |            |                  |            |
+     a TextField  a Scrollbar        a TextField  a Scrollbar</PRE>
+
+<H2><BR>
+<IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/overview/drawing.html">Drawing
+</A></H2>
+
+<OL>
+<H3>When the Converter application draws itself, here's what happens: </H3>
+
+<OL>
+<LI>The Frame draws itself. </LI>
+
+<LI>The Converter object draws itself, drawing a box around its area. </LI>
+
+<LI>One of the two ConversionPanels draws itself, drawing a box around
+its area. </LI>
+
+<LI>The contents of the ConversionPanel -- the Label, TextField, Scrollbar,
+and Choice -- draw themselves. </LI>
+</OL>
+
+<H3><BR>
+How Drawing Requests are handled:</H3>
+</OL>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>AWT ----&gt; Component's update() ----&gt; Component's paint()</PRE>
+</BLOCKQUOTE>
+
+<H3><BR>
+Paint method:</H3>
+</BLOCKQUOTE>
+
+<PRE>               public void paint(Graphics g) {
+                   Dimension d = size();
+                   g.drawRect(0,0, d.width - 1, d.height - 1);
+               }</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld4.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld4.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

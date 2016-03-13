@@ -1,0 +1,64 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Subclasses and Inheritance</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="oop_in_java.html" title="Chapter&nbsp;4.&nbsp;OOP in Java"><link rel="prev" href="oop_in_java_classes.html" title="2.&nbsp;Classes"><link rel="next" href="oop_in_java_interfaces.html" title="4.&nbsp;Interfaces"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Subclasses
+      and Inheritance</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="oop_in_java_classes.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;OOP in Java</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="oop_in_java_interfaces.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="oop_in_java.html">OOP in Java</a></span> &gt; <span class="breadcrumb-node">Subclasses
+      and Inheritance</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="oop_in_java_subclasses_and_inheritance"></a>3.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/java/concepts/inheritance.html" target="_top">Subclasses
+      and Inheritance</a></h2></div></div></div><p>The derived class is called a subclass. The class from which its
+      derived is called the superclass.</p><div class="figure"><a name="d0e1592"></a><p class="title"><b>Figure&nbsp;4.1.&nbsp;Subclass</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/OOPjava1.gif" width="314" height="138" alt="Subclass"></div></div></div><br class="figure-break"><p>In Java all classes must be derived from some class. The top-most
+      class, the class from which all other classes are derived, is the Object
+      class defined in java.lang:</p><div class="figure"><a name="d0e1600"></a><p class="title"><b>Figure&nbsp;4.2.&nbsp;Inheritance</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/OOPjava2.gif" width="612" height="314" alt="Inheritance"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1606"></a>3.1.&nbsp;Definition</h3></div></div></div><p>A subclass is a class that derives from another class. It
+        subclass inherits state and behavior in the form of variables and
+        methods from all of its ancestors. It can just use the items inherited
+        from its superclass as is, or the subclass can modify or override it.
+        So, as you drop down in the hierarchy, the classes become more and
+        more specialized.</p><p><a class="ulink" href="../audio/OOPJava6.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+        Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1615"></a>3.2.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/java/javaOO/subclass.html" target="_top">Creating
+        Subclasses</a></h3></div></div></div><p>To declare a subclass you would write:</p><pre class="programlisting">class SubClass extends SuperClass { . . . }</pre><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Caution"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Caution]" src="../../images/caution.png"></td><th align="left">Caution</th></tr><tr><td align="left" valign="top"><div class="informalfigure"><div class="mediaobject"><img src="../xml/img/noc++.gif"></div></div><p>A Java class can have only one direct superclass. Java does
+          not support multiple inheritance.</p></td></tr></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1630"></a>3.2.1.&nbsp;Seen Hidden Member Variables</h4></div></div></div><p>Member variables defined in the subclass hide member variables
+          of the same name in the superclass. Consider this superclass and
+          subclass pair:</p><pre class="programlisting">class Super {
+    Number aNumber;
+}
+class Sub extends Super {
+    Float aNumber;
+}
+super.aNumber</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1637"></a>3.3.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/java/javaOO/override.html" target="_top">Overriding
+        Methods</a></h3></div></div></div><p>A subclass can either completely override the implementation for
+        an inherited method or the subclass can enhance the method by adding
+        functionality to it.</p><div class="itemizedlist"><ul type="disc"><li><p>Replacing a Superclass's Method Implementation</p></li><li><p>Adding to a Superclass's Method Implementation</p></li><li><p>Methods a Subclass Cannot Override</p><pre class="programlisting">class ChessAlgorithm {
+   . . .
+   final void nextMove(ChessPiece piece) {...}
+   static void mate(ChessPiece piece) {...}
+   . . .
+}</pre></li><li><p>Methods a Subclass Must Override</p><pre class="programlisting">abstract class GraphicObject {
+   . . .
+   abstract void draw();
+   . . .
+}</pre></li></ul></div><p><a class="ulink" href="../audio/OOPJava7.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+        Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1664"></a>3.4.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/java/javaOO/final.html" target="_top">Writing
+        Final Classes and Methods</a></h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1668"></a>3.4.1.&nbsp;Final Classes</h4></div></div></div><p>You can declare that your class is final; that is, that your
+          class cannot be subclassed. There are (at least) two reasons why you
+          might want to do this: security reasons and design reasons.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1673"></a>3.4.2.&nbsp;Final Methods</h4></div></div></div><p>You can use the final keyword in a method declaration to
+          indicate to the compiler that the method cannot be overridden by
+          subclasses.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1678"></a>3.5.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/java/javaOO/abstract.html" target="_top">Writing
+        Abstract Classes and Methods</a></h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1682"></a>3.5.1.&nbsp;Abstract Classes</h4></div></div></div><p>Classes, which implement abstract concepts and should not be
+          instantiated, are called abstract classes. An abstract class is a
+          class that can only be subclassed - it cannot be
+          instantiated.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1687"></a>3.5.2.&nbsp;Abstract Methods</h4></div></div></div><p>An abstract class may contain abstract methods, that is,
+          methods with no implementation. In this way, an abstract class can
+          define a complete programming interface thereby providing its
+          subclasses with the method declarations for all of the methods
+          necessary to implement that programming interface.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e1692"></a>3.5.3.&nbsp;Architectural advantage</h4></div></div></div><p>Abstract classes provide a way to represent objects at a
+          conceptual generic level.</p><p>In a graphic library, you can create an abstract class to
+          represent a generic graphic object and a method for drawing it. This
+          method is them only implemented on the derived classes.</p><div class="figure"><a name="d0e1699"></a><p class="title"><b>Figure&nbsp;4.3.&nbsp;Graphic Classes</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/OOPjava3.gif" width="327.99999999999994" height="160" alt="Graphic Classes"></div></div></div><br class="figure-break"><p><a class="ulink" href="../audio/OOPJava8.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="oop_in_java_classes.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="oop_in_java.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="oop_in_java_interfaces.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Classes&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Interfaces</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

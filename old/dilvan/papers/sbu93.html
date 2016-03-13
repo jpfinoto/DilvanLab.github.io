@@ -1,0 +1,202 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.02 [en] (WinNT; I) [Netscape]">
+   <TITLE>SBMICRO - 93</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<CENTER>
+<H2>
+<FONT FACE="Arial,Helvetica">A PORTABLE USER-FRIENDLY SIMULATOR FOR A SUB-SET
+OF SCN CIRCUITS</FONT></H2></CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica">Dilvan de Abreu Moreira</FONT></CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica">University of Kent at Canterbury,
+Kent, England</FONT></CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica"></FONT>&nbsp;</CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica"></FONT></CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica">Ricardo Maltione</FONT></CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica">Carlos A. dos Reis Filho</FONT></CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica">Departamento de Eletr&ocirc;nica e
+Microeletr&ocirc;nica</FONT></CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica">Faculdade de Engenharia El&eacute;trica
+- UNICAMP</FONT></CENTER>
+
+<CENTER><FONT FACE="Arial,Helvetica">Campinas, SP - Brasil</FONT></CENTER>
+<FONT FACE="Arial,Helvetica"></FONT>&nbsp;
+<CENTER>
+<H2>
+<FONT FACE="Arial,Helvetica">ABSTRACT</FONT></H2></CENTER>
+<FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">Quantico [1] is a simulator for electrical
+circuits applied to the analog signal processing using a sampling technique
+of signals discrete in time and amplitude. It is a very portable program
+currently running in MS-DOS and Unix architectures.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">It is divided in three modules for improved
+portability:</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica"><B>Reader module</B> (Gera) reads the input
+file written in the Spice Program format, checks it about syntactic correctness
+and warns about wrong or dangerous circuit topologies, and generates a
+file with all the information for the simulation.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica"><B>Simulator module</B> (Simula) does the
+actual simulation. It shows the progress of it and, at the end, generates
+a file with the simulated data.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica"><B>Viewer module</B> (Osc) shows the simulation
+wave forms in a graphic interface resembling the panel of a multi-channel
+oscilloscope.&nbsp;<BR>
+The idea is present the user with commands that he is already familiar
+with, reducing the learning curve of the program.</FONT>
+<H2>
+<FONT FACE="Arial,Helvetica">THE KIND OF SIMULATION</FONT></H2>
+<FONT FACE="Arial,Helvetica">Quantico simulates switched capacitor networks
+circuits. Despite the similarity with the circuits simulated by Switcap
+[2], Quantico can handle asynchronous switching and capacitive parasites
+[3] (but all capacitors must connected to the ground, exception for the
+parasitic ones). This means that the switches in Quantico can be commuted
+in any time not only during clock transitions, this allows switches not
+commanded by clock signals. This isn't possible with the common switched
+capacitor network simulators.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">In Quantico, switches can be controlled
+by clocks or devices inside the circuit, currently it offers comparators
+devices for commanding switches. Quantico does a time domain simulation
+that allows the presence of no-linear components in the circuits, like
+the comparators. Other devices offered by Quantico are: unit-gain voltage
+adders, unit-gain buffers, signal dividers, signal subtractors, and various
+types of signal sources.</FONT>
+<H2>
+<FONT FACE="Arial,Helvetica">HOW THE SIMULATOR WORKS</FONT></H2>
+<FONT FACE="Arial,Helvetica">The simulator works basically calculating
+the voltage value of each of the circuit's independent networks, defined
+as parts of the circuits isolated by open switches. Quantico uses a pointed
+data structure database, to holds the circuit description, to allow the
+program to have knowledge about the circuit topology. When the simulation
+begins, additional registers are added to this database to represent the
+independent networks throughout the circuits. In those structures is loaded
+the voltage value of the networks. In each simulation cycle, Quantico tests
+to see if there was a change in the independent networks topology. If in
+a certain cycle one independent network didn't changed its topology, its
+registers are kept and, if there is at least one signal source on it, its
+voltage value is re-calculated. This concept allows the program to calculate
+the voltage values and find the new independent networks only when it is
+absolutely necessary, saving computing resources, allowing bigger circuits
+to be simulated. When a independent network has its topology changed, the
+simulator calculates its new voltage and capacitor charges values going
+through each component of it. If there is a voltage source (signal sources,
+devices outputs, etc.) in the network all nodes connected to it will have
+the same voltage value as the source. If there are only capacitors the
+net voltage value will be the pondered average of the capacitors voltage
+(It is considered that in each clock cycle there is enough time for the
+electric charges redistribute among the capacitors). In this charge redistribution
+the switches parasitic capacitance are accounted during the calculations.
+When the simulator has the voltage values of all independents networks,
+it uses them to calculate the new charges in the capacitors, including
+the parasitic ones. Following this, the simulator tests if any comparator
+changed its state, opening or closing any switch. If there is any alteration
+in the circuit independent networks, the voltage values for all networks
+that were affected are re-calculated.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">The number of times this happens can be
+determined by the user to avoid infinite or too long cycles inside a clock
+cycle. This ensures time for a stable charge distribution among the capacitors.
+It will repeat this cycle until the simulation reaches the total number
+of cycles.</FONT>
+<BR><FONT FACE="Arial,Helvetica"></FONT>&nbsp;
+<H2>
+<FONT FACE="Arial,Helvetica">PORTABILITY</FONT></H2>
+<FONT FACE="Arial,Helvetica">One of the project aims was to produce a portable
+program that could run across many architectures and operational systems.
+Currently Quantico runs in computers running the MS-DOS and Unix platforms,
+like the Sun's Sparc under SunOS 4.1.1 or IBM-PC under Linux.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">It was written in ANSI C language for easy
+portability. This portability was tested when the Quantico was ported to
+Unix platforms. The porting of the Gera and Simula modules was straightforward
+needing only minor changes and recompiling. The Osc module, for being more
+machine dependent, demanded some rewriting of the I/O graphic routines,
+the MS-DOS porting uses the Turbo C graphic library and the Unix versions
+the xview graphic library. It took approximately 30 men/hours for the complete
+porting.</FONT>
+<BR><FONT FACE="Arial,Helvetica"></FONT>&nbsp;
+<H2>
+<FONT FACE="Arial,Helvetica">EXPERIMENTAL RESULTS</FONT></H2>
+<FONT FACE="Arial,Helvetica">Distinct sampled data circuits have been simulated
+in Quantico and the corresponding results have been compared with those
+produced by other simulators whenever applicable.</FONT>
+<BR><FONT FACE="Arial,Helvetica">Results of the simulation of a SERIAL
+DIGITAL TO ANALOG CONVERTER is presented bellow in order to illustrate
+an application of Quantico.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">The schematic of the S-DAC is shown in
+Figure 1. The complementary pair of switches indicated by SW3 are driven
+by the digital input signal, providing a voltage signal at node (2) which
+is either Vref or Zero, depending on whether the digital input is One or
+Zero, respectively. During N cycles of the main clock, CLK1, where N is
+the number of bits of the digital input, the Vref of Zero voltage will
+be an input for the discrete mode loop formed by the "divide-by-two" circuit,
+the "Unity-gain voltage adder" and the "Hold &amp; Sample" circuit HS1
+(driven by clock CLK1), so that at the occurrence of the Kth cycle of the
+main clock, within the N-cycle period, the voltage at node(4) is:</FONT>
+<UL>
+<UL>
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; N
+V4(kT)=&nbsp; <FONT FACE="Symbol"><FONT SIZE=+2>S</FONT>&nbsp;&nbsp; </FONT>2<SUP>-(k-m)</SUP>.V2(mT)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m=1</PRE>
+</UL>
+</UL>
+<FONT FACE="Arial,Helvetica">After N cycles of the main clock, when the
+output voltage of the Adder corresponds to the analog conversion from the
+digital input, the second "Hold &amp; Sample" circuit, HS2, changes its
+states and this voltage is sampled in "analog out".</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">The corresponding netlist for Quantico
+is presented in TABLE 1.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">Waveforms from a simulation of this circuit
+are shown in figure 2. Channel-1 shows the main clock, channel-2 shows
+the digital input stream, channel-3 shows the signal at node (4) and channel-4
+shows the analog out waveform.</FONT>
+<H2>
+<FONT FACE="Arial,Helvetica">CONCLUSION</FONT></H2>
+<FONT FACE="Arial,Helvetica">Quantico has been used as a tool for the development
+of new sampled data circuits. It has proved to be very portable and stable.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">Improvements are being carried out, focusing
+the ability to simulate parasites, such as overlap capacitance in analog
+switches; the ability of reading EDIF 2.0.0 and an schematic capture feature,
+aiming to establish a complete simulation environment for sampled-data
+circuits.</FONT>
+<H2>
+<FONT FACE="Arial,Helvetica">REFERENCES</FONT></H2>
+
+<UL>
+<DT>
+<FONT FACE="Arial,Helvetica">[1] D. A. Moreira, QUANTICO - Simulador para
+Circuitos Anal&oacute;gicos que Operam Segundo a T&eacute;cnica de Quantiza&ccedil;&atilde;o,
+Tese de Mestrado, FEE - UNICAMP, Janeiro-1991.</FONT></DT>
+<FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">[2] User's Guide for Switcap - Version
+5, Columbia University, New York NY, August 1987.</FONT><FONT FACE="Arial,Helvetica"></FONT>
+
+<P><FONT FACE="Arial,Helvetica">[3] B. J. Sheu and C. Hu, "Switched-Induced
+Error Voltage on a Switched Capacitor." IEEE J. Solid-State Circuits, vol.
+SC-19, pp 519-525, Aug. 1984.</FONT></UL>
+<B><TT><FONT COLOR="#FF0000"><FONT SIZE=+2></FONT></FONT></TT></B>
+
+<P><B><TT><FONT COLOR="#FF0000"><FONT SIZE=+2>No figures or tables available.</FONT></FONT></TT></B>
+</BODY>
+</HTML>

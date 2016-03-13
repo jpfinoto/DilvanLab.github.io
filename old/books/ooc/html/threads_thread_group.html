@@ -1,0 +1,29 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Thread Group</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="threads.html" title="Chapter&nbsp;7.&nbsp;Threads"><link rel="prev" href="threads_thread_attributes.html" title="2.&nbsp;Thread Attributes"><link rel="next" href="threads_synchronizing_threads.html" title="4.&nbsp;Synchronizing Threads"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Thread
+      Group</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="threads_thread_attributes.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;7.&nbsp;Threads</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="threads_synchronizing_threads.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="threads.html">Threads</a></span> &gt; <span class="breadcrumb-node">Thread
+      Group</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="threads_thread_group"></a>3.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/essential/threads/group.html" target="_top">Thread
+      Group</a></h2></div></div></div><p>Every Java thread is a member of a thread group.</p><p>Default Group: The same as the thread that created it.</p><p>Start up Group: the Java runtime system creates a ThreadGroup
+      named "main".</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2852"></a>3.1.&nbsp;<a class="ulink" href="/library/books/tutorial1.02/java/threads/threadgroup.html" target="_top">The
+        ThreadGroup Class</a></h3></div></div></div><p>The ThreadGroup class manages groups of threads for Java
+        applications.</p><div class="figure"><a name="d0e2858"></a><p class="title"><b>Figure&nbsp;7.2.&nbsp;ThreadGroup Class</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/Threads2.gif" width="487" height="343" alt="ThreadGroup Class"></div></div></div><br class="figure-break"><p>The ThreadGroup class has methods that can be categorized as
+        follows:</p><div class="itemizedlist"><ul type="disc"><li><p>Collection Management Methods - methods that manage the
+            collection of threads and subgroups contained in the thread
+            group;</p></li><li><p>Methods that Operate on the Group - these methods set or get
+            attributes of the ThreadGroup object;</p></li><li><p>Methods that Operate on All Threads within a Group - this is
+            a set of methods that perform some operation on all the threads
+            and subgroups within the ThreadGroup;</p></li><li><p>resume();</p></li><li><p>stop();</p></li><li><p>suspend():</p></li><li><p>Access Restriction Methods - ThreadGroup and Thread allow
+            the security manager to restrict access to threads based on group
+            membership.</p></li></ul></div><p><a class="ulink" href="../audio/Threads6.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+        Portuguese</a></p></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="threads_thread_attributes.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="threads.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="threads_synchronizing_threads.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Thread
+      Attributes&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Synchronizing
+      Threads</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

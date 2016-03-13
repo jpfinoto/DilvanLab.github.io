@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 8: AWT Components</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Components</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/components/generalRules.html">Rules
+for Using Components</A> </H2>
+
+<BLOCKQUOTE>
+<H4>How to Add a Component to a Container </H4>
+
+<BLOCKQUOTE>
+<P><I>For any Component object except a Window to display itself onscreen,
+you must first add it to a Container object. </I></P>
+
+<P>The Container class defines three methods for adding components: </P>
+
+<UL>
+<LI><TT>add(Component comp)</TT> method simply requires that you specify
+the component to add. </LI>
+
+<LI><TT>add(Component comp, int ind)</TT> method lets you add an argument
+specifying the integer position at which the component should be added.
+</LI>
+
+<LI><TT>add(String pos, Component comp)</TT> method has as first argument
+a layout manager-dependent string that specifies the component's position
+to the layout manager.</LI>
+</UL>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B> </P>
+
+<P>Adding a component to a container removes the component from the container
+it used to be in (if any). </P>
+</BLOCKQUOTE>
+
+<H4>What the Component Class Provides </H4>
+
+<BLOCKQUOTE>
+<DL>
+<DT><B>Basic drawing support.</B> </DT>
+
+<DD>Component provides the <TT>paint()</TT>, <TT>update()</TT>, and <TT>repaint()</TT>
+methods, which enable Components to draw themselves onscreen.</DD>
+
+<DT><B>Event handling.</B> </DT>
+
+<DD>Component defines the general-purpose <TT>handleEvent()</TT> method
+and a group of methods such as <TT>action()</TT> that handle specific event
+types. </DD>
+
+<DT><B>Appearance control: font.</B> </DT>
+
+<DD>Component provides methods to get and set the current font, and to
+get information about the current font. </DD>
+
+<DT><B>Appearance control: color.</B> </DT>
+
+<DD>Component provides methods to get and set the foreground and background
+colors.</DD>
+
+<DT><B>Image handling.</B> </DT>
+
+<DD>Component provides the basis for displaying images. Canvases and most
+Containers can display images.</DD>
+
+<DT><B>Onscreen size and position control.</B> </DT>
+
+<DD>Component provides methods that get or set (subject to layout manager
+oversight) the component's current size and location. </DD>
+</DL>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld9.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld9.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

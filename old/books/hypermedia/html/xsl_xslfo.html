@@ -1,0 +1,107 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;XSL Formatting Objects</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Hypermedia"><link rel="up" href="xsl.html" title="Chapter&nbsp;2.&nbsp;eXtensible Stylesheet Language"><link rel="prev" href="xsl_xpath.html" title="2.&nbsp;XPath"><link rel="next" href="xsl_exercises.html" title="4.&nbsp;Exercises"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;XSL Formatting Objects</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="xsl_xpath.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;2.&nbsp;eXtensible Stylesheet Language</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="xsl_exercises.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="xsl_xslfo"></a>3.&nbsp;XSL Formatting Objects</h2></div></div></div><p>Formatting is the process of turning the result of an XSL transformation into a tangible form for the reader or listener.</p><p>Our model for formatting will be the construction of an area tree, which is an ordered tree containing geometric information for the placement of every</p><div class="itemizedlist"><ul type="disc"><li><p>glyph (character representation in a specific font) ,</p></li><li><p>shape,</p></li><li><p>image,</p></li><li><p>together with information embodying spacing constraints and other rendering information;</p></li></ul></div><p>Formatting objects are elements in the formatting object tree, whose names are from the XSL namespace; a formatting object belongs to a class of formatting objects identified by its element name.</p><p>Some formatting objects are <span class="bold"><strong>inline-level</strong></span> and others are <span class="bold"><strong>block-level</strong></span>. This refers to the types of areas which they generate, which in turn refer to their default placement method:</p><div class="itemizedlist"><ul type="disc"><li><p>Inline-areas (for example, glyph-areas) are collected into lines and the direction in which they are stacked is the inline-progression-direction.</p></li><li><p>Lines are a type of block-area and these are stacked in a direction perpendicular to the inline-progression-direction, called the block-progression-direction</p></li></ul></div><p>In Western writing systems, the block-progression-direction is "top-to-bottom" and the inline-progression-direction is "left-to-right".</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e541"></a>3.1.&nbsp;Page Layout</h3></div></div></div><p>The formatting objects supported by XSL - the set of fo: element types - provides a set of typographic abstractions to layout designers. Each formatting object represents a specification for a part of the pagination, layout and styling information that will be applied to the content.</p><p>Formatting consists of the generation of a tree of geometric areas, called the "area tree".</p><p>Geometric areas are positioned on a sequence of one or more pages. Each geometric area has:</p><div class="itemizedlist"><ul type="disc"><li><p>a position on the page</p></li><li><p>a specification of what to display in that area</p></li><li><p>and may have a background, padding and border</p></li></ul></div><p>Areas may be nested. For example, a glyph may be positioned within a line, within a block, or within a page</p><p>The XSL layout structure is defined in terms of one or more instances of a "simple-page-master" formatting object.</p><p>This formatting object allows designers to define independently filled regions for the body (with multiple columns), a header, a footer, and sidebars on a page. </p><div class="figure"><a name="d0e566"></a><p class="title"><b>Figure&nbsp;2.1.&nbsp;Simple Page Master</b></p><div class="mediaobject"><img src="resources/simple-page-master.gif" alt="Simple Page Master"></div></div><p>Simple-page-masters can be used in page sequences that specify the order in which different simple-page-masters should be used (for instance, book chapters). The page sequence specifies how styled content is to fill those pages.</p><p>Styled content is assigned to the various regions on a page by associating the name of the region with names attached to styled content in the result tree.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e576"></a>3.2.&nbsp;Hello World</h3></div></div></div><p>Let us create the shortest XSL FO document.</p><pre class="programlisting">&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;<a name="hello1" href="xsl_xslfo.html#hello.1"><img src="images/callouts/1.png" alt="1" border="0"></a>
+
+&lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;<a name="hello2" href="xsl_xslfo.html#hello.2"><img src="images/callouts/2.png" alt="2" border="0"></a>
+  &lt;fo:layout-master-set&gt;<a name="hello3" href="xsl_xslfo.html#hello.3"><img src="images/callouts/3.png" alt="3" border="0"></a>
+    &lt;fo:simple-page-master master-name="my-page"&gt;
+      &lt;fo:region-body margin="1in"/&gt;
+    &lt;/fo:simple-page-master&gt;
+  &lt;/fo:layout-master-set&gt;
+
+  &lt;fo:page-sequence master-reference="my-page"&gt;<a name="hello4" href="xsl_xslfo.html#hello.4"><img src="images/callouts/4.png" alt="4" border="0"></a>
+    &lt;fo:flow flow-name="xsl-region-body"&gt;<a name="hello5" href="xsl_xslfo.html#hello.5"><img src="images/callouts/5.png" alt="5" border="0"></a>
+      &lt;fo:block&gt;Hello, world!&lt;/fo:block&gt;<a name="hello6" href="xsl_xslfo.html#hello.6"><img src="images/callouts/6.png" alt="6" border="0"></a>
+    &lt;/fo:flow&gt;
+  &lt;/fo:page-sequence&gt;
+&lt;/fo:root&gt;</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a name="hello.1"></a><a href="#hello1"><img src="images/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>This is an XML declaration. XSL FO belongs to XML family, so this is obligatory.</p></td></tr><tr><td width="5%" valign="top" align="left"><a name="hello.2"></a><a href="#hello2"><img src="images/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>Root element. The obligatory namespace attribute declares the XSL Formatting Objects namespace.</p></td></tr><tr><td width="5%" valign="top" align="left"><a name="hello.3"></a><a href="#hello3"><img src="images/callouts/3.png" alt="3" border="0"></a> </td><td valign="top" align="left"><p>Layout master set. This element contains one or more declarations of page masters and page sequence masters &#8212; elements that define layouts of single pages and page sequences. In the example, I have defined a rudimentary page master, with only one area in it. The area should have a 1 inch margin from all sides of the page.</p></td></tr><tr><td width="5%" valign="top" align="left"><a name="hello.4"></a><a href="#hello4"><img src="images/callouts/4.png" alt="4" border="0"></a> </td><td valign="top" align="left"><p>Page sequence. Pages in the document are grouped into sequences; each sequence starts from a new page. Master-reference attribute selects an appropriate layout scheme from masters listed inside &lt;fo:layout-master-set&gt;. Setting master-reference to a page master name means that all pages in this sequence will be formatted using this page master.</p></td></tr><tr><td width="5%" valign="top" align="left"><a name="hello.5"></a><a href="#hello5"><img src="images/callouts/5.png" alt="5" border="0"></a> </td><td valign="top" align="left"><p>Flow. This is the container object for all user text in the document. Everything contained in the flow will be formatted into regions on pages generated inside the page sequence. Flow name links the flow to a specific region on the page (defined in the page master); in our example, it is the body region.</p></td></tr><tr><td width="5%" valign="top" align="left"><a name="hello.6"></a><a href="#hello6"><img src="images/callouts/6.png" alt="6" border="0"></a> </td><td valign="top" align="left"><p>Block. This object roughly corresponds to &lt;DIV&gt; in HTML, and normally includes a paragraph of text. I need it here, because text cannot be placed directly into a flow.</p></td></tr></table></div><p>Now save this document into a file and compile it using your preferred XSL-FO processor to produce a PDF file. Open it with Acrobat Reader: <a href="../pdf/HelloWorld.pdf" target="_top">Hello World PDF</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e618"></a>3.3.&nbsp;Using XSLT to generate XSL-FO</h3></div></div></div><p>Now, how can we apply this formating to a XML document? Using a XSLT document to transform the original XML document in a XSL-FO document. First we have the CD catalog example:</p><pre class="programlisting">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;catalog&gt;
+   &lt;cd&gt;
+       &lt;title&gt;How The West Was Won&lt;/title&gt;
+       &lt;artist&gt; Led Zeppelin &lt;/artist&gt;
+       &lt;company&gt; Warner &lt;/company&gt;
+       &lt;price&gt; 61,90 &lt;/price&gt;
+       &lt;year&gt; 2003 &lt;/year&gt;
+   &lt;/cd&gt;
+&lt;/catalog&gt;</pre><p>The following XSLT example page generates a XML-FO file that prints the title of the first CD:</p><pre class="programlisting">&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="/"&gt;
+
+    &lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;
+      &lt;fo:layout-master-set&gt;
+        &lt;fo:simple-page-master master-name="my-page"&gt;
+          &lt;fo:region-body margin="1in"/&gt;
+        &lt;/fo:simple-page-master&gt;
+      &lt;/fo:layout-master-set&gt;
+
+      &lt;fo:page-sequence master-reference="my-page"&gt;
+        &lt;fo:flow flow-name="xsl-region-body"&gt;
+          &lt;fo:block&gt;
+             &lt;xsl:value-of select="catalog/cd/title"/&gt;
+          &lt;/fo:block&gt;
+        &lt;/fo:flow&gt;
+      &lt;/fo:page-sequence&gt;
+    &lt;/fo:root&gt;
+
+  &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre><p>Now save this document into a file and compile it using your preferred XSLT processor to produce a XLS-FO file and them compile it to generate a PDF file. In the <a href="http://www.xmlmind.com" target="_top">XMLMind FO Converter</a>, this can be done in just one step. Open it with Acrobat Reader:<a href="../pdf/cdTitle.pdf" target="_top"> CD Title PDF</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e636"></a>3.4.&nbsp;Fonts and Text Attributes</h3></div></div></div><p>Let us now enrich the text with character-level formatting. Several properties control font styles &#8212; family, size, color, weight, etc. Let&#8217;s look at some examples:</p><pre class="programlisting">&lt;fo:block font-family="Times" font-size="14pt"&gt;
+  Hello, world!
+&lt;/fo:block&gt;</pre><p>Font family is Times, and font size is 14 points.</p><pre class="programlisting">&lt;fo:block font-family="Times" font-size="14pt" font-style="italic"&gt;
+  &lt;fo:inline color="red"&gt;H&lt;/fo:inline&gt;ello,
+  &lt;fo:inline font-weight="bold"&gt;world!&lt;/fo:inline&gt;
+&lt;/fo:block&gt;
+</pre><p>Same as above, plus:</p><div class="itemizedlist"><ul type="disc"><li><p>the whole text is italicized (font-style="italic");</p></li><li><p>the first letter of the first word is written in red (color="red");</p></li><li><p>the second word is written in bold font (font-weight="bold").</p></li></ul></div><p>Note a new formatting object &#8212; &lt;fo:inline&gt;. It corresponds to &lt;SPAN&gt; in HTML, and ascribes formatting to chunks of text within a block. Font properties are inheritable. It means that, once defined for a formatting object, they apply to all formatting objects inside it. That&#8217;s why the first inline sequence affects only the color of the font, leaving its family, size, and slant unmodified. Inheritable properties can be put almost everywhere on the formatting objects tree; as a rule, you specify default font for a document by applying these properties to &lt;fo:flow&gt;, &lt;fo:page-sequence&gt; or even &lt;fo:root&gt;. To reduce typing, you can use a shorthand notation for setting font attributes as a group. For example, the above example can be rewritten as follows:</p><pre class="programlisting">&lt;fo:block font="italic 14pt Times"&gt;
+  &lt;fo:inline color="red"&gt;H&lt;/fo:inline&gt;ello,
+  &lt;fo:inline font-weight="bold"&gt;world!&lt;/fo:inline&gt;
+&lt;/fo:block&gt;</pre><p>Let&#8217;s now build a full XSL FO example with font attributes introduced above, and some new ones:</p><pre class="programlisting">&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="/"&gt;
+
+    &lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;
+
+      &lt;fo:layout-master-set&gt;
+        &lt;fo:simple-page-master master-name="my-page"&gt;
+          &lt;fo:region-body margin="1in"/&gt;
+        &lt;/fo:simple-page-master&gt;
+      &lt;/fo:layout-master-set&gt;
+
+      &lt;fo:page-sequence master-reference="my-page"&gt;
+         &lt;fo:flow flow-name="xsl-region-body" font="12pt Times"<a name="xsl1" href="xsl_xslfo.html#xsl.1"><img src="images/callouts/1.png" alt="1" border="0"></a>&gt;
+           &lt;fo:block font="italic 24pt Helvetica"&gt;
+             &lt;fo:inline color="red"&gt;F&lt;/fo:inline&gt;ont
+             &lt;fo:inline color="red"&gt;A&lt;/fo:inline&gt;ttributes
+           &lt;/fo:block&gt;
+           &lt;fo:block&gt;<a name="xsl2" href="xsl_xslfo.html#xsl.2"><img src="images/callouts/2.png" alt="2" border="0"></a>
+             &lt;xsl:value-of select="catalog/cd/company"/&gt; CD Catalog
+             (The inherited font for this block is 12pt Times).
+           &lt;/fo:block&gt;
+           &lt;fo:block&gt;
+             Font attributes:
+             &lt;fo:inline color="red"&gt;
+               &lt;xsl:value-of select="catalog/cd/artist"/&gt;
+               colored
+             &lt;/fo:inline&gt;,
+             &lt;fo:inline font-weight="bold"&gt;bold&lt;/fo:inline&gt;,
+             &lt;fo:inline font-style="italic"&gt;italic&lt;/fo:inline&gt;,
+             &lt;fo:inline font-size="75%"&gt;small&lt;/fo:inline&gt;,
+             &lt;fo:inline font-size="133%"&gt;large&lt;/fo:inline&gt;.
+           &lt;/fo:block&gt;
+           &lt;fo:block&gt;
+             Text attributes:<a name="xsl3" href="xsl_xslfo.html#xsl.3"><img src="images/callouts/3.png" alt="3" border="0"></a>
+             &lt;fo:inline text-decoration="underline"&gt;
+               &lt;xsl:value-of select="catalog/cd/title"/&gt;
+               underlined
+             &lt;/fo:inline&gt;,
+             text with &lt;fo:inline baseline-shift="sub"
+             font-size="smaller"&gt;subscripts&lt;/fo:inline&gt;
+             and &lt;fo:inline baseline-shift="super"
+             font-size="smaller"&gt;superscripts&lt;/fo:inline&gt;.
+          &lt;/fo:block&gt;
+        &lt;/fo:flow&gt;
+      &lt;/fo:page-sequence&gt;
+    &lt;/fo:root&gt;
+
+  &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><a name="xsl.1"></a><a href="#xsl1"><img src="images/callouts/1.png" alt="1" border="0"></a> </td><td valign="top" align="left"><p>A common font for the whole flow is specified.</p></td></tr><tr><td width="5%" valign="top" align="left"><a name="xsl.2"></a><a href="#xsl2"><img src="images/callouts/2.png" alt="2" border="0"></a> </td><td valign="top" align="left"><p>This block inherits font attributes from the flow.</p></td></tr><tr><td width="5%" valign="top" align="left"><a name="xsl.3"></a><a href="#xsl3"><img src="images/callouts/3.png" alt="3" border="0"></a> </td><td valign="top" align="left"><p>In this block, other text-level properties were introduced:</p><p><span class="bold"><strong>text decoration</strong></span></p><p>underline/overline/strikethrough.</p><p><span class="bold"><strong>shifted text </strong></span></p><p>subscripts and superscripts.</p></td></tr></table></div><p>Now save this document into a file and compile it using your preferred XSLT processor to produce a XLS-FO file and them compile it to generate a PDF file (if using <a href="http://www.xmlmind.com" target="_top">XMLMind FO Converter</a> generate a RTF file). Open it with Acrobat Reader: <a href="../pdf/cdCatalog.pdf" target="_top">CD Catalog PDF</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e700"></a>3.5.&nbsp;Conclusion</h3></div></div></div><p>The XLS-FO examples shown here were very simple. They try to show how XSL-FO is complex but, at the same time, powerful.</p><p>There are many tools supporting XLS-FO (some of them partially), some examples are:</p><div class="itemizedlist"><ul type="disc"><li><p>Apache Foundation <a href="http://xml.apache.org/#fop" target="_top">FOP: XSL Formatting Object processor</a>.</p></li><li><p>Rendex <a href="http://www.renderx.com/" target="_top">XEP XSL Rendering Engine</a>, it includes a nice tutorial for XSL-FO: <a href="http://www.renderx.com/tutorial.html" target="_top">XSL-FO Tutorial</a>.</p></li><li><p>XMLMind <a href="http://www.xmlmind.com" target="_top">FO Converter</a>.</p></li></ul></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="xsl_xpath.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="xsl.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="xsl_exercises.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;XPath&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Exercises</td></tr></table></div></body></html>

@@ -1,0 +1,151 @@
+a:link { color: #000066; }
+a:visited { color: #666666; }
+
+body { background-color: #ffffff; color: #000000; }
+form { padding: 0; margin: 0; }
+
+.content { padding-top: 0; }
+
+/* cabeçalho */
+.mh { border-bottom: 1px solid #000000; }
+.hc { font-size: 10px; font-family: verdana; padding: 0px; margin: 0px; }
+.hcr { vertical-align: middle; padding: 0px; margin: 0px; }
+
+/* ticker */
+table.ticker { margin: 0 0 10px 0; padding: 0; border-bottom: 1px solid #000000; }
+
+/* manchete */
+table.mainHighlight { margin: 0 0 10px 0; }
+
+/* chamadas */
+.ma1h { margin: 4px 0 5px 0; font-size: 19px; font-family: verdana; font-weight: bold; }
+.ma1t { margin: 0 0 5px 0; font-size: 11px; font-family: verdana }
+.ma1l { margin: 3px 0 15px 10px; padding-left: 0px; font-size: 11px; font-family: arial; }
+.ma1l li { margin: 0 0 0 5px; padding-left: 0px; font-size: 11px; font-family: arial; list-style: disc url(http://f.i.uol.com.br/folha/images/bullet.gif); }
+.ma1l li.ma1lk a { color: #cc3300; }
+
+.ch1h { margin: 0 0 0 0; font-size: 13px; font-family: arial; font-weight: bold; }
+.ch1k { margin: 0 0 0 0; font-size: 11px; font-family: arial; text-transform: uppercase; color: #6699cc; }
+.ch1t { margin: 3px 0 5px 0; font-size: 11px; font-family: verdana; }
+.ch1l { margin: 3px 0 15px 10px; padding-left: 0px; font-size: 11px; font-family: arial; }
+.ch1l li { margin: 0 0 0 5px; padding-left: 0px; font-size: 11px; font-family: arial; list-style: disc url(http://f.i.uol.com.br/folha/images/bullet.gif); }
+
+.ch2h { margin: 0 0 15px 0; font-size: 11px; font-family: arial; font-weight: bold; }
+.ch2h a { margin: 0 0 15px 0; font-size: 11px; font-family: arial; font-weight: normal; }
+
+.ch3h { margin: 0 0 0 3px; font-size: 11px; font-family: arial; font-weight: bold; }
+.ch3h a { margin: 0 0 0 0; font-size: 11px; font-family: arial; font-weight: normal; }
+.ch3l { margin: 0 0 0 10px; padding-left: 0px; font-size: 11px; font-family: arial; }
+.ch3l li { margin: 0 0 0 5px; padding-left: 0px; font-size: 11px; font-family: arial; list-style: disc url(http://f.i.uol.com.br/folha/images/bullet.gif); }
+
+.ch4h { margin: 0 0 10px 0; font-size: 11px; font-family: arial; font-weight: bold; color: #6699cc; }
+.ch4h a { margin: 0 0 10px 0; font-size: 11px; font-family: arial; font-weight: normal; }
+
+.li1 { margin: 0 0 15px 10px; padding-left: 0px; font-size: 11px; font-family: arial; }
+.li1 li { margin: 0 0 0 5px; padding-left: 0px; font-size: 11px; font-family: arial; list-style: disc url(http://f.i.uol.com.br/folha/images/bullet.gif); }
+
+.li2 { margin: 0 0 5px 10px; padding-left: 0px; font-size: 11px; font-family: arial; }
+.li2 li { margin: 0 0 0 5px; padding-left: 0px; font-size: 11px; font-family: arial; list-style: disc url(http://f.i.uol.com.br/folha/images/bullet.gif); }
+
+/* fotos */
+.fo1e { margin: 0 10px 10px 0; }
+.fo1d { margin: 0 0 10px 10px; }
+.fo1c { padding: 0; margin: 0; font-size: 10px; font-family: arial }
+.fo1l { font-size: 11px; font-family: arial }
+.fo2 { margin: 0 0 5px 0; }
+
+/* vinhetas */
+.vi1 { margin: 0 0 8px 0; background-image: url(http://f.i.uol.com.br/x-cccccc.gif); background-repeat: repeat-x; background-position: center; } /* a margem quebra no Netscape 4.7 */
+.vi1t { font: bold 12px arial; color: #cc3300; background: #ffffff; padding-right: 5px; }
+.vi2t { font: bold 12px arial; color: #cc3300; background: #eeeeee; padding-right: 5px; }
+.vi3t { font: bold 12px arial; color: #6699cc; background: #ffffff; padding-right: 5px; }
+
+/* menus */
+.me1 { font-size: 11px; font-family: verdana; text-decoration: none; }
+.me1 select { font-size: 11px; font-family: arial; width: 120px; }
+.me2 { padding-top: 8px; font-size: 11px; font-family: verdana; font-weight: bold; text-decoration: none; }
+
+.me1i { margin: 0; padding: 2px 0 2px 0; border-bottom: 1px solid #cccccc; }
+.me1i a { text-decoration: none; color: #000000; }
+.me1i a:hover { text-decoration: underline; }
+.me1i a:visited { color: #000000; }
+.me1v { margin: 0; padding: 2px 0 2px 0; font-size: 10px; font-family: verdana; color: #cc3300; font-weight: bold; border-bottom: 1px solid #cccccc; }
+.me2v { margin: 10px 0 4px 0; font-size: 10px; font-family: verdana; color: #6699cc; font-weight: bold; }
+.me1e { line-height: 30px; margin: 0; padding: 0; border-bottom: 1px solid #cccccc; }
+.me1e a { text-decoration: none; color: #000000; font-weight: bold; }
+.me1e a:hover { text-decoration: underline; }
+.me1e a:visited { color: #000000; }
+
+/* busca */
+.me1b { background-color: #eeeeee; margin: 0 0 5px 0; padding: 5px; text-align: center; }
+.me1bv { margin: 5px 0 0 0; padding: 2px 0 2px 5px; font-size: 10px; font-family: verdana; color: #cc3300; font-weight: bold; background-color: #eeeeee; }
+.me1bb { margin: 5px 0 0 0; font-size: 10px; font-family: verdana; font-weight: bold; }
+.me2i { margin: 0; padding: 2px 0 2px 0; }
+.me2i a { text-decoration: none; color: #000000; }
+.me2i a:hover { text-decoration: underline; }
+.me2i a:visited { color: #000000; }
+
+/* shopping */
+.sh { padding-top: 10px; }
+
+/* listas de noticias */
+.nl1 { margin: 0 0 12px 0; font-size: 10px; font-family: verdana; font-weight: bold; }
+.nl1 a { font-size: 11px; font-family: arial; font-weight: normal; }
+.nl1d { font: bold 12px verdana; margin: 15px 0 8px 0; }
+.nl1n { font: bold 11px verdana; margin: 15px 0 8px 0; }
+
+.nl2k { margin: 0 0 3px 0; font-size: 10px; font-family: verdana; font-weight: bold; color: #6699cc; text-transform: uppercase; }
+.nl2 { margin: 0 0 12px 0; font-size: 10px; font-family: verdana; font-weight: bold; }
+.nl2 a { font-size: 11px; font-family: arial; font-weight: normal; }
+.nl2d { font: bold 12px verdana; margin: 15px 0 8px 0; }
+.nl2n { font: bold 11px verdana; margin: 15px 0 8px 0; }
+
+/* blocos */
+.bl1h { font-family: arial; font-size: 11px; width: 75px; vertical-align: top; text-align: center; }
+.bl1 { margin: 0 0 10px 0; }
+
+.bl2 { border: 1px solid #cccccc; margin: 0 0 15px 0; padding: 0 0 0 0 ; }
+
+/* seções */
+.se1 { font-family: verdana; font-size: 11px; text-align: center; padding: 0; margin: 0 0 10px 0; line-height: 17px; }
+
+/* article */
+table.article tr td	{ font: 12px arial; }
+.article { font: 12px verdana; line-height: 17px; }
+.article span.data { font: bold 10px verdana, arial; color: #cc3300; }
+.article h1 { font: bold 20px verdana,arial; margin-top: 0; }
+.article h2 { font: bold 16px arial; }
+.article h3 { font: bold 14px arial; margin: 0 0 8px 0; }
+.article span.tagline { font: 10px verdana; }
+.article span.links li { margin: 0 0 0 5px; padding-left: 0px; font-size: 11px; font-family: arial; list-style: square url(http://f.i.uol.com.br/folha/images/bullet.gif); }
+.article span.jumpline { font: bold 10px verdana; }
+.kicker { font: bold 10px verdana; color: #cc3300; }
+
+/* polls */
+table.en1 { border-bottom: 1px solid #cccccc; border-top: 1px solid #cccccc; }
+table.en1 tr td	{ font-family: verdana; font-size: 12px; }
+table.polls tr td { font: 12px verdana; line-height: 17px; }
+.polls span.data { font: bold 10px verdana, arial; color: #cc3300; }
+.polls h1 { font: bold 20px verdana,arial; margin-top: 0; }
+.polls span.tagline { font: 10px verdana; }
+
+/* lupa */
+span.lupa {
+            position: relative;
+            top: -15px;
+            left: 135px; /* Largura da imagem menos 15px */
+            width: 15px;
+            height: 15px;
+            display: block;
+            margin-bottom: -15px;
+}
+
+/* estrela */
+div.star { background: #ffffff url(http://f.i.uol.com.br/star.gif) no-repeat center; display: block; height: 12px; margin: 10px 0 -15px 0; padding: 0; }
+div.star hr { display: none; }
+
+/* contextual ads */
+table.ca1 { background-color: #eeeeee; font-size: 10px; font-family: verdana; }
+table.ca1 a { font-size: 11px; }
+table.ca1 p { padding: 0; margin: 0 0 15px 0; line-height: 130%; }
+table.ca1 p.ca1l { font-size: 11px; text-align: center; padding: 0; margin: 0; }

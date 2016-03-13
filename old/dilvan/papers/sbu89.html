@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>UM NOVO CONVERSOR TRIANGULAR SENOIDE</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<H2>UM NOVO CONVERSOR TRIANGULAR SENOIDE</H2>
+<BR>
+<BR>
+
+<P>E.C. Ferreira* e D.A. Moreira**</P>
+<BR>
+<BR>
+
+<H3>ABSTRACT</H3>
+
+<P>This triangular-sine wave converter is made with a diferencial amplifier
+with local feed-back. It's made basically with 2 diferential pairs, 4 resistors
+and 2 current sources. This circuit insures a little THD (Total Harmonic
+Distorction) because it makes the signal first derivate 0 on the point
+pi/2, like in the sine wave. With this circuit was kept a THD as little
+as 0.2%. </P>
+
+<P>* F&iacute;sico, Mestre em Engenharia El&eacute;trica. Pesquisador e
+Professor do LED/DEMIC/FEE/UNICAMP.</P>
+
+<P>** Engenheiro Eletricista (Op. Eletr&ocirc;nica), interesse em Microeletr&ocirc;nica,
+AI e Arquiteturas de Computadores. Mestrando do LED/DEMIC/FEE/UNICAMP.
+</P>
+
+<P>Os conversores triangular-sen&oacute;ide t&ecirc;m sido usados por muitos
+anos em geradores de fun&ccedil;&atilde;o, PLL, e outros circuitos de comunica&ccedil;&atilde;o.
+Na pr&aacute;tica &eacute; muito f&aacute;cil projetar um oscilador senoidal
+numa larga faixa usando um conversor triangular-sen&oacute;ide com um sinal
+de um oscilador de onda triangular. A frequ&ecirc;ncia de oscila&ccedil;&atilde;o
+do &uacute;ltimo pode ser facilmente ajustada por um simples controle eletr&ocirc;nico,
+e ainda a amplitude da onda triangular pode ser mantida constante, independente
+da frequ&ecirc;ncia.</P>
+
+<P>Com a topologia aqui apresentada &eacute; poss&iacute;vel se conseguir
+sinais com baixa distor&ccedil;&atilde;o harmonica total (&lt; 0.2%).</P>
+
+<P>O circuito proposto &eacute; b&aacute;sicamente o da fig 1. Nele podemos
+distinguir 2 est&aacute;gios b&aacute;sicos: Um par diferencial formado
+por Q1 e Q4, que &eacute; um amplificador de transcondut&acirc;ncia, e
+o circuito formado por Q2, Q3 ,R1, R2, R3 e R4, que forma um amplificador
+de transimped&acirc;ncia. Esse circuito limita a amplitude da tens&atilde;o
+de sa&iacute;da atrav&eacute;s da realimenta&ccedil;&atilde;o por Rl -
+R2 dando a forma arredondada da fun&ccedil;&atilde;o de transfer&ecirc;ncia
+do circuito.</P>
+
+<P>Para se ajustarem os par&acirc;metros para a m&iacute;nima distor&ccedil;&atilde;o
+harmonica seria necess&aacute;rio ou se expandir essa equa&ccedil;&atilde;o
+em s&eacute;rie de Taylor e compar&aacute;-la a expans&atilde;o em Taylor
+da fun&ccedil;&atilde;o seno, ou achar a transformada de Fourier e minimizar
+os termos das harm&ocirc;nicas de ordem superior.</P>
+
+<P>Acontece que essa fun&ccedil;&atilde;o al&eacute;m de ser complicada,
+n&atilde;o est&aacute; na forma expl&iacute;cita o que dificulta as opera&ccedil;&otilde;es.
+Por isso foi achado conveniente fazer uma otimiza&ccedil;&atilde;o num&eacute;rica
+usando um programa de otimiza&ccedil;&atilde;o desenvolvido (Otim) e o
+PSpice. Outro motivo foi a flexibilidade para se alterar partes do circuito
+ou se testar outros circuitos que os programas permitem em compara&ccedil;&atilde;o
+ao c&aacute;lculo matem&aacute;tico.</P>
+
+<P>Abaixo mostramos os melhores resultados da an&aacute;lise de Fourier
+fornecidos pelo PSpice. Os par&acirc;metros usados dos transistores foram
+os fornecidos pela SID-Microelet&ocirc;nica, processo SB1.</P>
+
+<P>Com a ajuda do Otim foram otimizados 3 par&acirc;metros do circuito:</P>
+
+<P>1 - A amplitude da onda triangular na entrada = 70,35 mV.<BR>
+2 - Os resistores R2 e R3 = 500 ohms.<BR>
+3 - Os resistores R1 e R4 = 930 ohms.</P>
+
+<P>Esses valores deram uma distor&ccedil;&atilde;o harmonica calculada
+de 0.149 %.</P>
+
+<BR>
+<BR>
+<P><I>Figura 1 - Circuito conversor triangular-sen&oacute;ide porposto.</I></P>
+
+<BR>
+<BR>
+<P><I> Figura 2 - Espectro da sen&oacute;ide gerada pelo circuito de teste.
+</I></P>
+
+</BODY>
+</HTML>

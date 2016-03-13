@@ -1,0 +1,265 @@
+<html>
+<head>
+<title>Sintetizadores</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33FF33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF" size="4"><b><font size="5">Synthesizers</font></b></font> 
+</p>
+<p><font color="#FFFFFF" size="4">The synthesizers, as their name means, are the 
+  entities responsible for speech synthesis. They are created through the use 
+  of the Central class, that implements the Engine interface and acts as a
+connection to the&nbsp; synthesis provided by the IBM ViaVoice technology.</font></p>
+<ul>
+  <li> <font color="#FFFF00"><b><font size="4">Creating a voice synthesizer:</font></b></font><font color="#FFFFFF" size="4"> 
+    there are two ways to do it, both are through the Central class static method 
+    <a href="../../ref/api/javax/speech/Central.html#createSynthesizer(javax.speech.EngineModeDesc)" target="_blank">createSynthesizer</a> 
+    :</font> 
+    <blockquote> 
+      <p><font size="4" color="#FFFFFF">1. Accessing the default synthesizer of 
+        a determined locale: it is the most simple and common method. It usually establishes 
+        access to the synthesizer implementation distributed with the ViaVoice software. 
+        It might be done as shown in table 1.</font></p>
+    </blockquote>
+  </li>
+  <table width="80%" border="1" height="74" align="center">
+    <tr> 
+      <td> 
+        <p><font color="#FFFFFF" size="4">Locale.setDefault(&quot;en&quot;,&quot;US&quot;);</font><br>
+        <font color="#FFFFFF" size="4">Synthesizer sintethesizer = Central.createSynthesizer(null); 
+          </font></p>
+      </td>
+    </tr>
+  </table>
+</ul>
+<p align="center"><b>Table 1 - Creating a synthesizer object.<br>
+  </b></p>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo2.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p align="right">&nbsp; </p>
+<ul>
+  <blockquote> 
+    <p><font color="#FFFFFF">2. </font><font color="#FFFFFF" size="4">Accessing 
+      a synthesizer that satisfies the conditions defined through the arguments 
+      passed on by the </font><font color="#33FF33" size="4"> createSynthesizer </font><font color="#FFFFFF" size="4"> method. This method is used in cases
+    where there are more 
+      than one synthesizer available. The parameters are: </font></p>
+    <ul>
+      <li><font color="#FFFFFF" size="4">name of the engine</font></li>
+      <li><font color="#FFFFFF" size="4">name of the mode in which it will be 
+        used</font></li>
+      <li><font color="#FFFFFF" size="4">a locale supported by the engine</font></li>
+      <li><font color="#FFFFFF" size="4">a Boolean value, a control flag of the 
+        engine</font></li>
+      <li><font size="4" color="#FFFFFF">an array of objects <a href="../../ref/api/javax/speech/synthesis/Voice.html" target="_blank">Voice</a> 
+        that will be used</font> 
+        <p><font color="#FFFFFF" size="4">These parameters are defined creating 
+          an object <a href="../../ref/api/javax/speech/synthesis/SynthesizerModeDesc.html" target="_blank">SynthesizerModeDesc</a> 
+          that will be passed to </font><font color="#33FF33" size="4">Central.createSynthesizer</font><font color="#FFFFFF" size="4">. As seen
+        on table 2:</font></p>
+      </li>
+    </ul>
+  </blockquote>
+</ul>
+<table width="99%" border="1" height="67" align="center">
+  <tr> 
+    <td height="95"><font color="#FFFFFF" size="3"><a href="../../ref/api/javax/speech/synthesis/SynthesizerModeDesc.html" target="_blank">public 
+      SynthesizerModeDesc(String engineName, String modeName, Locale locale, Boolean 
+      running, Voice[] voices)</a> </font></td>
+  </tr>
+</table>
+<p align="center"><b><font color="#000000">Table 2- SynthesizerModeDesc</font> 
+  constructor form.</b></p>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo3.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<blockquote>
+  <p><font color="#FFFFFF" size="4">Remember that any of the attributes can be null and the Central will
+  be responsible for identifying the best synthesizer 
+    to fit the conditions.</font></p>
+</blockquote>
+<ul>
+  <li><b><font color="#FFFF00" size="4">Synthesizing voice:</font></b><font color="#FFFFFF" size="4"> 
+    once created the synthesizer, we can use its functions through the speak method. 
+    A simple String argument is enough for the basic features of synthesis, but 
+    there are other possibilities to increase naturalness of computer speech. 
+    The most powerful of them is the <a href="../../ref/jsml/index.html" target="_blank">JSML</a> 
+    (<i>Java Speech Markup Language</i>)* which provides various techniques to 
+    make the speech more similar to human voice.<br>
+    </font>* JSML specification will be seen in the next section</li>
+</ul>
+<ul>
+  <li> 
+    <p><font size="4" color="#FFFFFF"><a name="sintese"></a>Table 3 shows all 
+      the forms of the speak method:</font></p>
+  </li>
+</ul>
+<table width="99%" border="1">
+  <tr> 
+    <td width="52%"> 
+      <div align="center"><font color="#FFFF00"><b>Method</b></font></div>
+    </td>
+    <td width="48%"> 
+      <div align="center"><font color="#FFFF00"><b>Function</b></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="52%"> 
+      <div align="left"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html" target="_blank">void 
+        speakPlainText(String text, SpeakableListener listener)</a></font></div>
+    </td>
+    <td width="48%"><font color="#FFFFFF">Speak a plain text string. The text 
+      is not interpreted as containing the Java Speech Markup Language so JSML 
+      elements are ignored. </font> </td>
+  </tr>
+  <tr> 
+    <td width="52%"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html" target="_blank">void 
+      speak(Speakable JSMLtext, SpeakableListener listener)</a> </font></td>
+    <td width="48%"><font color="#FFFFFF">Speak an object that implements the 
+      Speakable interface and provides text marked with the Java Speech Markup 
+      Language. </font></td>
+  </tr>
+  <tr> 
+    <td width="52%"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html" target="_blank">void 
+      speak(URL JSMLurl, SpeakableListener listener) </a></font></td>
+    <td width="48%"><font color="#FFFFFF">Speak text from a URL formatted with 
+      the Java Speech Markup Language. The text is obtained from the URL, checked 
+      for legal JSML formatting, and placed at the end of the speaking queue. 
+      </font></td>
+  </tr>
+  <tr> 
+    <td width="52%"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html" target="_blank">void 
+      speak(String JSMLText, SpeakableListener listener) </a></font></td>
+    <td width="48%"><font color="#FFFFFF">Speak a string containing text formatted 
+      with the Java Speech Markup Language. The JSML text is checked for formatting 
+      errors and a JSMLException is thrown if any are found. </font></td>
+  </tr>
+</table>
+<p align="center"><b><font color="#000000">Table 3- Methods used for Voice Synthesis</font>.</b></p>
+<blockquote>
+  <p>&nbsp;</p>
+  <p><font size="4" color="#FFFFFF">The speakable objects are members of classes that
+  implement 
+    the speakable interface. This interface has just one method <a href="../../ref/api/javax/speech/synthesis/Speakable.html#getJSMLText()" target="_blank">getJSMLText</a>.
+  This method specifies a JSML String to be returned when the object is submitted to 
+    the speak method. An example can be seen in the following sample code.</font></p>
+</blockquote>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo4.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo5.jsml" target="_blank"> 
+  JSML file referenced by the above example.</a></p>
+<p align="left">&nbsp;</p>
+<ul>
+  <li><font size="4" color="#FFFF00"><b><a href="../ouvidores/ouvidores.htm#speakablelistener" target="_blank">The 
+    SpeakableListener</a>:</b> </font><font color="#FFFFFF" size="4">to the methods 
+    of table 3, it might be attached an extra element, a </font><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html" target="_blank"><font color="#33FF33" size="4">S</font></a><font color="#33FF33"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html" target="_blank"><font size="4">peakableListener</font></a></font><font color="#FFFFFF" size="4">.
+    It will receive specific events for each pronounced word. Different events 
+    are generated during the synthesis process, these events can be used to take 
+    control of the speech process, enabling a more interactive application. They 
+    indicate when a new word started to be pronounced , if its synthesis was canceled, 
+    if it is over or was paused, among other events that allow the monitoring of the
+    synthesis process. <a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html" target="_blank">More 
+    details.</a></font> 
+    <p><font size="4" color="#FFFFFF">The events are instances of the <a href="../../ref/api/javax/speech/synthesis/SpeakableEvent.html" target="_blank">SpeakableEvent</a> 
+      and are thrown by the synthesizer to be caught and treated by the listener. 
+      These entities carry information about the spoken word. <a href="../../ref/api/javax/speech/synthesis/SpeakableEvent.html" target="_blank">More 
+      detail.</a> </font><font color="#FFFFFF" size="4">The listeners are optional, 
+      and might be not used by passing a null argument to the synthesis methods.</font></p>
+    <p><font color="#FFFFFF" size="4">The speakableLsteners might be used in 
+      two ways:</font></p>
+    <ul>
+      <li><font color="#FFFFFF" size="4"> associated with the listeners through 
+        the method speak - refer to table 3. This will define a listener for each 
+        item added to the items queue of the synthesizer. One listener might be 
+        shared by any number of queued items.</font></li>
+      <li><font color="#FFFFFF" size="4"> associated to the Synthesizer object 
+        through the <a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#addSpeakableListener(javax.speech.synthesis.SpeakableListener)" target="_blank">addSpeakableListener</a> 
+        method. This way the listener will receive the events of all the queued 
+        items in a determined synthesizer.</font><br>
+        <br>
+      </li>
+    </ul>
+    <p><font size="4" color="#FFFFFF">The listeners associated via the speak method 
+      will receive the events before the ones associated via the addSpeakable 
+      Listener.</font></p>
+  </li>
+</ul>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo5.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p>&nbsp;</p>
+<ul>
+  <li><font size="4" color="#FFFF00"> <a name="fila"></a><b>The items queue:</b> 
+    </font><font size="4" color="#FFFFFF"> a synthesizer implements a queue of 
+    items provided to it through the
+    </font> 
+    <font size="4" color="#33FF33"> speak
+    </font> 
+    <font size="4" color="#FFFFFF"> and
+    </font> 
+    <font size="4" color="#33FF33"> speakPlainText
+    </font> 
+    <font size="4" color="#FFFFFF"> methods. The queue 
+    is "first-in, first-out&quot; (FIFO) -- the objects are spoken in the exactly order 
+    in which they were received. The object at the top of the queue is the object 
+    that is currently being spoken or about to be spoken. The QUEUE_EMPTY and 
+    QUEUE_NOT_EMPTY states of a Synthesizer indicate the current state of the 
+    speech output queue. The state handling methods inherited from the Engine 
+    interface (</font><font size="4" color="#33FF33">getEngineState</font><font size="4" color="#FFFFFF">,
+    </font> 
+    <font size="4" color="#33FF33"> waitEngineState
+    </font> 
+    <font size="4" color="#FFFFFF"> and
+    </font> 
+    <font size="4" color="#33FF33">testEngineState</font><font size="4" color="#FFFFFF">) can be used 
+    to test the queue state. The items on the queue can be checked with the
+    </font> 
+    <font size="4" color="#33FF33"> enumerateQueue
+    </font> 
+    <font size="4" color="#FFFFFF"> 
+    method which returns a snapshot of the queue. The cancel methods allows an 
+    application to:<br>
+    <br>
+    </font> 
+    <ul>
+      <li><font size="4" color="#FFFFFF"> (a) stop the output of an item currently
+        on the top of the speaking queue.</font></li>
+      <li><font size="4" color="#FFFFFF"> (b) remove an arbitrary item from the 
+        queue.</font></li>
+      <li><font size="4" color="#FFFFFF"> (c) remove all items from the output 
+        queue.</font> <font size="4" color="#FFFFFF"> </font><br>
+        <br>
+      </li>
+    </ul>
+  </li>
+  <li><font color="#FFFFFF" size="4"><b><font color="#FFFF00">The Voice:</font></b> 
+    as an additional function of the synthesizers, we have the possibility to 
+    choose the <a href="../../ref/api/javax/speech/synthesis/Voice.html" target="_blank"><i>Voice</i></a> 
+    that will be used in the synthesis. The parameters that must be provided are:<br>
+    <br>
+    </font></li>
+  <ul>
+    <li><font color="#FFFFFF" size="4"> gender: <a href="../../ref/api/javax/speech/synthesis/Voice.html#GENDER_MALE" target="_blank">GENDER_MALE</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#GENDER_FEMALE" target="_blank">GENDER_FEMALE</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#GENDER_NEUTRAL" target="_blank">GENDER_NEUTRAL</a> 
+      e <a href="../../ref/api/javax/speech/synthesis/Voice.html#GENDER_DONT_CARE" target="_blank">GENDER_DONT_CARE</a>.</font></li>
+    <li><font color="#FFFFFF" size="4"> age: <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_CHILD" target="_blank">AGE_CHILD</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_DONT_CARE" target="_blank">AGE_DONT_CARE</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_MIDDLE_ADULT" target="_blank">AGE_MIDDLE_ADULT</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_NEUTRAL" target="_blank">AGE_NEUTRAL</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_OLDER_ADULT" target="_blank">AGE_OLDER_ADULT</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_TEENAGER" target="_blank">AGE_TEENAGER</a> 
+      e <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_YOUNGER_ADULT" target="_blank">AGE_YOUNGER_ADULT</a>. 
+      </font></li>
+  </ul>
+</ul>
+<ul>
+</ul>
+<blockquote> 
+  <p><font size="4" color="#FFFFFF">To determine the association of the voice 
+    and the synthesizer, it is necessary to recover a <a href="../../ref/api/javax/speech/synthesis/SynthesizerProperties.html" target="_blank"> 
+    SynthesizerProperties</a> object through the <a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#getSynthesizerProperties()" target="_blank">getSynthesizerProperties</a> 
+    method and determine the voice using <a href="../../ref/api/javax/speech/synthesis/SynthesizerProperties.html#setVoice(javax.speech.synthesis.Voice)" target="_blank">setVoice</a>. 
+    This can be clearer understood in the next example.</font></p>
+</blockquote>
+<blockquote>&nbsp;</blockquote>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo6.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<br>
+<br>
+</body>
+</html>

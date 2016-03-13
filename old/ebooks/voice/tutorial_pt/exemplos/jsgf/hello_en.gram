@@ -1,0 +1,26 @@
+grammar hello;
+
+/*aqui definimos a regra <first> que está associada a qualquer um dos três nomes abaixo*/
+<first> = Bruce {Bruce}
+	| Andrew {Andrew}
+	| Stuart {Stuart}
+	;    
+
+/*aqui definimos a regra <last> que está associada a qualquer um dos três sobrenomes abaixo*/
+<last>  = Lucas {Lucas}
+	| Hunt {Hunt}
+	| Adams {Adams}
+	;
+
+/*a regra <name> está associada ao produto cartesiano de todos os elementos associados as 
+regras <first> e <last>*/
+<name> = <first> <last>;
+
+/*esta regra esta associada à frase My name is "qualquer nome associado a regra <name>"*/
+public <nameis> = My name is {name} <name>;
+
+public <begin> = Repeat after me {begin};
+
+public <stop> = That's all {stop};
+
+public <bye> = Good bye {bye} | So long {bye};

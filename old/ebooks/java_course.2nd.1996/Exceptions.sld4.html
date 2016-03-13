@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Exceptions Slide 4: Catch or Specify Requirement.</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="Description" CONTENT="Copyrighted material for a Java Course">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Exceptions:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Catch or specify requirement</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><B><FONT COLOR="#0000FF"><A HREF="tutorial/java/exceptions/catchOrDeclare.html">Catch
+or specify requirement</A></FONT></B></H2>
+
+<UL>
+<H4>Java <B><FONT COLOR="#FF0000"><FONT SIZE=+1>requires </FONT></FONT></B>that
+a method either catch or specify <B><FONT COLOR="#FF0000"><FONT SIZE=+1>all
+</FONT></FONT></B>checked exceptions that can be thrown within the scope
+of the method.</H4>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#800080">Catch</FONT></H2>
+
+<UL>
+<P>A method can catch an exception by providing a method can catch an exception
+by providing an exception handler for that type of exception.</P>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#800080">Specify</FONT></H2>
+
+<UL>
+<P>If a method chooses not to catch an exception, the method must specify
+that it can throw that exception.</P>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#800080">Why
+Specify?</FONT></H2>
+
+<UL>
+<P>Because any exception that can be thrown by a method is really part
+of the method's public programming interface.</P>
+</UL>
+</UL>
+
+<UL>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#800080">Checked
+Exceptions</FONT></H2>
+
+<UL>
+<P>Checked exceptions are exceptions that are not runtime exceptions and
+are checked by the compiler.</P>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#800080">Why
+not catch Runtime exceptions?</FONT></H2>
+
+<UL>
+<P>Runtime exceptions can occur anywhere in a program and in a typical
+program can be very numerous. Often the cost of checking for runtime exceptions
+exceeds the benefit of catching or specifying them.</P>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#800080">Do
+not make all of your's exceptions Runtime</FONT></H2>
+
+<UL>
+<P>Do not throw a runtime exception or create a subclass of RuntimeException
+simply because you don't want to be bothered with specifying them.</P>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#800080">Exceptions
+that can be thrown within the scope of the method</FONT></H2>
+
+<UL>
+<LI>Exceptions that are thrown directly by the method with Java's throw
+statement.</LI>
+
+<LI>Exceptions that are thrown indirectly by the method through calls to
+other methods.</LI>
+</UL>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Exceptions.sld5.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Exceptions.sld5.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

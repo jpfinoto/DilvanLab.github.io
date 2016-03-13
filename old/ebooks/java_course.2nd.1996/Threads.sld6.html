@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Threads Slide 6: Thread Group</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Threads:</FONT> </FONT><B><FONT COLOR="#0000FF">Thread
+Group</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><B><A HREF="tutorial/java/threads/group.html">Thread
+Group</A></B></H2>
+
+<BLOCKQUOTE>
+<P>Every Java thread is a member of a <I>thread group</I>.</P>
+
+<BLOCKQUOTE>
+<P><B>Default Group:</B> The same as the thread that created it.</P>
+
+<P><B>Start up Group:</B> the Java runtime system creates a ThreadGroup
+named &quot;main&quot;.</P>
+</BLOCKQUOTE>
+
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/threads/threadgroup.html">The
+ThreadGroup Class</A></H3>
+
+<BLOCKQUOTE>
+<P>The ThreadGroup class manages groups of threads for Java applications.</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<CENTER><P><IMG SRC="gifs/Threads2.gif" HEIGHT=343 WIDTH=487></P></CENTER>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<P>The ThreadGroup class has methods that can be categorized as follows:</P>
+
+<BLOCKQUOTE>
+<LI><A HREF="#collection">Collection Management Methods</A>--methods that
+manage the collection of threads and subgroups contained in the thread
+group.</LI>
+
+<LI><A HREF="#group">Methods that Operate on the Group</A>--these methods
+set or get attributes of the ThreadGroup object.</LI>
+
+<LI><A HREF="#groupcommand">Methods that Operate on All Threads within
+a Group</A>--this is a set of methods that perform some operation on all
+the threads and subgroups within the ThreadGroup:</LI>
+
+<BLOCKQUOTE>
+<LI><TT>resume()</TT></LI>
+
+<LI><TT>stop()</TT></LI>
+
+<LI><TT>suspend()</TT></LI>
+</BLOCKQUOTE>
+
+<LI><A HREF="#accessrestrictions">Access Restriction Methods</A>--ThreadGroup
+and Thread allow the security manager to restrict access to threads based
+on group membership.</LI>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Threads.sld7.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Threads.sld7.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,64 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;XML Tag Library</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Hypermedia"><link rel="up" href="jstl.html" title="Chapter&nbsp;6.&nbsp;JSP Standard Tag Library"><link rel="prev" href="jstl_core.html" title="2.&nbsp;Core Tag Library"><link rel="next" href="jstl_internationalization.html" title="4.&nbsp;Internationalization Tags"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;XML Tag Library</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="jstl_core.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;6.&nbsp;JSP Standard Tag Library</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="jstl_internationalization.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="jstl_xml"></a>3.&nbsp;XML Tag Library</h2></div></div></div><p>The JSTL XML tag set is listed:</p><div class="table"><a name="d0e2047"></a><p class="title"><b>Table&nbsp;6.3.&nbsp;XML Tags</b></p><table summary="XML Tags" border="1"><colgroup><col width="50%"><col width="50%"></colgroup><tbody><tr><td><span class="bold"><strong>Function</strong></span></td><td><span class="bold"><strong>Tags</strong></span></td></tr><tr><td>Variable support</td><td><pre class="programlisting">out
+parse
+set</pre></td></tr><tr><td>Flow control</td><td><pre class="programlisting">choose 
+  when 
+  otherwise 
+forEach 
+if</pre></td></tr><tr><td>Transformation</td><td><pre class="programlisting">transform
+param</pre></td></tr></tbody></table></div><p>A key aspect of dealing with XML documents is to be able to easily access their content.</p><p>XPath, a W3C recommendation since 1999, provides an easy notation for specifying and selecting parts of an XML document. In the JSTL XML tags, XPath expressions specified using the select attribute are used to select portions of XML data streams.</p><p>In addition to the standard XPath syntax, the JSTL XPath engine supports the following scopes to access Web application data within an XPath expression:</p><pre class="programlisting">$foo
+$param:
+$header:
+$cookie:
+$initParam:
+$pageScope:
+$requestScope:
+$sessionScope:
+$applicationScope:</pre><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2085"></a>3.1.&nbsp;Core Tags</h3></div></div></div><p>The core XML tags provide basic functionality to easily parse and access XML data.</p><p>The <span class="bold"><strong>parse tag</strong></span> parses an XML document and saves the resulting object in the EL variable specified by attribute <span class="emphasis"><em>var</em></span>:</p><pre class="programlisting">&lt;c:if test="${applicationScope:booklist == null}" &gt; 
+  &lt;c:import url="${initParam.booksURL}" var="xml" /&gt;
+  &lt;x:parse doc="${xml}" var="booklist" scope="application" /&gt;
+&lt;/c:if&gt;</pre><p>The <span class="bold"><strong>set tag</strong></span> evaluates an XPath expression and sets the result into a JSP EL variable specified by attribute <span class="emphasis"><em>var</em></span>. The <span class="bold"><strong>out tag</strong></span> evaluates an XPath expression on the current context node and outputs the result of the evaluation to the current JspWriter object. The following JSP selects a book element whose <span><strong class="command">id</strong></span> attribute matches the request parameter <span><strong class="command">bookId</strong></span> and sets the <span><strong class="command">abook</strong></span> attribute. The <span class="bold"><strong>out tag</strong></span> then selects the book's title element and outputs the result.</p><pre class="programlisting">&lt;x:set var="abook"
+  select="$applicationScope.booklist/
+    books/book[@id=$param:bookId]" /&gt;
+  &lt;h2&gt;&lt;x:out select="$abook/title"/&gt;&lt;/h2&gt;</pre><p>As you have just seen, <span><strong class="command">x:set</strong></span> stores an internal XML representation of a node retrieved using an XPath expression; it doesn't convert the selected node into a String and store it. Thus, <span><strong class="command">x:set</strong></span> is primarily useful for storing parts of documents for later retrieval.</p><p>If you want to store a String, you must use <span><strong class="command">x:out</strong></span> within <span><strong class="command">c:set</strong></span>. The <span><strong class="command">x:out</strong></span> tag converts the node to a String, and <span><strong class="command">c:set</strong></span> then stores the String as an EL variable. For example, the following jsp stores an EL variable containing a book price, which is later printed:</p><pre class="programlisting">&lt;c:set var="price"&gt;
+  &lt;x:out select="$abook/price"/&gt;
+&lt;/c:set&gt;
+&lt;h4&gt;ItemPrice: &lt;c:out value="${price}"/&gt;&lt;/h4&gt;</pre><p>The other option, which is more direct but requires that the user have more knowledge of XPath, is to coerce the node to a String manually by using XPath's string function.</p><pre class="programlisting">&lt;x:set var="price" select="string($abook/price)"/&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2153"></a>3.2.&nbsp;Flow Control Tags</h3></div></div></div><p>The XML flow control tags parallel the behavior described in Flow Control Tags for XML data streams.</p><p>The <span class="bold"><strong>forEach tag</strong></span> is used to display all the books contained in a booklist as follows:</p><pre class="programlisting">&lt;x:forEach var="book" 
+  select="$applicationScope:booklist/books/*"&gt;
+  &lt;tr&gt;
+    &lt;c:set var="bookId"&gt;
+      &lt;x:out select="$book/@id"/&gt;
+    &lt;/c:set&gt;=
+    &lt;td bgcolor="#ffffaa"&gt; 
+      &lt;c:url var="url"
+      value="/bookdetails" &gt;
+        &lt;c:param name="bookId" value="${bookId}" /&gt;
+        &lt;c:param name="Clear" value="0" /&gt;
+      &lt;/c:url&gt;
+      &lt;a href="${url}"&gt;
+      &lt;strong&gt;&lt;x:out select="$book/title"/&gt;&amp;nbsp;
+      &lt;/strong&gt;&lt;/a&gt;&lt;/td&gt; 
+    &lt;td bgcolor="#ffffaa" rowspan=2&gt; 
+      &lt;c:set var="price"&gt;
+        &lt;x:out select="$book/price"/&gt;
+      &lt;/c:set&gt;
+      &lt;fmt:formatNumber value="${price}" type="currency"/&gt; 
+      &amp;nbsp;
+    &lt;/td&gt; 
+    &lt;td bgcolor="#ffffaa" rowspan=2&gt; 
+    &lt;c:url var="url" value="/catalog" &gt;
+      &lt;c:param name="Add" value="${bookId}" /&gt;
+    &lt;/c:url&gt; 
+    &lt;p&gt;&lt;strong&gt;&lt;a href="${url}"&gt;&amp;nbsp;
+      &lt;fmt:message key="CartAdd"/&gt;&amp;nbsp;&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+    &lt;td bgcolor="#ffffff"&gt; 
+    &amp;nbsp;&amp;nbsp;&lt;fmt:message key="By"/&gt; &lt;em&gt;
+      &lt;x:out select="$book/firstname"/&gt;&amp;nbsp;
+      &lt;x:out select="$book/surname"/&gt;&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/x:forEach&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2165"></a>3.3.&nbsp;Transformation Tags</h3></div></div></div><p>The <span class="bold"><strong>transform tag</strong></span> applies a transformation, specified by an XSLT stylesheet set by the attribute <span><strong class="command">xslt</strong></span>, to an XML document, specified by the attribute <span><strong class="command">xml</strong></span>. If the <span><strong class="command">xml</strong></span> attribute is not specified, the input XML document is read from the tag's body content.</p><pre class="programlisting">   &lt;c:import var='book_xml' url='book.xml'/&gt;
+   &lt;c:import var='assignments_xsl' url='assignments.xsl'/&gt;
+   &lt;x:transform xml='${book_xml}' xslt='${assignments_xsl}' /&gt;</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="jstl_core.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="jstl.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="jstl_internationalization.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Core Tag Library&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Internationalization Tags</td></tr></table></div></body></html>

@@ -1,0 +1,1761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" -->
+<book id="compsoc">
+  <bookinfo>
+    <title>Informatics and Computing</title>
+
+    <subtitle>Introductory course on computing.</subtitle>
+
+    <author>
+      <firstname>Dilvan</firstname>
+
+      <othername>de Abreu</othername>
+
+      <surname>Moreira</surname>
+
+      <email>dilvan@computer.org</email>
+    </author>
+
+    <editor>
+      <firstname>Dilvan</firstname>
+
+      <surname>Moreira</surname>
+    </editor>
+
+    <copyright>
+      <year>2005</year>
+
+      <holder>Dilvan Moreira</holder>
+    </copyright>
+
+    <edition>First</edition>
+
+    <publisher>
+      <publishername>Dilvan Moreira</publishername>
+
+      <address><city>São Carlos </city><country>Brazil</country></address>
+    </publisher>
+
+    <revhistory>
+      <revision>
+        <revnumber>$Revision: 1.12 $</revnumber>
+
+        <date>$Date: 2005/06/17 16:24:47 $</date>
+      </revision>
+    </revhistory>
+
+    <pubdate>March 2005</pubdate>
+  </bookinfo>
+
+  <chapter id="computer_history">
+    <title>Computer History</title>
+
+    <section id="computer_history_preWWW2_computers">
+      <title>Pre-World War II Computers</title>
+
+      <orderedlist>
+        <listitem>
+          <para><ulink
+          url="http://www.ime.usp.br/~macmulti/historico/histcomp1_2.html">Abacus</ulink></para>
+        </listitem>
+
+        <listitem>
+          <para><ulink url="???">Calculation Machine</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="http://www.ime.usp.br/~macmulti/historico/histcomp1_5.html">Punched
+          Cards</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="http://www.ime.usp.br/~macmulti/historico/histcomp1_6.html">Babbage
+          and Ada</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="http://www.ime.usp.br/~macmulti/historico/histcomp1_65.html">Boole</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="http://www.ime.usp.br/~macmulti/historico/histcomp1_7.html">Tabulation
+          Machine</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="http://en.wikipedia.org/wiki/History_of_computing_hardware#First_generation_of_electrical_digital_computers_1940s">World
+          War II Computers</ulink>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section id="computer_history_four_generations">
+      <title>The four Computer Generations</title>
+
+      <para>Visit the following links in the <ulink
+      url="http://www.wikipedia.org/">Wikipedia site</ulink> and read the
+      definitions:</para>
+
+      <orderedlist>
+        <listitem>
+          <para><ulink
+          url="http://en.wikipedia.org/wiki/History_of_computing_hardware#First_generation_of_electrical_digital_computers_1940s">First
+          Generation</ulink> (Electronic Tubes).</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="http://en.wikipedia.org/wiki/History_of_computing_hardware#Second_generation_--_late_1950s_and_early_1960s">Second
+          Generation</ulink> (Transistor).</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="http://en.wikipedia.org/wiki/History_of_computing_hardware_%281960s-present%29#Third_generation">Third
+          Generation</ulink> (Integrated Circuits)</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="http://en.wikipedia.org/wiki/History_of_computing_hardware_%281960s-present%29">Fourth
+          Generation</ulink> (Microprocessors).</para>
+        </listitem>
+      </orderedlist>
+
+      <para>Now, using Internet search engines (such as <ulink
+      url="http://www.google.com">Google</ulink>) find additional material
+      about each generation. Try to find examples of machines, memory
+      components, storage devices and I/O devices used in each
+      generation.</para>
+
+      <para>After that, there will be a discussion about each generation and
+      each student will have a chance to share with the class the material
+      he/she found.</para>
+    </section>
+  </chapter>
+
+  <chapter id="introduction_to_c">
+    <title>Introduction to C</title>
+
+    <section id="introduction_to_c_books_on_c">
+      <title>Books on C</title>
+
+      <para>This books are available in the library:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Kernighan, B W, <emphasis>C a Linguagem de
+          Programação</emphasis>, 1986.</para>
+        </listitem>
+
+        <listitem>
+          <para>Schildt, Herbert, <emphasis>Linguagem C Guia Prático e
+          Interativo</emphasis>, 1989 (EESC and ICMC).</para>
+        </listitem>
+
+        <listitem>
+          <para>Hancock, Les, <emphasis>Manual de Linguagem C</emphasis>,
+          1985.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section id="introduction_to_c_language_and_algorithms">
+      <title>Languages and Algorithms</title>
+
+      <para>The following material introduces computer languages and the
+      concept of algorithms:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><ulink url="../pdf/LinguagensProgramacao.pdf">Computer
+          Languages</ulink> (in PDF by Dr. Rosely Sanches).</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink url="../pdf/Algoritimos.pdf">Algorithms</ulink> (in PDF
+          by Dr. Rosely Sanches).</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="introduction_to_c_algorithms_in_c">
+      <title>Algorithms in C</title>
+
+      <para>Based on <ulink
+      url="http://coteia.icmc.usp.br/coteia/get.php?swiki=115&amp;arq=%285-1%29PascalBasico%28Graca%29.pdf">Pascal
+      Básico PDF</ulink> by Rosane Minghim.</para>
+
+      <section>
+        <title>Language C</title>
+
+        <itemizedlist>
+          <listitem>
+            <para>Versatile.</para>
+          </listitem>
+
+          <listitem>
+            <para>Adequate for Most Programming Tasks.</para>
+          </listitem>
+
+          <listitem>
+            <para>It runs Everywhere.</para>
+          </listitem>
+
+          <listitem>
+            <para>It runs on Everything.</para>
+          </listitem>
+
+          <listitem>
+            <para>It fits into Windows, Linux and Unix systems.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>Algorithm Example</title>
+
+        <programlisting>Algoritmo Raízes
+
+variáveis
+   real a,b,c
+   real delta
+   real x1,x2
+
+programa
+   leia(a,b,c)
+   delta= b*b - 4*a*c
+
+   se (delta &lt; 0) então
+      escreva('Esta equação não possui raízes reais.')
+   senão
+      x1= (-1*b - raiz(delta)) / (2*a)
+      x2= (-1*b + raiz(delta)) / (2*a)
+      escreva('As raízes são ',x1,' e ', x2)
+   fim se
+fim</programlisting>
+      </section>
+
+      <section>
+        <title>C Program</title>
+
+        <programlisting>//Programa Raizes
+
+//variáveis
+   float a, b,c;
+   float delta;
+   float x1, x2;
+
+//programa
+
+int main() {
+
+   printf("Digite o valor de a:");
+   scanf("%f", &amp;a);
+   printf("Digite o valor de b:");
+   scanf("%f", &amp;b);
+   printf("Digite o valor de c:");
+   scanf("%f", &amp;c);
+
+   delta= b*b - 4*a*c;
+
+   if (delta &lt; 0) {
+      printf("Esta equacao nao possui raizes reais.");
+   } else {
+      x1= (-b - sqrt(delta)) / (2*a);
+      x2= (-b + sqrt(delta)) / (2*a);
+      printf("As raizes sao %f e %f", x1, x2);
+   }
+   
+}</programlisting>
+      </section>
+
+      <section>
+        <title>Characteristics</title>
+
+        <itemizedlist>
+          <listitem>
+            <para>Semelhança com o pseudo-código;</para>
+          </listitem>
+
+          <listitem>
+            <para>Alguns comandos foram adicionados, mas estruturalmente o
+            algoritmo e o programa são muito parecidos;</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>What changes?</title>
+
+        <orderedlist>
+          <listitem>
+            <para>A sintaxe torna-se mais rígida, restrita ao vocabulário
+            específico da linguagem de programação;</para>
+          </listitem>
+
+          <listitem>
+            <para>A pontuação torna-se necessária;</para>
+          </listitem>
+
+          <listitem>
+            <para>No algoritmo a capacidade de representação (tamanho) e a
+            precisão das variáveis numéricas são infinitos.</para>
+          </listitem>
+
+          <listitem>
+            <para>Eventualmente alguma construção que fazemos em algoritmos
+            pode não ser eficiente na linguagem de programação (melhorar a
+            eficiência).</para>
+          </listitem>
+
+          <listitem>
+            <para>Devemos nos preocupar com erros e situações excepcionais,
+            como divisão por zero e variáveis com valores inadequados
+            fornecidos pelo usuário.</para>
+          </listitem>
+
+          <listitem>
+            <para>Os comentários que identificam o algoritmo e que esclarecem
+            sua construção devem ser transcritos na codificação.</para>
+          </listitem>
+
+          <listitem>
+            <para>A forma de interação do programa com as pessoas deve ser
+            planejada e incluída no programa.</para>
+          </listitem>
+
+          <listitem>
+            <para>Os cálculos devem ser codificados de forma a tornálos
+            rápidos e precisos conforme os recursos apresentados pela
+            linguagem.</para>
+          </listitem>
+        </orderedlist>
+      </section>
+
+      <section>
+        <title>Recommendations</title>
+
+        <itemizedlist>
+          <listitem>
+            <para>Procure estabelecer e manter um padrão de
+            documentação.</para>
+          </listitem>
+
+          <listitem>
+            <para>Comente o objetivo do programa, a autoria do programa, os
+            trechos menos óbvios de código, e o significado das variáveis
+            menos óbvias.</para>
+          </listitem>
+
+          <listitem>
+            <para>Escolha mensagens claras e procure definir bons casos de
+            teste para o seu programa.</para>
+          </listitem>
+
+          <listitem>
+            <para>Revise o código desenvolvido pelo menos uma vez para
+            programas pequenos, e pelo menos duas para programas
+            maiores.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+
+    <section id="introduction_to_c_basics">
+      <title>Basics</title>
+
+      <para>Site Programming in C: <ulink
+      url="http://www.cs.cf.ac.uk/Dave/C/node4.html">C Basic</ulink>.</para>
+    </section>
+  </chapter>
+
+  <chapter id="control_structures">
+    <title>Control Structures</title>
+
+    <para>Chapter based on material from <ulink
+    url="http://www.cs.cf.ac.uk/Dave/C/CE.html">C Courseware</ulink>. In
+    Portuguese, there is a similar material in the <ulink
+    url="http://ead1.eee.ufmg.br/cursos/C/aulas/c400.html">UFMG C Language
+    Course</ulink>.</para>
+
+    <section id="control_structures_conditionals">
+      <title>Conditionals</title>
+
+      <para>As we have seen following logical operations exist in C:</para>
+
+      <programlisting> ==, !=, ||, &amp;&amp;.</programlisting>
+
+      <para>One other operator is the unitary - it takes only one argument -
+      not <code>!</code>.</para>
+
+      <para>These operators are used in conjunction with the following
+      statements.</para>
+
+      <section>
+        <title>The <code>if</code> statement</title>
+
+        <para>The <command>if</command> statement has the same function as
+        other languages. It has three basic forms:</para>
+
+        <programlisting>  if  (expression)
+      <emphasis>statement</emphasis>
+
+...or:
+
+  if  (expression)
+      <emphasis>statement1</emphasis>
+  else
+      <emphasis>statement2</emphasis>
+
+...or:
+
+  if  (expression)
+      <emphasis>statement1</emphasis>
+  else if (expression)
+      <emphasis>statement2</emphasis>
+  else
+      <emphasis>statement3</emphasis></programlisting>
+
+        <para>For example:</para>
+
+        <programlisting>int x;
+ 
+main() {
+   printf("Enter x:"); scanf("%d",x);
+   if (x&gt;=0) {
+
+      printf(" X is positive.\n");
+
+   }
+   else
+   {
+
+      printf(" X is negative.\n");
+
+   }
+}</programlisting>
+      </section>
+
+      <section>
+        <title>The <code>switch</code> statement</title>
+
+        <para>The C <code>switch</code> statement allows multiple choice of a
+        selection of items at one level of a conditional where it is a far
+        neater way of writing multiple if statements:</para>
+
+        <programlisting>switch (expression) {
+   case item<subscript>1</subscript>:
+      <emphasis>statement1</emphasis>;
+   break;
+   case item<subscript>2</subscript>:
+      <emphasis>statement2</emphasis>;
+   break;
+     .
+     .
+     .
+   case item<subscript>n</subscript>:
+      <emphasis>statementn</emphasis>;
+   break;
+   default:
+      <emphasis>statement</emphasis>;
+   break;
+}</programlisting>
+
+        <para>In each case the value of itemi must be a constant, variables
+        are not allowed.</para>
+
+        <para>The break is needed if you want to terminate the switch after
+        execution of one choice. Otherwise the next case would get
+        evaluated.</para>
+
+        <para>We can also have null statements by just including a ; or let
+        the switch statement fall through by omitting any statements (see
+        below).</para>
+
+        <para>The default case is optional and catches any other cases.</para>
+
+        <para>For example:</para>
+
+        <programlisting>char letter;
+
+main(){
+   printf("Enter letter:"); letter= getchar();
+
+   switch (letter) {
+      case 'A':
+      case 'E':
+      case 'I':
+      case 'O':
+      case 'U':
+         printf(" is a vowel.\n");
+      break;
+
+      case ' ':
+         printf(" is space.\n");
+      break;
+
+      default:
+         printf(" is not a vowel.\n");
+      break;
+   }
+}</programlisting>
+
+        <para>In the above example if the value of letter is <code>'A'</code>,
+        <code>'E'</code>, <code>'I'</code>, <code>'O'</code> or
+        <code>'U'</code> then <code>" is a vowel."</code> is printed.</para>
+
+        <para>If the value of letter is <code>' '</code> then <code>" is
+        space."</code> is printed.</para>
+
+        <para>If none of these is true then the default condition is executed,
+        that is <code>" is not a vowel."</code> is printed.</para>
+      </section>
+    </section>
+
+    <section id="control_structures_conditional_exercises">
+      <title>Conditionals Exercises</title>
+
+      <para>1- Write a program to read two characters, and print their value
+      when interpreted as a 2-digit hexadecimal number. Accept upper case
+      letters for values from 10 to 15.</para>
+
+      <para>2- Read an integer value. Assume it is the number of a month of
+      the year; print out the name of that month.</para>
+
+      <para>3- Given as input three integers representing a date as day,
+      month, year, print out the number day, month and year for the following
+      day's date.</para>
+
+      <programlisting>Typical input: 28 2 1992 Typical output: Date following 28:02:1992 is 29:02:1992</programlisting>
+
+      <para>4- Write a program which reads two integer values. If the first is
+      less than the second, print the message up. If the second is less than
+      the first, print the message down If the numbers are equal, print the
+      message equal If there is an error reading the data, print a message
+      containing the word Error and perform exit( 0 );</para>
+    </section>
+
+    <section id="control_structures_looping">
+      <title>Looping</title>
+
+      <para>This chapter will look at C's mechanisms for controlling looping
+      and iteration. These mechanisms look familiar and indeed will operate in
+      standard fashion most of the time.</para>
+
+      <section>
+        <title>The <code>for</code> statement</title>
+
+        <para>The C <code>for</code> statement has the following form:</para>
+
+        <programlisting>for  (expression<subscript>1</subscript>; expression<subscript>2</subscript>; expression<subscript>3</subscript>)
+   <emphasis>statement</emphasis>;
+   or {<emphasis>block of statements</emphasis>}</programlisting>
+
+        <para>expression<subscript>1</subscript> initialises;
+        expression<subscript>2</subscript> is the terminate test;
+        expression<subscript>3</subscript> is the modifier (which may be more
+        than just simple increment);</para>
+
+        <para>NOTE: C basically treats <code>for</code> statements as
+        <code>while</code> type loops</para>
+
+        <para>For example:</para>
+
+        <programlisting>int x;
+
+main() {
+   for (x=3; x&gt;0; x--) {
+      printf("x=%d\n",x);
+   }
+}
+
+...outputs:
+
+x=3
+x=2
+x=1
+
+...to the screen</programlisting>
+      </section>
+
+      <section>
+        <title>The <code>while</code> statement</title>
+
+        <para>The C <code>while</code> statement has the following
+        form:</para>
+
+        <programlisting>while (expression)
+   <emphasis>statement</emphasis></programlisting>
+
+        <para>It will execute the <emphasis>statement</emphasis> while
+        expression is true. For example:</para>
+
+        <programlisting>int x=3;
+
+main() {
+   while (x&gt;0) {
+      printf("x=%d\n",x);
+      x--;
+   }
+}
+
+...outputs:
+
+  x=3
+  x=2
+  x=1
+
+...to the screen.</programlisting>
+      </section>
+
+      <section>
+        <title>The <code>do-while</code> statement</title>
+
+        <para>The C <code>do-while</code> statement has the following
+        form:</para>
+
+        <programlisting>do
+   <emphasis>statement</emphasis>
+while (expression) </programlisting>
+
+        <para>It will execute the <emphasis>statement</emphasis> while
+        expression is true, <emphasis>statement</emphasis> will be always
+        executed at least once. For example:</para>
+
+        <programlisting>int x=3;
+
+main() {
+   do {
+      printf("x=%d\n",x);
+      x--;
+   } while (x&gt;0)
+}
+
+...outputs:
+
+  x=3
+  x=2
+  x=1
+
+...to the screen.</programlisting>
+      </section>
+
+      <section>
+        <title><code>break</code> and <code>continue</code> statements</title>
+
+        <para>C provides two commands to control how we loop:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><code>break</code> -- exit form loop or switch.</para>
+          </listitem>
+
+          <listitem>
+            <para><code>continue</code> -- skip 1 iteration of loop.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Consider the following example where we read in integer values
+        and process them according to the following conditions. If the value
+        we have read is negative, we wish to print an error message and
+        abandon the loop. If the value read is great than 100, we wish to
+        ignore it and continue to the next value in the data. If the value is
+        zero, we wish to terminate the loop.</para>
+
+        <programlisting>int value;
+
+main() {
+   scanf("%d", &amp;value);
+   while (value != 0) { 
+
+      if (value &lt; 0) {
+         printf("Illegal value\n");
+         break;
+         /* Abandon the loop */
+      }
+
+      if (value &gt; 100) {
+         printf("Invalid value\n");
+         scanf("%d", &amp;value)
+         continue;
+         /* Skip to start loop again */
+      }
+
+      /* Process the value read */
+      /* guaranteed between 1 and 100 */
+      ....;
+
+      scanf("%d", &amp;value);
+   } /* end while if value &lt;= 0 */
+}</programlisting>
+      </section>
+    </section>
+
+    <section id="control_structures_looping_exercises">
+      <title>Looping Exercises</title>
+
+      <para>1- Write a program to read in 10 numbers and compute the average,
+      maximum and minimum values.</para>
+
+      <para>2- Write a program to read in numbers until the number -999 is
+      encountered. The sum of all number read until this point should be
+      printed out.</para>
+
+      <para>3- Write a program which will read an integer value for a base,
+      then read a positive integer written to that base and print its
+      value.</para>
+
+      <para>4- Read in three values representing respectively</para>
+
+      <programlisting>a capital sum (integer number of pence), 
+a rate of interest in percent (float),
+and a number of years (integer).</programlisting>
+
+      <para>Compute the values of the capital sum with compound interest added
+      over the given period of years. Each year's interest is calculated as
+      <code>interest = capital * interest_rate / 100</code>;</para>
+
+      <para>and is added to the capital sum by <code>capital = capital +
+      interest;</code></para>
+
+      <para>Print out money values as dolars (cents / 100.0) accurate to two
+      decimal places.</para>
+
+      <para>Print out a floating value for the value with compound interest
+      for each year up to the end of the period.</para>
+
+      <para>Print output year by year in a form such as: <code>Original sum
+      30000.00 at 12.5 percent for 20 years:</code></para>
+
+      <programlisting>Year Interest  Sum
+----+-------+--------
+  1  3750.00 33750.00
+  2  4218.75 37968.75
+  3  4746.09 42714.84
+  4  5339.35 48054.19
+  5  6006.77 54060.96
+  6  6757.62 60818.58
+  7  7602.32 68420.90
+  8  8552.61 76973.51
+  9  9621.68 86595.19
+ 10 10824.39 97419.58</programlisting>
+
+      <para>5- Read a positive integer value, and compute the following
+      sequence: If the number is even, halve it; if it's odd, multiply by 3
+      and add 1. Repeat this process until the value is 1, printing out each
+      value. Finally print out how many of these operations you
+      performed.</para>
+
+      <para>Typical output might be:</para>
+
+      <programlisting>Initial value is 9
+ Next value is  28
+ Next value is  14
+ Next value is   7
+ Next value is  22
+ Next value is  11
+ Next value is  34
+ Next value is  17
+ Next value is  52
+ Next value is  26
+ Next value is  13
+ Next value is  40
+ Next value is  20
+ Next value is  10
+ Next value is   5
+ Next value is  16
+ Next value is   8
+ Next value is   4
+ Next value is   2
+ Final value 1, number of steps 19</programlisting>
+
+      <para>If the input value is less than 1, print a message containing the
+      word</para>
+
+      <programlisting>Error</programlisting>
+
+      <para>and perform an</para>
+
+      <programlisting>exit(0);</programlisting>
+
+      <para>6- Write a program to count the vowels and letters in free text
+      given as standard input. Read text a character at a time until you
+      encounter end-of-data.</para>
+
+      <para>Then print out the number of occurrences of each of the vowels a,
+      e, i, o and u in the text, the total number of letters, and each of the
+      vowels as an integer percentage of the letter total.</para>
+
+      <para>Suggested output format is:</para>
+
+      <programlisting>       Numbers of characters:
+        a   3 ; e   2 ; i   0 ; o   1 ; u   0 ; rest  17
+        Percentages of total:
+        a  13%; e   8%; i   0%; o   4%; u   0%; rest  73%</programlisting>
+
+      <para>Read characters to end of data using a construct such as</para>
+
+      <programlisting>        char ch;
+        while( (ch = getchar()) &gt;= 0) {
+            /* ch is the next character */    ....
+        }</programlisting>
+
+      <para>to read characters one at a time using getchar() until a negative
+      value is returned.</para>
+
+      <para>7- Read a file of English text, and print it out one word per
+      line, all punctuation and non-alpha characters being omitted.</para>
+
+      <para>For end-of-data, the program loop should read until "getchar"
+      delivers a value &lt;= 0. When typing input, end the data by typing the
+      end-of-file character, usually control-D. When reading from a file,
+      "getchar" will deliver a negative value when it encounters the end of
+      the file.</para>
+
+      <para>Typical output might be</para>
+
+      <programlisting>Read
+a
+file
+of
+English
+text
+and
+print
+it
+out
+one
+
+etc.</programlisting>
+    </section>
+  </chapter>
+
+  <chapter id="arrays_and_strings">
+    <title>Arrays and Strings</title>
+
+    <para>Chapter based on material from <ulink
+    url="http://www.cs.cf.ac.uk/Dave/C/node7.html">C Courseware</ulink> and
+    from a similar material in the <ulink
+    url="http://ead1.eee.ufmg.br/cursos/C/aulas/c500.html">UFMG C Language
+    Course</ulink> (in Portuguese).</para>
+
+    <section id="arrays_and_strings_arrays">
+      <title>Arrays</title>
+
+      <para>Let us first look at how we define arrays in C:</para>
+
+      <programlisting>int listofnumbers[50];</programlisting>
+
+      <caution>
+        <para>In C Array subscripts start at 0 and end one less than the array
+        size. For example, in the above case valid subscripts range from 0 to
+        49.</para>
+      </caution>
+
+      <para>Elements can be accessed in the following ways:</para>
+
+      <programlisting>thirdnumber=listofnumbers[2];
+listofnumbers[5]=100;</programlisting>
+
+      <para>Multi-dimensional arrays can be defined as follows:</para>
+
+      <programlisting>int tableofnumbers[50][50];</programlisting>
+
+      <para>for two dimensions.</para>
+
+      <para>For further dimensions simply add more [ ]:</para>
+
+      <programlisting>int bigD[50][50][40][30]......[50];</programlisting>
+
+      <para>Elements can be accessed in the following ways:</para>
+
+      <programlisting>anumber=tableofnumbers[2][3];
+tableofnumbers[25][16]=100;</programlisting>
+    </section>
+
+    <section id="arrays_and_strings_strings">
+      <title>Strings</title>
+
+      <para>In C Strings are defined as arrays of characters. For example, the
+      following defines a string of 50 characters:</para>
+
+      <programlisting>char name[50];</programlisting>
+
+      <para>C has no string handling facilities built in and so the following
+      are all illegal:</para>
+
+      <programlisting>char firstname[50],lastname[50],fullname[100];
+
+firstname= "Arnold"; /* Illegal */
+lastname= "Schwarznegger"; /* Illegal */
+fullname= "Mr" + firstname + lastname; /* Illegal */ </programlisting>
+
+      <para>However, there is a special library of string handling routines
+      which we will come across later.</para>
+
+      <para>To print a string we use printf with a special <code>%s</code>
+      control character:</para>
+
+      <programlisting>printf("%s",name);</programlisting>
+
+      <important>
+        <para>We just need to give the name of the string.</para>
+      </important>
+
+      <para>In order to allow variable length strings the <code>\0</code>
+      character is used to indicate the end of a string.</para>
+
+      <para>So we if we have a string, <code>char name[10];</code> and we
+      store the <code>"DAVE"</code> in it its contents will look like:</para>
+
+      <programlisting>name= | D | A | V | E | 0 |   |   |   |   |   |
+        0   1   2   3   4   5   6   7   8   9</programlisting>
+
+      <para>Devemos lembrar que o tamanho da string deve incluir o '\0'
+      final.</para>
+
+      <para>A biblioteca padrão do C possui diversas funções que manipulam
+      strings. Estas funções são úteis pois não se pode, por exemplo, igualar
+      duas strings:</para>
+
+      <programlisting>string1=string2;        /* NAO faca isto */</programlisting>
+
+      <para>Fazer isto é um desastre. As strings devem ser igualadas elemento
+      a elemento.</para>
+
+      <para>Vamos ver agora algumas funções básicas para manipulação de
+      strings.</para>
+
+      <section>
+        <title><code>gets(string)</code></title>
+
+        <para>A função <code>gets()</code> lê uma string do teclado. Sua forma
+        geral é:</para>
+
+        <programlisting>gets (nome_da_string);</programlisting>
+
+        <para>O programa abaixo demonstra o funcionamento da função
+        <code>gets()</code>:</para>
+
+        <para><programlisting>#include &lt;stdio.h&gt;
+int main () {
+   char string[100];
+   printf ("Digite o seu nome: ");
+   gets (string);
+   printf ("\n\n Ola %s",string);
+   return(0);
+}</programlisting>Repare que é válido passar para a função
+        <code>printf()</code> o nome da string. Como o primeiro argumento da
+        função <code>printf()</code> é uma string também é válido
+        fazer:</para>
+
+        <programlisting>printf (string);</programlisting>
+
+        <para>isto simplesmente imprimirá a string.</para>
+      </section>
+
+      <section>
+        <title><code>strcpy(destino, origem)</code></title>
+
+        <para>Sua forma geral é:</para>
+
+        <programlisting>strcpy (string_destino,string_origem);</programlisting>
+
+        <para>A função <code>strcpy()</code> copia a string-origem para a
+        string-destino. As funções apresentadas nestas seções estão no arquivo
+        cabeçalho <code>string.h</code>. A seguir apresentamos um exemplo de
+        uso da função <code>strcpy()</code>:<programlisting>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[100], str2[100], str3[100];
+
+   printf ("Entre com uma string: ");
+   gets (str1);
+   strcpy (str2,str1);    /* Copia str1 em str2 */
+   strcpy (str3,"Voce digitou a string "); /* Copia "Voce digitou a string" em str3 */
+   printf ("\n\n%s%s",str3,str2);
+   return 0;
+}</programlisting></para>
+      </section>
+
+      <section>
+        <title><code>strcat(destino, origem)</code></title>
+
+        <para>A função <code>strcat()</code> tem a seguinte forma
+        geral:</para>
+
+        <programlisting>strcat (string_destino,string_origem);</programlisting>
+
+        <para>A string de origem permanecerá inalterada e será anexada ao fim
+        da string de destino. Um exemplo:</para>
+
+        <para><programlisting>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[100],str2[100];
+
+   printf ("Entre com uma string: ");
+   gets (str1);
+   strcpy (str2,"Voce digitou a string ");
+   strcat (str2,str1);   /* str2 armazenara' Voce digitou a string + o conteudo de str1 */
+   printf ("\n\n%s",str2);
+   return 0;
+}</programlisting></para>
+      </section>
+
+      <section>
+        <title><code>strlen(string)</code></title>
+
+        <para>Sua forma geral é:</para>
+
+        <programlisting>strlen (string);</programlisting>
+
+        <para>A função <code>strlen()</code> retorna o comprimento da string
+        fornecida. O terminador nulo não é contado. Isto quer dizer que, de
+        fato, o comprimento do vetor da string deve ser um a mais que o
+        inteiro retornado por <code>strlen()</code>. Um exemplo do seu
+        uso:</para>
+
+        <para><programlisting>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   int size;
+   char str[100];
+
+   printf ("Entre com uma string: ");
+   gets (str);
+   size=strlen (str);
+   printf ("\n\nA string que voce digitou tem tamanho %d",size);
+   return 0;
+}</programlisting></para>
+      </section>
+
+      <section>
+        <title><code>strcmp(string1, string2)</code></title>
+
+        <para>Sua forma geral é:</para>
+
+        <programlisting>strcmp (string1,string2);</programlisting>
+
+        <para>A função <code>strcmp()</code> compara a string 1 com a string
+        2. Se as duas forem idênticas a função retorna zero. Se elas forem
+        diferentes a função retorna não-zero. Um exemplo da sua
+        utilização:</para>
+
+        <programlisting>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[100],str2[100];
+
+   printf ("Entre com uma string: ");
+   gets (str1);
+   printf ("\n\nEntre com outra string: ");
+   gets (str2);
+   if (strcmp(str1,str2))
+      printf ("\n\nAs duas strings são diferentes.");
+   else
+      printf ("\n\nAs duas strings são iguais.");
+   return 0;
+}</programlisting>
+      </section>
+    </section>
+
+    <section id="arrays_and_strings_exercises">
+      <title>Exercises</title>
+
+      <para>1- Write a C program to read through an array of any type. Write a
+      C program to scan through this array to find a particular value.</para>
+
+      <para>2- Read ordinary text a character at a time from the program's
+      standard input, and print it with each line reversed from left to right.
+      Read until you encounter end-of-data (see below).</para>
+
+      <para>You may wish to test the program by typing</para>
+
+      <programlisting>    prog5rev | prog5rev</programlisting>
+
+      <para>to see if an exact copy of the original input is recreated.</para>
+
+      <para>To read characters to end of data, use a loop such as
+      either:</para>
+
+      <programlisting>        char ch;
+        ch = getchar();
+        while( ch &gt;= 0 ) /* ch &lt; 0 indicates end-of-data */</programlisting>
+
+      <para>or</para>
+
+      <programlisting>        char ch;
+        while( scanf( "%c", &amp;ch ) == 1 ) /* one character read */</programlisting>
+
+      <para>3- Write a program to read English text to end-of-data (type
+      control-D to indicate end of data at a terminal, see above for detecting
+      end of data), and print a count of word lengths, i.e. the total number
+      of words of length 1 which occurred, the number of length 2, and so
+      on.</para>
+
+      <para>Define a word to be a sequence of alphabetic characters. You
+      should allow for word lengths up to 25 letters.</para>
+
+      <para>Typical output should be like this:</para>
+
+      <programlisting>   length 1 : 10 occurrences
+   length 2 : 19 occurrences
+   length 3 : 127 occurrences
+   length 4 : 0 occurrences
+   length 5 : 18 occurrences
+   ....</programlisting>
+    </section>
+  </chapter>
+
+  <chapter id="function">
+    <title>Functions</title>
+
+    <para>Chapter based on material from <ulink
+    url="http://www.cs.cf.ac.uk/Dave/C/node8.html">C Courseware</ulink> and
+    from a similar material in the <ulink
+    url="http://ead1.eee.ufmg.br/cursos/C/aulas/c700.html">UFMG C Language
+    Course</ulink> (in Portuguese).</para>
+
+    <section id="function_the_function">
+      <title>The Function</title>
+
+      <para>Funções são as estruturas que permitem ao usuário separar seus
+      programas em blocos.</para>
+
+      <para>Se não as tivéssemos, os programas teriam que ser curtos e de
+      pequena complexidade. Para fazermos programas grandes e complexos temos
+      de construí-los bloco a bloco.</para>
+
+      <para> Uma função em C tem a seguinte forma geral: </para>
+
+      <programlisting>return_type function_name(type parameter<subscript>1</subscript>, type parameter<subscript>2</subscript>, ...)
+{
+   local_variables
+
+   function_code
+}</programlisting>
+
+      <para>Let us look at an example to find the average of two
+      integers:</para>
+
+      <programlisting>float findaverage(float a, float b)
+{
+   float average;
+
+   average=(a+b)/2;
+   return (average);
+}</programlisting>
+
+      <para>We would call the function as follows:</para>
+
+      <programlisting>main()
+{
+   float a=5,b=15,result;
+
+   result= findaverage(a,b);
+   printf("average= %f\n",result);
+}</programlisting>
+
+      <important>
+        <para>The return statement passes the result back to the main
+        program.</para>
+      </important>
+    </section>
+
+    <section id="function_return_command">
+      <title>Return Command</title>
+
+      <para>O comando return tem a seguinte forma geral:</para>
+
+      <programlisting>return value_returned; <emphasis>or</emphasis> return;</programlisting>
+
+      <para>Digamos que uma função está sendo executada. Quando se chega a uma
+      declaração return a função é encerrada imediatamente e, se o valor de
+      retorno é informado, a função retorna este valor. </para>
+
+      <important>
+        <para>É importante lembrar que o valor de retorno fornecido tem que
+        ser compatível com o tipo de retorno declarado para a função.</para>
+      </important>
+
+      <para>Uma função pode ter mais de uma declaração <code>return</code>.
+      Isto se torna claro quando pensamos que a função é terminada quando o
+      programa chega à primeira declaração <code>return</code>: </para>
+
+      <programlisting>#include &lt;stdio.h&gt;
+
+int isEven(int a)
+{
+   int b;
+
+   b= a % 2;        /* divide by 2 and take the rest */
+   if (b==0)           
+      return 1;     /* Return true if even */
+   else
+      return 0;     /* Return false if odd */
+}
+
+int main ()
+{
+   int num;
+
+   printf ("Enter a number: ");
+   scanf ("%d",&amp;num);
+   if (isEven(num))
+      printf ("\n\nEven number.\n");
+   else
+      printf ("\n\nOdd number.\n");
+   return 0;
+}</programlisting>
+
+      <caution>
+        <para>Como as funções retornam valores, podemos aproveitá-los para
+        fazer atribuições ou usa-los em expressões. Mas não podemos
+        fazer:</para>
+
+        <programlisting>func(a,b)=x;    /* Errado! */</programlisting>
+      </caution>
+
+      <important>
+        <para>Se uma função retorna um valor você não precisa aproveitar este
+        valor. Se você não fizer nada com o valor de retorno de uma função ele
+        será descartado. Por exemplo, a função <code>printf()</code> retorna
+        um inteiro que foi descartado.</para>
+      </important>
+    </section>
+
+    <section id="function_void_function">
+      <title><code>void</code> Functions</title>
+
+      <para>The <code>void</code> function provide a way of emulating Pascal
+      type procedures, creating functions that return nothing.</para>
+
+      <para>If you do not want to return a value you must use the return type
+      <code>void</code> and miss out the <code>return</code> statement:</para>
+
+      <programlisting>void squares()
+{
+   int loop;
+
+   for (loop=1; loop&lt;10; loop++)
+      printf("%d\n",loop*loop);
+}
+ 
+main() 
+{
+   squares();
+}</programlisting>
+
+      <important>
+        <para>We must have <code>()</code> even for no parameters unlike some
+        languages.</para>
+      </important>
+    </section>
+  </chapter>
+
+  <chapter id="individual_assignments" role="assignments">
+    <title>Individual Assignments</title>
+
+    <section id="individual_assignments_programming_environment">
+      <title>The Programming Environment</title>
+
+      <para>There is a tutorial for the <ulink
+      url="http://www.bloodshed.net/download.html">Dev-C++ Environment</ulink>
+      at <ulink
+      url="http://www.geocities.com/uniqueness_template/">http://www.geocities.com/uniqueness_template/</ulink>.</para>
+
+      <para>This material is part of the <ulink
+      url="http://ead1.eee.ufmg.br/cursos/C/home.html">C Language
+      Course</ulink> from UFMG.</para>
+
+      <section>
+        <title>Configure and Test the Dev-C++</title>
+
+        <para>We need to tell Dev-C++ where we plan to save header files and
+        modify one of the default settings.</para>
+
+        <orderedlist>
+          <listitem>
+            <para>Step: Configure Dev-C++.</para>
+
+            <para>We need to tell Dev-C++ where we plan to save header files
+            and modify one of the default settings.</para>
+
+            <para>* Go to the "Tools" menu and select "Compiler
+            Options".</para>
+
+            <para>* In the "Compiler" tab, click "Add the following commands
+            when calling a compiler" and write "-g ".</para>
+
+            <para>* In the "Settings" tab, click "Linker" and set "General
+            debugging information" to "yes". This will allow you to use the
+            debugger with your programs.</para>
+
+            <para>* In the "Directories" tab, go to "C Includes"and choose a
+            directory, where you plan to save your files, and "Add" it to be
+            searched for include files.</para>
+
+            <remark>TIP: Do not use directory names with spaces and make sure
+            to separate multiple entries with semicolons.</remark>
+
+            <para>As an example, you can name a directory:
+            <code>C:\YourName</code>.</para>
+          </listitem>
+
+          <listitem>
+            <para>Step 2: Create a new project</para>
+
+            <para>A "project" can be considered as a container that is used to
+            store all the elements that are required to compile a
+            program.</para>
+
+            <para>* Go to the "File" menu and select "New Project..." (or just
+            press CTRL+N).</para>
+
+            <para>* Choose "Empty Project", make sure "C project" and "Make
+            default Language" are selected, and click "OK".</para>
+
+            <para>* At this point, Dev-C++ will ask you to give your project a
+            name.</para>
+
+            <para>You can give your project any valid filename, but keep in
+            mind that the name of your project will also be the name of your
+            executable.</para>
+          </listitem>
+
+          <listitem>
+            <para>Step 3: Create/add source file(s).</para>
+
+            <para>You should now have a project with one empty and untitled
+            source file. This would be sufficient if we were writing simple
+            programs that relied exclusively on the standard library and/or
+            precompiled object code, but we're not.</para>
+
+            <para>* You can create additional empty source files one of two
+            ways, Go to the "File-&gt;New" menu and select "Source File"
+            OR</para>
+
+            <para>* Go to the "Project" menu and select "New File".</para>
+
+            <para>Note that Dev-C++ will not ask for a filename for any source
+            file until you attempt to:</para>
+
+            <orderedlist>
+              <listitem>
+                <para>Compile</para>
+              </listitem>
+
+              <listitem>
+                <para>Save the project</para>
+              </listitem>
+
+              <listitem>
+                <para>Save the source file</para>
+              </listitem>
+
+              <listitem>
+                <para>Exit Dev-C++</para>
+              </listitem>
+            </orderedlist>
+
+            <para>You can add pre-existing source files one of two
+            ways,</para>
+
+            <para>* Go to the "Project" menu and select "Add to project..."
+            OR</para>
+
+            <para>* Right-click on the project name in the left-hand panel and
+            select "Add to project...".</para>
+          </listitem>
+
+          <listitem>
+            <para>Step 4: Compile</para>
+
+            <para>Once you have entered all of your source code, you are ready
+            to compile.</para>
+
+            <para>* Go to the "Execute" menu and select "Compile" (or just
+            press CTRL+F9).</para>
+
+            <para>It is likely that you will get some kind of compiler or
+            linker error the first time you attempt to compile a project.
+            Syntax errors will be displayed in the "Compiler" tab at the
+            bottom of the screen. You can double-click on any error to take
+            you to the place in the source code where it occurred. The
+            "Linker" tab will flash if there are any linker errors. Linker
+            errors are generally the result of syntax errors not allowing one
+            of the files to compile.</para>
+          </listitem>
+
+          <listitem>
+            <para>Step 5: Execute.</para>
+
+            <para>Once your project successfully compiles:</para>
+
+            <para>* Go to the "Execute" menu and select "Run" (or just press
+            CTRL+F10).</para>
+
+            <para>Your program will execute in a window, but this window will
+            disappear as soon as the program finishes. To avoid that:</para>
+
+            <para>* Add the line "system("PAUSE"); " to the end of your
+            program. The window will wait until you press a key.</para>
+
+            <para>* Open a console, go to the directory of your project and
+            run the file .exe manually. This second method is better but more
+            time consuming.</para>
+          </listitem>
+
+          <listitem>
+            <para>Step 6: Debug</para>
+
+            <para>When things aren't happening the way you planned, a
+            source-level debugger can be a great tool in determining what
+            really is going on. Click on the "Debug Tab" at the bottom: * If
+            you select "Debug" (or just press F8). Your program will
+            run.</para>
+
+            <para>You can set many debug options, such as:</para>
+
+            <para>* "Debug" icon to start your program;</para>
+
+            <para>* "Next Step" to step through every command;</para>
+
+            <para>* "Add Watch" to add a variable to be seen.</para>
+          </listitem>
+        </orderedlist>
+
+        <para>Do the first lesson <ulink
+        url="http://ead1.eee.ufmg.br/cursos/C/aulas/c220.html">First Two
+        Programs</ulink>.</para>
+      </section>
+    </section>
+
+    <section id="individual_assignments_looping">
+      <title>Looping (Report 5)</title>
+
+      <para>This exercise is going to focus in solving a mathematical problem
+      using C. A problem will be proposed, you should:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Write an algorithm to solve the proposed program.</para>
+        </listitem>
+
+        <listitem>
+          <para>Write a C program, following the algorithm.</para>
+        </listitem>
+
+        <listitem>
+          <para>Test the program to show that it can solve the proposed
+          problem.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>The problem is: To calculate the exponential function using the
+      Maclaurin series.</para>
+
+      <para>Computers CPUs (Central Process Units) are only capable of
+      executing the four operation (<code>+,-,*,/</code>) as machine language
+      instructions. How they can calculate mathematic functions, like sine,
+      cosine, etc? They do it in the same way us humans do: Using mathematical
+      series (such as Taylor, Maclaurin, etc).</para>
+
+      <para>The proposed problem is then to write a program, using the
+      Maclaurin series for exponential, that can calculate the exponential
+      function for float numbers.</para>
+
+      <para>The Maclaurin series for the function <code>exp(x)</code>
+      is:</para>
+
+      <para><figure>
+          <title>Maclaurin Series for exp(x).</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/seriesForE.gif" />
+            </imageobject>
+          </mediaobject>
+        </figure>This series can be written as :<equation>
+          <graphic fileref="img/seriesForE2.gif" />
+        </equation></para>
+
+      <orderedlist>
+        <listitem>
+          <para>Write the algorithm: You will read the value of <code>x</code>
+          and the number <code>n</code> of interactions. At the end, you are
+          going to print your result and the result obtained with the function
+          <code>double exp(double x)</code> (from the <code>math
+          library</code>).</para>
+        </listitem>
+
+        <listitem>
+          <para>Write the C code from the algorithm (use double for the
+          variable <code>x</code>).</para>
+        </listitem>
+
+        <listitem>
+          <para>Test the program. What happens when you increase the number of
+          interactions (<code>n</code>)?</para>
+        </listitem>
+      </orderedlist>
+
+      <para>As an exercise, modify your program to calculate the function
+      <code>double cos(double x)</code>. The Maclaurin series is:</para>
+
+      <figure>
+        <title>Maclaurin Series for Cosine</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="img/seriesForCosine.gif" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>This series can be written as: <equation>
+          <graphic fileref="img/seriesForCosine2.gif" />
+        </equation></para>
+
+      <para>Don't forget to print the value of your result for various values
+      of <code>n</code>, comparing then with the results of the function
+      <code>double cos(double x)</code>.</para>
+    </section>
+
+    <section id="individual_assignments_strings_and_functions">
+      <title>Strings and functions (Report 6)</title>
+
+      <para>Write a program to read English text to end-of-data (type
+      control-D to indicate end of data at a terminal, see bellow for
+      detecting end of data), and print each word, its lengths and the total
+      of ocurrencies, i.e. the total number of words of length 1 which
+      occurred, the number of length 2, and so on.</para>
+
+      <para>Define a word to be a sequence of alphabetic characters. You
+      should allow for word lengths up to 25 letters.</para>
+
+      <para>Typical output should be like this:</para>
+
+      <programlisting>   length 1 : 10 occurrences
+   length 2 : 19 occurrences
+   length 3 : 127 occurrences
+   length 4 : 0 occurrences
+   length 5 : 18 occurrences
+   ....</programlisting>
+
+      <section>
+        <title>Modularity</title>
+
+        <para>The program should be devided in functions (for instance, you
+        may create a function to test if a character is a letter a-z or A-Z).
+        Including the main functionality:</para>
+
+        <programlisting>void classifyWords(char[] frase);</programlisting>
+
+        <para>The program should be divided into 3 files:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><code>main.c</code></term>
+
+            <listitem>
+              <para>File containing the <code>main()</code> function and its
+              code;</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><code>functions.h</code></term>
+
+            <listitem>
+              <para>File containing the prototype of all functions (except
+              <code>main()</code>);</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term><code>functions.c</code></term>
+
+            <listitem>
+              <para>File containing the code of all functions</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <para>You should include in your report <code>index.html</code> file:
+        all 3 code files and a link to the executable (the <code>.exe</code>
+        file is uploaded to the same place as your report).</para>
+      </section>
+
+      <section>
+        <title>Detecting end of data</title>
+
+        <para>To read characters to end of data, use a loop such as
+        either:</para>
+
+        <programlisting>        char ch;
+        ch = getchar();
+        while( ch &gt;= 0 ) /* ch &lt; 0 indicates end-of-data */</programlisting>
+
+        <para>or</para>
+
+        <programlisting>        char ch;
+        while( scanf( "%c", &amp;ch ) == 1 ) /* one character read */</programlisting>
+      </section>
+    </section>
+  </chapter>
+
+  <chapter id="exercises">
+    <title>Exercises</title>
+
+    <section id="exercises_computers_and_algorithms">
+      <title>Computers and Algorithms (Report 3)</title>
+
+      <para>Upload a file named <code>index.html</code> with the exercises
+      (use Word to create the file and save as HTML).</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Diferencie compilador/interpretador.</para>
+        </listitem>
+
+        <listitem>
+          <para>Cite e explique um ponto forte e um fraco da linguagem
+          C.</para>
+        </listitem>
+
+        <listitem>
+          <para>O que é a fase de compilação e a fase de execução de um
+          programa?</para>
+        </listitem>
+
+        <listitem>
+          <para>Elabore um algoritmo para realizar uma chamada telefônica em
+          um telefone público, usando cartão.</para>
+        </listitem>
+
+        <listitem>
+          <para>Escreva um algoritmo (em linguagem natural) para chegar à USP
+          a partir da sua casa.</para>
+        </listitem>
+
+        <listitem>
+          <para>Escreva um algoritmo que leia o nome e endereço de uma pessoa
+          e os imprima novamente na tela.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section id="exercises_first_c_programs">
+      <title>First C programs (Report 4)</title>
+
+      <para>Upload a file named <code>index.html</code> with the algorithms, C
+      code and links for the <code>.exe</code> files for each exercise (use
+      Word to create the file and save as HTML). Don't forget to upload the
+      <code>.exe</code> files!</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Write a program that works out the largest and smallest values
+          from a set of 10 inputted numbers.</para>
+        </listitem>
+
+        <listitem>
+          <para>Write a program to read a "float" representing a number of
+          degrees Celsius, and print as a "float" the equivalent temperature
+          in degrees Fahrenheit. Print your results in a form such as</para>
+
+          <programlisting>100.0 degrees Celsius converts to 212.0 degrees Fahrenheit.</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Write a program to print several lines (such as your name and
+          address). You may use either several printf instructions, each with
+          a newline character in it, or one printf with several newlines in
+          the string.</para>
+        </listitem>
+
+        <listitem>
+          <para>Write a program to read a number of units of length (a float)
+          and print out the area of a circle of that radius. Assume that the
+          value of pi is 3.14159.</para>
+
+          <para>Your output should take the form: <code>The area of a circle
+          of radius ... units is .... units.</code></para>
+
+          <para>If you want to be clever, print the message <code>Error:
+          Negative values not permitted.</code> If the input value is
+          negative.</para>
+        </listitem>
+
+        <listitem>
+          <para>Given as input a floating (real) number of centimeters, print
+          out the equivalent number of feet (integer) and inches (floating, 1
+          decimal), with the inches given to an accuracy of one decimal
+          place.</para>
+
+          <para>Assume 2.54 centimeters per inch, and 12 inches per
+          foot.</para>
+
+          <para>If the input value is 333.3, the output format should
+          be:</para>
+
+          <programlisting>333.3 centimeters is 10 feet 11.2 inches.</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Given as input an integer number of seconds, print as output
+          the equivalent time in hours, minutes and seconds. Recommended
+          output format is something like</para>
+
+          <programlisting>7322 seconds is equivalent to 2 hours 2 minutes 2 seconds.</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Write a program to read two integers with the following
+          significance.</para>
+
+          <para>The first integer value represents a time of day on a 24 hour
+          clock, so that 1245 represents quarter to one mid-day, for
+          example.</para>
+
+          <para>The second integer represents a time duration in a similar
+          way, so that 345 represents three hours and 45 minutes.</para>
+
+          <para>This duration is to be added to the first time, and the result
+          printed out in the same notation, in this case 1630 which is the
+          time 3 hours and 45 minutes after 12.45.</para>
+
+          <para>Typical output might be:</para>
+
+          <programlisting>Start time is: 1415
+Duration is: 50
+End time is 1505. </programlisting>
+
+          <para>or</para>
+
+          <programlisting>Start time is: 2300
+Duration is: 200
+End time is 100.</programlisting>
+        </listitem>
+      </orderedlist>
+    </section>
+  </chapter>
+</book>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-default-dtd-file:"/home/ldp/SGML/emacs/book-cnc-2.0.ced"
+End:
+-->

@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>API - SDK Java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33FF33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF"><b><font size="5">The API</font></b></font></p>
+<p><font color="#FFFFFF" size="4">The API, which is being studied is composed 
+  by three packages that together form the voice SDK Java Technology:</font></p>
+<ul>
+  <li><font color="#FFFFFF" size="4">package javax.speech: has the basic interfaces 
+    and implementations for the Engine interface. It also implements the Central class 
+    providing access to all the other functions for creating the most important 
+    entities of the technology - the synthesizers and recognizers. It is 
+    the basis for the remaining packages, remembering that the recognizers and
+    synthesizers interfaces extend the Engine interface. This package also has resources for managing the 
+    audio received by the Engine and, as a last feature, its SpeechEvent class is
+    inherited 
+    by all the other events of the API.</font></li>
+  <li><font color="#FFFFFF" size="4">p</font><font color="#FFFFFF" size="4">ackage 
+    javax.speech.synthesis: has all the classes and interfaces used for the synthesis
+    process. It also provides the Voice class which determines how the synthesis 
+    will take place.</font></li>
+  <li><font color="#FFFFFF" size="4">package javax.speech.recognition: the biggest 
+    of the packages, implements the recognizing and grammar classes, given their 
+    close relation. Also there are the result classes that are very important 
+    in this architecture.</font></li>
+</ul>
+<p><font color="#FFFFFF" size="4">The packages are presented in a jar file named 
+  ibmjs.jar and the compilation is possible only after adding its fully file system 
+  path name to the CLASSPATH system variable. As follows:</font></p>
+<table width="78%" border="1" align="center" height="69">
+  <tr>
+    <td>
+      <div align="center"><font size="4" color="#FFFFFF">CLASSPATH = %CLASSPATH% 
+        ; .../ibmjs.jar</font></div>
+    </td>
+  </tr>
+</table>
+<p align="center"><b>Table 11 - Updating the CLASSPATH system variable.</b></p>
+<p align="left"><font size="4" color="#FFFFFF">After that and the proper 
+  installation of the IBM ViaVoice software, it is necessary the execution of the
+following command 
+  line:</font></p>
+<table width="78%" border="1" align="center" height="69">
+  <tr> 
+    <td> 
+      <div align="center"><font size="4" color="#FFFFFF">java com.ibm.speech.util.Install</font></div>
+    </td>
+  </tr>
+</table>
+<p align="center"><b>Table 12 - Registration of the IBM ViaVoice so that it can be 
+  used by the SDK Java API.</b></p>
+<br>
+<br>
+</body>
+</html>

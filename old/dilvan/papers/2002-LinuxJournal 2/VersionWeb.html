@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0046)http://www.linuxjournal.com/print.php?sid=6330 -->
+<HTML><HEAD><TITLE>Linux Journal - The Premier Magazine of the Linux Community</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content=noindex,nofollow name=robots>
+<META content="MSHTML 6.00.2800.1126" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff>
+<TABLE border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=1 cellPadding=0 width=640 bgColor=#000000 border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=20 width=640 bgColor=#ffffff 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <CENTER><IMG alt="" src="VersionWeb_files/lj.png" 
+                  border=0><BR><BR><FONT class=content><B>VersionWeb: A Tool for 
+                  Helping Web Page Version Control</B></FONT><BR><FONT 
+                  class=tiny><B>Date:</B> Saturday, October 12, 
+                  2002<BR><B>Topic:</B> Web 
+                  Development</FONT><BR><BR></CENTER><FONT class=content>Dilvan 
+                  de Abreu Moreira<BR><BR>Introducing, an easy-to-use tool for 
+                  keeping track of web page versions.<BR><BR>
+                  <P>Information evolves rapidly on the World Wide Web. Because 
+                  this, browser users often are surprised when previously 
+                  available information is no longer available. To solve this 
+                  problem, we created a software tool named VersionWeb that 
+                  makes web page version control available during browsing. 
+                  <P>The creation of web applications can be seen as a new kind 
+                  of software development. Many software companies gradually are 
+                  starting to adopt Software Configuration Management (SCM) as a 
+                  usual tool for software development. Changes are required 
+                  throughout all lifecycles of a system. During the development 
+                  of large-scale software, uncontrolled modifications occur and 
+                  can lead to chaos. Thus, change-management procedures must be 
+                  carried out to ensure that costs and benefits are analyzed and 
+                  changes are controlled. Developers of web pages (authors or 
+                  webmasters) face hard work when many people are involved in 
+                  the parallel development of sets of related pages. Because 
+                  authors work independently on their individual copies, the 
+                  integration of the copies in a final hyperdocument (merging 
+                  two or more versions to generate another) becomes a complicate 
+                  issue. In addition, the volume of documents involved usually 
+                  is high, so modifications in these documents happen fast and 
+                  are difficult to track. In fact, to provide an efficient 
+                  mechanism to control change, we should combine human 
+                  procedures with automatic tools like SCCS or RCS. 
+                  <P>VersionWeb provides webmasters an easy way of controlling 
+                  web page versions, through the Web itself. Additionally, 
+                  during web browsing, users are able to recover previously 
+                  available information from the web page, visualize the 
+                  differences between different versions of the page and to 
+                  notified when new versions become available. Another objective 
+                  of the tool is to facilitate the cooperation among authors, 
+                  allowing them to have simultaneous access to the files, manage 
+                  the different versions of a file and locate changes that have 
+                  been made. 
+                  <P>
+                  <H3>Architecture of VersionWeb</H3>
+                  <P>To provide its main functional features, VersionWeb 
+                  encapsulates CVS (Concurrent Version System), an efficient 
+                  file version control system. CVS allows simultaneous access to 
+                  a file. Access can be made through the Internet, and it is 
+                  possible to visualize the differences between two file 
+                  versions (except for binary files). CVS can run under several 
+                  operating systems. 
+                  <P>VersionWeb complements CVS by providing a web-based 
+                  interface for friendlier interaction, because CVS has only a 
+                  command-oriented interface. To make a CVS repository available 
+                  through the Web, it has to be located in the same server as 
+                  the web server for security reasons. According to this 
+                  approach (shown in Figure 1), its functional components 
+                  (Application Interface and CGI Script) work as follows: 
+                  <P>
+                  <UL>
+                    <LI>Users web browsing from anywhere on the Internet 
+                    interact with CVS through the VersionWeb Application 
+                    Interface and submit requests to the web server (in general, 
+                    encapsulating CVS commands). 
+                    <LI>A CGI script (physically located on the WWW server) 
+                    receives and identifies the requests from the users. 
+                    <LI>The CGI script that received the request makes a call to 
+                    the CVS to pass it the command to be run. 
+                    <LI>The CVS runs the command and returns the results to the 
+                    CGI script. 
+                    <LI>The CGI script sends the results to the user by creating 
+                    an HTML page using the request results. </LI></UL>
+                  <P>
+                  <CENTER><IMG alt=figure src="VersionWeb_files/6330f1.jpg"><BR>
+                  <H4>Figure 1. Basic Architecture of VersionWeb</H4></CENTER>
+                  <P>As shown in Figure 1, the CGI Scripts and CVS repository 
+                  are located physically in the same computer that hosts the WWW 
+                  server. We use CGI scripts because they require simplified 
+                  programming. Furthermore, the web user, running from a client 
+                  browser, does not have to install the CVS software in his or 
+                  her local machine to run VersionWeb. 
+                  <P>All tasks are run in the server. Because CVS itself 
+                  controls the concurrent access to the files, there is no 
+                  missing information or redundancy. To run VersionWeb, the user 
+                  needs only a browser. 
+                  <P>
+                  <H3>The VersionWeb Tool</H3>
+                  <P>The web-based interface of VersionWeb was developed to 
+                  facilitate user interaction with CVS. Because CVS has only a 
+                  command-oriented interface, many developers have avoided using 
+                  it. The modular structure of VersionWeb is shown in Figure 2. 
+                  <P>
+                  <CENTER><IMG alt=figure src="VersionWeb_files/6330f2.jpg"><BR>
+                  <H4>Figure 2. VersionWeb Modules</H4></CENTER>
+                  <P>VersionWeb has three main interfaces to support the three 
+                  different roles of its users: general users (specific groups 
+                  of browsing users), administrators and authors. After passing 
+                  through the VersionWeb authentication module, the user has 
+                  access to one of the three basics interfaces of VersionWeb 
+                  according to his or her role. 
+                  <P>
+                  <A 
+                  href="images/6330f3.jpg"> 
+                  <H4>Figure 3. User Authentication</H4></A>
+                  <P>
+                  <H3>General User</H3>
+                  <P>If the user has been authenticated as a general user 
+                  (belonging to a specific group), he has access to the 
+                  interface shown in Figure 4. This type of interface, for 
+                  general users, is accessible through the page in which the 
+                  user is browsing. 
+                  <P><A 
+                  href="images/6330f4.jpg">
+                  <H4>Figure 4. Main Interface for Browser Users</H4></A>
+                  <P>This interface has a link to some modules of the tool, 
+                  which are responsible for showing links to all the page's 
+                  versions and to the following options: 
+                  <P>
+                  <UL>
+                    <LI>Retrieve any version of the page. 
+                    <LI>See the differences between page versions. 
+                    <LI>Notify of newly available versions. 
+                    <LI>Send criticisms or suggestions to authors related to the 
+                    page. </LI></UL>
+                  <P>
+                  <H3>Authors</H3>
+                  <P>If the user has been authenticated as an author, he has 
+                  access to the interface shown in Figure 5, which shows the CVS 
+                  repository content requested during user authentication. 
+                  <P><A 
+                  href="images/6330f5.jpg">
+                  <H4>Figure 5. File Management in VersionWeb</H4></A>
+                  <P>This interface offers the basics options to manipulate 
+                  files and directories and to access CVS operations like: 
+                  <P>
+                  <UL>
+                    <LI>List Directory: lists the contents of a directory. 
+                    <LI>Up Level: goes up one level in the directory tree. 
+                    <LI>Rename: renames a directory or file. 
+                    <LI>Delete: removes a directory or file. 
+                    <LI>Remote Checkout: makes a remote checkout of the current 
+                    file version (in the server side). This option must be used 
+                    when doing small changes in text files for immediate 
+                    commitment. The file content is edited in a browser window. 
+                    <LI>Local Checkout: makes a local checkout of a selected 
+                    file current version. This operation lists a directory of 
+                    files in a new browser window for downloading. 
+                    <LI>Versions History: shows the history log of all versions 
+                    of a file. 
+                    <LI>Versions List: opens a new window with all versions and 
+                    branches of a file with remote and local checkout operations 
+                    for each version. 
+                    <LI>Diffs: allows the author to visualize the differences in 
+                    content between two versions of a file. 
+                    <LI>Create directory: creates one directory inside the CVS 
+                    repository. 
+                    <LI>Add file: uploads a file to the CVS repository. 
+                    <LI>Commit of a local checkout: makes the commit of changed 
+                    files from a local checkout. </LI></UL>
+                  <P>One important VersionWeb feature is to show visually the 
+                  differences between two versions of one file with colors, as 
+                  shown in Figure 6. 
+                  <P><A 
+                  href="images/6330f6.jpg">
+                  <H4>Figure 6. Visualization of Differences between Two 
+                  Versions of One HTML Page</H4></A>
+                  <P>
+                  <H3>Administrators</H3>
+                  <P>If the user has been authenticated as an administrator, he 
+                  has access to the interface shown in Figure 7 and can manage 
+                  all other VersionWeb users. 
+                  <P><A 
+                  href="images/6330f7.jpg">
+                  <H4>Figure 7. Management of Users</H4></A>
+                  <P>This interface offers the following options for management: 
+
+                  <P>
+                  <UL>
+                    <LI>Insert: inserts one user in the list of general users, 
+                    authors or administrators. 
+                    <LI>Change: changes data of an user. 
+                    <LI>Delete: removes a user from the list. 
+                    <LI>Transfer: moves a user from one list to another. 
+</LI></UL>
+                  <P>
+                  <H3>Installation</H3>
+                  <P>Installing VersionWeb is simple. The user needs to have 
+                  installed CVS (version 1.10 or higher) for Linux, compile the 
+                  VersionWeb source files and create a CVS repository. 
+                  VersionWeb is available for download at <A 
+                  href="http://versionweb.sourceforge.net/" 
+                  target=_blank>versionweb.sourceforge.net</A>. Included in the 
+                  downloaded material are a command file for compilation (using 
+                  gcc), an install file and a user manual. 
+                  <P>
+                  <H3>Resources</H3>
+                  <P>Where to find the CVS: <A href="http://www.cvshome.org/" 
+                  target=_blank>http://www.cvshome.org/</A> 
+                  <P>Where to find the VersionWeb: <A 
+                  href="http://versionweb.sourceforge.net/" 
+                  target=_blank>versionweb.sourceforge.net</A> 
+                  <P>Information about us: <A href="http://agentsresearch.com/" 
+                  target=_blank>AgentsResearch.com</A> 
+                  <P><BR><BR>
+                  <CENTER><A href="https://www.ssc.com/lj/subs/NewUSA.html"><IMG 
+                  src="VersionWeb_files/ljsubsbutton.png"></A></CENTER><BR 
+                  ><br><BR></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR><BR>
+      <CENTER><FONT class=content>This article comes from Linux Journal - The 
+      Premier Magazine of the Linux Community<BR><A 
+      href="http://www.linuxjournal.com/">http://www.linuxjournal.com/</A><BR><BR>The 
+      URL for this story is:<BR><A 
+      href="http://www.linuxjournal.com/article.php?sid=6330">http://www.linuxjournal.com/article.php?sid=6330</A> 
+      </FONT></CENTER></TD></TR></TBODY></TABLE></BODY></HTML>

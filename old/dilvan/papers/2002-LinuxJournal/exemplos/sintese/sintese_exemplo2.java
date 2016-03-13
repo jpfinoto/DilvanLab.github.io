@@ -1,0 +1,23 @@
+import javax.speech.synthesis.*;
+import javax.speech.*;
+import java.util.Locale;
+
+class sintese_exemplo2{
+    static Synthesizer synthesizer;   
+
+    public static void main(String args[]){
+        try{
+            //define a locale
+            Locale.setDefault(new Locale("en","US"));
+
+            //instanciates a synthesizer that supports the standard locale
+            synthesizer = Central.createSynthesizer(null);
+
+            //Run it
+            synthesizer.allocate();
+        }
+        catch(Exception e){
+            System.out.println("Error message:: "+e.toString());
+        }
+    }
+}

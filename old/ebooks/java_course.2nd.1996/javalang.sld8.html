@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>The Java Language Slide 8: Control Flow Statements</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>The Java Language:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Control Flow Statements</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><FONT COLOR="#0000FF"><A HREF="tutorial/java/nutsandbolts/while.html">If-else
+Statement</A></FONT></H2>
+</UL>
+
+<UL>
+<BLOCKQUOTE>
+<P>The <TT>if</TT>-<TT>else</TT> statement provides your programs with
+the ability to selectively execute other statements based on some criteria.</P>
+
+<BLOCKQUOTE>
+<P><FONT COLOR="#800000">if (<I>expression</I>)<BR>
+<I>statement</I></FONT></P>
+</BLOCKQUOTE>
+
+<PRE>. . .
+if (response == OK) {
+  // <I>code to perform OK action
+</I>} else {
+  // <I>code to perform Cancel action
+</I>}</PRE>
+</BLOCKQUOTE>
+
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><FONT COLOR="#0000FF"><A HREF="tutorial/java/nutsandbolts/while.html">Switch
+Statement</A></FONT></H2>
+
+<BLOCKQUOTE>
+<P>The <TT>switch</TT> statement conditionally perform statements based
+on some expression.</P>
+
+<PRE>. . .
+switch (month) {
+case 1:  System.out.println(&quot;January&quot;); break;
+case 2:  System.out.println(&quot;February&quot;); break;
+  ...
+case 11: System.out.println(&quot;November&quot;); break;
+case 12: System.out.println(&quot;December&quot;); break;
+<B>default: System.out.println(&quot;Hey, that's not a valid month!&quot;);
+    break;
+</B>}</PRE>
+</BLOCKQUOTE>
+
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><FONT COLOR="#0000FF"><A HREF="tutorial/java/nutsandbolts/while.html">For
+Statement</A></FONT></H2>
+
+<BLOCKQUOTE>
+<P>Use the for loop when you know the constraints of the loop (its initialization
+instruction, terminatinon criteria, and increment instruction).</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">for (<I>initialization</I>; <I>termination</I>; <I>increment</I>)
+    <I>statements</I></FONT></PRE>
+</BLOCKQUOTE>
+
+<PRE>. . .
+for (int i = 0; i &lt; a.length; i++) {
+    // <I>do something to the i th element of a
+</I>}</PRE>
+</BLOCKQUOTE>
+</UL>
+
+<P><BR>
+
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="javalang.sld9.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="javalang.sld9.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

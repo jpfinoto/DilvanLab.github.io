@@ -1,0 +1,45 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Datagram Sockets</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="distributed_programming.html" title="Chapter&nbsp;4.&nbsp;Distribution Programming"><link rel="prev" href="distributed_programming_stream_sockets.html" title="2.&nbsp;Stream Sockets"><link rel="next" href="distributed_programming_rpc_remote_procedure_calls.html" title="4.&nbsp;RPC - Remote Procedure Calls"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Datagram Sockets</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="distributed_programming_stream_sockets.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;Distribution Programming</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="distributed_programming_rpc_remote_procedure_calls.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="distributed_programming_datagram_sockets"></a>3.&nbsp;Datagram Sockets</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Datagram</strong></span></p><p>The UDP protocol provides a mode of network communication whereby applications send packets of data, called datagrams to one another:</p></li><li><p><span class="bold"><strong>What is a Datagram?</strong></span></p><p><span class="bold"><strong>Definition:</strong></span></p><p>A datagram is an independent, self-contained message sent over the network whose arrival, arrival time, and content are not guaranteed.</p></li><li><p><span class="bold"><strong>Data Transfer</strong></span></p><p>Datagram sockets are created in the same way as stream sockets (using the SOCK_DGRAM flag). They can use the same calls as stream sockets to send and receive data, except for the accept() and listen() calls.</p><p>The calls sendto() and recvfrom() are very useful to transfer data on datagram sockets:</p><pre class="programlisting">sendto( s, buf, buflen, flags, &amp;to, tolen);</pre><p>It sends the content of buf to the address indicated in &amp;to.</p><pre class="programlisting">recvfrom( s, buf, buflen,flags, &amp;from, &amp;fromlen);</pre><p>It receives a package and writes it to buf. The address of the sender is written to &amp;from.</p></li><li><p><span class="bold"><strong>Writing a Datagram Client and Server</strong></span></p><p><span class="bold"><strong>The Quote server</strong></span></p><p>It waits for Datagram requests for quotes and servers them in Datagram packets.</p><p><span class="bold"><strong>Setting up the sockets:</strong></span></p><pre class="programlisting">sock = socket (AF_INET, SOCK_DGRAM, 0);
+   if (sock==-1) { ... }
+
+   server.sin_family = AF_INET;
+   server.sin_addr.s_addr = INADDR_ANY; 
+   server.sin_port = 0;
+   if (bind (sock, (struct sockaddr *)&amp;server, sizeof(server))
+       == -1){ perror("Binding datagram socket");...}
+   
+   length = sizeof server;
+   if (getsockname (sock, (struct sockaddr *)&amp;server, &amp;length)
+       == -1){ perror("Getting socket name"); ... }
+   printf("Socket port # %d\n", ntohs(server.sin_port));</pre><p><span class="bold"><strong>The infinite loop:</strong></span></p><p>- Section that receives the requests:</p><pre class="programlisting">if ( <span class="bold"><strong>recvfrom( sock, buf, 16, 0,
+                    (struct sockaddr *) &amp;client, &amp;length</strong></span><span class="bold"><strong>)</strong></span>
+         == -1){
+        perror("Reading packet");
+        exit(1);
+     }</pre><p>- Section that constructs the responses:</p><pre class="programlisting">quote= getquote();
+      if ( <span class="bold"><strong>sendto( sock, quote, strlen(quote)+1, 0,
+                   (struct sockaddr *) &amp;client, sizeof client)</strong></span>
+          == -1) {
+         perror("Writing quota");
+         exit(0);
+      }</pre><p><span class="bold"><strong>The Client Application</strong></span></p><p><span class="bold"><strong>Setting up sockets:</strong></span></p><pre class="programlisting">sock = <span class="bold"><strong>socket (AF_INET, SOCK_DGRAM, 0)</strong></span>;
+   if (sock == -1) { perror ("Opening Datagram socket");...}</pre><p><span class="bold"><strong>The client program sends a request to the server:</strong></span></p><pre class="programlisting">hp = gethostbyname(argv[1]);
+   if (hp == (struct hostent *) 0) {
+      perror("Unknown Host");
+      exit(0);
+   }
+
+   memcpy ((char*)&amp;server.sin_addr, (char*) hp-&gt;h_addr, 
+           hp-&gt;h_length);
+   server.sin_family = AF_INET;
+   server.sin_port = htons(atoi(argv[2]));
+
+   if( <span class="bold"><strong>sendto( sock, DATA, sizeof DATA, 0, 
+              (struct sockaddr *) &amp;server, sizeof server)</strong></span> 
+      == -1) { perror("Sending datagram message"); ... }</pre><p><span class="bold"><strong>The client gets a response from the server:</strong></span></p><pre class="programlisting">if (<span class="bold"><strong>read( sock, buf, 1024)</strong></span> == -1)
+      perror("Receiving quotation");
+      exit(1);
+   }
+   printf("Quote of the Moment: %s\n", buf);
+   close(sock);</pre><p><span class="bold"><strong>Running the Client</strong></span></p><p>Quote of the Moment: Life is wonderful. Without it we'd all be dead.</p></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="distributed_programming_stream_sockets.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="distributed_programming.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="distributed_programming_rpc_remote_procedure_calls.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Stream Sockets&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;RPC - Remote Procedure Calls</td></tr></table></div></body></html>

@@ -1,0 +1,30 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Criteria</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="dynamic_analysis.html" title="Chapter&nbsp;18.&nbsp;Dynamic Analysis"><link rel="prev" href="dynamic_analysis_testing.html" title="2.&nbsp;Testing"><link rel="next" href="dynamic_analysis_subdomains.html" title="4.&nbsp;Subdomains"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Criteria</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="dynamic_analysis_testing.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;18.&nbsp;Dynamic Analysis</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="dynamic_analysis_subdomains.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="dynamic_analysis.html">Dynamic Analysis</a></span> &gt; <span class="breadcrumb-node">Criteria</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="dynamic_analysis_criteria"></a>3.&nbsp;Criteria</h2></div></div></div><p>Suppose we have a program <span class="command"><strong>P</strong></span> that is supposed to
+      meet a specification <span class="command"><strong>S</strong></span>. For simplicity
+      <span class="command"><strong>P</strong></span> is a function from inputs to outputs, and
+      <span class="command"><strong>S</strong></span> is a function that takes an input and an output and
+      returns a boolean. Our aim in testing is to find a test case
+      <span class="command"><strong>t</strong></span> such that:</p><pre class="programlisting">S (t, P(t))</pre><p>is <span class="command"><strong>false</strong></span>: that is, <span class="command"><strong>P</strong></span>
+      produces a result for the input t that is not permitted by
+      <span class="command"><strong>S</strong></span>. We will call <span class="command"><strong>t</strong></span> a failing test
+      case.</p><p>A test suite <span class="command"><strong>T</strong></span> is a set of test cases. When is
+      a suite &#8216;good enough&#8217;? We can apply an evaluation criterion:</p><div class="itemizedlist"><ul type="disc"><li><p>A criterion that involves only the program is called a
+          <span class="bold"><strong>program-based criterion</strong></span>. People
+          also use terms like &#8216;whitebox&#8217;, &#8216;clearbox&#8217;, &#8216;glassbox&#8217;, or
+          &#8216;structural&#8217; testing to describe testing that uses this
+          criteria.</p></li><li><p>A criterion that involves only the specification is called a
+          <span class="bold"><strong>specification-based criterion</strong></span>. The
+          terms &#8216;blackbox&#8217; testing is used in association with it, to suggest
+          that the tests are judged without being able to see inside the
+          program. You might also hear the term &#8216;functional&#8217; testing.</p></li></ul></div><p>Most criteria don&#8217;t involve both the program and the
+      specification.</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="dynamic_analysis_testing.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="dynamic_analysis.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="dynamic_analysis_subdomains.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Testing&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Subdomains</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

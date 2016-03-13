@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 2: Classes</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Classes</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/classes.html">Classes</A></H2>
+
+<UL>
+<P><FONT COLOR="#000000">A class is a blueprint or prototype that you can
+use to create many objects.</FONT></P>
+
+<UL>
+<PRE><FONT COLOR="#800000">classDeclaration { 
+  memberVariableDeclarations
+  methodDeclarations 
+}</FONT></PRE>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#000000"><A HREF="tutorial/java/javaOO/classdecl.html">The
+Class Declaration</A></FONT></H2>
+
+<BLOCKQUOTE>
+<P>At minimum, a class declaration must contain the <TT>class</TT> keyword
+and the name of the class that you are defining:</P>
+
+<UL>
+<PRE><FONT COLOR="#800000">class <I>NameOfClass</I> {
+    . . .
+}</FONT></PRE>
+</UL>
+
+<H4>Declaring a Class's Superclass</H4>
+
+<BLOCKQUOTE>
+<P>In Java, every class has a superclass. If you do not specify a superclass
+for your class, it is assumed to be the Object class (declared in java.lang).</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">class <I>NameOfClass</I> extends <I>SuperClassName</I> {
+    . . .
+}</FONT></PRE>
+</BLOCKQUOTE>
+
+<P>A subclass inherits variables and methods from its superclass.</P>
+</BLOCKQUOTE>
+
+<H4>Listing the Interfaces Implemented by a Class</H4>
+
+<BLOCKQUOTE>
+<P>An interface declares a set of methods and constants without specifying
+the implementation for any of the methods. When a class claims to implement
+an interface, it's claiming to provide implementations for all of the methods
+declared in the interface.</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">class ImaginaryNumber extends Number implements Arithmetic {
+    . . .
+}</FONT></PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H4>Summary of a Class Declaration</H4>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">[ <I>modifiers</I> ] class <I>ClassName</I> [ extends <I>SuperClassName</I> ] [ implements <I>InterfaceNames</I> ] {
+    . . .
+}</FONT></PRE>
+
+<LI><I>modifiers</I> declare whether the class is public, abstract, or
+final</LI>
+
+<LI><I>ClassName</I> sets the name of the class you are declaring</LI>
+
+<LI><I>SuperClassName</I> is the name of <I>ClassName</I>'s superclass</LI>
+
+<LI><I>InterfaceNames</I> is a comma-delimited list of the interfaces implemented</LI>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</UL>
+
+<P><BR>
+<BR>
+</P>
+
+<P>
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="OOPjava.sld3.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="OOPjava.sld3.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

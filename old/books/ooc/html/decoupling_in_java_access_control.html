@@ -1,0 +1,25 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Access Control</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="decoupling_in_java.html" title="Chapter&nbsp;15.&nbsp;Decoupling in Java"><link rel="prev" href="decoupling_in_java_java_name_space.html" title="1.&nbsp;Java Name Space"><link rel="next" href="decoupling_in_java_safe_languages.html" title="3.&nbsp;Safe Languages"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Access Control</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="decoupling_in_java_java_name_space.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;15.&nbsp;Decoupling in Java</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="decoupling_in_java_safe_languages.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="decoupling_in_java.html">Decoupling in Java</a></span> &gt; <span class="breadcrumb-node">Access Control</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="decoupling_in_java_access_control"></a>2.&nbsp;Access Control</h2></div></div></div><p>Java&#8217;s access control mechanisms allow you to control
+      dependences.</p><p>In the text of a class, you can indicate which other classes can
+      have dependences on it, and to some extent you can control the nature of
+      the dependences.</p><p>A class declared as public can be referred to by any other class;
+      otherwise, it can be referred to only by classes in the same package. So
+      by dropping th s modifier, we can prevent dependences on the class from
+      any class outside the package.</p><p>Members of a class (fields and methods) may be:</p><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Public:</strong></span> can be accessed from
+          anywhere.</p></li><li><p><span class="bold"><strong>Private:</strong></span> can be accessed only
+          from within the class in which the field or method is
+          declared.</p></li><li><p><span class="bold"><strong>Protected:</strong></span> can be accessed
+          within the package, or from outside the package by a subclass of the
+          class in which the members declared.</p></li><li><p><span class="emphasis"><em>Package:</em></span> can be accessed within the
+          package (it is the default).</p></li></ul></div><p>Modifiers on members of B allow us to control the nature of
+      dependence by changing which members belong to B&#8216;s specification.</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="decoupling_in_java_java_name_space.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="decoupling_in_java.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="decoupling_in_java_safe_languages.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Java Name Space&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Safe Languages</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

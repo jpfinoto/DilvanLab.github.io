@@ -1,0 +1,285 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Threads Synchronization</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="individual_assignments.html" title="Chapter&nbsp;10.&nbsp;Individual Assignments - Laboratory"><link rel="prev" href="individual_assignments_threads.html" title="3.&nbsp;Threads"><link rel="next" href="individual_assignments_stream_sockets.html" title="5.&nbsp;Stream Sockets"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Threads Synchronization</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="individual_assignments_threads.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Individual Assignments - Laboratory</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_stream_sockets.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="individual_assignments_threads_synchronization"></a>4.&nbsp;Threads Synchronization</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Threads Synchronization</p></li></ul></div><div class="orderedlist"><ol type="1"><li><p>Compile the following program, explain it. Is it working well?</p><pre class="programlisting">
+        include pthread.h
+
+          float hole= 0;
+          int flag=0;
+
+          /*
+           *      Code of the threads
+           */
+          void delay() {
+             int aux2;
+
+             for (aux2=600000; aux2&gt;0; aux2--);
+             return;
+          }
+
+          void delay2() {
+             int aux2;
+
+             for (aux2=100000; aux2&gt;0; aux2--);
+
+            return;
+          }
+
+          double get() {
+             double aux1;
+
+             aux1= hole;
+             return aux1;
+          }
+
+          double inc() {
+
+             int aux1;
+             for (aux1=0;aux1&lt;10;aux1++) {
+                hole= hole + 0.100000000;
+                delay2();
+             }
+             return hole;
+          }
+
+          void* producer(int* name) {
+
+             int aux1, aux2, aux3, count;
+
+
+             /*   Main loop       */
+             for (aux1=0; aux1&lt;20; aux1++) {
+
+                /*        Print name      */
+
+                printf("Producer inc: %.3f\n", inc());
+
+             }
+             pthread_exit(0);
+          }
+
+          void* consumer(int* name) {
+
+             int aux1, aux2, aux3;
+
+             /*   Main loop       */
+             for (aux1=0; aux1&lt;10; aux1++) {
+
+                /*        Print name      */
+                printf("Consumer got: %.3f\n", get());
+
+                /*        Create delay    */
+                delay();
+
+             }
+
+            pthread_exit(0);
+          }
+
+
+          void main(){
+
+             /*   Variables that keep the threads ids     */
+             pthread_t simpleThread1, simpleThread2;
+
+             int status, aux1, priority;
+
+             int pro1= 0;
+             int pro2= 1;
+
+
+             /*  Maximum concurrence level */
+             pthread_setconcurrency(100);
+             printf("Concurrency %d\n", pthread_getconcurrency());
+
+             /*   Create first thread     */
+             pthread_create(&amp;simpleThread1, 0, producer, (void*) &amp;pro1);
+
+             /*   Create first thread     */
+             pthread_create(&amp;simpleThread2, 0, consumer, (void*) 0);
+
+             /*   Wait until all threads stop     */
+             pthread_join(simpleThread1, 0);
+             pthread_join(simpleThread2, 0);
+   }
+          </pre><p>To compile the program:</p><pre class="programlisting">cc threads.c -o threads -lpthread</pre></li><li><p>Add the following lines to the program. What happens? Explain.</p><pre class="programlisting">#include &lt;pthread.h&gt; 
+float hole= 0; 
+int flag=0; 
+                      <span class="emphasis"><em> pthread_mutex_t lock_hole;</em></span>
+ ..
+ double get() 
+{
+ int aux1;
+                      <span class="emphasis"><em> pthread_mutex_lock(&amp;lock_hole);</em></span>
+ aux1= hole; 
+                     <span class="emphasis"><em>  pthread_mutex_unlock(&amp;lock_hole); </em></span>
+return aux1; 
+} 
+double inc() 
+{
+ int aux1; 
+                     <span class="emphasis"><em>  pthread_mutex_lock(&amp;lock_hole);</em></span> 
+for (aux1=0;aux1&lt;10;aux1++) 
+{ 
+hole= hole + 0.100000000; 
+delay2(); 
+} 
+                  <span class="emphasis"><em>     pthread_mutex_unlock(&amp;lock_hole);</em></span> 
+return hole; 
+} 
+... void main()
+{ 
+/* Variables that keep the threads ids */ 
+pthread_t simpleThread1, simpleThread2; 
+int status, aux1, priority; 
+int pro1= 0; 
+int pro2= 1; 
+                    <span class="emphasis"><em>   pthread_mutex_init(&amp;lock_hole, 0);</em></span> 
+
+          </pre></li><li><p>Now add the following lines and explain what happens:</p><pre class="programlisting">#include &lt;pthread.h&gt; 
+float hole= 0;
+int flag=0; 
+pthread_mutex_t lock_hole; 
+                      <span class="emphasis"><em>pthread_cond_t cond_hole;</em></span>
+ ... 
+double get() 
+{ 
+int aux1; 
+pthread_mutex_lock(&amp;lock_hole); 
+                      <span class="emphasis"><em>pthread_cond_wait(&amp;cond_hole, &amp;lock_hole); </em></span>
+aux1= hole; 
+pthread_mutex_unlock(&amp;lock_hole); 
+return aux1; 
+} 
+
+double inc() 
+{ 
+int aux1; 
+pthread_mutex_lock(&amp;lock_hole); 
+for (aux1=0;aux1&lt;10;aux1++) 
+{
+ hole= hole + 0.100000000; 
+delay2(); 
+}
+                     <span class="emphasis"><em>pthread_cond_signal(&amp;cond_hole); </em></span>
+pthread_mutex_unlock(&amp;lock_hole); 
+return hole; 
+} 
+... 
+void main()
+{
+ /* Variables that keep the threads ids */ 
+pthread_t simpleThread1, simpleThread2; 
+int status, aux1, priority; 
+int pro1= 0; 
+int pro2= 1; 
+pthread_mutex_init(&amp;lock_hole, 0); 
+                     <span class="emphasis"><em>pthread_cond_init(&amp;cond_hole, 0); 
+</em></span>
+          </pre></li><li><p>Run the following program and explain it:</p><pre class="programlisting">#include &lt;pthread.h&gt;
+
+                float hole= 0;
+                int flag=0;
+                pthread_mutex_t lock_hole;
+                pthread_cond_t  cond_hole;
+
+                /*
+                 *      Code of the threads
+                 */
+                void delay() {
+                   int aux2;
+
+                   for (aux2=1000000; aux2&gt;0; aux2--);
+                   return;
+                }
+
+                void delay2() {
+                   int aux2;
+
+                   for (aux2=300000; aux2 &gt; 0; aux2--);
+                   return;
+                }
+
+                double get() {
+                   int aux1;
+
+                   pthread_mutex_lock(&amp;lock_hole);
+                   pthread_cond_wait(&amp;cond_hole, &amp;lock_hole);
+
+                   aux1= hole;
+                   pthread_mutex_unlock(&amp;lock_hole);
+                   return aux1;
+                }
+
+                double inc() {
+
+                   int aux1;
+                   pthread_mutex_lock(&amp;lock_hole);
+                   for (aux1=0;aux1&lt;10;aux1++) {
+
+                      hole= hole + 0.100000000;
+                      delay2();
+                   }
+                   pthread_cond_signal(&amp;cond_hole);
+                   pthread_mutex_unlock(&amp;lock_hole);
+                   return hole;
+                }
+
+                void* producer(int* name) {
+
+                   int aux1, aux2, aux3, count;
+
+
+                   /*   Main loop       */
+                   for (aux1=0; aux1&lt;20; aux1++) {
+
+                      /*        Print name      */
+                      printf("Producer%u inc: %.3f\n", *name, inc());
+
+                   }
+                   pthread_exit(0);
+                }
+
+                void* consumer(int* name) {
+
+                   int aux1, aux2, aux3;
+
+                   /*   Main loop       */
+                   for (aux1=0; aux1&lt;10; aux1++) {
+
+                      /*        Print name      */
+                      printf("Consumer got: %.3f\n", get());
+
+                      /*        Create delay    */
+                      delay();
+
+                   }
+                   pthread_exit(0);
+                }
+
+                void main(){
+
+                   /*   Variables that keep the threads ids     */
+                   pthread_t simpleThread1, simpleThread2;
+
+                   int status, aux1, priority;
+                   int pro1= 0;
+                   int pro2= 1;
+
+                   pthread_mutex_init(&amp;lock_hole, 0);
+                   pthread_cond_init(&amp;cond_hole, 0);
+
+                   /*  Maximum concurrence level */
+                   printf("Concurrency %d\n", PTHREAD_THREADS_MAX);
+
+                   /*   Create first thread     */
+                   pthread_create(&amp;simpleThread1, 0, producer, (void*)&amp;pro1);
+
+                   /*   Create first thread     */
+                   pthread_create(&amp;simpleThread2, 0, consumer, (void*) 0);
+
+                   /*   Wait until all threads stop     */
+                   pthread_join(simpleThread1, 0);
+                   pthread_join(simpleThread2, 0);
+                }
+
+          </pre></li><li><p><span class="emphasis"><em><span class="bold"><strong>Note:</strong></span> Change the delays in the program and see what happens.</em></span></p></li></ol></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="individual_assignments_threads.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="individual_assignments.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_stream_sockets.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Threads&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Stream Sockets</td></tr></table></div></body></html>

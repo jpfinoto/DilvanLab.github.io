@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Threads Slide 3: Threads Attributes</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Threads:</FONT> </FONT><B><FONT COLOR="#0000FF">Threads
+Attributes</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><B><A HREF="tutorial/java/threads/states.html">Thread
+States</A></B></H2>
+</UL>
+
+<CENTER><P><IMG SRC="gifs/Threads1.gif" HEIGHT=240 WIDTH=519></P></CENTER>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<DL>
+<H3>New Thread</H3>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">Thread myThread = new MyThreadClass();</FONT></PRE>
+
+<P><B>Definition:</B> It is merely an empty Thread object. No system resources
+have been allocated for it yet.</P>
+</BLOCKQUOTE>
+
+<H3>Runnable</H3>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">Thread myThread = new MyThreadClass();
+myThread.start();</FONT></PRE>
+
+<P><B>Definition:</B> It is when the <TT>start()</TT> method creates the
+system resources necessary to run the thread and schedules the thread to
+run.</P>
+
+<P><B>Note:</B> The thread might <B><FONT COLOR="#FF0000"><FONT SIZE=+1>not
+</FONT></FONT></B>actually be running when it is in this state.</P>
+</BLOCKQUOTE>
+</DL>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Threads.sld4.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Threads.sld4.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

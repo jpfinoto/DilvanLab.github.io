@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>API - SDK Java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33FF33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF"><b><font size="5">A API</font></b></font></p>
+<p><font color="#FFFFFF">A API objeto de estudo do presente trabalho &eacute; 
+  composta por tr&ecirc;s pacotes que juntos constituem o SDK Java T<font size="4">echnology. 
+  Temos:</font></font></p>
+<ul>
+  <li><font color="#FFFFFF" size="4">pacote javax.speech: possui as interfaces 
+    e implementa&ccedil;&otilde;es da classe Engine e implementa a classe Central 
+    para acesso a todas as outras funcionalidades. &Eacute; a base para os demais 
+    pacotes, sendo que o reconhecimento e a s&iacute;ntese, como j&aacute; visto, 
+    s&atilde;o herdeiros da classe Engine deste pacote. Possui tamb&eacute;m funcionalidades 
+    para gerenciamento do &aacute;udio recebido pelo Engine, al&eacute;m da classe 
+    SpeechEvent herdada por todos os outros eventos da API.</font></li>
+  <li><font color="#FFFFFF" size="4">p</font><font color="#FFFFFF" size="4">acote 
+    javax.speech.synthesis: possui todas as classes e interfaces utilizadas para 
+    a realiza&ccedil;&atilde;o da s&iacute;ntese, possui tamb&eacute;m a classe 
+    Voice que determina como ser&aacute; a s&iacute;ntese propriamente dita.</font></li>
+  <li><font color="#FFFFFF" size="4">pacote javax.speech.recognition: o maior 
+    dos pacotes, implementa as classes de reconhecimento, as classes de gram&aacute;ticas 
+    dada a rela&ccedil;&atilde;o entre os reconhecedores e estas entidades e as 
+    classes de resultados.</font></li>
+</ul>
+<p><font color="#FFFFFF" size="4">Os pacotes est&atilde;o presentes em um arquivo 
+  jar denominado ibmjs.jar e a compila&ccedil;&atilde;o das aplica&ccedil;&otilde;es 
+  s&oacute; &eacute; poss&iacute;vel adicionando-se o caminho onde se encontra 
+  este arquivo &agrave; vari&aacute;vel de sistema CLASSPATH. Isto pode ser feito 
+  da seguinte forma:</font></p>
+<table width="78%" border="1" align="center" height="69">
+  <tr>
+    <td>
+      <div align="center"><font size="4" color="#FFFFFF">CLASSPATH = %CLASSPATH% 
+        ; .../ibmjs.jar</font></div>
+    </td>
+  </tr>
+</table>
+<p align="center"><b>Tabela 11 - Atualiza&ccedil;&atilde;o da vari&aacute;vel 
+  de sistema CLASSPATH.</b></p>
+<p align="left"><font size="4" color="#FFFFFF">Ap&oacute;s a atualiza&ccedil;&atilde;o 
+  da vari&aacute;vel e a instala&ccedil;&atilde;o do IBMViaVoice &eacute; necess&aacute;ria 
+  a execu&ccedil;&atilde;o da seguinte linha de comando:</font></p>
+<table width="78%" border="1" align="center" height="69">
+  <tr> 
+    <td> 
+      <div align="center"><font size="4" color="#FFFFFF">java com.ibm.speech.util.Install</font></div>
+    </td>
+  </tr>
+</table>
+<p align="center"><b>Figura 12 - Habilita&ccedil;&atilde;o para que as aplica&ccedil;&otilde;es 
+  Java utilizem as fun&ccedil;&otilde;es do ViaVoice.</b></p>
+<p><font size="4" color="#FFFFFF">Que registra a API de programa&ccedil;&atilde;o 
+  de forma que ela possa acessar a aplica&ccedil;&atilde;o Engine do ViaVoice.</font></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

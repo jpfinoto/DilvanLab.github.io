@@ -1,0 +1,175 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Swing Components</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Object Oriented Computing"><link rel="up" href="gui.html" title="Chapter&nbsp;9.&nbsp;Graphic User Interface"><link rel="prev" href="gui_swing_containers.html" title="2.&nbsp;Swing Containers"><link rel="next" href="gui_swing_menus.html" title="4.&nbsp;Swing Menus"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Swing Components</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="gui_swing_containers.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;9.&nbsp;Graphic User Interface</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="gui_swing_menus.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="gui_swing_components"></a>3.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/index.html" target="_top">Swing Components</a></h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3749"></a>3.1.&nbsp;Rules for Using Components</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3752"></a>3.1.1.&nbsp;How to Add a Component to a Container</h4></div></div></div><p>For any <code class="classname">Component</code> object except a <code class="classname">JFrame</code> to display itself onscreen, you must first add it to a <code class="classname">Container</code> object.</p><p>The <code class="classname">Container</code> class defines three methods for adding components:</p><div class="itemizedlist"><ul type="disc"><li><p><code class="methodname">add(Component comp)</code> method simply requires that you specify the component to add.</p></li><li><p><code class="methodname">add(Component comp, int ind)</code> method lets you add an argument specifying the integer position at which the component should be added. This argument is also used to determine the layout manager-dependent position at which the component should be added.</p></li><li><p><code class="methodname">add(String pos, Component comp)</code> method has as first argument a layout manager-dependent string that specifies the component's position to the layout manager.</p></li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Adding a component to a container removes the component from the container it used to be in (if any).</p></td></tr></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3790"></a>3.1.2.&nbsp;What the Component Class Provides</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Basic drawing support</strong></span></p><p><code class="classname">Component</code> provides the <code class="methodname">paint(), update(), and repaint()</code> methods, which enable components to draw themselves on screen.</p></li><li><p><span class="bold"><strong>Event handling</strong></span></p><p><code class="classname">Component</code> defines the general-purpose <code class="methodname">handleEvent()</code> method and a group of methods such as <code class="methodname">action()</code> that handle specific event types.</p></li><li><p><span class="bold"><strong>Appearance control: font</strong></span></p><p><code class="classname">Component</code> provides methods to get and set the current font, and to get information about the current font.</p></li><li><p><span class="bold"><strong>Appearance control: color</strong></span></p><p><code class="classname">Component</code> provides methods to get and set the foreground and background colors.</p></li><li><p><span class="bold"><strong>Image handling</strong></span></p><p><code class="classname">Component</code> provides the basis for displaying images. Most containers can display images.</p></li><li><p><span class="bold"><strong>Onscreen size and position control</strong></span></p><p><code class="classname">Component</code> provides methods that get or set (subject to layout manager oversight) the component's current size and location.</p></li></ul></div><p><a href="../audio/Swing5.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3855"></a>3.2.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html" target="_top">Buttons</a></h3></div></div></div><p>The JButton class provides a default button implementation. A button is a simple control that generates an action event when the user clicks it.</p><div class="figure"><a name="d0e3861"></a><p class="title"><b>Figure&nbsp;9.9.&nbsp;Buttons</b></p><div class="mediaobject"><img src="resources/GUI6.gif" width="396.00000000000006" height="33" alt="Buttons"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3867"></a>3.2.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">b1 = new JButton();
+b1.setText("Disable middle button");
+b1.setActionCommand(DISABLE);
+
+b2 = new JButton("Middle button");
+
+b3 = new JButton("Enable middle button");
+b3.setEnabled(false);
+b3.setActionCommand(ENABLE);
+
+// Listen for actions on buttons 1 and 3.
+b1.addActionListener(this);
+b3.addActionListener(this);
+
+...
+
+public void actionPerformed(ActionEvent e) {
+    String command = e.getActionCommand();
+    if (command == DISABLE) { // User clicked "Disable middle button"
+        b1.setEnabled(false);
+        b2.setEnabled(false);
+        b3.setEnabled(true);
+    }
+    if (command == ENABLE) { // User clicked "Enable middle button"
+        b1.setEnabled(true);
+        b2.setEnabled(true);
+        b3.setEnabled(false);
+    }
+}</pre><p><a href="../audio/Swing6.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3876"></a>3.3.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/label.html" target="_top">Labels</a></h3></div></div></div><p>The JLabel class provides an easy way of putting unselectable text in your program's GUI. Labels are aligned to the left of their drawing area, by default.</p><div class="figure"><a name="d0e3882"></a><p class="title"><b>Figure&nbsp;9.10.&nbsp;Labels</b></p><div class="mediaobject"><img src="resources/GUI43.gif" width="236" height="175.99999999999997" alt="Labels"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3888"></a>3.3.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">ImageIcon icon = new ImageIcon("images/middle.gif");
+
+JLabel lbl1 = new JLabel("Image and Text", JLabel.CENTER);
+lbl1.setIcon(icon);
+
+// Set the position of the text, relative to the icon:
+lbl1.setVerticalTextPosition(JLabel.BOTTOM);
+lbl1.setHorizontalTextPosition(JLabel.CENTER);
+
+JLabel lbl2 = new JLabel("Text-Only Label");
+
+JLabel lbl3 = new JLabel(icon);
+lbl3.setHorizontalAlignment(JLabel.CENTER);</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3893"></a>3.4.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html" target="_top">Checkboxes</a></h3></div></div></div><p>Checkboxes are two-state buttons that can be either "selected" or "deselected" . When the user clicks a checkbox, the checkbox state changes and generates an action event. The <code class="classname">JCheckBox</code> class implements the Swing version of checkboxes.</p><div class="figure"><a name="d0e3902"></a><p class="title"><b>Figure&nbsp;9.11.&nbsp;Checkbox</b></p><div class="mediaobject"><img src="resources/GUI44.gif" width="100" height="80" alt="Checkbox"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3908"></a>3.4.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">cb1 = new JCheckBox(); // Default state is "deselected" (false)
+cb1.setText("Checkbox 1");
+
+cb2 = new JCheckBox("Checkbox 2");
+
+cb3 = new JCheckBox("Checkbox 3");
+cb3.setSelected(true); // Set state to "selected" (true)
+
+// Register a listener for the checkboxes
+cb1.addItemListener(this);
+cb2.addItemListener(this);
+cb3.addItemListener(this);
+
+...
+
+public void itemStateChanged(ItemEvent e) {
+    Object src = e.getItemSelectable();
+    if (src == cb1) {
+        if (e.getStateChange() == ItemEvent.SELECTED)
+            System.out.println("Checkbox 1 selected.");
+        else System.out.println("Checkbox 1 unselected.");
+    } else if (src == cb2) {
+        ...
+    } else if (src == cb3) {
+        ...
+    }
+}</pre><p><a href="../audio/Swing7.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3917"></a>3.5.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/button.html" target="_top">Radio Buttons</a></h3></div></div></div><p>Radio buttons are similar to checkboxes with the difference that you can group them to ensure that only one checkbox is selected at a time. In Swing, each <code class="classname">JRadioButton</code> is added to a <code class="classname">ButtonGroup</code> so the group behaves as a set of radio buttons.</p><div class="figure"><a name="d0e3929"></a><p class="title"><b>Figure&nbsp;9.12.&nbsp;Radiobutton</b></p><div class="mediaobject"><img src="resources/GUI45.gif" width="120" height="80" alt="Radiobutton"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3935"></a>3.5.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">rb1 = new JRadioButton("RadioButton 1");
+
+rb2 = new JRadioButton("RadioButton 2");
+rb2.setSelected(true);
+
+rb3 = new JRadioButton("RadioButton 3");
+
+// Group the radio buttons
+ButtonGroup grp = new ButtonGroup();
+grp.add(rb1);
+grp.add(rb2);
+grp.add(rb3);
+
+// Register a listener for the radio buttons
+rb1.addActionListener(this);
+rb2.addActionListener(this);
+rb3.addActionListener(this);
+
+...
+
+public void actionPerformed(ActionEvent e) {
+    Object src = e.getSource();
+    if (src == rb1) {
+        System.out.println("RadioButton 1 selected!");
+    } else if (src == rb2) {
+        ...
+    } else if (src == rb3) {
+        ...
+    }
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3940"></a>3.6.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/combobox.html" target="_top">Combo Boxes</a></h3></div></div></div><p>The <code class="classname">JComboBox</code> class provides a menu-like list of choices, accessed by a distinctive button. The user presses the button to bring up a "menu", and then chooses one of the items.</p><div class="figure"><a name="d0e3949"></a><p class="title"><b>Figure&nbsp;9.13.&nbsp;Combo box</b></p><div class="mediaobject"><img src="resources/GUI46.gif" width="177" height="117" alt="Combo box"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3955"></a>3.6.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">String[] str = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
+
+// Create the combo box, select item at index 4
+// Indices start at 0, so 4 specifies the pig
+
+JComboBox cb = new JComboBox(str);
+cb.setSelectedIndex(4);
+cb.addActionListener(this);
+
+...
+
+public void actionPerformed(ActionEvent e) {
+    JComboBox cb = (JComboBox) e.getSource();
+    System.out.println("User chose " + ((String) cb.getSelectedItem()));
+}</pre><p><a href="../audio/Swing8.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3964"></a>3.7.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/list.html" target="_top">Lists</a></h3></div></div></div><p>The <code class="classname">JList</code> class provides an list of selectable items. These items can be composed of text, images, or both.</p><div class="figure"><a name="d0e3973"></a><p class="title"><b>Figure&nbsp;9.14.&nbsp;List</b></p><div class="mediaobject"><img src="resources/GUI12.gif" width="511" height="158" alt="List"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3979"></a>3.7.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">// Build the lists, which allows multiple selections
+String[] elements = { "uno", "dos", "tres", "cuatro", "cinco", ... };
+spanish = new JList(elements);
+spanish.addListSelectionListener(this);
+spanish.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+italian = new JList(new DefaultListModel());
+italian.addListSelectionListener(this);
+italian.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+// Add data using the list model
+DefaultListModel model = (DefaultListModel) italian.getModel();
+model.addElement("uno");
+model.addElement("due");
+model.addElement("tre");
+model.addElement("quattro");
+model.addElement("cinque");
+
+. . .
+
+// Implementing the listener for the selection events
+public void valueChanged(ListSelectionEvent e) {
+        
+    if (e.getValueIsAdjusting()) {
+        if (e.getSource() == spanish) {
+            int[] indices = spanish.getSelectedIndices();
+            Object[] values = spanish.getSelectedValues();
+            for (int i = 0; i &lt; indices.length; i++) {
+                String item = (String) values[i];
+                System.out.println("Select event occurred on item #" +
+                       indices[i] + " (\"" + item + "\") in Spanish.");
+            }
+        } 
+        else {            
+            int[] indices = italian.getSelectedIndices();
+            DefaultListModel model = (DefaultListModel) italian.getModel();
+            for (int i = 0; i &lt; indices.length; i++) {
+                String item = (String) model.getElementAt(indices[i]);
+                System.out.println("Select event occurred on item #" +
+                       indices[i] + " (\"" + item + "\") in Italian.");
+            }
+        }            
+    }        
+}</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3984"></a>3.8.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/scrollpane.html" target="_top">Scroll Panes</a></h3></div></div></div><p>A <code class="classname">JScrollPane</code> manages a single child component, displaying as much of the component as space permits. By default, a scroll pane's scrollbars are visible only when they're needed.</p><div class="figure"><a name="d0e3993"></a><p class="title"><b>Figure&nbsp;9.15.&nbsp;ScrollPane</b></p><div class="mediaobject"><img src="resources/GUI14.gif" width="326" height="127.00000000000001" alt="ScrollPane"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3999"></a>3.8.1.&nbsp;Scrollbar parameters</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>HORIZONTAL_SCROLLBAR_AS_NEEDED, VERTICAL_SCROOLBAR_AS_NEEDED</p><p>The default value. Show each scrollbar only when it's needed.</p></li><li><p>HORIZONTAL_SCROLLBAR_ALWAYS, VERTICAL_SCROLLBAR_ALWAYS</p><p>Always show the scrollbars.</p></li><li><p>HORIZONTAL_SCROLLBAR_NEVER, VERTICAL_SCROLLBAR_NEVER</p><p>Never show scrollbars. You might use this option if you don't want the user to directly control what part of the child component is shown.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4018"></a>3.8.2.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">JScrollPane scroll = new JScrollPane(aComponent, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+                                                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);</pre><p><a href="../audio/Swing9.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4027"></a>3.9.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/uiswing/components/text.html" target="_top">Text Components</a></h3></div></div></div><p>The <code class="classname">JTextComponent</code> derived classes display selectable text and, optionally, allow the user to edit the text. They can also support styled text and password fields.</p><div class="figure"><a name="d0e4036"></a><p class="title"><b>Figure&nbsp;9.16.&nbsp;JTextComponent hierarchy</b></p><div class="mediaobject"><img src="resources/GUI47.gif" width="495" height="161" alt="JTextComponent hierarchy"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4042"></a>3.9.1.&nbsp;TextField and TextArea</h4></div></div></div><p>From <code class="classname">JTextComponent</code> this classes inherit methods that allow them to set and get the current selection, enable and disable editing, get the currently selected text (or all the text), and set the text.</p><div class="figure"><a name="d0e4050"></a><p class="title"><b>Figure&nbsp;9.17.&nbsp;JTextField and JTextArea components</b></p><div class="mediaobject"><img src="resources/GUI15.gif" width="260" height="134" alt="JTextField and JTextArea components"></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4056"></a>3.9.2.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">// Where instance variables are defined:
+private JTextField textField;
+private JTextArea textArea;
+
+public void init() {
+
+    textField = new JTextField(20);
+    textField.addActionListener(this);
+
+    textArea = new JTextArea(5, 20);
+    textArea.setEditable(false);
+
+    ...// Add the two components to the panel. 
+}
+
+public void actionPerformed(ActionEvent evt) {
+    String text = textField.getText();
+    textArea.append(text + "\n");
+    textField.selectAll();
+}</pre><p><a href="../audio/Swing10.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="gui_swing_containers.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="gui.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="gui_swing_menus.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Swing Containers&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Swing Menus</td></tr></table></div></body></html>

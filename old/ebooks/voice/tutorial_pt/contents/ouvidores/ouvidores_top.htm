@@ -1,0 +1,510 @@
+<html>
+<head>
+<title>Ouvidores</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33FF33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF"><b><font size="5">Ouvidores</font></b></font></p>
+<p align="left"><font size="4" color="#FFFFFF">A tecnologia IBM SDK Java tem seu 
+  funcionamento baseado no mesmo modelo utilizado por API's de programa&ccedil;&atilde;o 
+  de GUI (<i>Graphical User Interface</i>), isto &eacute;, depende de eventos 
+  gerados pelo usu&aacute;rio os quais s&atilde;o interceptados por ouvidores 
+  (<i>listeners</i>). Estes ouvidores s&atilde;o interfaces cuja implementa&ccedil;&atilde;o 
+  ser&aacute; determinada pelo usu&aacute;rio que desta forma especifica o processamento 
+  desejado perante a ocorr&ecirc;ncia dos eventos. Na tecnologia em quest&atilde;o 
+  estes eventos s&atilde;o encarados como objetos derivados da classe<i> <a href="../../ref/api/javax/speech/SpeechEvent.html" target="_blank">SpeechEvent</a></i> 
+  que possuem informa&ccedil;&otilde;es espec&iacute;ficas sobre a ocorr&ecirc;ncia 
+  que os desencadeou.</font></p>
+<p align="left"><font size="4" color="#FFFFFF">Os ouvidores dispon&iacute;veis 
+  na tecnologia estudada s&atilde;o:</font></p>
+<ul>
+  <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/EngineListener.html" target="_blank"><font color="#ffff00"><b>Ouvidor 
+    EngineListener</b></font></a><b><font color="#ffff00">:</font></b> ouvidor 
+    espec&iacute;fico para eventos gerados pela aplica&ccedil;&atilde;o Engine, 
+    o cora&ccedil;&atilde;o do funcionamento do software. &Eacute; especialmente 
+    utilizado para sinalizar altera&ccedil;&otilde;es nos estados do engine como 
+    parada, pausa, aloca&ccedil;&atilde;o de recursos, etc.</font> 
+    <p><font size="4" color="#FFFFFF">=&gt; Evento associado: <a href="../../ref/api/javax/speech/EngineEvent.html" target="_blank">EngineEvent</a> 
+      ou uma de suas classes m&atilde;es.</font></p>
+    <p><font size="4" color="#FFFFFF"> Os principais eventos tratados s&atilde;o:</font> 
+    </p>
+  </li>
+  <ul>
+    <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/EngineListener.html#engineAllocated(javax.speech.EngineEvent)" target="_blank">engineAllocated</a>, 
+      <a href="../../ref/api/javax/speech/EngineListener.html#engineAllocatingResources(javax.speech.EngineEvent)" target="_blank">engineAllocatingResources</a>, 
+      <a href="../../ref/api/javax/speech/EngineListener.html#engineDeallocated(javax.speech.EngineEvent)" target="_blank">engineDeallocated</a>, 
+      <a href="../../ref/api/javax/speech/EngineListener.html#engineDeallocatingResources(javax.speech.EngineEvent)" target="_blank">engineDeallocatingResources</a>, 
+      </font><a href="../../ref/api/javax/speech/EngineListener.html#engineError(javax.speech.EngineErrorEvent)" target="_blank"><font size="4" color="#FFFFFF">engineError</font></a><font size="4" color="#FFFFFF">, 
+      <a href="../../ref/api/javax/speech/EngineListener.html#enginePaused(javax.speech.EngineEvent)" target="_blank">enginePaused</a> 
+      e <a href="../../ref/api/javax/speech/EngineListener.html#engineResumed(javax.speech.EngineEvent)" target="_blank">engineResumed</a>.</font></li>
+  </ul>
+</ul>
+<blockquote> 
+  <p><font size="4" color="#FFFFFF">Todos estes eventos podem se explicados analisando-se 
+    o ciclo de funcionamento do<i> Engine</i> como<i> </i>&eacute; mostrado na 
+    figura 4.</font></p>
+</blockquote>
+<p align="center"><img src="../../imagens/ilustracoes/eventos/engine_states.gif" width="696" height="215"></p>
+<p align="center"><b>Figura 4 - Estados do Engine.</b></p>
+<blockquote> 
+  <p><font color="#FFFFFF" size="4">O ciclo de funcionamento do Engine pode ser 
+    claramente visualizado na figura 4: primeiramente o Engine &eacute; criado 
+    no estado <i><a href="../../ref/api/javax/speech/Engine.html#DEALLOCATED" target="_blank">DEALLOCATED</a></i>, 
+    para que se possa utiliz&aacute;-lo &eacute; necess&aacute;rio chamarmos o 
+    m&eacute;todo <i><a href="../../ref/api/javax/speech/Engine.html#allocate()" target="_blank">allocate</a>. 
+    </i>A partir deste m&eacute;todo o Engine passa por um estado intermedi&aacute;rio 
+    de <a href="../../ref/api/javax/speech/Engine.html#ALLOCATING_RESOURCES" target="_blank"><i>ALLOCATING_RESOURCES</i></a> 
+    cujo tempo depende da m&aacute;quina em quest&atilde;o, ao fim desta etapa 
+    tem-se o estado <a href="../../ref/api/javax/speech/Engine.html#ALLOCATED" target="_blank"><i>ALLOCATED</i></a> 
+    que possui dois subestados: <i><a href="../../ref/api/javax/speech/Engine.html#RESUMED" target="_blank">RESUMED</a></i> 
+    (padr&atilde;o) indicando que o Engine est&aacute; ativo e <i><a href="../../ref/api/javax/speech/Engine.html#PAUSED" target="_blank">PAUSED</a></i> 
+    que indica que as atividades foram suspensas, a transi&ccedil;&atilde;o entre 
+    estes estados &eacute; feita utilizando-se os m&eacute;todos <i><a href="../../ref/api/javax/speech/Engine.html#pause()" target="_blank">pause</a></i> 
+    e <i><a href="../../ref/api/javax/speech/Engine.html#resume()" target="_blank">resume</a></i>. 
+    Ao t&eacute;rmino da utiliza&ccedil;&atilde;o do Engine recomenda-se que os 
+    recursos de hardware sejam explicitamente liberados atrav&eacute;s do m&eacute;todo 
+    <i><a href="../../ref/api/javax/speech/Engine.html#deallocate()" target="_blank">deallocate</a> 
+    </i>ap&oacute;s o qual o Engine entra em um estado intermedi&aacute;rio <i><a href="../../ref/api/javax/speech/Engine.html#DEALLOCATING_RESOURCES" target="_blank">DEALLOCATING_RESOURCES</a></i> 
+    e finalmente volta ao estado inicial <i><a href="../../ref/api/javax/speech/Engine.html#DEALLOCATED" target="_blank">DEALLOCATED</a></i>. 
+    Vale lembrar que os reconhecedores e sintetizadores s&atilde;o herdeiros do 
+    Engine e tamb&eacute;m seguem este ciclo de funcionamento, no entanto com 
+    algumas peculiaridades como veremos mais a frente.</font></p>
+  <p><font size="4" color="#FFFFFF">Portanto os eventos assinalados acima s&atilde;o 
+    gerados durante as transi&ccedil;&otilde;es entre os estados do ciclo de funcionamento, 
+    como temos cinco estados poss&iacute;ves: <i>DEALLOCATED</i>,<i> ALLOCATING_RESOURCES</i>,<i> 
+    ALLOCATED RESUMED</i>,<i> ALLOCATED PAUSED e DEALLOCATING_RESOURCES</i>, temos 
+    seis poss&iacute;veis transi&ccedil;&otilde;es visto que estas s&atilde;o 
+    unidirecionais. Cada uma destas transi&ccedil;&otilde;es gera um evento distinto 
+    e o <a href="../../ref/api/javax/speech/EngineListener.html" target="_blank"><i>EngineListener</i></a> 
+    est&aacute; apto a tratar qualquer um deles num total de seis eventos poss&iacute;veis, 
+    possuindo um tratamento adicional para poss&iacute;veis erros que &eacute; 
+    o <i>engineError.</i></font></p>
+  <ul>
+    <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/EngineListener.html#engineAllocated(javax.speech.EngineEvent)" target="_blank">engineAllocated</a>, 
+      <a href="../../ref/api/javax/speech/EngineListener.html#engineAllocatingResources(javax.speech.EngineEvent)" target="_blank">engineAllocatingResources</a>, 
+      <a href="../../ref/api/javax/speech/EngineListener.html#engineDeallocated(javax.speech.EngineEvent)" target="_blank">engineDeallocated</a>, 
+      <a href="../../ref/api/javax/speech/EngineListener.html#engineDeallocatingResources(javax.speech.EngineEvent)" target="_blank">engineDeallocatingResources</a>, 
+      </font><a href="../../ref/api/javax/speech/EngineListener.html#engineError(javax.speech.EngineErrorEvent)" target="_blank"><font size="4" color="#FFFFFF">engineError</font></a><font size="4" color="#FFFFFF">, 
+      <a href="../../ref/api/javax/speech/EngineListener.html#enginePaused(javax.speech.EngineEvent)" target="_blank">enginePaused</a> 
+      e <a href="../../ref/api/javax/speech/EngineListener.html#engineResumed(javax.speech.EngineEvent)" target="_blank">engineResumed</a>.</font></li>
+  </ul>
+  <p align="right"><a href="../../exemplos/eventos/eventos_exemplo1.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+  <p>&nbsp;</p>
+  <ul>
+    <blockquote>
+      <hr>
+    </blockquote>
+    <li><a name="synthlistener"></a><b><font color="#FFFF00" size="4"><a href="../../ref/api/javax/speech/synthesis/SynthesizerListener.html" target="_blank">Ouvidor 
+      SynthesizerListener</a>: </font></b><font color="#FFFFFF" size="4">ouvidor 
+      espec&iacute;fico para eventos gerados durante o ciclo de funcionamento 
+      de um objeto sintetizador, mais precisamente da fun&ccedil;&atilde;o de 
+      s&iacute;ntese da aplica&ccedil;&atilde;o <a href="../arquitetura/arquitetura_top.htm" target="_blank"><i>Engine</i></a><i> 
+      </i>como pode ser observado na figura 5. </font> 
+      <p><font size="4" color="#FFFFFF">=&gt; Evento associado: <a href="../../ref/api/javax/speech/synthesis/SynthesizerEvent.html" target="_blank">SynthesizerEvent</a> 
+        ou uma de suas classes m&atilde;es.</font> </p>
+      <p><font color="#FFFFFF" size="4">Atrav&eacute;s de sua implementa&ccedil;&atilde;o 
+        podemos ter controle de eventos da <a href="../sintetizadores/sintetizadores_top.htm#fila" target="_blank">fila 
+        do sintetizador</a>, que tem seu estado mudado quando:</font></p>
+    </li>
+    <ul>
+      <ul>
+        <li><font color="#FFFFFF" size="4">u</font><font color="#FFFFFF" size="4">m 
+          novo item &eacute; adicionado &agrave; fila atrav&eacute;s de um dos 
+          m&eacute;todo <i><a href="../sintetizadores/sintetizadores_top.htm#sintese" target="_blank">speak</a>.</i></font></li>
+        <li><font color="#FFFFFF" size="4">quando um item &eacute; removido da 
+          fila atrav&eacute;s de um dos m&eacute;todos <i><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#cancelAll()" target="_blank">cancel</a></i>. 
+          </font></li>
+        <li><font color="#FFFFFF" size="4">quando a sa&iacute;da de &aacute;udio 
+          de um item da fila &eacute; completada e o item removido.</font> 
+          <p>&nbsp;</p>
+          <p><img src="../../imagens/ilustracoes/eventos/sintetizador_states.gif" width="750" height="250"></p>
+          <p align="center"><b>Figura 5 - Estados do Sintetizador.</b> </p>
+        </li>
+      </ul>
+    </ul>
+  </ul>
+  <blockquote> 
+    <p><font size="4" color="#FFFFFF">Como se observa pela figura 5, o ciclo de 
+      funcionamento do sintetizador &eacute; o mesmo do Engine tendo como &uacute;nica 
+      diferen&ccedil;a a exist&ecirc;ncia de um subestado adicional para o estado 
+      ALLOCATED que indica a condi&ccedil;&atilde;o da fila de itens do sintetizador 
+      em um dado instante. Os poss&iacute;veis estados para a condi&ccedil;&atilde;o 
+      <i>ALLOCATED</i> s&atilde;o: <i>ALLOCATED RESUMED <a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#QUEUE_EMPTY" target="_blank">QUEUE_EMPTY</a></i>, 
+      <i>ALLOCATED RESUMED</i> <i><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#QUEUE_NOT_EMPTY" target="_blank">QUEUE_NOT_EMPTY</a></i>, 
+      <i>ALLOCATED PAUSED</i> <i><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#QUEUE_EMPTY" target="_blank">QUEUE_EMPTY</a></i> 
+      e <i>ALLOCATED PAUSED</i> <i><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#QUEUE_NOT_EMPTY" target="_blank">QUEUE_NOT_EMPTY</a></i>. 
+      Observa-se, no entanto, que a condi&ccedil;&atilde;o da fila &eacute; independente 
+      da condi&ccedil;&atilde;o de funcionamento do sintetizador, itens podem 
+      ser inseridos e retirados da mesma tanto no estado RESUMED como no PAUSED, 
+      n&atilde;o determinando assim um ciclo mas apenas um indicador adicional 
+      da condi&ccedil;&atilde;o do sintetizador.</font></p>
+  </blockquote>
+  <blockquote> 
+    <p><font size="4" color="#FFFFFF">Os eventos gerados, al&eacute;m dos eventos 
+      do Engine, s&atilde;o:</font></p>
+  </blockquote>
+  <ul>
+    <ul>
+      <li><font color="#FFFFFF" size="4"><a href="../../ref/api/javax/speech/synthesis/SynthesizerListener.html#queueEmptied(javax.speech.synthesis.SynthesizerEvent)" target="_blank">queueEmptied</a>: 
+        gerado quando a fila do sintetizador tem seu &uacute;ltimo item removido.</font></li>
+      <li><a href="../../ref/api/javax/speech/synthesis/SynthesizerListener.html#queueUpdated(javax.speech.synthesis.SynthesizerEvent)" target="_blank"><font color="#FFFFFF" size="4">queueUpdated</font></a><font color="#FFFFFF" size="4">: 
+        evento indicando que a fila mudou do estado de vazia para n&atilde;o vazia 
+        ou vice versa.</font> </li>
+    </ul>
+  </ul>
+  <blockquote> 
+    <p> <font color="#FFFFFF" size="4">Este ouvidor herda funcionalidades da interface 
+      <a href="../../ref/api/javax/speech/EngineListener.html" target="_blank"><i>EngineListener</i></a> 
+      e portanto os mesmos eventos tratados por esta podem ser tratados pelo SynthesizerListener.</font></p>
+  </blockquote>
+  <p align="right"><a href="../../exemplos/eventos/eventos_exemplo2.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+  <p align="right"><a href="../../exemplos/eventos/eventos_exemplo2.jsml" target="_blank">Arquivo 
+    JSML referenciado pelo exemplo acima.</a></p>
+  <hr>
+</blockquote>
+<ul>
+  <li><a name="speakablelistener"></a><b><font color="#ffff00"><font size="4"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html" target="_blank">Ouvidor 
+    SpeakableListener</a>: </font></font></b><font size="4" color="#FFFFFF">ouvidor 
+    espec&iacute;fico para eventos gerados durante a s&iacute;ntese de discurso.</font> 
+    <font size="4" color="#FFFFFF"> </font> </li>
+</ul>
+<ul>
+  <ul>
+    <li><font size="4" color="#FFFFFF">provê um ouvidor de eventos quando chamamos 
+      os métodos speak ou speakPlainText de um sintetizador.</font></li>
+    <li><font size="4" color="#FFFFFF"> provê um ouvidor de eventos associado 
+      a um determinado sintetizador, independente do m&eacute;todo utilizado este 
+      ouvidor responde a todos os eventos decorrentes da s&iacute;ntese proveniente 
+      do sintetizador ao qual esteja associado.</font> <br>
+    </li>
+  </ul>
+  <blockquote> <br>
+    <font size="4" color="#FFFFFF">=&gt; Evento associado: <a href="../../ref/api/javax/speech/synthesis/SpeakableEvent.html" target="_blank">EspeakableEvent</a> 
+    ou uma de suas classes m&atilde;es.</font> 
+    <p><font size="4" color="#FFFFFF">Os eventos que podem ser interceptados pelo 
+      ouvidor são:</font> </p>
+    <ul>
+      <li><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#markerReached(javax.speech.synthesis.SpeakableEvent)" target="_blank"><font size="4" color="#FFFFFF"> 
+        markerReached</font></a><font size="4" color="#FFFFFF">: gerado quando 
+        um marcador (tag <a href="../jsml/jsml_top.htm#marker" target="_blank"><i>MARKER</i></a>) 
+        é alcançado durante a síntese de um texto formatado em JSML. </font></li>
+      <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#speakableCancelled(javax.speech.synthesis.SpeakableEvent)" target="_blank">speakableCanceled</a>: 
+        gerado quando a síntese de um item da fila de saída do sintetizador é 
+        cancelada através de <a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#enumerateQueue()" target="_blank">métodos 
+        espec&iacute;ficos do sintetizador</a>. </font></li>
+      <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#speakableEnded(javax.speech.synthesis.SpeakableEvent)" target="_blank">speakableEnded</a>: 
+        quando a saída de áudio de um determinado item da fila de itens do sintetizador 
+        é encerrada, este item é retirado da fila e este evento é gerado.</font></li>
+      <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#speakablePaused(javax.speech.synthesis.SpeakableEvent)">speakablePaused</a>: 
+        evento gerado quando o m&eacute;todo <a href="../../ref/api/javax/speech/Engine.html#pause()" target="_blank"><i>pause</i></a> 
+        &eacute; chamado por um sintetizador, o evento indicar&aacute; que o item 
+        no topo da fila no momento da pausa teve sua s&iacute;ntese suspensa.</font></li>
+      <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#speakableResumed(javax.speech.synthesis.SpeakableEvent)" target="_blank">speakableResumed</a>: 
+        evento gerado quando o m&eacute;todo <a href="../../ref/api/javax/speech/Engine.html#resume()" target="_blank"><i>resume</i></a> 
+        &eacute; chamado por um sintetizador, o evento indicar&aacute; que o item 
+        no topo da fila no momento da chamada foi retomado.</font></li>
+      <li><font color="#00FF00"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#speakableStarted(javax.speech.synthesis.SpeakableEvent)" target="_blank"><font size="4"> 
+        speakableStarted</font></a><font size="4">:</font></font><font size="4" color="#FFFFFF"> gerado quando 
+        o &aacute;udio referente a um dado item da fila do sintetizador &eacute; 
+        iniciado.</font></li>
+      <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#topOfQueue(javax.speech.synthesis.SpeakableEvent)" target="_blank">topOfQueue</a>: 
+        evento gerado quando um item da fila do sintetizador alcan&ccedil;a o 
+        topo da fila.</font></li>
+      <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#wordStarted(javax.speech.synthesis.SpeakableEvent)" target="_blank">wordStarted</a>: 
+        gerado quando o &aacute;udio referente uma dada palavra de um item da 
+        fila do sintetizador &eacute; iniciado.</font></li>
+    </ul>
+    <p>&nbsp;</p>
+    <p><font color="#FFFFFF" size="4">Obs.: deve-se notar que o ouvidor <i><a href="#speakablelistener">SpeakableListener</a></i> 
+      herda funcionalidades da interface <i>EventListener</i> (pertencente a API 
+      JDK), diferentemente do <a href="#synthlistener"><i>SynthesizerListener</i></a> 
+      que herda funcionalidades da interface <a href="../../ref/api/javax/speech/EngineListener.html" target="_blank"><i>EngineListener</i></a>. 
+      Deve-se notar a diferente natureza apresentada por cada um deles, o primeiro 
+      &eacute; relacionado com eventos decorrentes do processo de s&iacute;ntese 
+      ao passo que o segundo &eacute; relacionado com eventos decorrentes do funcionamento 
+      do objeto sintetizador (aplica&ccedil;&atilde;o Engine). Esta mesma organiza&ccedil;&atilde;o 
+      &eacute; encontrada na implementa&ccedil;&atilde;o do objeto reconhecedor 
+      que possui ouvidores de ambas as naturezas.</font></p>
+  </blockquote>
+</ul>
+<hr>
+<ul>
+  <li><b><font color="#FFFF00" size="4"><a href="../../ref/api/javax/speech/recognition/RecognizerListener.html" target="_blank">Ouvidor 
+    RecognizerListener</a>: </font></b><font color="#FFFFFF" size="4">ouvidor 
+    espec&iacute;fico para eventos gerados durante o ciclo de funcionamento de 
+    um objeto reconhecedor, mais precisamente da fun&ccedil;&atilde;o de reconhecimento 
+    da aplica&ccedil;&atilde;o <a href="../arquitetura/arquitetura_top.htm" target="_blank"><i>Engine</i></a>. 
+    Atrav&eacute;s de sua implementa&ccedil;&atilde;o podemos ter controle de 
+    eventos do processamento dos reconhecedores.</font> 
+    <p><font size="4" color="#FFFFFF">=&gt; Evento associado: <a href="../../ref/api/javax/speech/recognition/RecognizerEvent.html" target="_blank">RecognizerEvent</a> 
+      ou uma de suas classes m&atilde;es.</font> </p>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<blockquote> 
+  <blockquote> 
+    <p><img src="../../imagens/ilustracoes/eventos/reconhecedor_states.gif" width="810" height="300"></p>
+    <p align="center"><b>Figura 6 - Estados do Reconhecedor</b></p>
+  </blockquote>
+  <p>&nbsp;</p>
+  <p><font size="4" color="#FFFFFF">Como se observa pela figura 6, o ciclo de 
+    funcionamento do reconhecedor - <a href="#figura7">figura 7</a> - &eacute; 
+    o mesmo do Engine tendo como diferen&ccedil;as a inclus&atilde;o de 5 subestados 
+    adicionais para o estado <i>ALLOCATED</i>. Os tr&ecirc;s primeiros <a href="../../ref/api/javax/speech/recognition/Recognizer.html#LISTENING" target="_blank"><i>LISTENING</i></a>, 
+    <a href="../../ref/api/javax/speech/recognition/Recognizer.html#PROCESSING" target="_blank"><i>PROCESSING</i></a> 
+    e <a href="../../ref/api/javax/speech/recognition/Recognizer.html#SUSPENDED" target="_blank"><i>SUSPENDED</i></a> 
+    s&atilde;o estados que indicam o estado do processamento da entrada de &aacute;udio 
+    do reconhecedor. SUSPENDED &eacute; o estado padr&atilde;o do reconhecedor, 
+    que sai deste estado em decorr&ecirc;ncia de &aacute;udio que chega, passando 
+    ent&atilde;o para o estado de <i>LISTENING</i> e em seguida para <i>PROCESSING</i>. 
+    O estado <i>SUSPENDED</i> &eacute; conseguido tamb&eacute;m atrav&eacute;s 
+    do m&eacute;todo <i><a href="../../ref/api/javax/speech/recognition/Recognizer.html#suspend()" target="_blank">suspend</a></i> 
+    do reconhecedor, neste estado a entrada de &aacute;udio &eacute; buferizada 
+    para posterior processamento, para sair do estado de <i>SUSPENDED</i> deve-se 
+    usar o m&eacute;todo <a href="../../ref/api/javax/speech/recognition/Recognizer.html#commitChanges()" target="_blank"><i>comitChanges</i></a>. 
+    A seguir temos o ciclo de reconhecimento:</font></p>
+  <p>&nbsp;</p>
+  <p align="center"><img src="../../imagens/ilustracoes/eventos/ciclo_de_reconhecedor_states.gif" width="795" height="285"><a name="figura7"></a></p>
+  <p align="center"><b>Figura 7 - Ciclo de Reconhecimento.</b></p>
+  <blockquote> 
+    <p><font size="4" color="#FFFFFF">Os estados <a href="../../ref/api/javax/speech/recognition/Recognizer.html#FOCUS_ON" target="_blank"><i>FOCUS_ON</i></a> 
+      e <a href="../../ref/api/javax/speech/recognition/Recognizer.html#FOCUS_OFF" target="_blank"><i>FOCUS_OFF</i></a> 
+      s&atilde;o conseguidos atrav&eacute;s dos m&eacute;todos <i><a href="../../ref/api/javax/speech/recognition/Recognizer.html#requestFocus()" target="_blank">requestFocus</a></i> 
+      e <i><a href="../../ref/api/javax/speech/recognition/Recognizer.html#releaseFocus()" target="_blank">releaseFocus</a></i>. 
+      Estes estados indicam se a aplica&ccedil;&atilde;o corrente tem ou n&atilde;o 
+      acesso &agrave; aplica&ccedil;&atilde;o Engine que lhe d&aacute; suporte, 
+      esta transi&ccedil;&atilde;o de estados &eacute; &uacute;til caso tenhamos 
+      v&aacute;rias aplica&ccedil;&otilde;es com fun&ccedil;&otilde;es de reconhecimento 
+      sendo executadas na mesma m&aacute;quina.</font></p>
+    <p><font size="4" color="#FFFFFF">Os eventos gerados, al&eacute;m dos eventos 
+      do Engine, s&atilde;o:</font></p>
+  </blockquote>
+  <ul>
+    <ul>
+      <li><font color="#FFFFFF" size="4"><a href="../../ref/api/javax/speech/recognition/RecognizerListener.html#changesCommitted(javax.speech.recognition.RecognizerEvent)" target="_blank">changesCommitted</a>: 
+        evento gerado quando h&aacute; a transi&ccedil;&atilde;o do estado <i>SUSPENDED</i> 
+        para o estado <i>LISTENING</i>.</font></li>
+      <li><a href="../../ref/api/javax/speech/recognition/RecognizerListener.html#focusGained(javax.speech.recognition.RecognizerEvent)" target="_blank"><font size="4" color="#FFFFFF">focusGained</font></a><font size="4" color="#FFFFFF">: 
+        quando h&aacute; transi&ccedil;&atilde;o de <i>FOCUS_OFF</i> para <i>FOCUS_ON</i>.</font></li>
+      <li><a href="../../ref/api/javax/speech/recognition/RecognizerListener.html#focusLost(javax.speech.recognition.RecognizerEvent)" target="_blank"><font size="4" color="#FFFFFF">focusLost</font></a><font size="4" color="#FFFFFF">: 
+        quando h&aacute; transi&ccedil;&atilde;o de <i>FOCUS_ON</i> para <i>FOCUS_OFF</i>.</font></li>
+      <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/RecognizerListener.html#recognizerProcessing(javax.speech.recognition.RecognizerEvent)" target="_blank">recognizerProcessing</a>: 
+        quando h&aacute; transi&ccedil;&atilde;o de<i> LISTENING</i> para <i>PROCESSING</i>, 
+        ocorre logo ap&oacute;s entrada de &aacute;udio que possa ser associado 
+        a alguma das gram&aacute;ticas.</font></li>
+      <li><a href="../../ref/api/javax/speech/recognition/RecognizerListener.html#recognizerSuspended(javax.speech.recognition.RecognizerEvent)" target="_blank"><font size="4" color="#FFFFFF">recognizerSuspended</font></a><font size="4" color="#FFFFFF">: 
+        quando h&aacute; transi&ccedil;&atilde;o dos estados <i>LISTENING</i> 
+        ou <i>PROCESSING</i> para o <i>SUSPENDED</i>.</font></li>
+    </ul>
+  </ul>
+  <p align="right"><a href="../../exemplos/eventos/eventos_exemplo3.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+  <p><font color="#FFFFFF" size="4">Este ouvidor herda funcionalidades da interface 
+    <a href="../../ref/api/javax/speech/EngineListener.html" target="_blank"><i>EngineListener</i></a> 
+    e portanto os mesmos eventos tratados por esta podem ser tratados pelo <i>RecognizerListener</i>.</font></p>
+  <hr>
+</blockquote>
+<ul>
+  <li><b><font color="#FFFF00" size="4"><a href="../../ref/api/javax/speech/recognition/RecognizerAudioListener.html" target="_blank">Ouvidor 
+    RecognizerAudioListener</a>: </font></b><font color="#FFFFFF" size="4">ouvidor 
+    espec&iacute;fico para eventos operacionais de &aacute;udio. Este ouvidor 
+    &eacute; preparado para receber eventos de quando o di&aacute;logo come&ccedil;a 
+    a ser proferido na entrada de &aacute;udio e de quando o di&aacute;logo &eacute;
+    interrompido, mas o mais importante s&atilde;o os eventos gerados
+    periodicamente 
+    quando o reconhecedor est&aacute; no estado de LISTENING ou PROCESSING informando 
+    a intensidade da entrada de &aacute;udio, isto &eacute;, o volume.</font> 
+    <p><font size="4" color="#FFFFFF">=&gt; Evento associado: <a href="../../ref/api/javax/speech/recognition/RecognizerAudioEvent.html" target="_blank">RecognizerAudioEvent</a> 
+      ou uma de suas classes m&atilde;es.</font> </p>
+    <p><font color="#FFFFFF" size="4">Temos:</font> </p>
+  </li>
+  <ul>
+    <li><font color="#FFFFFF" size="4"><a href="../../ref/api/javax/speech/recognition/RecognizerAudioListener.html#audioLevel(javax.speech.recognition.RecognizerAudioEvent)" target="_blank">audioLevel</a>: 
+      evento gerado periodicamente informando o volume da entrada de &aacute;udio 
+      que &eacute; dado pela pot&ecirc;ncia da voz do usu&aacute;rio. Este volume 
+      &eacute; um valor que vai de 0.0 at&eacute; 1.0.</font></li>
+    <li><a href="../../ref/api/javax/speech/recognition/RecognizerAudioListener.html#speechStarted(javax.speech.recognition.RecognizerAudioEvent)" target="_blank"><font size="4" color="#FFFFFF"> 
+      speechStarted</font></a><font size="4" color="#FFFFFF">: evento gerado quando 
+      h&aacute; entrada de &aacute;udio depois de um per&iacute;odo de sil&ecirc;ncio.</font></li>
+    <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/RecognizerAudioListener.html#speechStarted(javax.speech.recognition.RecognizerAudioEvent)" target="_blank">speechStopped</a>: 
+      evento gerado quando h&aacute; interrup&ccedil;&atilde;o do &aacute;udio 
+      ap&oacute;s um per&iacute;odo de di&aacute;logo.</font></li>
+  </ul>
+</ul>
+<blockquote> 
+  <p align="right"><a href="../../exemplos/eventos/eventos_exemplo4.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+  <hr>
+</blockquote>
+<ul>
+  <li><font color="#FFFFFF" size="4"><a href="../../ref/api/javax/speech/recognition/GrammarListener.html" target="_blank">GrammarListener</a>: 
+    ouvidor utilizado para controle dos eventos gerados pelas opera&ccedil;&otilde;es 
+    efetuados em um objeto <a href="../../ref/api/javax/speech/recognition/Grammar.html" target="_blank"><i>Grammar</i></a><i> 
+    </i>e consequentemente em seus objetos herdeiros: <a href="../../ref/api/javax/speech/recognition/RuleGrammar.html" target="_blank"><i>RuleGrammar</i></a> 
+    e <i><a href="../../ref/api/javax/speech/recognition/DictationGrammar.html" target="_blank">DictationGrammar</a>. 
+    </i>Este<i> </i>ouvidor &eacute; capaz de monitorar a ativa&ccedil;&atilde;o 
+    e a desativa&ccedil;&atilde;o das gram&aacute;ticas bem como de saber quando 
+    uma determinada gram&aacute;tica &eacute; alterada por um reconhecedor.</font> 
+    <p><font size="4" color="#FFFFFF">=&gt; Evento associado: <a href="../../ref/api/javax/speech/recognition/GrammarEvent.html" target="_blank">GrammarEvent</a> 
+      ou uma de suas classes m&atilde;es.</font> </p>
+    <p><font size="4" color="#FFFFFF">Seus eventos:</font></p>
+  </li>
+  <ul>
+    <li><font color="#FFFFFF" size="4"><a href="../../ref/api/javax/speech/recognition/GrammarListener.html#grammarActivated(javax.speech.recognition.GrammarEvent)" target="_blank">grammarActivated</a>: 
+      gerado quando uma gram&aacute;tica passa do estado de <a href="../../ref/api/javax/speech/recognition/GrammarEvent.html#GRAMMAR_DEACTIVATED"><i>GRAMMAR_DEACTIVATED</i></a> 
+      para <a href="../../ref/api/javax/speech/recognition/GrammarEvent.html#GRAMMAR_ACTIVATED" target="_blank"><i>GRAMMAR_ACTIVATED</i></a>. 
+      O que ocorre em uma de duas situa&ccedil;&otilde;es poss&iacute;veis:</font> 
+      <ul>
+        <li><font color="#FFFFFF" size="4"> quando a gram&aacute;tica &eacute; 
+          habilitada pelo m&eacute;todo <a href="../../ref/api/javax/speech/recognition/Grammar.html#setEnabled(boolean)" target="_blank"><i>setEnabled</i></a> 
+          (par&acirc;mtero true)<i>, </i> o evento &eacute; gerado ap&oacute;s 
+          o reconhecedor executar o m&eacute;todo <a href="../../ref/api/javax/speech/recognition/Recognizer.html#commitChanges()" target="_blank"><i>commitChanges</i></a> 
+          que confirma a habilita&ccedil;&atilde;o da gram&aacute;tica.</font></li>
+        <li><font color="#FFFFFF" size="4">quando um reconhecedor passa do estado 
+          <a href="../../ref/api/javax/speech/recognition/Recognizer.html#FOCUS_ON" target="_blank"><i>FOCUS_OFF</i></a> 
+          para <a href="../../ref/api/javax/speech/recognition/Recognizer.html#FOCUS_OFF" target="_blank"><i>FOCUS_ON</i></a>.</font></li>
+      </ul>
+    </li>
+    <li><a href="../../ref/api/javax/speech/recognition/GrammarListener.html#grammarChangesCommitted(javax.speech.recognition.GrammarEvent)" target="_blank"><font size="4" color="#FFFFFF"> 
+      grammarChangesCommitted</font></a><font size="4" color="#FFFFFF">: ocorre 
+      ap&oacute;s um reconhecedor completar uma a&ccedil;&atilde;o de <i><a href="../../ref/api/javax/speech/recognition/Recognizer.html#commitChanges()" target="_blank">commitChanges</a></i> 
+      que geralmente ocorre com o m&eacute;todo expl&iacute;cito de mesmo nome.</font></li>
+    <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/GrammarListener.html#grammarDeactivated(javax.speech.recognition.GrammarEvent)" target="_blank">grammarDeactivated</a>: 
+      gerado quando uma gram&aacute;tica passa do estado de <a href="../../ref/api/javax/speech/recognition/GrammarEvent.html#GRAMMAR_ACTIVATED" target="_blank"><i>GRAMMAR_ACTIVATED</i></a> 
+      para <a href="../../ref/api/javax/speech/recognition/GrammarEvent.html#GRAMMAR_DEACTIVATED"><i>GRAMMAR_DEACTIVATED</i></a>. 
+      O que ocorre em uma de duas situa&ccedil;&otilde;es poss&iacute;veis:</font> 
+      <ul>
+        <li><font size="4" color="#FFFFFF"> quando a gram&aacute;tica &eacute; 
+          habilitada pelo m&eacute;todo <a href="../../ref/api/javax/speech/recognition/Grammar.html#setEnabled(boolean)" target="_blank"><i>setEnabled</i></a> 
+          (par&acirc;mtero false),<i> </i> o evento &eacute; gerado ap&oacute;s 
+          o reconhecedor executar o m&eacute;todo <a href="../../ref/api/javax/speech/recognition/Recognizer.html#commitChanges()" target="_blank"><i>commitChanges</i></a> 
+          que confirma a desabilita&ccedil;&atilde;o da gram&aacute;tica.<i> </i></font></li>
+        <li><font size="4" color="#FFFFFF"> quando um reconhecedor passa do estado 
+          <a href="../../ref/api/javax/speech/recognition/Recognizer.html#FOCUS_ON" target="_blank"><i>FOCUS_ON</i></a> 
+          para <a href="../../ref/api/javax/speech/recognition/Recognizer.html#FOCUS_OFF" target="_blank"><i>FOCUS_OFF</i></a>.</font></li>
+      </ul>
+    </li>
+  </ul>
+</ul>
+<p align="right"><a href="../../exemplos/eventos/eventos_exemplo5.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<hr>
+<a name="resultlistener"></a> <b><font color="#FFFF00" size="4"><a href="../../ref/api/javax/speech/recognition/ResultListener.html" target="_blank">Ouvidor 
+ResultListener</a>: </font></b><font color="#FFFFFF" size="4">este &eacute; o 
+principal dos ouvidores da tecnologia SDK Java, ele &eacute; respons&aacute;vel 
+por interceptar e interpretar os eventos gerados pelos resultados (<a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank"><i>Results</i></a>) 
+criados pelos reconhecedores em parceria com as gram&aacute;ticas, tanto de regras 
+como de ditado, perante a entrada de &aacute;udio. &Eacute; atrav&eacute;s da 
+implementa&ccedil;&atilde;o desta interface que as aplica&ccedil;&otilde;es s&atilde;o 
+capazes de &quot;ouvir&quot; o que est&aacute; sendo dito pelo usu&aacute;rio 
+e determinar o processamento adequado em fun&ccedil;&atilde;o do que foi entendido. 
+Este ouvidor est&aacute; associado</font><font color="#FFFFFF" size="4"> a eventos
+denominados <a href="../../ref/api/javax/speech/recognition/ResultEvent.html" target="_blank"><i>ResultEvent</i></a> 
+que possuem informa&ccedil;&otilde;es especiais em fun&ccedil;&atilde;o do reconhecedor 
+e da gram&aacute;tica.</font> 
+<p><font size="4" color="#FFFFFF">Estes ouvidores podem ser associados a reconhecedores, 
+  gram&aacute;ticas ou resultados, sendo que os eventos que eles est&atilde;o 
+  aptos a interceptar s&atilde;o dispon&iacute;veis em fun&ccedil;&atilde;o da 
+  entidade a qual est&atilde;o associados. Por exemplo, se tivermos um ouvidor 
+  de resultados associado a um reconhecedor ent&atilde;o os eventos de grammarFinalized 
+  n&atilde;o ser&atilde;o pegos isto s&oacute; ocorrer&aacute; se o ouvidor estiver 
+  associado a uma gram&aacute;tica ou a um evento.</font></p>
+<p><font color="#FFFFFF" size="4">Obs.: para associarmos um reconhecedor a um 
+  resultado precisamos ter acesso ao resultado atrav&eacute;s do evento que indica 
+  sua cria&ccedil;&atilde;o, isto &eacute;, <i><a href="#resultCreated" target="_blank">resultCreated</a></i>.</font></p>
+<ul>
+  <table width="93%" border="1">
+    <tr> 
+      <td> 
+        <div align="center"><font size="4" color="#FFFFFF">Os objetos <i>Result</i> 
+          possuem informa&ccedil;&otilde;es sobre a gram&aacute;tica respons&aacute;vel 
+          pelo seu reconhecimento, sobre o reconhecedor que o originou,<i> Strings</i> 
+          denominadas <a href="../../ref/api/javax/speech/recognition/ResultToken.html" target="_blank"> 
+          <i>ResultToken</i></a> representando o que foi entendido, quando poss&iacute;vel 
+          informa&ccedil;&otilde;es sobre o som do que foi dito na forma de <i>AudioClip</i> 
+          e dados que servem como par&acirc;metros para o auto treinamento do 
+          reconhecedor visando aperfei&ccedil;oar o processo de reconhecimento.</font></div>
+      </td>
+    </tr>
+  </table>
+  <div align="center"> <br>
+    <b>Tabela 9 - As informa&ccedil;&otilde;es disponibilizadas por um objeto 
+    Result.</b> </div>
+</ul>
+<blockquote>
+  <p><font size="4" color="#FFFFFF">Um resultado pode estar em dois estados:</font></p>
+  <ul>
+    <li><font color="#FFFFFF" size="4">FINALIZED: </font> 
+      <ul>
+        <li><font color="#FFFFFF" size="4">ACCEPTED: o item de &aacute;udio foi 
+          compreendido e foi encontrada uma associa&ccedil;&atilde;o com uma das 
+          gram&aacute;ticas ativas.</font></li>
+        <li><font color="#FFFFFF" size="4">REJECTED: o item de &aacute;udio foi 
+          compreendido mas n&atilde;o foi encontrada uma associa&ccedil;&atilde;o 
+          com uma das gram&aacute;ticas ativas.</font></li>
+      </ul>
+    </li>
+    <li><font color="#FFFFFF" size="4">UNFINALIZED: o item de &aacute;udio foi 
+      compreendido e est&aacute; sendo processado, no entanto n&atilde;o se pode 
+      determinar ainda se h&aacute; uma associa&ccedil;&atilde;o com uma das gram&aacute;ticas 
+      ativas.</font></li>
+  </ul>
+  <p><font size="4" color="#FFFFFF">=&gt; Evento associado: <a href="../../ref/api/javax/speech/recognition/ResultEvent.html" target="_blank">ResultEvent</a> 
+    ou uma de suas classes m&atilde;es.</font> </p>
+</blockquote>
+<ul>
+  <ul>
+    <li><a href="../../ref/api/javax/speech/recognition/ResultListener.html#audioReleased(javax.speech.recognition.ResultEvent)" target="_blank"><font size="4" color="#FFFFFF"> 
+      audioReleased</font></a><font size="4" color="#FFFFFF">: evento gerado caso 
+      as informa&ccedil;&otilde;es sonoras de um resultado finalizado forem descartadas 
+      explicitamente atrav&eacute;s do m&eacute;todo <a href="../../ref/api/javax/speech/recognition/FinalResult.html#releaseAudio()" target="_blank"><i>releaseAudio</i></a> 
+      ou por iniciativa do reconhecedor para obten&ccedil;&atilde;o de mem&oacute;ria. 
+      Note-se que nem sempre estas informa&ccedil;&otilde;es sonoras est&atilde;o 
+      dispon&iacute;veis, se tivermos um reconhecedor capaz de armazenar estes 
+      dados precisamos determinar a propriedade <i><a href="../../ref/api/javax/speech/recognition/RecognizerProperties.html#isResultAudioProvided()" target="_blank">ResultAudioProvided</a></i> 
+      do reconhecedor para <i>true</i> como no exemplo a seguir.</font></li>
+    <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/ResultListener.html#grammarFinalized(javax.speech.recognition.ResultEvent)" target="_blank">grammarFinalized</a>: 
+      evento gerado quando um reconhecedor consegue determinar a qual gram&aacute;tica 
+      uma determinada entrada de &aacute;udio pertence. Ap&oacute;s este evento 
+      o m&eacute;todo <i><a href="../../ref/api/javax/speech/recognition/Result.html#getGrammar()" target="_blank"><b>getGrammar</b></a></i> 
+      retorna a gram&aacute;tica identificada.</font></li>
+    <li><a name="accepted"></a><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/ResultListener.html#resultAccepted(javax.speech.recognition.ResultEvent)" target="_blank">resultAccepted</a>: 
+      evento gerado quando um resultado faz a transi&ccedil;&atilde;o do estado 
+      UNFINALIZED para o estado ACCEPTED, isto &eacute;, ele &eacute; finalizado 
+      e uma associa&ccedil;&atilde;o com uma das gram&aacute;ticas ativas &eacute; 
+      determinada com um n&iacute;vel de confiabilidade maior que o definido atrav&eacute;s 
+      do m&eacute;todo <a href="../../ref/api/javax/speech/recognition/RecognizerProperties.html#setConfidenceLevel(float)" target="_blank"><i>setConfidenceLevel</i></a> 
+      (o valor padr&atilde;o &eacute; de 0.5) pertencente a interface da classe 
+      <a href="../../ref/api/javax/speech/recognition/RecognizerProperties.html" target="_blank"> 
+      <i>RecognizerProperties</i></a>.</font></li>
+    <li><a name="resultCreated"></a><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/ResultListener.html#resultCreated(javax.speech.recognition.ResultEvent)" target="_blank">resultCreated</a>: 
+      gerado quando o reconhecedor identifica entrada de &aacute;udio capaz de 
+      determinar uma associa&ccedil;&atilde;o com uma das gram&aacute;ticas ativas, 
+      ou seja, um resultado foi criado. Logo em seguida o reconhecedor passa para 
+      o estado PROCESSING quando procura determinar qual regra corresponde ao 
+      item de &aacute;udio.</font></li>
+    <li><font size="4" color="#FFFFFF"><a name="rejected"></a><a href="../../ref/api/javax/speech/recognition/ResultListener.html#resultRejected(javax.speech.recognition.ResultEvent)" target="_blank">resultRejected</a>: 
+      evento gerado caso o n&iacute;vel de confiabilidade do processamento seja 
+      menor que o definido atrav&eacute;s do m&eacute;todo <a href="../../ref/api/javax/speech/recognition/RecognizerProperties.html#setConfidenceLevel(float)" target="_blank"><i>setConfidenceLevel</i></a> 
+      (o valor padr&atilde;o &eacute; de 0.5) . O resultado realizou ent&atilde;o 
+      a transi&ccedil;&atilde;o do estado UNFINALIZED para o estado REJECTED.</font></li>
+    <li><a href="../../ref/api/javax/speech/recognition/ResultListener.html#resultUpdated(javax.speech.recognition.ResultEvent)" target="_blank"><font size="4" color="#FFFFFF"> 
+      resultUpdated</font></a><font size="4" color="#FFFFFF">: evento gerado indicando 
+      que um resultado teve tokens associados, isto &eacute;, que palavras representando 
+      o que foi dito foram adicionadas &agrave; informa&ccedil;&atilde;o pertencente 
+      a um resultado ou que palavras que j&aacute; haviam sido associadas tiveram 
+      seu conte&uacute;do mudado.</font></li>
+    <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/ResultListener.html#trainingInfoReleased(javax.speech.recognition.ResultEvent)" target="_blank">trainingInfoReleased</a>: 
+      indica que informa&ccedil;&otilde;es referentes a treinamento foram descartadas 
+      explicitamente atrav&eacute;s do m&eacute;todo <a href="file:///C:/jdk1.3/ibmjs/ref/api/javax/speech/recognition/FinalResult.html#releaseTrainingInfo()" target="_blank"><i>releaseTrainingInfo</i></a> 
+      ou indiretamente por iniciativa do reconhecedor para recuperar mem&oacute;ria.</font></li>
+  </ul>
+  <blockquote> 
+    <p align="right"><a href="../../exemplos/eventos/eventos_exemplo6.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+  </blockquote>
+</ul>
+<font size="4" color="#FFFFFF">Obs.: informa&ccedil;&otilde;es mais detalhadas 
+do funcionamento dos objetos <i><a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank">Result</a></i> 
+criados pelo reconhecedor perante a entrada de &aacute;udio podem ser encontradas 
+no cap&iacute;tulo <a href="../resultados/resultados.htm" target="topicos">Resultados</a> 
+a seguir.</font> 
+</body>
+</html>

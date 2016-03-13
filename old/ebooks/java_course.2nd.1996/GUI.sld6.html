@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 6: Events</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><FONT COLOR="#0000FF">Events</FONT></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><BR>
+Handling and/or passing</H3>
+
+<BLOCKQUOTE>
+<P>The return value indicates whether the method completely handled an
+event:</P>
+
+<UL>
+<LI>By returning <TT>false</TT>, the event handler indicates that the event
+should continue to be passed up the component hierarchy. </LI>
+
+<LI>By returning <TT>true</TT>, the event handler indicates that the event
+should not be forwarded any further. </LI>
+
+<LI>The <TT>handleEvent()</TT> method should almost always return <TT>super.handleEvent()</TT>,
+to ensure that all events are forwarded to the appropriate event-handling
+method. </LI>
+</UL>
+
+<P><BR>
+Two examples of handlers:</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE>               /** Respond to user actions on controls. */
+               public boolean action(Event e, Object arg) {
+                   if (e.target instanceof TextField) {
+                       setSliderValue(getValue());
+                       controller.convert(this);
+                       return true;
+                   }
+                   if (e.target instanceof Choice) {
+                       controller.convert(this);
+                       return true;
+                   } 
+                   return false;
+               }
+
+               /** Respond to the slider. */
+               public boolean handleEvent(Event e) {
+                   if (e.target instanceof Scrollbar) {
+                       textField.setText(String.valueOf(slider.getValue()));
+                       controller.convert(this);
+                   } 
+                   return super.handleEvent(e);
+               }</PRE>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">The
+Keyboard Focus</FONT> </H2>
+
+<BLOCKQUOTE>
+<P>Once a window has the focus, the Component <TT>requestFocus()</TT> method
+can request that a component get the focus. </P>
+
+<BLOCKQUOTE>
+<LI>When a component gets the focus, its <TT>gotFocus()</TT> method is
+called. </LI>
+
+<LI>When a component loses the focus, its <TT>lostFocus()</TT> method is
+called.</LI>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<DL></DL>
+
+<P>
+<HR></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld7.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld7.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

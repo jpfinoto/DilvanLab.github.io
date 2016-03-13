@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>Reconhecedores</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33ff33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF" size="5"><b>Recognizers</b></font></p>
+<p><font color="#FFFFFF" size="4">The <a href="../../ref/api/javax/speech/recognition/Recognizer.html" target="_blank">recognizers</a> 
+  are the entities responsible for speech recognition. They are created through 
+  the Central class and are initialized using the <a href="../../ref/api/javax/speech/Engine.html#allocate()" target="_blank">allocate</a> 
+ method. They process the audio entering in parallel to the main application.</font></p>
+<p><font size="4" color="#FFFFFF">The recognition is done with the help of a set 
+  of words that limit the universe of possibilities that can be pronounced by the 
+  user. These sets are extensible, new words can be added, increasing 
+  the application functionality. The sets are known as grammars and it is necessary 
+  to have at least one grammar associated with each recognizer.</font></p>
+<p><font size="4" color="#FFFFFF">When audio enters the recognizers, they try to 
+  determine an association between the spoken words and their associated grammars. 
+  The recognition process culminates on the creation of objects named <a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank">Results</a>.
+Results have types <a href="../ouvidores/ouvidores_top.htm#accepted" target="_blank">ACCEPTED</a> 
+  or <a href="../ouvidores/ouvidores_top.htm#rejected" target="_blank">REJECTED</a> 
+  accordingly to the confidence level determined by the <a href="../../ref/api/javax/speech/recognition/RecognizerProperties.html#setConfidenceLevel(float)" target="_blank">setConfidenceLevel</a> 
+ method (the default value is 0.5).</font></p>
+<ul>
+  <li> <font color="#FFFF00"><b><font size="4">Creating a voice recognizer:</font></b></font><font color="#FFFFFF" size="4"> 
+    in the same way as the synthesizers, the recognizers are created through the 
+    Central class in two possible ways:</font> 
+    <blockquote>
+      <p><font size="4" color="#FFFFFF">1. Accessing the recognizer's default implementation 
+        that better fits the current locale. It is the simplest manner and the 
+        most common:</font></p>
+      <table width="80%" border="1" height="74" align="center">
+        <tr> 
+          <td> 
+            <p><font color="#FFFFFF" size="4">Locale.setDefault(&quot;en&quot;,&quot;US&quot;);</font><br>
+              <font color="#FFFFFF" size="4">Recognizer recognizer = Central.createRocognizer(null); 
+              </font></p>
+          </td>
+        </tr>
+      </table>
+      <p align="center"><b>Table 5 - Creating a recognizer object.</b></p>
+    </blockquote>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<p align="right"><a href="../../exemplos/reconhecimento/reconhecimento_exemplo1.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p>&nbsp;</p>
+<blockquote> 
+  <blockquote> 
+    <p><font size="4" color="#FFFFFF">2. </font><font color="#FFFFFF"> </font><font color="#FFFFFF" size="4">Accessing 
+      a recognizer that satisfy pre determined conditions: used in cases where there 
+      are more than one recognizer implementation available. The required parameters 
+      are: </font><font color="#FFFFFF" size="4"> </font></p>
+    <ul>
+      <li><font color="#FFFFFF" size="4">name of the engine </font></li>
+      <li><font color="#FFFFFF" size="4">name of the mode in which it will be 
+        used</font></li>
+      <li><font color="#FFFFFF" size="4">a locale supported by the engine </font></li>
+      <li><font color="#FFFFFF" size="4">a Boolean value, a control flag of the 
+        engine </font></li>
+      <li><font size="4" color="#FFFFFF">a Boolean value, indicating whether the
+        recognizer supports dictation grammar</font></li>
+      <li><font size="4" color="#FFFFFF">an array of <a href="../../ref/api/javax/speech/recognition/SpeakerProfile.html" target="_blank">SpeakerProfile</a> 
+        objects <br>
+        </font></li>
+    </ul>
+    <blockquote> 
+      <p><font color="#FFFFFF" size="4">Any of the parameters might be null and 
+        the Central class will try to make the best choice for them. These parameters are 
+        defined via a </font><font color="#FFFFFF" size="3"><a href="../../ref/api/javax/speech/recognition/RecognizerModeDesc.html" target="_blank"><font size="4">RecognizerModeDesc</font></a></font><font color="#FFFFFF" size="4"> 
+        object</font> <font color="#FFFFFF" size="4">as shown in table 6:</font> 
+      </p>
+      </blockquote>
+  </blockquote>
+</blockquote>
+<table width="108%" border="1" height="67" align="center">
+  <tr> 
+    <td height="95"><font color="#FFFFFF" size="3"><a href="../../ref/api/javax/speech/recognition/RecognizerModeDesc.html" target="_blank"><font size="2">RecognizerModeDesc(String 
+      engine, String mode, Locale locale, Boolean running, Boolean dictationGrammarSupported, 
+      SpeakerProfile[] profiles) </font></a></font></td>
+  </tr>
+</table>
+<p align="center"><b>Table 6 - RecognizerModeDesc object constructor.</b></p>
+<p align="right"><a href="../../exemplos/reconhecimento/reconhecimento_exemplo2.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<ul>
+  <li><b><font color="#FFFF00" size="4">Recognition: </font></b><font color="#FFFFFF"><font size="4">the 
+    voice recognition is based upon a set of words (phonemes) named grammars. A 
+    created recognizer can have associated grammars, increasing its recognition 
+    domain according to the application needs. Having associated grammars, the 
+    recognizers generate</font></font><font color="#FFFF00" size="4"> <a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank">Result</a> 
+    </font> 
+    <font color="#FFFFFF" size="4"> 
+    objects as answers to the recognition process. These results contain information 
+    about what was understood. This information is made available through</font> 
+    <font color="#FFFF00" size="4"> <a href="../../ref/api/javax/speech/recognition/ResultEvent.html" target="_blank">ResultEvents</a> 
+    </font> 
+    <font color="#FFFFFF" size="4"> 
+    fired by the results and caught by</font> 
+    <font color="#FFFF00" size="4"> <a href="../ouvidores/ouvidores_top.htm#resultlistener" target="_blank">ResultListener</a>,
+    </font> 
+    <font color="#FFFFFF" size="4"> 
+    where the implementation determines what to do with the recognized data.</font> 
+    <p><font color="#FFFFFF" size="4">To implement this schema the recognizer can 
+      have two types of associated grammars, each one of them has its own word 
+      domain, they have distinct size and elements and determine a different
+    recognition 
+      process:</font></p>
+    <blockquote> 
+      <p><font size="4" color="#FFFFFF">1.</font> <font color="#FFFFFF" size="4"><a href="../../ref/api/javax/speech/recognition/DictationGrammar.html" target="_blank">Dictation 
+        grammar</a>: these grammars are constituted of sets of words with thousands 
+        of elements. Their elements are determined in function of their comprised 
+        domain, such as medicine, computer science or engineering. A general 
+        purpose grammar is available with the development kit.</font></p>
+      <p><font size="4" color="#FFFFFF">Dictation grammars analyze the context of 
+        what is being spoken and try to limit the set of words that 
+        can be said next. Their use is specific to continuous dictating 
+        speech such as texts and sentences. So, great processing capacity is needed 
+        and its use requires well projected applications.</font></p>
+      <p><font size="4" color="#FFFFFF">The creation of a dictation grammar is 
+        done through a recognizer that supports its use. It is illustrated in table 
+        7:</font></p>
+      <table width="91%" border="1" height="74" align="center">
+        <tr> 
+          <td> 
+            <p><font size="4" color="#FFFFFF">DictationGrammar dictationGrammar 
+              = recognizer.getDictationGrammar(null);</font><br>
+              <font size="4" color="#FFFFFF">dictationGrammar.setEnabled(true);</font> 
+            </p>
+            </td>
+        </tr>
+      </table>
+      <p align="center"><b>Table 7 - Dictation grammar example.</b></p>
+      <p align="right"><a href="../../exemplos/reconhecimento/reconhecimento_exemplo2.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+      <p><font color="#FFFFFF" size="4">2. <a href="../../ref/api/javax/speech/recognition/RuleGrammar.html" target="_blank">Rule
+      Grammars</a>: they are simpler than dictation grammars. They are constituted of rules that
+      determine what can be 
+        said and how it will be represented inside the application. The rules 
+        are defined in a special format named <a href="../jsgf/jsgf_top.htm" target="_blank">JSGF 
+        (Java Speech Grammar Format)</a> and can be loaded one at a time or many 
+        at once during execution.</font></p>
+      <p><font size="4" color="#FFFFFF">Rule Grammars require less processing capacity than
+      dictation grammars and its recognition accuracy is much higher, 
+        resulting in a bigger number of accepted results. This is possible because 
+        of their limited scope of recognition. It is a grammar well suited for 
+        voice command definitions, determining a specific set of commands for 
+        the various contexts of an application.</font></p>
+      <p><font size="4" color="#FFFFFF">There are two ways to create a rule 
+        grammar:</font></p>
+      <ul>
+        <li><font size="4" color="#FFFFFF">through the <a href="../../ref/api/javax/speech/recognition/Recognizer.html#loadJSGF(java.io.Reader)" target="_blank">loadJSGF</a> 
+          method, when a set of rules is loaded from a text file</font></li>
+        <li><font size="4" color="#FFFFFF">through the <a href="../../ref/api/javax/speech/recognition/Recognizer.html#newRuleGrammar(java.lang.String)" target="_blank">newRuleGrammar</a> 
+          method, that returns an empty rule grammar that must be specified during 
+          execution <br>
+          </font><br>
+        </li>
+      </ul>
+      <p><font size="4" color="#FFFFFF">Both methods belong to the recognizer 
+        interface, being the grammar automatically associated to the recognizer 
+        that created it.</font></p>
+    </blockquote>
+  </li>
+</ul>
+<p align="right"><a href="../../exemplos/reconhecimento/reconhecimento_exemplo4.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<br>
+<br>
+</body>
+</html>

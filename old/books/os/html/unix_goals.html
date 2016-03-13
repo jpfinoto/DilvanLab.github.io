@@ -1,0 +1,116 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>1.&nbsp;Goals</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="unix.html" title="Chapter&nbsp;2.&nbsp;Unix"><link rel="prev" href="unix.html" title="Chapter&nbsp;2.&nbsp;Unix"><link rel="next" href="unix_memory_management.html" title="2.&nbsp;Memory Management"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.&nbsp;Goals</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="unix.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;2.&nbsp;Unix</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="unix_memory_management.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="unix_goals"></a>1.&nbsp;Goals</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Goals</p><p>Unix is an operating system made by programmers to programmers.</p><div class="itemizedlist"><ul type="circle"><li><p>Easy to use</p></li><li><p>Powerful</p></li><li><p>Extensible</p></li><li><p>Easy to understand</p></li><li><p>Open</p></li><li><p>Elegant</p></li><li><p>Multitasking and multiuser</p></li></ul></div></li><li><p>Logging</p><p><span class="bold"><strong>Logging in.</strong></span> At login time, you'll see a prompt resembling the following:</p><pre class="programlisting">java login: larry
+Password:</pre><p><span class="bold"><strong>Logging out.</strong></span></p><pre class="programlisting">/home/larry# exit</pre><p><span class="emphasis"><em><span class="bold"><strong>The directory tree</strong></span>.</em></span></p><p>In particular, each user has a home directory, which is the directory set aside for that user to store his files.</p><div class="figure"><a name="d0e599"></a><p class="title"><b>Figure&nbsp;2.1.&nbsp;Directory Tree</b></p><div class="mediaobject"><img src="resources/img123.gif" alt="Directory Tree"></div></div><p><span class="bold"><strong>The current working directory.</strong></span></p><p>At any moment, commands that you enter are assumed to be relative to your current working directory. You can think of your working directory as the directory in which you are currently ``located''.</p><p><span class="bold"><strong>Referring to home directories.</strong></span></p><pre class="programlisting">/home/larry# more ~/papers/history-final
+/home/larry# more /home/larry/papers/history-final
+</pre></li><li><p>First Steps</p><p>Moving around.</p><pre class="programlisting">cd directory</pre><p>Looking at the contents of directories.</p><pre class="programlisting">/home/larry# ls /etc
+Images    ftpusers    lpc     rc.new   shells
+adm       getty       magic   rc0.d    startcons
+bcheckrc  gettydefs   motd    rc1.d    swapoff
+brc       group       mount   rc2.d    swapon
+brc~      inet        mtab    rc3.d    syslog.conf
+/home/larry#</pre><p><span class="bold"><strong>For MS-DOS users:</strong></span> Filenames can be longer than 8 characters, and can contain periods in any position. You can even use more than one period in a filename. <span class="bold"><strong>Creating new directories</strong></span>.</p><pre class="programlisting">/home/larry# mkdir foo
+/home/larry# ls -F
+Mail/
+foo/
+letters/
+papers/
+/home/larry# cd foo
+/home/larry# ls
+/home/larry#</pre><p><span class="bold"><strong>Copying files</strong></span>.</p><pre class="programlisting">/home/larry/foo# cp /etc/termcap .
+/home/larry/foo# cp /etc/shells .
+/home/larry/foo# ls --F
+shells    termcap
+/home/larry/foo# cp shells bells
+/home/larry/foo# ls --F
+bells     shells     termcap
+/home/larry/foo# </pre><p><span class="bold"><strong>Moving files</strong></span>.</p><pre class="programlisting">/home/larry/foo# mv termcap sells
+/home/larry/foo# ls --F
+bells    sells    shells
+/home/larry/foo#</pre><p><span class="bold"><strong>Deleting files and directories.</strong></span></p><pre class="programlisting">/home/larry/foo# rm bells sells
+/home/larry/foo# ls --F
+shells
+/home/larry/foo#</pre><p><span class="bold"><strong>Looking at files</strong></span>.</p><pre class="programlisting">/home/larry/foo# more shells</pre><p><span class="bold"><strong>Getting online help</strong></span>.</p><pre class="programlisting">/home/larry/foo# man ls
+&lt;the manual page for ls displayed&gt;</pre></li><li><p>Types of Shells</p><div class="itemizedlist"><ul type="circle"><li><p>Bourne shell - /bin/sh - syntax like the original shell on early UNIX systems</p></li><li><p>C shell - /bin/csh - syntax similar to the C language</p></li></ul></div><p>Wildcards.</p><p>* specifies any character or string of characters in a file name.</p><pre class="programlisting">/home/larry# ls *o*
+frog    joe
+/home/larry#
+
+/home/larry# ls *
+frog   joe   stuff
+/home/larry#</pre><p>? expands to only a single character.</p><pre class="programlisting">/home/larry# ls j?e
+joe
+/home/larry# ls f??g
+frog
+/home/larry# ls ????f
+stuff
+/home/larry#</pre><p><span class="bold"><strong>This is important</strong></span>: a command never sees the "*" or "?" in its list of parameters.</p><p>The shell expands the wildcard to include all filenames that match: /home/larry# ls *o* is expanded to /home/larry# ls frog joe</p><p><span class="bold"><strong>Hidden files</strong></span></p><pre class="programlisting">/home/larry# ls -a
+.     ..     .bash_profle     .bashrc     frog     joe     stuff
+/home/larry#</pre><p><span class="bold"><strong>Redirecting input and output</strong></span>.</p><pre class="programlisting">/home/larry/pappers# sort items &gt; shopping-list
+/home/larry# cat shopping-list
+apples     
+bananas
+carrots
+/home/larry/pappers#
+/home/larry/pappers# sort &lt; items
+apples
+bananas
+carrots
+/home/larry/pappers#</pre><p><span class="bold"><strong>Using pipes</strong></span></p><pre class="programlisting">/home/larry/pappers# ls | sort -r
+notes
+masters-thesis
+history-final
+english-list
+/home/larry/pappers#
+/home/larry/pappers# ls /usr/bin | more</pre></li><li><p>File Permissions</p><p><span class="bold"><strong>Concepts of file permissions</strong></span></p><p>Permissions fall into three main divisions: read, write, and execute. These permissions may be granted to three classes of users: the owner of the file, the group to which the file belongs, and to all users, regardless of group.</p><pre class="programlisting">/home/larry/foo# ls -l stuff
+-rw-r--r--   1 larry     users     505 Mar 13 19:05  stuff
+/home/larry/foo#
+
+-rwxr-xr-x   The owner of the file may read, write and execute the file. Users int the 
+             file's group and all other users may read and execute the file.
+
+-rw-------   The owner of the file may read and write the file. No other user can access the file.
+</pre><p><span class="bold"><strong>Changing permissions</strong></span>.</p><p>chmod is used to set the permissions on a file. Only the owner of a file may change the permissions on that file. The syntax of chmod is</p><pre class="programlisting">chmod {a,u,g,o}{+,-}{r,w,x} filenames</pre><p>Briefly, you supply one or more of all, user, group, or other. Then you specify whether you are adding rights (+) or taking them away (-). Finally, you specify one or more of read, write, and execute:</p><pre class="programlisting">chmod a+r stuff
+      Gives all users read access to the file.
+
+chmod +r stuff
+      Same as above - if none of a, u, g or o is specified, a is assumed.
+
+chmod og-x stuff
+      Remove execute permission from users other than the owner.
+
+chmod u+rwx stuff
+      Let the owner of th file read, write and execute the file.
+
+chmod o-rwx stuff
+      Remove read, write and execute permissions from users other than the owner and users in the file's group.</pre></li><li><p>Managing file links</p><p><span class="bold"><strong>Hard links</strong></span>.</p><pre class="programlisting">/home/larry$ ls -i foo
+22192 foo
+/home/larry#</pre><p>Here, foo has an inode number of 22192 in the file system. You can create another link to foo, named bar, as follows:</p><pre class="programlisting">/home/larry# ln foo bar
+/home/larry# ls -i foo bar
+22192 bar   22192 foo</pre><p>Symbolic links.</p><pre class="programlisting">/home/larry# ln -s foo bar</pre><p>You will create a symbolic link named bar that points to the file foo. If you use ls -i, you'll see that the two files have different inodes, indeed.</p><pre class="programlisting">/home/larry# ls -i foo bar
+22195 bar   22192 foo
+/home/larry#</pre></li><li><p>Job control</p><p><span class="bold"><strong>Jobs and processes</strong></span>.</p><p><span class="bold"><strong>Job control</strong></span> lets you control multiple running commands, or <span class="bold"><strong>jobs</strong></span>, at once. To see the <span class="bold"><strong>processes</strong></span>:</p><pre class="programlisting">/home/larry# ps
+PID   TT   STAT   TIME   COMMAND
+ 24    3   S       0:03   (bash)
+161    3   R       0:00   ps</pre><div class="itemizedlist"><ul type="circle"><li><p>PID listed in the first column is the process ID, a unique number given to every running process</p></li><li><p>COMMAND, is the name of the running command</p></li></ul></div><p><span class="bold"><strong>Backgrounding and killing jobs</strong></span></p><p>One way to put a process in the background is to append an ``&amp;'' character to the end of the command.</p><pre class="programlisting">/home/larry# yes &gt; /dev/null &amp;
+[1] 164
+/home/larry#
+
+The "[1]" represents the job number for the yes process.
+The "164" is the process ID, or PID.
+/home/larry# jobs
+[1]+  Running                  yes &gt;/dev/null  &amp;
+/home/larry#
+</pre><p>To terminate the job, use the kill command</p><pre class="programlisting">/home/larry# kill %1</pre><p>When identifying the job with the job number, you must prefix the number with a percent (``%'') character. Checking on it:</p><pre class="programlisting">/home/larry# jobs
+[1]+ Terminated       yes &gt;/dev/null
+/home/larry#
+
+/home/larry# kill 164
+is equivalent to
+/home/larry# kill %1</pre></li><li><p>Customizing your environment</p><p><span class="bold"><strong>Creating new command with scripts.</strong></span></p><p>For example, the three commands:</p><pre class="programlisting">/home/larry# cat chapter1 chapter2 chapter3 &gt; book
+/home/larry# wc -l book
+/home/larry# lp book</pre><p>They concatenates the files chapter1, chapter2, and chapter3 and places the result in the file book. The second command displays a count of the number of lines in book, and the third command lp book prints book. Create a shell script to perform the same action (name it makebook):</p><pre class="programlisting">#!/bin/sh
+# A shell script to create and print the book
+cat chapter1 chapter2 chapter3 &gt; book
+wc -l book
+lp book</pre><p>Make it runnable:</p><pre class="programlisting">/home/larry# chmod u+x makebook</pre><p>Use it !</p><pre class="programlisting">/home/larry# makebook
+&lt; run all the commands in the script&gt;</pre><p><span class="bold"><strong>Shell variables and the environment</strong></span>.</p><p>A shell lets you define <span class="bold"><strong>variables</strong></span>, as do most programming languages. A variable is just a piece of data that is given a name. T<span class="bold"><strong>he PATH environment variable</strong></span>. The shell uses the environment variable PATH to locate executable files for commands you type. For example, your PATH variable may be set to</p><pre class="programlisting">/bin:/usr/bin:/usr/local/bin:</pre><p>This is a list of directories for the shell to search, each directory separated by a ``:''. When you use the command ls, the shell first looks for /bin/ls, then /usr/bin/ls, and so on.</p><p><span class="bold"><strong>Shell initialization scripts.</strong></span> There are a number of scripts that the system uses for certain purposes. The most important of these are initialization scripts, which are scripts executed by the shell when you log in.</p><p>Bash:</p><div class="itemizedlist"><ul type="circle"><li><p>/etc/profile :set up by the system administrator and executed by all bash users at login time</p></li><li><p>$HOME/.bash_profile : executed by a login bash session</p></li><li><p>$HOME/.bashrc : executed by all non-login instances of bash</p></li></ul></div><p>Csh:</p><div class="itemizedlist"><ul type="circle"><li><p>/etc/csh.login : executed by all tcsh users at login time</p></li><li><p>$HOME/.cshrc : executed at login time and by all new instances of csh</p></li><li><p>$HOME/.login : executed at login time, following .cshrc</p></li></ul></div></li></ul></div><p></p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="unix.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="unix.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="unix_memory_management.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;2.&nbsp;Unix&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;2.&nbsp;Memory Management</td></tr></table></div></body></html>

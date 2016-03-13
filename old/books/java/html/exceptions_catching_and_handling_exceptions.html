@@ -1,0 +1,66 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Catching and handling exceptions</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Distributed Programming using Java"><link rel="up" href="exceptions.html" title="Chapter&nbsp;4.&nbsp;Exceptions"><link rel="prev" href="exceptions_catch_or_specify_requirement.html" title="3.&nbsp;Catch or specify requirement"><link rel="next" href="threads.html" title="Chapter&nbsp;5.&nbsp;Threads"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Catching and handling exceptions</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="exceptions_catch_or_specify_requirement.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;Exceptions</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="threads.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="exceptions_catching_and_handling_exceptions"></a>4.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/essential/exceptions/handling.html" target="_top">Catching and handling exceptions</a></h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2265"></a>4.1.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/essential/exceptions/try.html" target="_top">The try Block</a></h3></div></div></div><pre class="programlisting">try { Java statements }</pre><p>It should enclose the exception-throwing statements.</p><pre class="programlisting">try {
+   int i;
+   pStr = new PrintStream( new BufferedOutputStream( new FileOutputStream("OutFile.txt")));
+   for (i = 0; i &lt; size; i++)
+      pStr.println("Value at: " + i + " = " + victor.elementAt(i));
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2275"></a>4.2.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/essential/exceptions/catch.html" target="_top">The catch Block(s)</a></h3></div></div></div><pre class="programlisting">try {
+    . . .
+} catch (Throwable e) {
+    . . .
+} catch ( . . . ) {
+    . . .
+} . . .
+
+catch (SomeThrowableObject variableName) {
+    Java statements
+}</pre><p>variableName: is the name by which the handler can refer to the exception caught by the handler.</p><pre class="programlisting">e.getMessage();</pre><p>You access the instance variables and methods of exceptions in the same manner that you do with other objects.</p><pre class="programlisting">try {
+    . . .
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.err.println("Caught ArrayIndexOutOfBoundsException: " + e.getMessage());
+} catch (IOException e) {
+    System.err.println("Caught IOException: " + e.getMessage());
+}</pre><p><a href="../audio/Exceptions5.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2293"></a>4.3.&nbsp;Specialized Handler</h3></div></div></div><p>If you write a handler for a "leaf" class (a class with no subclasses), you've written a specialized handler: it will only handle exceptions of that specific type.</p><pre class="programlisting">try {
+    . . .
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.err.println("Caught ArrayIndexOutOfBoundsException: " + e.getMessage());
+} catch (IOException e) {
+    System.err.println("Caught IOException: " + e.getMessage());
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2300"></a>4.4.&nbsp;General Handler</h3></div></div></div><p>If you write a handler for a "node" class (a class with subclasses), you've written a general handler: it will handle any exception whose type is the node class or any of its subclasses.</p><pre class="programlisting">try {
+    . . .
+} catch (Exception e) {
+    System.err.println("Exception caught: " + e.getMessage());
+}</pre><div class="figure"><a name="d0e2307"></a><p class="title"><b>Figure&nbsp;4.3.&nbsp;General Handler</b></p><div class="mediaobject"><img src="resources/Exceptions3.gif" width="495" height="258" alt="General Handler"></div></div><p><a href="../audio/Exceptions6.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2317"></a>4.5.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/essential/exceptions/finally.html" target="_top">The finally Block</a></h3></div></div></div><p>The statements within the finally block are always executed.</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2323"></a>4.5.1.&nbsp;Why?</h4></div></div></div><p>To provides a mechanism that allows your method to clean up after itself regardless of what happens within the try block. Use the finally block to close files or release other system resources.</p><pre class="programlisting">finally {
+   if (pStr != null) {
+      System.out.println("Closing PrintStream");
+      pStr.close();
+   } else {
+      System.out.println("PrintStream not open");
+   }
+}</pre><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Caution"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Caution]" src="images/caution.png"></td><th align="left">Caution</th></tr><tr><td colspan="2" align="left" valign="top"><div class="informalfigure"><div class="mediaobject"><img src="resources/noc++.gif"></div></div><p>C++ exception handlers can not have a finally block.</p></td></tr></table></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2337"></a>4.6.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/essential/exceptions/putItTogether.html" target="_top">Putting It All Together</a></h3></div></div></div><pre class="programlisting">public void writeList() {
+    PrintStream pStr = null;
+
+    try {
+        int i;
+
+        System.out.println("Entering try statement");
+        pStr = new PrintStream(
+                new BufferedOutputStream(
+                 new FileOutputStream("OutFile.txt")));
+
+        for (i = 0; i &lt; size; i++)
+            pStr.println("Value at: " + i + " = " + victor.elementAt(i));
+    } catch (ArrayIndexOutOfBoundsException e) {
+        System.err.println("Caught ArrayIndexOutOfBoundsException: " + e.getMessage());
+    } catch (IOException e) {
+        System.err.println("Caught IOException: " + e.getMessage());
+    } finally {
+        if (pStr != null) {
+            System.out.println("Closing PrintStream");
+            pStr.close();
+        } else {
+            System.out.println("PrintStream not open");
+        }
+    }
+}</pre><p><a href="../audio/Exceptions7.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="exceptions_catch_or_specify_requirement.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="exceptions.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="threads.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Catch or specify requirement&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;5.&nbsp;Threads</td></tr></table></div></body></html>

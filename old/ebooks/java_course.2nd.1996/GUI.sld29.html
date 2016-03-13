@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 29: AWT Graphics</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Graphics</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP>Graphics
+Object</H2>
+
+<UL>
+<H3>Definition:</H3>
+
+<P>Graphics objects are the key to all drawing. They support the two basic
+kinds of drawing: primitive graphics (such as lines, rectangles, and text)
+and images. They also provide a drawing context by maintaining state such
+as the current drawing area and the current drawing color. </P>
+
+<H3>The Coordinate System:</H3>
+
+<CENTER><P><BR>
+<IMG SRC="gifs/GUI32.gif" HEIGHT=193 WIDTH=357><BR>
+</P></CENTER>
+
+<UL>
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B></P>
+
+<UL>
+<P>Each Component has its own integer coordinate system, ranging from (0,
+0) to (width - 1, height - 1).</P>
+</UL>
+</UL>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/drawing/drawingShapes.html">Drawing
+Shapes </A></H2>
+
+<UL>
+<P>The Graphics class defines methods for drawing the following kinds of
+shapes: </P>
+
+<UL>
+<LI>Lines (<TT>drawLine()</TT>, which draws a line in the Graphics object's
+current color, which is initialized to the Component's foreground color)
+</LI>
+
+<LI>Rectangles (<TT>drawRect()</TT>, <TT>fillRect()</TT>, and <TT>clearRect()</TT>
+-- where <TT>fillRect()</TT> fills a rectangle with the Graphics object's
+current color, and <TT>clearRect()</TT> fills a rectangle with the Component's
+background color) </LI>
+
+<LI>Raised or lowered rectangles (<TT>draw3DRect()</TT> and <TT>fill3DRect()</TT>)
+</LI>
+
+<LI>Round-edged rectangles (<TT>drawRoundRect()</TT> and <TT>fillRoundRect()</TT>)
+</LI>
+
+<LI>Ovals (<TT>drawOval()</TT> and <TT>fillOval()</TT>) </LI>
+
+<LI>Arcs (<TT>drawArc()</TT> and <TT>fillArc()</TT>) </LI>
+
+<LI>Polygons (<TT>drawPolygon()</TT> and <TT>fillPolygon()</TT>) </LI>
+</UL>
+</UL>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE></BLOCKQUOTE>
+</BLOCKQUOTE>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld30.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld30.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

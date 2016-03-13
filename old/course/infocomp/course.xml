@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../XSL/root.xsl"?>
+
+<course>
+  <id>
+    <title>Informatics and Computing</title>
+    <www>http://java.icmc.usp.br</www>    
+    <name>infocomp</name>
+    <teacher>
+      <name>
+        <first>Dilvan</first>
+        <last>Moreira</last>
+      </name>
+      <email>dilvan@icmc.usp.br</email>
+      <www>http://java.icmc.usp.br/dilvan</www>
+    </teacher>
+    
+    <monitor>
+      <name>
+        <first>Valter</first>
+        <last>Inacio</last>
+      </name>
+      <email>inacio@icmc.usp.br</email>
+      <www>http://www.icmc.usp.br/~inacio</www>
+    </monitor>
+    
+  </id>
+
+  <book>infocomp</book>
+   
+  <calendar>
+    <day d="11" m="3" y="2005">
+      <body>Course Beginning.</body>
+    </day>
+    <day d="11" m="3" y="2005">
+      <body>Laboratory Presentation.</body>
+    </day>
+    <day d="18" m="3" y="2005">
+      <body>Squeak and Squeakland (ship).</body>
+    </day>
+    <day d="18" m="3" y="2005">
+      <body>Laboratory: Squeak (1).</body>
+    </day>
+    <day d="1" m="4" y="2005">
+      <body>Windows and Applications (ship).</body>
+    </day>
+    <day d="1" m="4" y="2005">
+      <body>Laboratory: Squeak (2).</body>
+    </day>
+    <day d="8" m="4" y="2005">
+      <chapter id="computer_history"/>
+      <section id="computer_history_preWWW2_computers"/>
+    </day>
+    <day d="8" m="4" y="2005">
+      <body>Laboratory: Squeak Ship (1).</body>
+    </day>
+    <day d="15" m="4" y="2005">    
+      <section id="computer_history_four_generations"/>
+      <body>Internet search.</body>
+    </day>
+    <day d="15" m="4" y="2005">    
+      <body>Laboratory: Squeak Ship (2).</body>
+    </day>
+    <day d="29" m="4" y="2005">    
+      <body>Squeak Salmon.</body>
+    </day>
+    <day d="29" m="4" y="2005">    
+      <body>Laboratory: Squeak Salmon (1).</body>
+    </day>
+    <day d="6" m="5" y="2005">
+      <body>Excel.</body>
+    </day>
+    <day d="6" m="5" y="2005">
+      <body>Laboratory: Squeak Salmon (2).</body>
+    </day>
+    <day d="13" m="5" y="2005">
+    </day>
+    <day d="13" m="5" y="2005">
+    </day>
+    <day d="20" m="5" y="2005">
+    </day>
+    <day d="20" m="5" y="2005">
+    </day>
+    <day d="3" m="6" y="2005">
+    </day>
+    <day d="3" m="6" y="2005">      
+    </day>
+    <day d="10" m="6" y="2005">
+      <chapter id="arrays_and_strings"/>
+      <section id="arrays_and_strings_arrays"/>
+      <section id="arrays_and_strings_strings"/>
+      <section id="arrays_and_strings_exercises"/>
+    </day>
+    <day d="10" m="6" y="2005">      
+    </day>
+    <day d="17" m="6" y="2005">      
+    </day>
+    <day d="17" m="6" y="2005">      
+    </day>
+    <day d="24" m="6" y="2005">      
+    </day>
+    <day d="24" m="6" y="2005">      
+    </day>
+    <day d="1" m="7" y="2005">      
+    </day>
+    <day d="1" m="7" y="2005">
+     <body>Course Finishing.</body>
+    </day>
+  </calendar>
+   
+</course>
+  

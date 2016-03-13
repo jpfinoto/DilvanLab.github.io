@@ -1,0 +1,7 @@
+grammar teste;
+
+public <1> = one little two little three little indians {one};
+
+public <2> = four little five little six little indians{four};
+
+public <3> = seven little eight little nine little indians{seven};

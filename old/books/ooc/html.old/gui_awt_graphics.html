@@ -1,0 +1,61 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>7.&nbsp;AWT Graphics</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Object Oriented Computing"><link rel="up" href="gui.html" title="Chapter&nbsp;9.&nbsp;Graphic User Interface"><link rel="prev" href="gui_layout_manager.html" title="6.&nbsp;Layout Managers"><link rel="next" href="gui_images.html" title="8.&nbsp;Images"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">7.&nbsp;AWT Graphics</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="gui_layout_manager.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;9.&nbsp;Graphic User Interface</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="gui_images.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="gui_awt_graphics"></a>7.&nbsp;AWT Graphics</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4842"></a>7.1.&nbsp;Graphics Object</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4845"></a>7.1.1.&nbsp;Definition</h4></div></div></div><p><code class="classname">Graphics</code> objects are the key to all drawing. They support the two basic kinds of drawing: primitive graphics (such as lines, rectangles, and text) and images. They also provide a drawing context by maintaining state such as the current drawing area and the current drawing color.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4852"></a>7.1.2.&nbsp;The Coordinate System</h4></div></div></div><div class="figure"><a name="d0e4855"></a><p class="title"><b>Figure&nbsp;9.34.&nbsp;Coordinate System</b></p><div class="mediaobject"><img src="resources/GUI32.gif" width="357" height="193" alt="Coordinate System"></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Each <code class="classname">Component</code> has its own integer coordinate system, ranging from (0, 0) to (width - 1, height - 1).</p></td></tr></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4867"></a>7.1.3.&nbsp;Drawing Shapes</h4></div></div></div><p>The <code class="classname">Graphics</code> class defines methods for drawing the following kinds of shapes:</p><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Lines:</strong></span> <code class="methodname">drawLine()</code>, which draws a line in the <code class="classname">Graphics</code> object's current color, which is initialized to the <code class="classname">Component</code>'s foreground color.</p></li><li><p><span class="bold"><strong>Rectangles:</strong></span> <code class="methodname">drawRect(), fillRect(), and clearRect()</code> -- where <code class="methodname">fillRect()</code> fills a rectangle with the <code class="classname">Graphics</code> object's current color, and <code class="methodname">clearRect()</code> fills a rectangle with the <code class="classname">Component</code>'s background color.</p></li><li><p><span class="bold"><strong>Raised or lowered rectangles:</strong></span><code class="methodname"> draw3DRect() and fill3DRect().</code></p></li><li><p><span class="bold"><strong>Round-edged rectangles:</strong></span><code class="methodname"> drawRoundRect() and fillRoundRect().</code></p></li><li><p><span class="bold"><strong>Ovals:</strong></span><code class="methodname"> drawOval() and fillOval().</code></p></li><li><p><span class="bold"><strong>Arcs:</strong></span><code class="methodname"> drawArc() and fillArc().</code></p></li><li><p><span class="bold"><strong>Polygons:</strong></span><code class="methodname"> drawPolygon() and fillPolygon().</code></p></li></ul></div><p><a href="../audio/Gui29.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4944"></a>7.1.4.&nbsp;A Shape Sampler</h4></div></div></div><div class="figure"><a name="d0e4947"></a><p class="title"><b>Figure&nbsp;9.35.&nbsp;Shape Sampler</b></p><div class="mediaobject"><img src="resources/GUI33.gif" width="543" height="93.00000000000001" alt="Shape Sampler"></div></div><p><span class="bold"><strong>Code:</strong></span></p><pre class="programlisting">Color bg = getBackground();
+Color fg = getForeground();
+. . .
+// drawLine()
+g.drawLine(x, y + rectHeight, x + rectWidth, y); // x1, y1, x2, y2
+. . .
+// drawRect()
+g.drawRect(x, y, rectWidth, rectHeight); // x, y, width, height
+. . .
+// draw3DRect() 
+g.setColor(bg);
+g.draw3DRect(x, y, rectWidth, rectHeight, true);
+g.setColor(fg);
+. . .
+// drawArc() 
+g.drawArc(x, y, rectWidth, rectHeight, 90, 135); // x, y, w, h
+. . .
+// drawPolygon() 
+Polygon polygon = new Polygon();
+polygon.addPoint(x, y);
+polygon.addPoint(x+rectWidth, y+rectHeight);
+polygon.addPoint(x, y+rectHeight);
+polygon.addPoint(x+rectWidth, y);
+//polygon.addPoint(x, y); //don't complete; fill will, draw won't
+g.drawPolygon(polygon); 
+. . .
+// fillRect() 
+g.fillRect(x, y, rectWidth, rectHeight); // x, y, width, height
+. . .
+// fill3DRect() 
+g.setColor(bg);
+g.fill3DRect(x, y, rectWidth, rectHeight, true);
+g.setColor(fg);
+. . .
+// fillArc() 
+g.fillArc(x, y, rectWidth, rectHeight, 90, 135); // x, y, w, h
+. . .
+// fillPolygon() 
+Polygon filledPolygon = new Polygon();
+filledPolygon.addPoint(x, y);
+filledPolygon.addPoint(x+rectWidth, y+rectHeight);
+filledPolygon.addPoint(x, y+rectHeight);
+filledPolygon.addPoint(x+rectWidth, y);
+//filledPolygon.addPoint(x, y);
+g.fillPolygon(filledPolygon); </pre><p><a href="../audio/Gui30.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4962"></a>7.1.5.&nbsp;DrawingText</h4></div></div></div><div class="figure"><a name="d0e4965"></a><p class="title"><b>Figure&nbsp;9.36.&nbsp;Drawing Text</b></p><div class="mediaobject"><img src="resources/GUI34.gif" width="491" height="217.99999999999997" alt="Drawing Text"></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e4971"></a>7.1.5.1.&nbsp;Graphics Methods for drawing text</h5></div></div></div><pre class="programlisting">public void drawString(String data, int x, int y);
+public void drawChars(char data[], int offset, int length, int x, int y);
+public void drawBytes(byte data[], int offset, int length, int x, int y);</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>For the text drawing methods, <span class="emphasis"><em>x</em></span> and <span class="emphasis"><em>y</em></span> are integers that specify the position of the lower left corner of the text. To be precise, the <span class="emphasis"><em>y</em></span> coordinate specifies the baseline of the text.</p></td></tr></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e4988"></a>7.1.5.2.&nbsp;FontMetrics objects are used to get information about a font</h5></div></div></div><pre class="programlisting">boolean textFits = false;
+Font font = g.getFont();
+FontMetrics fontMetrics = g.getFontMetrics();
+while (!textFits) {
+    if ((fontMetrics.getHeight() &lt;= maxCharHeight) &amp;&amp;
+        (fontMetrics.stringWidth("drawRoundRect()") &lt;= gridWidth)) {
+        textFits = true;
+    } else {
+        g.setFont(font = new Font(font.getName(), font.getStyle(),
+                                  font.getSize() - 1));
+        fontMetrics = g.getFontMetrics();
+    }
+}</pre><p>Methods that return information about a font's vertical size:</p><pre class="programlisting">getAscent(), getMaxAscent(), getDescent(), getMaxDescent(), getHeight(), getLeading()</pre><p><a href="../audio/Gui31.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="gui_layout_manager.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="gui.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="gui_images.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">6.&nbsp;Layout Managers&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;8.&nbsp;Images</td></tr></table></div></body></html>

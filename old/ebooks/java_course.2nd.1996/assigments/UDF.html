@@ -1,0 +1,455 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Unit Development Folder</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<CENTER><P><IMG SRC="../gifs/green_orange.gif" HEIGHT=3 WIDTH=670 ALIGN=CENTER></P></CENTER>
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="../gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER>Distributed Programming using Java<BR>
+Unit Development Folder</H1>
+</TD>
+
+<TD><IMG SRC="../gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<CENTER><P><IMG SRC="../gifs/green_orange.gif" HEIGHT=3 WIDTH=670 ALIGN=CENTER></P></CENTER>
+
+<CENTER><P ALIGN=CENTER><BR>
+<B><FONT COLOR="#0000FF"><FONT SIZE=+2>UDF:UNIT DEVELOPMENT FOLDER GUIDE</FONT></FONT></B></P></CENTER>
+
+<H2><BR>
+<BR>
+<BR>
+1. Overview</H2>
+
+<UL>
+<P>The purpose of this guide is to define and require a standard format
+for writing Unit Development Folders (UDF. There are several purposes which
+are served by Unit Development Folders:</P>
+</UL>
+
+<UL>
+<OL>
+<LI>Provide an ordely and consistent approach in the development of each
+of the units of a program or project.</LI>
+
+<LI>Provide an uniform and visible collection point for all unit documentation
+and code.</LI>
+
+<LI>Aid individual discipline in the establishment and attainment of scheduled
+unit-level milestones.</LI>
+
+<LI>Provide low-level management visibility and control over the development
+process.</LI>
+
+<LI>Management can easily access the status of the unit.</LI>
+
+<LI>Much of the unit's deliverable documentation can be constructed from
+the UDF, when development is nearing completion.</LI>
+
+<LI>Most of the information necessary for post-delivery maintenance will
+be assembled in one place.</LI>
+</OL>
+
+<P>The UDF is established in skeletal form prior to the start of design
+and becomes the primary tool for monitoring progress during software development
+and testing activities. All UDFs are controlled by a Project Engineer,
+who assigns a UDF Custodian (responsible designer) for each UDF. The UDF
+will be audited at periodic intervals during the development process by
+the responsible Project Engineer to assure that the required format of
+the UDF is maintained and to allow complete assessment of unit status to
+be made.</P>
+
+<P>The UDF will be maintained in a binder with tabbed sections. Each UDF
+will be externally identified by a unique name, descriptive of the unit
+contained therein. Each UDF contains directly or provides a reference to
+the current documentation for each of its required items.</P>
+
+<P>The UDF Custodians are responsible for assuring that their UDFs are
+properly prepared and maintained. The Project Engineers are charged with
+assuring that the UDFs are structured uniformly to provide clarity and
+ease of inspection. The Project Engineer is also responsible for performing
+audits of the UDFs to verify adherence to the standards and requirements
+established by this guide.</P>
+</UL>
+
+<H2>2. UDF Organization and Content</H2>
+
+<UL>
+<P>The organization and contents of a UDF can be adapted to reflect local
+conditions or individual projects requirements. The important considerations
+in the structuring of a UDF are:</P>
+
+<OL>
+<LI>The number of subdivisions is not so large as to be confusing or unmanageable.</LI>
+
+<LI>Each of the sections contributes to the management and visibility of
+the development process.</LI>
+
+<LI>The content and format of each section are afequately and unambiguosly
+defined.</LI>
+
+<LI>The subdivisions are suficiently flexible to be applicable to a variety
+of software types.</LI>
+
+<LI>The individual sections are chronologically ordered as nearly as possible.</LI>
+</OL>
+
+<P>The development of the UDF is geared to proceed logically and sequentially,
+and each section should be as complete as possible before proceeding to
+the next section. This is not always possible, and software development
+is usually an interative rather than sequencial process. These situations
+only serve to reinforce the need for an ordered process that can be understood
+and tracked even under adverse conditions.</P>
+
+<P>A UDF should contain the following sections:</P>
+</UL>
+
+<OL>
+<H3>2.1 Introduction</H3>
+
+<P>This section contains a UDF cover sheet (figure 1) for the unit and
+identifies the status of the components of the UDF. The cover sheet delineates,
+for each of the sections, the start and completion dates, responsible originators,
+and reviewer sign-offs and dates.</P>
+
+<P>Following the cover sheet is a description of the unit, system overview,
+and how the unit fits into the system. A top level structure diagram of
+the units components will be provided. Also provide naming conventions
+used, plus any unique system capabilities required by the unit.</P>
+
+<P>Following this description, a unit schedule will be included. This schedule
+will show the state of all the unit's components. Each component will be
+listed along with start date, percent complete, and completion date for
+each of the following functions: Design, Code, and Test.</P>
+
+<P>Following each cover sheet, a UDF&nbsp;Change Log should be included
+to document all UDF changes subsequent to the time when the unit is put
+into a controlled test or maintenance environment..</P>
+
+<H3>2.2 Requirements</H3>
+
+<P>This section will contain as separately tabbed subsections program requirements
+specification documentation and the program operating environment. The
+program requirements specification subsection will contain a copy of any
+current requirements documentation applicable to the unit. The program
+operating environment subsection will contain the hardware and operating
+system configurations required for the operation of the unit.</P>
+
+<H3>2.3 External Interfaces</H3>
+
+<P>This section contains a detailed data description for all external interfaces
+either required or generated by this unit.</P>
+
+<H3>2.4 Design Description</H3>
+
+<P>This section will contain as subsections the design description for
+each unit component. Each subsection will contain the component functional
+description, the interfaces, the data organization (data dictionary, data
+flows), control flows, state diagrams, and PDL describing the process flow.
+Throughout the development and maintenance process, each Design subsection
+represents the current working version of the design, and therefore will
+be maintained and annotated as changes occur to the initial design. The
+information presented here should reflect the component's header.</P>
+
+<H3>2.5 Code</H3>
+
+<P>As the unit components are modified, this section contains the listing
+for unit component.</P>
+
+<H3>2.6 Unit Test Plan</H3>
+
+<P>This section contains a test plan for the unit and identifies the individual
+tests described. A description of each test case will be included.</P>
+
+<H3>2.7 Test Results </H3>
+
+<P>This section contains a compilation of all current successful test case
+results and analyses necessary to demonstrate that the unit has been tested
+as described in the test plan. Test output should be identified by test
+case numbers and results should be annotated to facilitate reviews of this
+results by other qualified individuals.</P>
+
+<H3>2.8 Build Procedures</H3>
+
+<P>This section will include a list of all the names of all the appropriate
+files (e.g., sourceand object) as well as their locations for system development,
+modification, and maintenance. This section will also include the detailed
+steps sufficient to supply an operator with the procedures necessary to
+produce the executable software.</P>
+
+<H3>2.9 Problems Reports</H3>
+
+<P>This section contains status logs and copies of all Design Problems
+Reports, Design Analysis Reports and Discrepancy Reports (as required)
+which document all design and code problems and changes experienced by
+the unit. This ensures a clear and documented traceability for all problems
+and changes incurred.</P>
+
+<H3>2.10 Notes</H3>
+
+<P>This section may be composed of any item pertaining to the unit that
+the UDF Custodian wishes to include.</P>
+
+<H3>2.11 Audits/Reviews</H3>
+
+<P>This section will contain copies of all audit/reviews reports applicable
+to the UDF. This includes PDL and Code walkthroughs and UDF audits. Include
+all notes pertaining to those audits and reviews.</P>
+</OL>
+
+<H2>3. UDF Maintenance</H2>
+
+<OL>
+<P>After code development and initial baselining, the design responsibility
+is unchanged. All changes made to the UDF will be as described in section
+2, UDF Organization and Contents, of this guide.</P>
+</OL>
+
+<H2>4. Summary</H2>
+
+<UL>
+<P>The UDF concept has evolved into a pratical, efective and valuable tool
+not only for the management of software development but also for imposing
+a structured approach on the total software development process. The structure
+and content of the UDF are designed to create a set of milestones at the
+unit leval, each of which can be easily observed and reviewed.</P>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><BR>
+<BR>
+</P>
+
+<CENTER><P><FONT SIZE=+1>UNIT DEVELOPMENT FOLDER COVER SHEET</FONT></P></CENTER>
+
+<P><BR>
+<BR>
+</P>
+
+<CENTER><P><FONT SIZE=+1>PROGRAM NAME: ________________________</FONT></P></CENTER>
+
+<P><BR>
+<BR>
+</P>
+
+<CENTER><P><FONT SIZE=+1>UNIT NAME:__________________________ CUSTODIAN:______________</FONT></P></CENTER>
+
+<P><BR>
+<BR>
+</P>
+
+<P><FONT SIZE=+1>ROUTINES INCLUDED:______________________________________________</FONT></P>
+
+<P><BR>
+<BR>
+</P>
+
+<CENTER><TABLE BORDER=1 WIDTH="100%" >
+<TR BGCOLOR="#C0C0C0">
+<TD>Section No.</TD>
+
+<TD>Description</TD>
+
+<TD>Due Date</TD>
+
+<TD>Date Completed</TD>
+
+<TD>Originator</TD>
+
+<TD>Reviewer/Date</TD>
+</TR>
+
+<TR>
+<TD>1</TD>
+
+<TD>Requirements</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>2</TD>
+
+<TD>Design Description</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>3</TD>
+
+<TD>External Interfaces</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>4</TD>
+
+<TD>Functional Capabilities List</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>5</TD>
+
+<TD>Unit Code</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>6</TD>
+
+<TD>Unit Test Plan</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>7</TD>
+
+<TD>Test Case Results</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>8</TD>
+
+<TD>Build Procedures</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>9</TD>
+
+<TD>Problems Reports</TD>
+
+<TD></TD>
+
+<TD></TD>
+
+<TD></TD>
+
+<TD>.</TD>
+</TR>
+
+<TR>
+<TD>10</TD>
+
+<TD>Notes</TD>
+
+<TD></TD>
+
+<TD></TD>
+
+<TD></TD>
+
+<TD></TD>
+</TR>
+
+<TR>
+<TD>11</TD>
+
+<TD>Reviewers</TD>
+
+<TD></TD>
+
+<TD></TD>
+
+<TD></TD>
+
+<TD></TD>
+</TR>
+</TABLE></CENTER>
+
+<P><BR>
+<BR>
+<BR>
+</P>
+
+<H3 ALIGN=CENTER><I>Figure 1</I></H3>
+
+<P>
+<HR><APPLET 
+    codebase="http://143.106.11.75:8001/pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="../Welcome.html"><IMG SRC="../gifs/top.gif" HSPACE=5 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="../Welcome.html">Contents</A></FONT></B></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="../gifs/comments.gif" HSPACE=5 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 16: System Class</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">System Class</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<UL>
+<H4>Reading/Writing System Properties</H4>
+</UL>
+</UL>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>System.getProperty(&quot;path.separator&quot;);
+
+System.getProperty(&quot;subliminal.message&quot;, &quot;Buy Java Now!&quot;);
+
+The <TT>getProperties()</TT> <B>returns a Properties object</B>.</PRE>
+
+<P><TT>The <B>setProperties()</B></TT><B> method</B>: takes a Properties
+object.</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/system/garbage.html">Forcing
+Finalization and Garbage Collection</A></H2>
+
+<BLOCKQUOTE>
+<P><B><TT>System.runFinalization(): </TT></B>This method calls the finalize()
+methods on all objects that are waiting to be garbage collected.</P>
+
+<P><B><TT>System.gc():</TT></B> It asks the garbage collector to run at
+any time by calling System's gc() method.</P>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/system/runtime.html">The
+Runtime Object</A></H2>
+
+<BLOCKQUOTE>
+<P>It bypasses the system-independent interface of the System class and
+use system resources directly from the runtime environment.</P>
+
+<BLOCKQUOTE>
+<CENTER><P><IMG SRC="gifs/OOPjava6.gif" HEIGHT=347 WIDTH=492></P></CENTER>
+</BLOCKQUOTE>
+
+<P>The oval labelled <B>Runtime</B> in the diagram represents the current
+runtime environment and is an instance of the Runtime Class.</P>
+
+<P><B>Note:</B> Messaging the Runtime object directly <B><FONT COLOR="#FF0000"><FONT SIZE=+1>compromises
+</FONT></FONT></B>your ability to run your program on different systems.
+You should do this only in <B><FONT COLOR="#FF0000"><FONT SIZE=+1>special
+</FONT></FONT></B>situation</P>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/system/iostreams.html">The
+Standard I/O Streams</A></H2>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+
+    codebase="pgcounter"
+
+    code=PgCount.class
+
+    width=560
+
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="OOPjava.sld17.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="OOPjava.sld17.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Swing Menus</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="gui.html" title="Chapter&nbsp;10.&nbsp;Graphic User Interface"><link rel="prev" href="gui_swing_components.html" title="3.&nbsp;Swing Components"><link rel="next" href="gui_handling_events.html" title="5.&nbsp;Handling Events"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Swing
+      Menus</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="gui_swing_components.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Graphic User Interface</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="gui_handling_events.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="gui.html">Graphic User Interface</a></span> &gt; <span class="breadcrumb-node">Swing
+      Menus</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="gui_swing_menus"></a>4.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/components/menu.html" target="_top">Swing
+      Menus</a></h2></div></div></div><p>The following applet shows many of the menu features you're likely
+      to use.</p><div class="figure"><a name="d0e4161"></a><p class="title"><b>Figure&nbsp;10.18.&nbsp;Menu</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI13.gif" width="500" height="151" alt="Menu"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4167"></a>4.1.&nbsp;Menu Components</h3></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>JMenuBar</strong></span></p><p>Represents the platform-dependent notion of a group of menus
+            attached to a window. <code class="classname">JMenuBar</code>s cannot be
+            bound to <code class="classname">JPanels</code>.</p></li><li><p><span class="bold"><strong>JPopupmenu</strong></span></p><p>Represents a popup menu.</p></li><li><p><span class="bold"><strong>JSeparator </strong></span></p><p>Implements a divider line to separate groups of menu
+            itens.</p></li><li><p><span class="bold"><strong>JMenuItem</strong></span></p><p>Each item in a menu is represented by a
+            <code class="classname">JMenuItem</code> object.</p></li><li><p><span class="bold"><strong>JMenu</strong></span></p><p><code class="classname">JMenu</code> enables you to create submenus
+            by adding one menu to another.</p></li><li><p><span class="bold"><strong>JCheckboxMenuItem</strong></span></p><p>Is a menu item that implements a check box.</p></li><li><p><span class="bold"><strong>JRadioButtonMenuItem</strong></span></p><p>Is a menu item that implements a radio button, in which only
+            one item in a group can be selected.</p></li></ul></div><div class="figure"><a name="d0e4224"></a><p class="title"><b>Figure&nbsp;10.19.&nbsp;Menu-related classes hierarchy</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI48.gif" width="444" height="239" alt="Menu-related classes hierarchy"></div></div></div><br class="figure-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4230"></a>4.2.&nbsp;MenuContainer Interface</h3></div></div></div><p>To be able to contain a menu component, an object must adhere to
+        the <code class="classname">MenuContainer</code> interface
+        (<code class="classname">JFrame</code>, <code class="classname">JMenu</code>, and
+        <code class="classname">JMenuBar</code> classes do)</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4247"></a>4.3.&nbsp;Code Example</h3></div></div></div><pre class="programlisting">public class MenuWindow extends JFrame 
+    implements ActionListener, ItemListener {
+    . . .
+    public MenuWindow() {
+        
+        // Build the menu bar.
+        mb = new JMenuBar();
+        setJMenuBar(mb);
+ 
+        // Build first menu in the menu bar.
+        m1 = new JMenu("Menu 1", true);
+        mb.add(m1);
+
+        mi1_1 = new JMenuItem("Menu Item 1_1");
+        m1.add(mi1_1);
+        . . .
+
+        // Build help menu.
+        m5 = new JMenu("Menu 5");
+        mb.add(m5); //just setting the help menu doesn't work; must add it
+        mb.setHelpMenu(m5);
+
+        mi5_1 = new JMenuItem("Menu Item 5_1");
+        mi5_1.setMnemonic(KeyEvent.VK_5);
+        m5.add(mi5_1);
+        . . .
+
+        // Build second menu in the menu bar.
+        m2 = new JMenu("Menu 2");
+        mb.add(m2);
+
+        mi2_1 = new JCheckboxMenuItem("Menu Item 2_1");
+        m2.add(mi2_1);
+ 
+        // Build third menu in the menu bar.
+        . . .
+        
+        // Register as an ActionListener for all menu items.
+        m1.addActionListener(this);
+        m2.addActionListener(this);
+        m3.addActionListener(this);
+                . . .
+        // Register as ItemListener on checkbox menu item.
+        mi2_1.addItemListener(this);
+    }
+    . . .
+    public void actionPerformed(ActionEvent e) {
+        output.append("\"" + e.getActionCommand() +
+                      "\" action detected in menu labeled \"" +
+                      ((JMenuItem)(e.getSource())).getLabel() + "\".\n");
+    }
+
+    public void itemStateChanged(ItemEvent e) {
+        output.append("Item state change detected on item \"" +
+                      e.getItem() + "\" (state is " +
+                      ((e.getStateChange() == ItemEvent.SELECTED)? 
+                            "selected)." : "deselected).") + "\n");
+    }
+}</pre></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="gui_swing_components.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="gui.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="gui_handling_events.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Swing
+      Components&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Handling
+      Events</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

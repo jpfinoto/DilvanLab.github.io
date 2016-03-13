@@ -1,0 +1,109 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>6.&nbsp;Datagram Sockets</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="individual_assignments.html" title="Chapter&nbsp;10.&nbsp;Individual Assignments - Laboratory"><link rel="prev" href="individual_assignments_stream_sockets.html" title="5.&nbsp;Stream Sockets"><link rel="next" href="individual_assignments_remote_procedure_calls.html" title="7.&nbsp;Remote Procedure Calls"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.&nbsp;Datagram Sockets</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="individual_assignments_stream_sockets.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Individual Assignments - Laboratory</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_remote_procedure_calls.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="individual_assignments_datagram_sockets"></a>6.&nbsp;Datagram Sockets</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Datagram Sockets</p></li></ul></div><div class="orderedlist"><ol type="1"><li><p>Run the programs bellow. Make a clear description of the way this program works.</p></li><li><p>What are the advantages and disadvantages of using Datagram sockets over Stream sockets?</p></li><li><p>Rewrite the calculator program you wrote for the last laboratory assignment substituting the pipes for datagram sockets .</p><p>Note:</p><p>Compile this programs in a Solaris system using the command:</p><pre class="programlisting">gcc foo.c -o foo -lsocket -lnsl</pre><p>Client Program</p><pre class="programlisting">#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;netdb.h&gt;
+#include &lt;stdio.h&gt;
+ 
+#define DATA "Quote"
+ 
+main (int argc, char* argv[])
+{
+   int sock;
+   struct sockaddr_in server;
+   struct hostent *hp, *gethostbyname();
+   char buf[1024];
+ 
+   sock = socket (AF_INET, SOCK_DGRAM, 0);
+   if (sock == -1) {
+      perror ("Opening Datagram socket");
+      exit (1);
+   }
+ 
+   hp = gethostbyname(argv[1]);
+   if (hp == (struct hostent *) 0) {
+      perror("Unknown Host");
+      exit(0);
+   }
+ 
+   memcpy ((char*)&amp;server.sin_addr, (char*) hp-&gt;h_addr, hp-&gt;h_length);
+ 
+   server.sin_family = AF_INET;
+   server.sin_port = htons(atoi(argv[2]));
+ 
+   if (sendto( sock, DATA, sizeof DATA, 0,
+               (struct sockaddr *) &amp;server, sizeof server) == -1) {
+      perror("Sending datagram message");
+      exit(1);
+   }
+   if (read( sock, buf, 1024) == -1) {
+      perror("Receiving quotation");
+      exit(1);
+   }
+   printf("Quote of the Moment: %s\n", buf);
+   close(sock);
+}</pre><p>Server Program</p><pre class="programlisting">#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;netdb.h&gt;
+#include &lt;stdio.h&gt;
+
+#define TRUE 1
+
+int quoteInd= 0;
+int quoteNumber= 2;
+char* quotes[]= { "lixo1", "lixo2"};
+
+char* getquote() {
+   int ind;
+
+   ind= quoteInd;
+   quoteInd++;
+   if (quoteInd&gt;=quoteNumber) quoteInd=0;
+   return quotes[ind];
+}
+
+main()
+{
+   int sock, length;
+   struct sockaddr_in server;
+   struct sockaddr_in client;
+   char buf[16];
+   char* quote;
+
+   sock = socket (AF_INET, SOCK_DGRAM, 0);
+   if (sock==-1) {
+      perror("Opening datagram socket");
+      exit(1);
+   }
+
+   server.sin_family = AF_INET;
+   server.sin_addr.s_addr = INADDR_ANY; 
+   server.sin_port = 0;
+   if (bind (sock, (struct sockaddr *)&amp;server, sizeof(server)) == -1){
+      perror("Binding datagram socket");
+
+      exit (1);
+   }
+   length = sizeof server;
+   if (getsockname (sock, (struct sockaddr *) &amp;server, &amp;length) == -1){
+      perror("Getting socket name");
+      exit (1);
+   }
+   printf("Socket port # %d\n", ntohs(server.sin_port));
+   
+   do{
+      if ( recvfrom( sock, buf, 16, 0,
+                    (struct sockaddr *) &amp;client, &amp;length) == -1){
+         perror("Reading packet");
+         exit(1);
+      }
+      quote= getquote();
+      if ( sendto( sock, quote, strlen(quote)+1, 0,
+                   (struct sockaddr *) &amp;client, sizeof client) == -1) {
+         perror("Writing quota");
+         exit(0);
+      }
+   } while (TRUE);
+}          </pre></li></ol></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="individual_assignments_stream_sockets.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="individual_assignments.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_remote_procedure_calls.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">5.&nbsp;Stream Sockets&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;7.&nbsp;Remote Procedure Calls</td></tr></table></div></body></html>

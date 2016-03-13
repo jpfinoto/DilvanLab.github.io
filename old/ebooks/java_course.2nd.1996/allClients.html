@@ -1,0 +1,60 @@
+<head>
+<title> Statistics: Clients accessing the pages  
+</title></head>
+
+<BODY BGCOLOR="FFFFFF">
+
+<CENTER><P><IMG SRC="/~dilvan/lectures/gifs/green_orange.gif" HEIGHT=3 WIDTH=670 ALIGN=CENTER></P></CENTER>
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="/~dilvan/lectures/gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER>Statistics: Clients Accessing the Pages
+<FONT COLOR="#0000FF"><FONT SIZE=+2><! msgql print "$file"></FONT></FONT></H1>
+</TD>
+<TD><IMG SRC="/~dilvan/lectures/gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+<CENTER><P><IMG SRC="/~dilvan/lectures/gifs/green_orange.gif" HEIGHT=3 WIDTH=670 ALIGN=CENTER></P></CENTER>
+
+<BR><BR>
+
+
+<! msql connect >
+
+<! msql database javaStatis>
+<! msql query "SELECT DISTINCT user FROM pages ORDER BY user" q1>
+
+<H2>Click on client to see its statistics:</H2>
+<UL>
+
+<! msql print_rows q1 
+   "<IMG SRC=/~dilvan/lectures/gifs/smallredball.gif HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8><A HREF=/cgi-bin/w3-msql/~dilvan/lectures/statisClient.html?client=@q1.0> @q1.0</A><BR>"
+>
+</UL>
+
+
+
+<BR><BR><BR>
+
+<H2> <IMG SRC=/~dilvan/lectures/gifs/smallredball.gif HSPACE=5 VSPACE=3 HEIGHT=8 WIDTH=8><A href=/cgi-bin/w3-msql/~dilvan/lectures/allPages.html >All pages. </A></H2>
+
+<BR>
+
+<HR>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="/~dilvan/lectures/gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="/~dilvan/lectures/gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>
+

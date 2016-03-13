@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 16: AWT Components</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Components</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/components/scrollbar.html">Scrollbars</A></H2>
+
+<BLOCKQUOTE>
+<UL>
+<LI>A scrollbar can act as a slider that the user manipulates to set a
+value. </LI>
+
+<LI>Scrollbars can help you display part of a region that's too large for
+the available display area. </LI>
+</UL>
+
+<CENTER><P><IMG SRC="gifs/GUI14.gif" HEIGHT=127 WIDTH=326></P></CENTER>
+
+<H3>Scrollbar parameters:</H3>
+
+<DL>
+<DT><TT>int orientation</TT> </DT>
+
+<DD><TT>Scrollbar.HORIZONTAL</TT> or <TT>Scrollbar.VERTICAL</TT>. </DD>
+
+<DT><TT>int value</TT> </DT>
+
+<DD>The initial value of the position of the scrollbar. </DD>
+
+<DT><TT>int visible</TT> </DT>
+
+<DD>How many pixels a click in the scrollbar (but not on the knob) causes
+the display area to shift. Setting this value after the scrollbar is visible
+has no effect. . </DD>
+
+<DT><TT>int minimum</TT> </DT>
+
+<DD>The minimum value the scrollbar can have (usually 0). </DD>
+
+<DT><TT>int maximum</TT> </DT>
+
+<DD>The maximum value the scrollbar can have. </DD>
+</DL>
+
+<H3>Code Example:</H3>
+
+<UL>
+<PRE>public boolean handleEvent(Event evt) {
+    switch (evt.id) {
+      case Event.SCROLL_LINE_UP:
+      case Event.SCROLL_LINE_DOWN:
+      case Event.SCROLL_PAGE_UP:
+      case Event.SCROLL_PAGE_DOWN:
+      case Event.SCROLL_ABSOLUTE:
+        if (evt.target == vert) {
+            canvas.ty = ((Integer)evt.arg).intValue();
+            canvas.repaint();
+        }
+        if (evt.target == horz) {
+            canvas.tx = ((Integer)evt.arg).intValue();
+            canvas.repaint();
+        }
+    }
+    return super.handleEvent(evt);
+}</PRE>
+</UL>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE>
+<HR></PRE>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld17.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld17.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

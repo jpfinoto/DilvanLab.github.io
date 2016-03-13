@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>The Java Language Slide 7: Expressions &amp; Control Flow Statements</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>The Java Language:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Expressions &amp; Control Flow Statements</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><A HREF="tutorial/java/nutsandbolts/expressions.html">Expressions</A></H2>
+
+<UL>
+<P>Expressions are used to compute and assign values to variables and to
+help control the execution flow of a program. The job of an expression
+is two-fold: perform the computation indicated by the elements of the expression
+and return some value.</P>
+</UL>
+
+<UL>
+<H3><B><FONT COLOR="#0000FF">Definition</FONT>:</B></H3>
+
+<P>An expression is a series of variables, operators, and method calls
+(constructed according to the syntax of the language) that evaluates to
+a single value. For example:</P>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>count++; System.in.read() != -1</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</UL>
+
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><A NAME="CONTROL"></A><A HREF="tutorial/java/nutsandbolts/while.html">Control
+Flow Statements</A></H2>
+
+<UL>
+<P>Statements that change the flow of execution of a program.</P>
+
+<PRE>   <B>Statement</B>             <B>Keyword
+</B>decision making    if-else, switch-case
+loop               for, while, do-while
+exception          try-catch-finally, throw
+miscellaneous      break, continue, <I>label</I>:, return</PRE>
+
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><FONT COLOR="#0000FF"><A HREF="tutorial/java/nutsandbolts/while.html">While
+Statement</A></FONT></H2>
+</UL>
+
+<UL>
+<BLOCKQUOTE>
+<P>A <TT>while</TT> statement performs some action <I>while</I> a certain
+condition remains true.</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">while (<I>expression</I>)
+    <I>statement</I></FONT></PRE>
+</BLOCKQUOTE>
+
+<PRE>. . .
+while (System.in.read() != -1) {
+    count++;
+    System.out.println(&quot;Read a character. Count = &quot; + count);
+}
+. . .</PRE>
+</BLOCKQUOTE>
+
+<P><BR>
+<BR>
+</P>
+</UL>
+
+<P>
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="javalang.sld8.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="javalang.sld8.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

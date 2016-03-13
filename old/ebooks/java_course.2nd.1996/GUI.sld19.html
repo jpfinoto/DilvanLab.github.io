@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 19: AWT Containers</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Containers</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/components/panel.html">Panels
+</A></H2>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<P>The Panel class is a general-purpose Container subclass. You can use
+it as-is to hold Components, or you can define a subclass to perform special
+functionality, such as event handling for the objects the Panel contains.
+</P>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B></P>
+
+<BLOCKQUOTE>
+<P>The Applet class is a Panel subclass with special hooks to run in a
+browser or other applet viewer.</P>
+</BLOCKQUOTE>
+
+<H3>Code Examples:</H3>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>Panel p1 = new Panel();
+p1.add(new Button(&quot;Button 1&quot;));
+p1.add(new Button(&quot;Button 2&quot;));
+p1.add(new Button(&quot;Button 3&quot;));
+</PRE>
+
+<H4>A Panel subclass that draws a frame around its contents. <BR>
+</H4>
+
+<CENTER><P><IMG SRC="gifs/GUI16.gif" HEIGHT=96 WIDTH=457><BR>
+</P></CENTER>
+
+<PRE>class FramedArea extends Panel {
+    public FramedArea(CoordinatesDemo controller) {
+        ...<I>//Set the layout manager.
+           //Add any Components this Panel contains...
+</I>    }
+
+    //Ensure that no Component is placed on top of the frame.
+    //The inset values were determined by trail and error.
+    public Insets insets() {
+        return new Insets(4,4,5,5);
+    }
+
+    //Draw the frame at this Panel's edges.
+    public void paint(Graphics g) {
+        Dimension d = size();
+        Color bg = getBackground();
+ 
+        g.setColor(bg);
+        g.draw3DRect(0, 0, d.width - 1, d.height - 1, true);
+        g.draw3DRect(3, 3, d.width - 7, d.height - 7, false);
+    }
+}
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE>
+<HR></PRE>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld12.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld12.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

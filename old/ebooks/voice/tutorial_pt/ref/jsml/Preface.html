@@ -1,0 +1,124 @@
+<html><head><title>Java Speech Markup Language</title></head>
+<!--Intermediate split file from a FrameMaker file-->
+<body BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#990000" ALINK="#333399" VLINK="#333399">
+<!--#include virtual="/products/java-media/include/speechGlobal.html"-->
+
+<pre><a href="index.html">TOC</a>  <a href="Copyright.html">Prev</a>  <a href="Contrib.html">Next</a>  <a href="javabook.htm"></a></pre>
+
+<hr>
+
+<a name="1106"></a><em>
+</em><p><a name="1140"></a><h1>Notes to Reviewers
+</h1><a name="2376"></a>This document describes the <em>Java<SUP>TM</SUP> Speech Markup Language</em> (JSML) and 
+explains how it can be used to annotate text input to Java Speech API speech 
+synthesizers. This specification is an extract from the Java Speech Application 
+Programming Interface (JSAPI) specification that will be released later in 1997. 
+When the full specification is released, the Java Speech Markup Language 
+specification will be included as part of the programming guide.
+<p>
+<hr width="30%" align="center">
+<a name="2377"></a><h2> Review Comments </h2>
+<a name="2378"></a>We are very interested in your input concerning the <em>Java Speech Markup 
+Language </em>specification. Send your comments to:
+<p><ul><a name="2379"></a>
+<code><a href="mailto:javaspeech-comments@sun.com">javaspeech-comments@sun.com</a>
+</code>
+<BR><P></ul><a name="2380"></a>Please be sure to include the version number and date of the document you are 
+reviewing with your comments. We anticipate releasing a small number of 
+updates to our documentation during the review period. These updates will 
+incorporate responses to comments. The earlier we receive your feedback, the 
+more likely it will be taken into consideration for the next update. 
+<p><a name="2381"></a>Because of the high level of interest in the Java Speech API, the Java Speech 
+Grammar Format and the Java Speech Markup Language, we are unable to 
+respond directly to individual comments or questions, but we will carefully read 
+and evaluate all of the input we receive. 
+<p>
+<hr width="30%" align="center">
+<a name="2382"></a><h2> JSML and JSAPI </h2>
+<a name="2383"></a>This specification for the <em>Java Speech Markup Language </em>describes a textual 
+representation of input to a speech synthesizer but does not address the issues 
+listed below. These programmatic issues are covered in the documentation for the 
+Java Speech API, which is expected to be released later in 1997.
+<p><ul><li><a name="2585"></a>Mechanisms for providing marked-up text to a synthesizer.
+<br><br><li><a name="2586"></a>Software control of the output of annotated text such as queuing, pause and 
+resume, and variation of pitch and speaking rate.
+<br><br><li><a name="2593"></a>Mechanisms for receiving notification of synthesis events including 
+marker events requested in JSML texts.
+<br><br><li><a name="2594"></a>Error handling capabilities including incorrect markup.
+<br><br><li><a name="2599"></a>Vocabulary management issues such as provision of pronunciations.
+<br><br></ul>
+<hr width="30%" align="center">
+<a name="2388"></a><h2> Issues for this Release </h2>
+<a name="2389"></a>Many aspects of the <em>Java Speech Markup Language</em> are fully specified. However, 
+some areas are still under development. Reviewers are especially encouraged to 
+provide feedback in these areas. 
+<p>
+<a name="2390"></a><h3> Specification Issues</h3>
+<a name="2391"></a>The following areas in the <em>Java Speech Markup Language</em> are not fully defined: 
+<p><ul><li><a name="2453"></a>A formal syntax and Document Type Definition (DTD) for JSML
+<br><br><li><a name="2514"></a>An attribute for structural elements for selection of speaking voices
+<br><br></ul>
+<a name="2399"></a><h3> Plans for Future Releases</h3>
+<a name="2400"></a>Sun and its partners are developing new capabilities and features that will appear 
+in a future release of the <em>Java Speech Markup Language </em>specification. Features 
+that we are considering for future releases include:
+<p><ul><li><a name="2401"></a>Intonational phrase patterns for <code>SENT</code>, <code>PARA</code>, and other elements
+<br><br><li><a name="2538"></a>Attribute for specifying the language and region of language for text 
+segments using ISO codes
+<br><br><li><a name="2540"></a>Detailed phonetic-prosodic strings
+<br><br></ul><a name="2403"></a>Comments regarding the priority of these features, or other new features that you 
+would like to see, are appreciated. 
+<p>
+<hr width="30%" align="center">
+<a name="2404"></a><h2> Web Resources </h2>
+<a name="2405"></a>To obtain information about the Java Speech API, see the web site at: 
+<p><ul><a name="2406"></a>
+<code><a href="http://java.sun.com/products/java-media/speech/">http://java.sun.com/products/java-media/speech/</a>
+</code>
+<BR><P></ul><a name="2407"></a>To obtain information about other Java Media and Communications APIs, see the 
+web site at: 
+<p><ul><a name="2408"></a>
+<code><a href="http://java.sun.com/products/java-media/">http://java.sun.com/products/java-media/</a>
+</code>
+<BR><P></ul>
+<a name="2409"></a><h3> Mailing Lists</h3>
+<a name="2410"></a>Discussion lists have been set up for anyone interested in the Java Speech API, 
+the Java Speech Grammar Format specification, and the Java Speech Markup 
+Language. The <code>javaspeech-announce</code> mailing list will carry important 
+announcements about releases and updates. The <code>javaspeech-interest</code> 
+mailing list is for open discussion of the Java Speech API and the associated 
+specifications. 
+<p><a name="2411"></a>To subscribe to the <code>javaspeech-announce</code> list or the <code>javaspeech-interest</code> 
+list, send email with "<code>subscribe javaspeech-announce</code>" or 
+"<code>subscribe &#32;javaspeech-interest</code>" or both in the message body to:
+<p><ul><a name="2412"></a>
+<code><a href="mailto:javamedia-request@sun.com">javamedia-request@sun.com</a>
+</code>
+<BR><P></ul><a name="2413"></a>The <code>javaspeech-announce</code> mailing list is moderated. It is not possible to send 
+email to that list. 
+<p><a name="2414"></a>To send messages to the interest list, send email to:
+<p><ul><a name="2415"></a>
+<code><a href="mailto:javaspeech-interest@sun.com">javaspeech-interest@sun.com</a>
+</code>
+<BR><P></ul><a name="2416"></a>To unsubscribe from the <code>javaspeech-announce</code> or <code>javaspeech-interest</code> 
+lists, send email with either "<code>unsubscribe &#32;javaspeech-announce</code>" or 
+"<code>unsubscribe &#32;javaspeech-interest</code>" or both in the message body to:
+<p><ul><a name="2417"></a>
+<code><a href="mailto:javamedia-request@sun.com">javamedia-request@sun.com</a>
+</code>
+<BR><P></ul>
+<hr width="30%" align="center">
+<a name="2418"></a><h2> Revision History </h2>
+<a name="2419"></a>Version 0.5: First public Beta release.
+<p><a name="2269"></a>
+<p>
+
+<hr>
+<!-- This inserts footnotes--><p>
+<pre><a href="index.html">TOC</a>  <a href="Copyright.html">Prev</a>  <a href="Contrib.html">Next</a>  <a href="javabook.htm"></a></pre>
+<font size=-1>Java Speech Markup Language Specification (HTML generated by hunt on August 29, 1997)<br>
+<a href="Copyright.html">Copyright &#169 1997 Sun Microsystems, Inc.</a>
+All rights reserved<br>
+Please send any comments or corrections to <a href="mailto:javaspeech-comments@sun.com">javaspeech-comments@sun.com</a>
+</font>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Applets Slide 1: Overview</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Applets:</FONT> </FONT><B><FONT COLOR="#0000FF">Overview</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><B><A HREF="tutorial/applet/overview/index.html">Overview</A></B></H2>
+
+<UL>
+<H3>Definition:</H3>
+
+<P>An applet is a graphic Java program made to run as part of other programs,
+usually a Browser. It should extend the class Applet.</P>
+
+<H3>Graphic Classes Hierarchy:</H3>
+
+<CENTER><P><IMG SRC="gifs/Applets1.gif" HEIGHT=189 WIDTH=555></P></CENTER>
+
+<UL>
+<H3><BR>
+<FONT COLOR="#800080">Applets extend the Panel Class.</FONT></H3>
+</UL>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/applet/overview/appletMethods.html">The
+Applet class main methods</A></H2>
+</UL>
+
+<PRE>          public class Simple extends Applet {
+              . . .
+              public void init() { . . . }
+              public void start() { . . . }
+              public void stop() { . . . }
+              public void destroy() { . . . }
+              . . .
+          }</PRE>
+
+<UL>
+<UL>
+<DL>
+<DT><TT>init()</TT> </DT>
+
+<DD>To <B>initialize</B> the applet each time it's loaded (or reloaded).
+</DD>
+
+<DT><TT>start()</TT> </DT>
+
+<DD>To <B>start</B> the applet's execution. </DD>
+
+<DT><TT>stop()</TT> </DT>
+
+<DD>To <B>stop</B> the applet's execution. </DD>
+
+<DT><TT>destroy()</TT> </DT>
+
+<DD>To perform a <B>final cleanup</B> in preparation for unloading. </DD>
+</DL>
+</UL>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Applets.sld2.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Applets.sld2.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

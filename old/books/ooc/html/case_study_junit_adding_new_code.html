@@ -1,0 +1,96 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>5.&nbsp;Adding New Code</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="case_study_junit.html" title="Chapter&nbsp;13.&nbsp;Case Study: JUnit"><link rel="prev" href="case_study_junit_running_the_tests.html" title="4.&nbsp;Running the tests"><link rel="next" href="case_study_junit_testing_practice.html" title="6.&nbsp;Testing Practice"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.&nbsp;Adding New Code</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="case_study_junit_running_the_tests.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;13.&nbsp;Case Study: JUnit</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="case_study_junit_testing_practice.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="case_study_junit.html">Case Study: JUnit</a></span> &gt; <span class="breadcrumb-node">Adding New Code</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="case_study_junit_adding_new_code"></a>5.&nbsp;Adding New Code</h2></div></div></div><p>After having verified that the simple currency case works we move
+      on to multiple currencies.</p><p>The problem of mixed currency arithmetic is that there isn't a
+      single exchange rate. To avoid this problem we introduce a
+      <span class="command"><strong>MoneyBag</strong></span> which defers exchange rate conversions. For
+      example:</p><div class="orderedlist"><ol type="1"><li><p>Adding 12 Swiss Francs to 14 US Dollars is represented as a
+          bag containing the two Monies: 12 CHF and 14 USD.</p></li><li><p>Adding another 10 Swiss francs gives a bag with 22 CHF and 14
+          USD.</p></li><li><p>We can later evaluate a MoneyBag with different exchange
+          rates.</p></li></ol></div><p>A MoneyBag is represented as a list of Monies and provides
+      different constructors to create a MoneyBag:</p><pre class="programlisting">class MoneyBag {
+    private Vector fMonies= new Vector();
+
+    MoneyBag(Money m1, Money m2) {
+        appendMoney(m1);
+        appendMoney(m2);
+    }
+
+    MoneyBag(Money bag[]) {
+        for (int i= 0; i &lt; bag.length; i++)
+            appendMoney(bag[i]);
+    }
+}</pre><p>The method <span class="command"><strong>appendMoney</strong></span> is an internal helper
+      method that adds a <span class="command"><strong>Money</strong></span> to the list of Moneys and
+      takes care of consolidating Monies with the same currency.
+      <span class="command"><strong>MoneyBag</strong></span> also needs an <span class="command"><strong>equals</strong></span>
+      method together with a corresponding test. We skip the implementation of
+      <span class="command"><strong>equals</strong></span> and only show the
+      <span class="command"><strong>testBagEquals</strong></span> method. In a first step we extend the
+      fixture to include two <span class="command"><strong>MoneyBags</strong></span>.</p><pre class="programlisting">protected void setUp() {
+    f12CHF= new Money(12, "CHF");
+    f14CHF= new Money(14, "CHF");
+    f7USD=  new Money( 7, "USD");
+    f21USD= new Money(21, "USD");
+    fMB1= new MoneyBag(f12CHF, f7USD);
+    fMB2= new MoneyBag(f14CHF, f21USD);
+}</pre><p>With this fixture the <span class="command"><strong>testBagEquals</strong></span> test case
+      becomes:</p><pre class="programlisting">public void testBagEquals() {
+    Assert.assertTrue(!fMB1.equals(null));
+    Assert.assertEquals(fMB1, fMB1);
+    Assert.assertTrue(!fMB1.equals(f12CHF));
+    Assert.assertTrue(!f12CHF.equals(fMB1));
+    Assert.assertTrue(!fMB1.equals(fMB2));
+}</pre><p>Following "code a little, test a little" we run our extended test
+      with JUnit and verify that we are still doing fine. With
+      <span class="command"><strong>MoneyBag</strong></span> in hand, we can now fix the add method in
+      <span class="command"><strong>Money</strong></span>.</p><pre class="programlisting">public Money add(Money m) {
+    if (m.currency().equals(currency()) )
+        return new Money(amount()+m.amount(), currency());
+    return new MoneyBag(this, m);
+}</pre><p>As defined above this method will not compile since it expects a
+      <span class="command"><strong>Money</strong></span> and not a <span class="command"><strong>MoneyBag</strong></span> as its
+      return value. With the introduction of <span class="command"><strong>MoneyBag</strong></span> there
+      are now two representations for <span class="command"><strong>Moneys</strong></span> which we would
+      like to hide from the client code. To do so we introduce an interface
+      <span class="command"><strong>IMoney</strong></span> that both representations implement. Here is
+      the <span class="command"><strong>IMoney</strong></span> interface:</p><pre class="programlisting">interface IMoney {
+    public abstract IMoney add(IMoney aMoney);
+    //&#8230;
+}</pre><p>To fully hide the different representations from the client we
+      have to support arithmetic between all combinations of Moneys with
+      MoneyBags. Before we code on, we therefore define a couple more test
+      cases. The expected <span class="command"><strong>MoneyBag</strong></span> results use the
+      convenience constructor shown above, initializing a
+      <span class="command"><strong>MoneyBag</strong></span> from an array.</p><pre class="programlisting">public void testMixedSimpleAdd() { 
+    // [12 CHF] + [7 USD] == {[12 CHF][7 USD]} 
+    Money bag[]= { f12CHF, f7USD }; 
+    MoneyBag expected= new MoneyBag(bag); 
+    Assert.assertEquals(expected, f12CHF.add(f7USD)); 
+}</pre><p>The other tests follow the same pattern:</p><div class="itemizedlist"><ul type="disc"><li><p><span class="command"><strong>testBagSimpleAdd</strong></span> - to add a
+          <span class="command"><strong>MoneyBag</strong></span> to a simple
+          <span class="command"><strong>Money</strong></span></p></li><li><p><span class="command"><strong>testSimpleBagAdd</strong></span> - to add a simple
+          <span class="command"><strong>Money</strong></span> to a <span class="command"><strong>MoneyBag</strong></span></p></li><li><p><span class="command"><strong>testBagBagAdd</strong></span> - to add two
+          <span class="command"><strong>MoneyBags</strong></span></p></li></ul></div><p>Next, we extend our test suite accordingly:</p><pre class="programlisting">public static Test suite() {
+    TestSuite suite= new TestSuite();
+    suite.addTest(new MoneyTest("testMoneyEquals"));
+    suite.addTest(new MoneyTest("testBagEquals"));
+    suite.addTest(new MoneyTest("testSimpleAdd"));
+    suite.addTest(new MoneyTest("testMixedSimpleAdd"));
+    suite.addTest(new MoneyTest("testBagSimpleAdd"));
+    suite.addTest(new MoneyTest("testSimpleBagAdd"));
+    suite.addTest(new MoneyTest("testBagBagAdd"));
+    return suite;
+}</pre><p>Having defined the test cases we can start to implement them. The
+      implementation challenge here is dealing with all the different
+      combinations of <span class="command"><strong>Money</strong></span> with
+      <span class="command"><strong>MoneyBag</strong></span> until we solve the problem.</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="case_study_junit_running_the_tests.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="case_study_junit.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="case_study_junit_testing_practice.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">4.&nbsp;Running the tests&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;6.&nbsp;Testing Practice</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>
