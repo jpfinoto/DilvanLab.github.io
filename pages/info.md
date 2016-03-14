@@ -16,6 +16,6 @@ Here you can find:
 * [Our People](/people)
 * [Learning Aids](/project/learning)
 
-The person in charge of our group is [Dr. Dilvan Moreira](/people/pi/dilvan).
+The person in charge of our group is [Dr. Dilvan Moreira](/people/dilvan).
 
 We are part of the [Department of Computer Science](http://www.icmc.usp.br/Portal/conteudo/332/330/ciencias-de-computacao-scc) of the [University of São Paulo](http://www5.usp.br/english/?lang=en).
