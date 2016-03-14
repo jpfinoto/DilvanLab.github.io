@@ -20,12 +20,32 @@ We are a team of very committed people!
 
 ## Principal Investigator
 
-{% for post in site.categories.pi %}
-  {% include _pagination_small.html %}
+{% for post in site.categories.people %}
+  {% if post.tags contains 'pi' %}
+    {% include _pagination_small.html %}
+  {% endif %}
 {% endfor %}
 
 ## Ph.D. Students
 
-{% for post in site.categories.phd %}
-  {% include _pagination_small.html %}
+{% for post in site.categories.people %}
+  {% if post.tags contains 'phd' %}
+    {% include _pagination_small.html %}
+  {% endif %}
+{% endfor %}
+
+## M.Sc. Students
+
+{% for post in site.categories.people %}
+  {% if post.tags contains 'msc' %}
+    {% include _pagination_small.html %}
+  {% endif %}
+{% endfor %}
+
+## Undergraduate Students
+
+{% for post in site.categories.people %}
+  {% if post.tags contains 'under' %}
+    {% include _pagination_small.html %}
+  {% endif %}
 {% endfor %}
