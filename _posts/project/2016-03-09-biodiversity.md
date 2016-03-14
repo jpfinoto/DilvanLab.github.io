@@ -24,13 +24,10 @@ Our goal in this project is to create tools to allow the conversion of raw biodi
 
 ## Sub Projects
 
-{% for post in site.categories.subproject %}
-  {% if post.tags[0] == 'biodiv' %}
-    {% include _pagination_small.html %}
-  {% endif %}
+{% for post in site.categories.biodiv %}
+  {% include _pagination_small.html %}
 {% endfor %}
 
 ### All Projects
-{: .t60 }
 
 {% include list-posts tag='project' %}

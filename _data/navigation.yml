@@ -19,7 +19,7 @@
   - title: "Learning Tools"
     url: "/project/learning/"
   - title: "Finished Projects"
-    url: "/finishedProjects/"
+    url: "/subproject/finished/"
 
 - title: People
   url: "/people/"

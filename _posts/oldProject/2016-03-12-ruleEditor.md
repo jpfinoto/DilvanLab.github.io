@@ -5,8 +5,9 @@ subheadline:  "SWRL Rule Editor"
 teaser: "SWRL rule editor originally developed to edit rules to classify Autism cases."
 categories:
     - subproject
+    - finished
 tags:
-    - old
+    - finished
 image:
    thumb: "old-thumb.jpg"
 breadcrumb: true
@@ -18,8 +19,6 @@ The main NIH grant focused on creating semantic technologies that can help clini
 
 Our Autism Rule Editor has helped us to address this challenge with a highly innovative, visual-based approach that categorizes, diagrams and elicits rules on autism phenotypes from physicians. This tool is being implemented within a Web-based version of Protégé—the most widely used, open-source software environment for knowledge modeling in biomedicine. We are currently adapting and testing this approach to meet the needs of autism investigators in classifying phenotypes and traits for genome-wide association studies and other genetics research.
 
+### All Finished Projects
 
-### All Projects
-{: .t60 }
-
-{% include list-posts tag='old' %}
+{% include list-posts category='finished' %}

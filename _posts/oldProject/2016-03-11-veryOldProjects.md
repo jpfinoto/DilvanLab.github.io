@@ -5,8 +5,9 @@ subheadline:  "Very old projects"
 teaser: "Dilvan Moreira's master and undergraduate projects."
 categories:
     - subproject
+    - finished
 tags:
-    - old
+    - finished
 image:
    thumb: "old-thumb.jpg"
 breadcrumb: true
@@ -18,7 +19,6 @@ breadcrumb: true
 
 * **EDCHIP** - [Federal University of Bahia](http://www.ufba.br) , 1987 and later updated several times at [UNICAMP](http://www.fee.unicamp.br). Computer aided design tool for integrated circuit layout design written in Pascal under MS-DOS. It allows the design of mask layouts using rectangles (Manhattan style) and can generate and read CIF (Caltech Intermediate Form). It has been used for the design of many analogue and digital chips at LED-UNICAMP.
 
-### All Projects
-{: .t60 }
+### All Finished Projects
 
-{% include list-posts tag='old' %}
+{% include list-posts category='finished' %}
