@@ -6,7 +6,7 @@ teaser: "Biodiversity is essential to life on Earth and motivates many efforts t
 categories:
     - subproject
 tags:
-    - project
+    - subproject
 image:
    thumb: "biodiv-small.jpg"
 header:
@@ -14,7 +14,7 @@ header:
 breadcrumb: true
 ---
 
-Biodiversity is essential to life on Earth and motivates many efforts to collect data about species. These data are collected in different places and published in different formats. Researchers use it to extract new knowledge about living things, but it is difficult to retrieve, combine and integrate data sources from different places. This work will investigate how to integrate biodiversity information from heterogeneous sources using Semantic Web technologies. Its main objective is to propose an architecture to link biodiversity data using mainly their spatiotemporal dimension, effectively search these linked data sets and test them using real use cases, defined with the help of biodiversity experts. It is also an important objective to propose a suitable provenance model that captures not only data origin but also temporal information. This architecture will be tested on a set of representative data from important Brazilian institutions that are involved in studies of biodiversity.
+The main objective is to propose an architecture to link biodiversity data using mainly their spatiotemporal dimension, effectively search these linked data sets and test them using real use cases, defined with the help of biodiversity experts. It is also an important objective to propose a suitable provenance model that captures not only data origin but also temporal information. This architecture will be tested on a set of representative data from important Brazilian institutions that are involved in studies of biodiversity.
 
 The main question is:
 
