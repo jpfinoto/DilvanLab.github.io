@@ -8,9 +8,9 @@ categories:
 tags:
     - project
 image:
-   thumb: "geobio.jpg"
+   thumb: "biodiv-small.jpg"
 header:
-    image_fullwidth: "geobio.jpg"
+    image_fullwidth: "biodiv.jpg"
 breadcrumb: true
 ---
 
