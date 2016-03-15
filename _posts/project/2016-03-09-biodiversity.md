@@ -27,7 +27,6 @@ Our goal in this project is to create tools to allow the conversion of raw biodi
 {% for post in site.categories.biodiv %}
   {% include _pagination_small.html %}
 {% endfor %}
-[Using Spatiotemporal Information to Integrate Heterogeneous Biodiversity Semantic Data](/_posts/project/2016-03-15-biodiversity-GeoBio.md)
 
 
 ### All Projects
