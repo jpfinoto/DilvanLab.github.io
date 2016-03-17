@@ -6,7 +6,7 @@ teaser: "A Quiz plugin for Moodle to allow programming questions that will be co
 categories:
     - subproject
 tags:
-    - epad
+    - learning
 image:
    thumb: "unsplash_moodle-code-thumb.png"
 header:
