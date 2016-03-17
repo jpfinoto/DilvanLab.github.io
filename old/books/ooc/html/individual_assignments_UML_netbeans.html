@@ -1,0 +1,50 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Using UML inside Eclipse</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="individual_assignments.html" title="Chapter&nbsp;21.&nbsp;Individual Assignments - Laboratory"><link rel="prev" href="individual_assignments_complex.html" title="2.&nbsp;Derive a Class for Complex Numbers"><link rel="next" href="individual_assignments_interval_class.html" title="4.&nbsp;Interval Class"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Using UML inside Eclipse</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="individual_assignments_complex.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;21.&nbsp;Individual Assignments - Laboratory</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_interval_class.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="individual_assignments.html">Individual Assignments - Laboratory</a></span> &gt; <span class="breadcrumb-node">Using UML inside Eclipse</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="individual_assignments_UML_netbeans"></a>3.&nbsp;Using UML inside Eclipse</h2></div></div></div><p>To provide integration with UML we will use the plugin Omondo
+      EclipseUML, which is a visual modeling tool that supports the creation
+      of UML diagrams, reverse engineering and other functions. If you don't
+      have it you can download the <span class="emphasis"><em>free</em></span> version from the
+      site <a class="ulink" href="http://www.omondo.com" target="_top">www.omondo.com</a>.</p><p>Once installed, follow these steps:</p><p><span class="bold"><strong>1)</strong></span> Using the EclipseUML tool,
+      create a Class Diagram for the classes you created in the last
+      laboratory assignment (<code class="classname">Complex</code> and
+      <code class="classname">Fraction</code>) and the interface
+      <code class="interfacename">BasicOps</code>. Include the classes
+      <code class="classname">Number</code> and <code class="classname">Object</code> in the
+      appropriate places.</p><p><span class="bold"><strong>2)</strong></span> Compile and run the generated
+      classes. Did you prefer using UML for creating the files or the code
+      editor? Why?</p><p><span class="bold"><strong>3)</strong></span> Now, select the project where
+      the code for the classes <code class="classname">Fraction</code> and
+      <code class="classname">Complex</code> is. Generate automatically a Class
+      Diagram for the two classes and for the interface
+      <code class="classname">BasicOps</code>.</p><p><span class="bold"><strong>4)</strong></span> Define a new interface called
+      <code class="interfacename">FourOps</code>:</p><pre class="programlisting">    public interface FourOps {
+
+        // Add a number to this number
+        public void add(Number a);
+
+        // Subtract a number from this number
+        public void sub(Number b);
+
+        // Multiply a number to this number
+        public void mult(Number a);
+
+        // Divide this number by
+        public void div(Number b);
+
+    }</pre><p>Declare that <code class="classname">Complex</code> and
+      <code class="classname">Fraction</code> implement the
+      <code class="interfacename">FourOps</code> interface using the EclipseUML
+      tool. After this, generate the code and finish the coding using the
+      editor.</p><p><span class="bold"><strong>5)</strong></span> Which interface is better?
+      <code class="interfacename">BasicOps</code> or
+      <code class="interfacename">FourOps</code>? Why?</p><p><span class="bold"><strong>6)</strong></span> Which was easier to implement?
+      Why?</p><p>Hand in all material you created.</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="individual_assignments_complex.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="individual_assignments.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_interval_class.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Derive a Class for Complex Numbers&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Interval Class</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

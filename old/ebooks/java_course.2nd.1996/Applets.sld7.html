@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Applets Slide 7: Communicating with Other Programs.</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Applets:</FONT> </FONT><B><FONT COLOR="#0000FF">Communicating
+with Other Programs</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><B><A HREF="tutorial/applet/communication/index.html">Communicating
+with Other Programs</A></B></H2>
+
+<UL>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/applet/communication/iac.html">Sending
+Messages to Other Applets on the Same Page</A> </H2>
+
+<UL>
+<H3>Define an applet name:</H3>
+</UL>
+</UL>
+
+<PRE>              &lt;applet codebase=example/ code=Sender.class width=450 height=200
+                  name=&quot;buddy&quot;&gt;
+              . . .
+              &lt;/applet&gt;
+</PRE>
+
+<PRE>              &lt;applet codebase=example/ code=Receiver.class width=450 height=35&gt;
+                  &lt;param name=&quot;name&quot; value=&quot;old pal&quot;&gt;
+               . . .
+              &lt;/applet&gt;</PRE>
+
+<UL>
+<UL>
+<H3>Get the applet by its name:</H3>
+
+<UL>
+<PRE>receiver = getAppletContext().<B>getApplet</B>(&quot;&lt;applet name&gt;&quot;);</PRE>
+</UL>
+
+<H3>Finding All the Applets on a Page: </H3>
+
+<UL>
+<PRE>Enumeration e = getAppletContext().<B>getApplets</B>();</PRE>
+</UL>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/applet/communication/browser.html">Communicating
+with the Browser</A> </H2>
+
+<UL>
+<H3>An applet can ask the browser to show HTML documents:</H3>
+</UL>
+
+<PRE>          public void showDocument(java.net.URL url)
+          public void showDocument(java.net.URL url, String targetWindow)</PRE>
+
+<UL>
+<H3>Target windows:</H3>
+
+<DT>&quot;_blank&quot; </DT>
+
+<DD>Display the document in a new, nameless window.</DD>
+
+<DT>&quot;windowName&quot; </DT>
+
+<DD>Display the document in a window named windowName. This window is created
+if necessary.</DD>
+
+<DT>&quot;_self&quot; </DT>
+
+<DD>Display the document in the window and frame that contain the applet.</DD>
+
+<DT>&quot;_parent&quot; </DT>
+
+<DD>Display the document in the applet's window but in the parent frame
+of the applet.</DD>
+
+<DT>&quot;_top&quot; </DT>
+
+<DD>Display the document in the applet's window but in the top-level frame.
+</DD>
+</UL>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Applets.sld8.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Applets.sld8.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

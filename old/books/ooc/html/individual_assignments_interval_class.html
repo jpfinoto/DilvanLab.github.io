@@ -1,0 +1,64 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Interval Class</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="individual_assignments.html" title="Chapter&nbsp;21.&nbsp;Individual Assignments - Laboratory"><link rel="prev" href="individual_assignments_UML_netbeans.html" title="3.&nbsp;Using UML inside Eclipse"><link rel="next" href="individual_assignments_visual_editor.html" title="5.&nbsp;Using the Visual Editor"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Interval Class</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="individual_assignments_UML_netbeans.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;21.&nbsp;Individual Assignments - Laboratory</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_visual_editor.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="individual_assignments.html">Individual Assignments - Laboratory</a></span> &gt; <span class="breadcrumb-node">Interval Class</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="individual_assignments_interval_class"></a>4.&nbsp;Interval Class</h2></div></div></div><p>The goal of this practice is to develop the code for the class
+      <code class="classname">Interval</code> from the object modeling in UML to the
+      final code in Java.</p><p>The class <code class="classname">Interval</code> represents numbers that
+      have imprecision. An interval is a real number that has a precision
+      range associated to it. For instance, the value of resistance of
+      commercial resistors is given by an interval number. A 20K 10% resistor
+      has its value in between 18K and 22K.</p><p>This new class has to be able to perform the four basic arithmetic
+      operations: addition, subtraction, multiplication and division. It
+      should have, at least, the following:</p><pre class="programlisting">    class Interval extends Number implements Ops {
+
+        Interval(Interval i);
+        Interval(double number, float precision);
+        float getPrecision();
+
+           (The same for add, sub, mult, div)
+           (Implement all Number methods)
+           (Implement the toString, equals and hash from Object)
+
+    }</pre><p>It should implement the <code class="interfacename">Ops</code>
+      interface:</p><pre class="programlisting">    public interface Ops {
+
+        // Add a number to this number
+        public Interval add(Interval a);
+
+        // Subtract a number from this number
+        public Interval sub(Interval b);
+
+        // Multiply a number to this number
+        public Interval mult(Interval a);
+        
+        // Divide this number by
+        public Interval div(Interval b);
+
+    }</pre><p>For 20K 10%: Interval(&lt;number&gt;, &lt;precision%&gt;) e.g.:
+      Interval(20000, 10).</p><p>For instance, if one wants to calculate the resistance of two
+      parallel resistors:</p><pre class="programlisting">Input:
+    R1 = 20K 10%   R2 = 10K 5%
+
+Code:
+    Interval r1 = new Interval(20000, 10);
+    Interval r2 = new Interval(10000, 5);
+    Interval rp = new Interval(r1).mult(r2).div(new Interval(r1).add(r2));
+    System.out.println("Parallel: " + r1 + " " + r2 + " = " + rp);
+
+Output:
+    Parallel: 20000 10% 10000 5% = 6662.9 6.7%</pre><p><span class="bold"><strong>1)</strong></span> First draw the UML
+      diagrams.</p><p><span class="bold"><strong>2)</strong></span> Generate the code from
+      UML.</p><p><span class="bold"><strong>3)</strong></span> Complete the code and run it
+      using the Eclipse editor.</p><p><span class="bold"><strong>4)</strong></span> The code should be able to run
+      the example above.</p><p><span class="bold"><strong>5)</strong></span> Which of the three interfaces
+      do you think is best? <code class="classname">BasicOps</code>,
+      <code class="classname">FourOps</code> or <code class="classname">Ops</code>?
+      Why?</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="individual_assignments_UML_netbeans.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="individual_assignments.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="individual_assignments_visual_editor.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Using UML inside Eclipse&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Using the Visual Editor</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

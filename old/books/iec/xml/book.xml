@@ -1,0 +1,1957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" -->
+<book id="iec">
+  <bookinfo>
+    <title>Introduction to Electricity for Computing</title>
+
+    <subtitle>A Basic Course about Electricity</subtitle>
+
+    <author>
+      <firstname>Dilvan</firstname>
+
+      <othername>de Abreu</othername>
+
+      <surname>Moreira</surname>
+
+      <email>dilvan@computer.org</email>
+    </author>
+
+    <editor>
+      <firstname>Dilvan</firstname>
+
+      <surname>Moreira</surname>
+    </editor>
+
+    <copyright>
+      <year>2000</year>
+
+      <year>2001</year>
+
+      <year>2002</year>
+
+      <year>2003</year>
+
+      <year>2004</year>
+
+      <holder>Dilvan Moreira</holder>
+    </copyright>
+
+    <edition>First</edition>
+
+    <publisher>
+      <publishername>Dilvan Moreira</publishername>
+
+      <address><city>São Carlos </city><country>Brazil</country></address>
+    </publisher>
+
+    <revhistory>
+      <revision>
+        <revnumber>$Revision: 1.5 $</revnumber>
+
+        <date>$Date: 2004/08/03 16:47:35 $</date>
+      </revision>
+    </revhistory>
+
+    <pubdate>March 2000</pubdate>
+  </bookinfo>
+
+  <chapter id="introduction">
+    <title>Introduction</title>
+
+    <section id="introduction_course_methodology">
+      <title>Course Methodology</title>
+
+      <para>This course is centered in four goals: the four experiments the
+      students have to perform. Each experiment will have a group of students
+      in charge of it. This group will give a lecture with theoretical
+      material covering the needs of the experiment, make a test about this
+      theoretical material, prepare extra material for the experimental class
+      (like questions for the reports), conduct the experiments with the other
+      students and grade the tests and reports made by the other
+      students.</para>
+
+      <para>The tests and reports will be reviewed by the course
+      monitor.</para>
+
+      <para>There will be 3 classes for each experiment. Each student should
+      read the recommended texts BEFORE each experiment's first class. The 3
+      classes will be divided in:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Circuit theory about the experiment and a test.</para>
+        </listitem>
+
+        <listitem>
+          <para>Experimental class for the first half of the students.</para>
+        </listitem>
+
+        <listitem>
+          <para>Experimental class for the second half of the students.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>After the last experimental class the students will have one week
+      to hand in an individual report about the experiment. This report should
+      be in the HTML format (the Word editor can save in this format) and
+      handed in using the electronic tools provided.</para>
+
+      <para>The groups in charge of each experiment should upload the material
+      for the theoretical class before the day of the class. This material
+      should be in the HTML format.</para>
+
+      <para><emphasis role="bold">FINAL GRADE</emphasis></para>
+
+      <para>Each student final grade will be the average of:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>His group's grade.</para>
+        </listitem>
+
+        <listitem>
+          <para>The average of his tests grades.</para>
+        </listitem>
+
+        <listitem>
+          <para>The average of his report grades.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </chapter>
+
+  <chapter id="experiments">
+    <title>Experiments to Master</title>
+
+    <section id="experiments_basic">
+      <title>Basic Laboratory Tools</title>
+
+      <para>The main goal of this experimental class is to make you familiar
+      with basic laboratory tools and circuit techniques. You should master
+      the following topics by reading the associated material before the
+      class:</para>
+
+      <para><emphasis role="bold">1- Continuous current
+      circuits:</emphasis></para>
+
+      <para>Book: Eletrônica Básica - J. Brophy - Chapter 1 - pages 1 to
+      13.</para>
+
+      <para>Book: Eletrônica Vol 1 - Malvino - Chapter 1 - pages 1 to
+      9.</para>
+
+      <para><emphasis role="bold">2- Equipment used in the
+      experiments:</emphasis></para>
+
+      <para>Book: Eletrônica Básica - J. Brophy - Chapter 1 - pages 25 to
+      31.</para>
+
+      <para>Anexo da prática: <link
+      linkend="extra_multimeter">Multimeter</link>, <link
+      linkend="extra_generator_it100k">Function Generator</link>, <link
+      linkend="extra_power_supply">Power Supply</link>, <link
+      linkend="extra_resistors">Reading Resistors</link>, <link
+      linkend="extra_protoboards">Protoboards</link>.</para>
+
+      <para><emphasis role="bold">Complementary reading:</emphasis></para>
+
+      <para>Book: Teoria e Desenvolvimento de Projetos de Circuitos
+      Eletrônicos - Cipelli &amp; Sandrini - pages 15 to 18.</para>
+    </section>
+
+    <section id="experiments_osciloscope">
+      <title>Osciloscope Use</title>
+
+      <para>The main goal of this experimental class is to make you familiar
+      with the use of the oscilloscope and with circuit techniques like the
+      Kirchhoff law. You should master the following topics by reading the
+      associated material before the class:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Circuits' Laws:</para>
+
+          <para>Book: Eletrônica Básica - J. Brophy - Chapter 1 - pages 13 to
+          25.</para>
+
+          <para>Book: Eletrônica Vol 1 - Malvino - Chapter 1 - pages 9 to
+          21.</para>
+        </listitem>
+
+        <listitem>
+          <para>Equipment used in the experiments:</para>
+
+          <para>Book: Eletrônica Básica - J. Brophy - Chapter 2 - pages 64 to
+          68.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section id="experiments_filters">
+      <title>Passive Filters</title>
+
+      <para>The main goal of this experimental class is to teach you about
+      passive filters: Resistor- Capacitor filters and Inductor-Capacitor
+      filters. You should master the following topics by reading the
+      associated material before the class:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Alternate Currents:</para>
+
+          <para>Book: Eletrônica Básica - J. Brophy - Chapter 2 - pages 35 to
+          50 and chapter 3 - pages 69 to 80.</para>
+
+          <para>Book: Eletrônica Vol 1 - Malvino - Chapter 1 - pages 9 to
+          21.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section id="experiments_diodes">
+      <title>Diodes</title>
+
+      <para>The main goal of this experimental class is to teach you about
+      solid state diodes. You should master the following topics by reading
+      the associated material before the class:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Circuits with Diodes:</para>
+
+          <para>Book: Eletrônica Básica - J. Brophy - Chapter 4 - pages 94 to
+          101 and pages 112 to 114.</para>
+
+          <para>Book: Eletrônica Vol 1 - Malvino - Chapter 2 - pages 22 to 53
+          and chapter 4 - pages 99 to 113.</para>
+        </listitem>
+
+        <listitem>
+          <para>Complementary reading:</para>
+
+          <para>Book: Eletrônica vol1 - Millman &amp; Halkias - pages 47 to
+          73.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section id="experiments_transistors">
+      <title>Transistors</title>
+
+      <para>The main goal of this experimental class is to teach you about
+      transistors. You should master the following topics by reading the
+      associated material before the class:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Transistors:</para>
+
+          <para>Book: Eletrônica Vol 1 - Malvino - Chapter 5 - pages 132 to
+          160, chapter 6 - pages 174 to 191 and chapter 7 - pages 203 to
+          224.</para>
+        </listitem>
+
+        <listitem>
+          <para>Complementary reading:</para>
+
+          <para>Book: Eletrônica Básica - J. Brophy - Chapter 5 - pages 130 to
+          134 and pages 136 to 139. Chapter 6 - pages 165 to 168.</para>
+
+          <para>Book: Eletrônica vol1 - Millman &amp; Halkias - pages 112 to
+          137.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </chapter>
+
+  <chapter id="individual_assignments" role="assignments">
+    <title>Individual Assignments - Laboratory</title>
+
+    <section id="individual_assignments_basic_tools">
+      <title>Basic Tools (Half1/Half2)</title>
+
+      <section>
+        <title>Objetivos</title>
+
+        <para>Familiarização com instrumentos de Medição Eletrônicos,
+        Identificação e Medição de Resistências e de Protoboards.</para>
+      </section>
+
+      <section>
+        <title>Introdução</title>
+
+        <para>O objetivo principal desta prática é a familiarização com
+        algumas ferramentas básicas que serão utilizadas nas aulas práticas.
+        Com relação a instrumentos de medida, os mais utilizados (no curso de
+        Eletrônica Básica) serão o Multímetro, o Gerador de Funções, a Fonte
+        de corrente e tensão e osciloscópio. Os primeiros serão vistos nesta
+        aula e o osciloscópio na, próxima prática.</para>
+
+        <para>O multímetro é um instrumento com múltiplas f unções. Nas aulas
+        práticas será utilizado o multímetro digital MIC-2200A que contém as
+        seguintes funções: medições de tensão AC e CC (voltímetro), corrente
+        CC (amperímetro), resistência (ohmimetro) e teste de diodos.</para>
+
+        <para>O gerador de funções fornece tensão alternada com diferentes
+        formas, amplitudes e freqüências. O gerador de funções a ser utilizado
+        é o IT 100K, que fornece ondas senoidais, triangulares e quadradas com
+        frequências entre lHz e 100 KHz.</para>
+
+        <para>A fonte de alimentação que será utilizada no laboratório é a SME
+        59 que fornece fontes de corrente e tensão. A fonte de tensão pode ser
+        utilizada de forma Simétrica (+/- 20 V) ou como duas fontes (de 0 a 20
+        V). A fonte de corrente é ajustável entre 0 e 2A. Esta fonte oferece
+        ainda um voltímetro com três escalas de tensão (2, 20 e 200 V) e um
+        amperímetro com três escalas de corrente (2, 20 e 200 mA), ambos com 3
+        1/2 dígitos.</para>
+
+        <para>Para a montagem dos circuitos será utilizado um protoboard com
+        550 pontos. Protoboard é uma placa onde tem-se disponíveis vários
+        pontos, alguns interligados e vários independentes.</para>
+
+        <para>A parte prática desta aula constará de medições de correntes,
+        tensões e resistências. O valor nominal das resistências é obtido
+        através de um código de cores. Este código indica não só o valor como
+        também sua tolerância isto é, o quanto este o valor nominal de cada
+        resistência pode variar.</para>
+
+        <para>Os modo de operação dos equipamentos a serem utilizados no
+        laboratório, como utilizar o protoboard e como identificar os valores
+        das resistências pelo código de cores é descrito em uma apostila que
+        você encontrará no laboratório.</para>
+      </section>
+
+      <section>
+        <title>Parte Prática</title>
+
+        <para><emphasis role="bold">1. Medição de
+        Resistência</emphasis></para>
+
+        <para>1.1 - Identifique um dos resistores fornecidos lendo o seu valor
+        e tolerância através do código de cores.</para>
+
+        <para>1.2 - Utilizando uma escala adequada do multímetro, meça o valor
+        da resistência. Leia sobre o modo de operação do multímetro no
+        material disponível na Web.</para>
+
+        <para>1.3 - Compare o valor medido com o valor lido levando em
+        consideração a tolerância do resistor e a precisão do
+        multímetro.</para>
+
+        <para><emphasis role="bold">2. Medição de tensão e corrente
+        contínua</emphasis></para>
+
+        <para>2.1 - Ajuste a fonte da esquerda para fornecer uma tensão
+        contínua de 10 V (ajuste de corrente no máximo).</para>
+
+        <para>2.2 - Utilizando o protoboard, conecte a fonte ao resistor
+        fornecido, conforme o esquema abaixo:</para>
+
+        <figure>
+          <title>Circuito 1</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab1.image1.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>Observe que o amperímetro deve ser colocado em série com a fonte
+        e a resistência.</para>
+
+        <para>2.3 - Meça o valor da corrente que circula pelo circuito.</para>
+
+        <para>2.4 - Calcule o valor do resistor R.</para>
+
+        <para>2.5 - Compare com os valores obtidos em 1.1 e 1.2 e
+        conclua.</para>
+
+        <para>2.6 - Desconecte as ligações. Retorne a zero os ajustes de
+        tensão e corrente da fonte.</para>
+
+        <para>2.7- Monte o circuito abaixo, utilizando a fonte da
+        esquerda:</para>
+
+        <figure>
+          <title>Circuito 2</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab1.image2.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>Observe que o voltímetro deve ser colocado em paralelo com a
+        resistência sobre a qual deseja-se medir a tensão.</para>
+
+        <para>2.8 - Ajuste a fonte para fornecer uma corrente continua de l0mA
+        (ajuste de tensão no máximo).</para>
+
+        <para>2.9 - Meça o valor da tensão sobre o resistor.</para>
+
+        <para>2.10 - Calcule o valor do resistor, compare com os obtidos
+        anteriormente e conclua.</para>
+
+        <para><emphasis role="bold">3. Medição de tensão e
+        corrente</emphasis></para>
+
+        <para>3.1 - Monte o circuito abaixo:</para>
+
+        <figure>
+          <title>Circuito 3</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab1.image3.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>3.2 - Meça a tensão sobre os dois resistores e analise os
+        resultados.</para>
+
+        <para>3.3 - Meça a corrente que flui pelo circuito e compare com o
+        resultado obtido em 2.3. Conclua.</para>
+
+        <para><emphasis role="bold">4. Medição de tensão alternada utilizando
+        multímetro</emphasis></para>
+
+        <para>4.1 - Conecte o multímetro diretamente ao gerador de
+        sinais.</para>
+
+        <para>4.2 - Ajuste o gerador para fornecer uma tensão senoidal com 1
+        KHz e tensão pico a pico máxima.</para>
+
+        <para>4.3 - Utilizando o manual de operação do multímetro obtenha o
+        valor pico a pico da tensão gerada. Analise o resultado.</para>
+
+        <para>4 .4 - Ajuste agora o gerador de funções obter uma onda quadrada
+        com mesma amplitude e frequência.</para>
+
+        <para>4.5 - Repita o item 4.3.</para>
+
+        <para><emphasis role="bold">5. Procedimentos Finais</emphasis></para>
+
+        <para>5.1 - Desligue todos os equipamentos, desconecte os cabos e
+        componentes guardando-os nos recipientes adequados.</para>
+
+        <para>5.2 - Responda as perguntas abaixo:<informalexample>
+            <para>- Explique em poucas palavras porque deve-se conectar o
+            multímetro em serie parar medir corrente e em paralelo para
+            tensões.</para>
+          </informalexample></para>
+
+        <para>5.3 Conclua o relatório</para>
+
+        <para>O relatório deve conter todos os valores medidos ou cálculos
+        executados, as analises pedidas, as conclusões e respostas a
+        perguntas. Quando julgar necessário ou for requisitado, descrever o
+        procedimento adotado para obtenção dos resultados. Deixar bem claro a
+        que item do roteiro se refere cada resultado.</para>
+
+        <para><link linkend="extra">Extra Material</link></para>
+      </section>
+    </section>
+
+    <section id="individual_assignments_osciloscope">
+      <title>Osciloscope Use (Half1/Half2)</title>
+
+      <section>
+        <title>Objetivo</title>
+
+        <para>Familiarização com o uso do osciloscópio como ferramenta básica
+        para a depuração de circuitos digitais.</para>
+      </section>
+
+      <section>
+        <title>Introdução</title>
+
+        <para>O osciloscópio pode ser visto simplificadamente como mostra a
+        figura 1. Basicamente, o osciloscópio é formado por um tubo de raios
+        catódicos (cinescópio) contendo:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Um feixe eletrônico que, chocando-se contra a parede do
+            tubo, produz luz visível;</para>
+          </listitem>
+
+          <listitem>
+            <para>Um par de placas posicionadas verticalmente que, através da
+            produção de um campo elétrico ou magnético, consegue deslocar o
+            feixe eletrônico para a direita ou esquerda;</para>
+          </listitem>
+
+          <listitem>
+            <para>Um par de placas posicionadas horizontalmente que manipula D
+            movimento do feixe para cima e para baixo.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>O resto do osciloscópio se compõe de circuitos para gerar os
+        controles adequados para auxiliar o usuário a conseguir as medições
+        apropriadas. A figura 2 ilustra um diagrama de blocos de um
+        osciloscópio com um canal Y.</para>
+
+        <warning>
+          <para>Osciloscópios são Aparelhos Projetados para Medidas de
+          Voltagens.</para>
+        </warning>
+
+        <para>As voltagens podem ser constantes ou variantes no tempo. As
+        placas responsáveis pelo movimento horizontal são colocadas ali
+        exatamente para possibilitar a analise de sinais que se movem no
+        tempo. Convença-se disto.</para>
+
+        <para>Dessa forma, os controles principais do osciloscópio são dois
+        botões:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Um que controla o deslocamento vertical do sinal (que da' a
+            voltagem); e</para>
+          </listitem>
+
+          <listitem>
+            <para>Um que controla o deslocamento horizontal do sinal (que
+            permite medir o período). Note que você deve fornecer ao
+            osciloscópio uma base de tempo coerente com a freqüência do sinal
+            a ser medido.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>A maioria dos osciloscópio fornecem a possibilidade de
+        visualização de dois sinais ao mesmo tempo. Esta característica e'
+        importante para se verificar e medir atrasos entre um sinal e
+        outro.</para>
+
+        <para>Trigger (gatilho) e' um circuito que permite o usuário escolher
+        -9 fonte de disparo para a varredura do sinal e em que nível
+        (voltagem) se deseja que esta varredura se Inicia. As figuras 3, 4 e 5
+        Ilustram esse processo.</para>
+
+        <para>Outros controles comuns são:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">Intensidade do foco</emphasis> (faz
+            com que a aceleração dos elétrons no faixe eletrônico aumente ou
+            diminua, aumentando ou diminuindo a intensidade de luz gerada com
+            o choque).</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Foco</emphasis>. Que faz com que se
+            consiga um traço nítido na tela.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Com o osciloscópio.</para>
+
+        <para>1. Ligue o aparelho.</para>
+
+        <para>2. Coloque-o em MODE CH-A (CHanneL R).</para>
+
+        <para>3. Coloque INPUT A na posição GND (GrouND).</para>
+
+        <para>4. Ache o traço usando INTENSITY, FOCUS &amp; POSITION (No
+        CH-A).</para>
+
+        <para>5. Coloque o traço no meia da tela.</para>
+
+        <para>6. Escolha INPUT DC.</para>
+
+        <para>7. Coloque a ponta de prova na entrada de calibração do
+        aparelho.</para>
+
+        <para>8. Verifique a calibração das variáveis VOLTS/CM a SWEEP
+        TIME/CM.</para>
+
+        <para>9. Tente "congelar" a sinal na tela (use o botão da variável
+        tempo e de trigger).</para>
+
+        <para>10. Meça a voltagem e período do sinal. Chame o professor ou
+        técnico.</para>
+
+        <para>11. que acontece quando a INPUT é colocada na posição AC?</para>
+
+        <figure>
+          <title>Tubo de raios Catodicos</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image1.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <figure>
+          <title>Esquema do Osciloscópio</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image2.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <figure>
+          <title>Pulsos de Sincronísmo</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image3.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <figure>
+          <title>Sincronismo por Gatilho</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image4.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <figure>
+          <title>Geração de Gatilhos</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image5.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </section>
+
+      <section>
+        <title>Leis Básicas e Circuitos</title>
+
+        <para><emphasis role="bold">Objetivos</emphasis></para>
+
+        <para>Permitir que o aluno comprove algumas leis fundamentais que
+        regem circuitos elétricos.</para>
+
+        <para><emphasis role="bold">Material Necessário:</emphasis></para>
+
+        <programlisting>01        - Osciloscópio
+01        - Gerador de sinais
+01        - Multimetro
+01        - Protoboard
+01        - Conjunto de cabos
+01        - resistor de 390 Ohms
+01        - resistor de 620 Ohms
+01        - resistor de 1.0 kOhms
+01        - resistor de 1.5 kOhms
+01        - resistor de 2.2 kOhms
+01        - resistor de 4.7 kOhms
+01        - resistor de 8.2 kOhms
+01        - resistor de 1.0 kOhms</programlisting>
+      </section>
+
+      <section>
+        <title>Parte 1 - Leis de Kirchhoff</title>
+
+        <para>1.1 - Implemente o circuito abaixo o meça com o multímetro as
+        correntes indicadas.<simplelist>
+            <member>R1= 1.0 KOhm R2 = 620 OHMS R3 330 Ohms V = 10
+            Volts</member>
+          </simplelist></para>
+
+        <figure>
+          <title>Circuito Paralelo</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image6.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1.2 - Compare as correntes medidas com os valores teóricos
+        esperados e verifique se as leis de Kirchhoff são satisfeitas. Leve em
+        consideração a queda de tensão sobre o multímetro.</para>
+
+        <para>1.3 - Implemente o circuito abaixo e meça com o multímetro as
+        tensões indicadas.<simplelist>
+            <member>R1 = 2.2 Kohms R2 = 4.7 kOhms R3 = 8.2 Kohms V = 10
+            V</member>
+          </simplelist></para>
+
+        <figure>
+          <title>Circuito Série.</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image7.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1.4 - Compare as tensões medidas com os valores teóricos
+        esperados e verifique se as leis de Kirchhoff são satisfeitas.
+        Conclua</para>
+      </section>
+
+      <section>
+        <title>Parte 2 – Análise de Malhas</title>
+
+        <para>Considere o circuito abaixo.</para>
+
+        <para>2.1 - Determina um valor (comercial) para R5 de modo que a
+        tensão Vab seja aproximadamente 5.0 Volts. (mostro no relatório os
+        cálculos efetuados)</para>
+
+        <para>2.2 - Substitua o resistor R5, calculado no item 2.1, pelos
+        valores abaixo e meçam com o multímetro as tensões Vab e a corrente no
+        ramo AB. Faça um gráfico de VxR para os valores medidos.<simplelist>
+            <member>Valores de R5: 1.0 Kohms, 2k2 Kohms, 10.0 Kohms a 1
+            Mohms</member>
+          </simplelist></para>
+
+        <figure>
+          <title>Análise de Malhas</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image8.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>2.3 - Analise o comportamento do circuito com base nos
+        resultados do item 2.1, descrevendo o comportamento dos bipolos ativos
+        E1 e E2</para>
+      </section>
+
+      <section>
+        <title>Parte 3 - Medida de tensão com o Osciloscópio</title>
+
+        <para>3.1. Monte o circuito mostrado abaixo:</para>
+
+        <figure>
+          <title>Medida de Tensão</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab2.image9.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>3.2. Ajuste o gerador de sinais para uma saída senoidal com 5
+        Vpp, Vm=0 e 500HZ, medidos no osciloscópio.</para>
+
+        <para>3.3. Com uma escala apropriada, utilize a multímetro.(tensão
+        AC), para medir a voltagem sobra o resistor.</para>
+
+        <para>3.4. Compare com a valor ajustado no item anterior, verifique se
+        esse valor é próximo de Vp/sqrt(2) e conclua.</para>
+      </section>
+
+      <section>
+        <title>Parte 4 - Procedimentos finais</title>
+
+        <para>4.1. Desligue todos os equipamentos, desconecte os cabos e
+        componentes guardando-os nos recipientes adequados.</para>
+
+        <para>4.2. Conclua o relatório</para>
+
+        <para><link linkend="extra">Extra Material</link></para>
+      </section>
+    </section>
+
+    <section id="individual_assignments_RCL_circuits">
+      <title>RCL Circuits (Half1/Half2)</title>
+
+      <section>
+        <title>Circuitos RC</title>
+
+        <para><emphasis role="bold">Implemente o circuito mostrado abaixo e
+        aplique um sinal ve(t) = 5*sen(wt) onde, w = 2*pi*f</emphasis></para>
+
+        <simplelist>
+          <member>C= 10 nf R= 1.5 Kohms</member>
+        </simplelist>
+
+        <figure>
+          <title>Circuito RC 1</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab3.image1.gif" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1.1 Meça a saída vs(t) (utilizando o osciloscópio) para
+        frequências de entrada de 500 Hz, 1 KHz, 5 KHz, 10 KHz, 100 KHz. Meça
+        a corrente i(t) (concomitantemente à medida de vs(t)). Analise os
+        resultados obtidos a trace um gráfico vs(f) e i(f).</para>
+
+        <para>1.2 - Meça agora vs(t) e ve(t) concomitantemente, para os mesmos
+        valores de RC do item 1.1. Repita a análise o um gráfico de vs(f) e
+        ve(f).</para>
+
+        <para>1.3 - Porque esse circuito recebe o nome de filtro passa
+        baixa?</para>
+
+        <para><emphasis role="bold">Implemente o circuito mostrado abaixo e
+        aplique um sinal ve(t) = 5*sen(wt) onde, w = 2*pi*f</emphasis></para>
+
+        <simplelist>
+          <member>C= 10 nF R= 1.5 KOhms</member>
+        </simplelist>
+
+        <figure>
+          <title>Circuito RC 2</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab3.image2.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>2.1 - Meça a saída vs(t) (utilizando o osciloscópio) para
+        frequências de entrada de 500 Hz, 1 KHz, 5 KHz, 10 KHz, 100 KHz. Meça
+        a corrente i(t) (concomitantemente à medida de vs(t)). Analise os
+        resultados obtidos a trace um gráfico vs(f) e i(f).</para>
+
+        <para>2.2 - Meça agora vs(t) e ve(t) concomitantemente, para os mesmos
+        valores de RC do item 1.1. Repita a análise a um gráfico de vs(f) e
+        ve(f).</para>
+
+        <para>2.3 - Porque esse circuito recebe o nome de filtro passa
+        alta?</para>
+
+        <para>3. Aplique uma onda quadrada na entrada ve(t) do circuito
+        apresentado no item 1.</para>
+
+        <para>3.1 - Meça a saída vs(t) no osciloscópio para para f = l KHz e
+        10 KHz.</para>
+
+        <para>3.2 - Meça, concomitantemente, a entrada ve(t). Analise os
+        resultados obtidos e trace os gráficos de ve(t) e vs(t) para a
+        frequência de 1KHz.</para>
+      </section>
+
+      <section>
+        <title>Circuitos LC</title>
+
+        <para><emphasis role="bold">Objetivos</emphasis></para>
+
+        <para>Demonstrar o funcionamento de circuitos elétricos dotados de
+        indutores, operando em regime permanente senoídal.</para>
+
+        <para><emphasis role="bold">Circuito RLC série</emphasis></para>
+
+        <para>1.1 -Implemente o circuito abaixo, observando com o osciloscópio
+        as tensões v1 e v2.</para>
+
+        <simplelist>
+          <member>R= 100 Ohms L = 1 mH C= 100nF Vl = 1.5 sen( wt)</member>
+        </simplelist>
+
+        <figure>
+          <title>Circuito LC</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab3.image3.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1.2 – Meça as amplitudes e ângulos de fase de v1 e v2 para as
+        frequências de 1 KHz e 50 KHz. Compare os valores medidos com os
+        valores teóricos calculados, escrevendo suas conclusões.</para>
+
+        <para>1.3 – Observando vl e v2, varie à frequência de vl e determine a
+        frequência de ressonância do circuito. Compare com o valor teórico
+        calculado e conclua. Responda a questão 1 do relatório.</para>
+
+        <para><emphasis role="bold">Circuito LC paralelo</emphasis></para>
+
+        <para>2.1 - Implemente o circuito abaixo, observando com o
+        osciloscópio as tensões vl e v2.</para>
+
+        <simplelist>
+          <member>R= 100 KOhms L = 1 mH C = 100 nF vl = 1.5 sen (wt)</member>
+        </simplelist>
+
+        <figure>
+          <title>Circuito LC Paralelo</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab3.image4.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>2.2 Varie a frequência de v1, até que o circuito entre em
+        ressonância. Compare o valor da frequência de ressonância medido com o
+        valor teórico calculado e escreva suas conclusões.</para>
+
+        <para><link linkend="extra">Extra Material</link></para>
+      </section>
+    </section>
+
+    <section id="individual_assignments_diodes">
+      <title>Diodes (Half1/Half2)</title>
+
+      <para>Objetivos</para>
+
+      <para>Demonstrar o funcionamento do dispositivo através do levantamento
+      da sua curva característica e circuitos aplicativos básicos.</para>
+
+      <para>Material Necessário</para>
+
+      <simplelist>
+        <member>01 - osciloscópio</member>
+
+        <member>01 - transformador 220/6+6 V</member>
+
+        <member>01 - fonte cc</member>
+
+        <member>01 - multímetro</member>
+
+        <member>01 - protoboard</member>
+
+        <member>01 - conjunto de cabos</member>
+
+        <member>01 - resistor de 1 KOhms</member>
+
+        <member>01 - resistor de 100 KOhms</member>
+
+        <member>01 - capacitar eletrolítico 10 uF</member>
+
+        <member>02 - diodo 1N4148</member>
+
+        <member>01 - diodo Zener 5,1 ou 5,6 V</member>
+      </simplelist>
+
+      <section>
+        <title>Curva Característica</title>
+
+        <para>1.1 - Implemente o circuito mostrado abaixo:</para>
+
+        <figure>
+          <title>Curva Característica</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab4.image1.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1.2 - Variando a tensão da fonte entre -10 e +2 V em passos de
+        0.5 V, levante a curva VxI do diodo. A corrente deve ser calculada
+        medindo-se a queda de tensão sobre a resistor de lK. Meça pontos
+        adicionais nas regiões de condução e ruptura para melhorar o aspecto
+        da curva obtida.</para>
+
+        <para>1.3 - Apresente as conclusões do grupo.</para>
+      </section>
+
+      <section>
+        <title>Circuitos Ceifadores</title>
+
+        <para>2.1 - Implemente o circuito abaixo, observando com o
+        osciloscópio a tensão Vout.</para>
+
+        <figure>
+          <title>Circuito Ceifador</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab4.image2.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>2.2 - Adotando V= 2 V, esboce a forma de onda observada para
+        Vout comparando-a com a tensão de entrada.</para>
+
+        <para>2.3 - Inverta a tensão V esboçando a forma de onda observada
+        para Vout. Compare com a tensão de entrada.</para>
+
+        <para>2.4 - Varie o valor da tensão V observando o que acontece com a
+        tensão de saída</para>
+
+        <para>2.5 - Escreva suas conclusões.</para>
+      </section>
+
+      <section>
+        <title>Circuitos Grampeadores</title>
+
+        <para>3.1 - Implemente o circuito abaixo, observando com o
+        osciloscópio a tensão de saída. Cuidado para não montar invertido
+        capacitar eletrolítico !</para>
+
+        <figure>
+          <title>Circuito Grampeador</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab4.image3.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>3.2 - Esboce a forma de anda observada.</para>
+
+        <para>3.3 - Inverta a polaridade da tensão V no circuito anterior e
+        esboce a forma de onda da tensão Vout.</para>
+
+        <para>3.4 - Justifique as formas de onda observadas e escreva suas
+        conclusões.</para>
+      </section>
+
+      <section>
+        <title>Portas Lógicas com diodos</title>
+
+        <para>4.1 - Construa o circuito abaixo:</para>
+
+        <figure>
+          <title>Porta Lógica 1</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab4.image4.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>4.2 - Considerando tensões abaixo de 1 V como nível lógico '0' e
+        tensões acima de 4 V como nível lógico '1', obtenha a tabela verdade
+        do circuito determinando a função lógica implementada.</para>
+
+        <para>4.3 - Justifique os resultados obtidas e escreva suas
+        conclusões</para>
+
+        <para>4.4 - Repita os procedimentos descritos em 4.1, 4.2 e 4.3 para o
+        circuito mostrado abaixo:</para>
+
+        <figure>
+          <title>Porta Lógica 2</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab4.image5.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </section>
+
+      <section>
+        <title>Procedimentos Finais</title>
+
+        <para>5.1 - Desligue todos os equipamentos, disconecte os cabos e
+        componenentes guardando-os nos recipientes adequados.</para>
+
+        <para>5.2 – Conclua o relatório.</para>
+
+        <para><link linkend="extra">Extra Material</link></para>
+      </section>
+    </section>
+
+    <section id="individual_assignments_transistors">
+      <title>Bipolar Transistors (Half1/Half2)</title>
+
+      <section>
+        <title>Transistor como amplificador linear.</title>
+
+        <para>1.1. - Implemente o circuito mostrado abaixo:</para>
+
+        <simplelist>
+          <member>hie = 5 Kohm hfe = 400</member>
+        </simplelist>
+
+        <figure>
+          <title>Amplificador Linear</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab5.image1.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1.2. - Utilizando o multímetro, meça o ponto de polarização do
+        circuito acima.</para>
+
+        <para>1.3. - Calcule os valores teóricos para o ponto de polarização e
+        compare com os valores medidos no item anterior.</para>
+
+        <para>1.4. - Aplique na entrada do amplificador uma tensão senoidal
+        com 100 mV pico a pico e frequência de 1 KHz. Desligue o capacitor
+        conectado ao emissor do transistor.</para>
+
+        <para>1.5. - Utilizando o osciloscópio, meça o ganho de tensão.</para>
+
+        <para>1.6. - Calcule o valor esperado para o ganho de tensão
+        comparando-o com o valor medido no item anterior.</para>
+
+        <para>1.7. - Repita os itens 1.5 e 1.6 ligando o capacitor conectado
+        ao emissor do transmissor.</para>
+
+        <para>1.8. - Aumente gradativamente a amplitude do sinal de entrada
+        observando o que acontece com o sinal de saída.</para>
+
+        <para>1.9. - Apresente as conclusões do grupo.</para>
+      </section>
+
+      <section>
+        <title>Transistor operando como chave.</title>
+
+        <para>2.1. - Implemente o circuito mostrado abaixo:</para>
+
+        <figure>
+          <title>Chave</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab5.image2.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>2.2. - Apljque na entrada um sinal retangular varianddo entre –2
+        e 2 V com frequência de 1 KHz.</para>
+
+        <para>2.3. - Com o osciloscópio observe a forma de onda de saída do
+        circuito.</para>
+
+        <para>2.4. - Apresente as conclusões do grupo.</para>
+
+        <para><link linkend="extra">Extra Material</link></para>
+      </section>
+    </section>
+
+    <section id="individual_assignments_operational_amplifiers">
+      <title>Operational Amplifiers (Half1/Half2)</title>
+
+      <section>
+        <title>Introdução</title>
+
+        <para>O amplificador operacional é um amplificador com acoplamento
+        direto entre os estágios, de alto ganho e normamente com entrada
+        diferencial, permitindo, com a utilização de malhas de realimentação
+        adequadas obtenção de uma grande quantidade de funções matemáticas
+        lineares e algumas não lineares.</para>
+
+        <para>Seu nome é derivado dos computadores analógicos, onde é
+        empregado para realizar operações matemáticas. O símbolo de um
+        amplificador operacional e seu circuito equivalente aparecem na figura
+        abaixo:</para>
+
+        <figure>
+          <title>Amplificador Operacional</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab6.image1.gif" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>Um amplificador operacional ideal deve exibir as seguintes
+        características:</para>
+
+        <simplelist>
+          <member>Impedância de entrada infinita.</member>
+
+          <member>Impedância de saída igual a zero.</member>
+
+          <member>Ganho de tensão infinito.</member>
+
+          <member>Largura da faixa de passagem infinita.</member>
+
+          <member>Nenhum offset, isto é, vs = 0 para V (entrada não-inversora)
+          = V (entrada inversora).</member>
+
+          <member>Nenhuma deriva de suas características com a
+          temperatura.</member>
+        </simplelist>
+      </section>
+
+      <section>
+        <title>O Amplificador Operacional 741</title>
+
+        <para>O 741 é um amplificador operacional de uso geral, de baixo
+        custo, sendo encontrado nos encapsulamentos:</para>
+
+        <simplelist>
+          <member>metálico de 8 pinos</member>
+
+          <member>dip de 14 pinos</member>
+
+          <member>dip de 8 pinos (mais comum)</member>
+        </simplelist>
+
+        <para>O diagrama elétrico e a descrição dos pinos deste operacional
+        aparecem na figura abaixo.</para>
+
+        <para><emphasis role="bold">Schematic and Connection Diagrams (Top
+        víews)</emphasis></para>
+
+        <figure>
+          <title>Amplificador Operacional 741</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab6.image2.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>Suas principais características são:</para>
+
+        <table>
+          <title>Características do 741</title>
+
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry>máxima tensão offset de entrada</entry>
+
+                <entry>6 mV</entry>
+              </row>
+
+              <row>
+                <entry>máxima corrente offset de entrada</entry>
+
+                <entry>500 nA</entry>
+              </row>
+
+              <row>
+                <entry>máxima corrente de entrada</entry>
+
+                <entry>1.5 uA</entry>
+              </row>
+
+              <row>
+                <entry>ganho de tensão mínimo (GV)</entry>
+
+                <entry>25.000</entry>
+              </row>
+
+              <row>
+                <entry>faixa de passagem para GV=1</entry>
+
+                <entry>1 MHz</entry>
+              </row>
+
+              <row>
+                <entry>taxa de subida para GV=1</entry>
+
+                <entry>0.5 V/us</entry>
+              </row>
+
+              <row>
+                <entry>mínima corrente de saída (RL=2K)</entry>
+
+                <entry>5 uA</entry>
+              </row>
+
+              <row>
+                <entry>faixa de tensão de alimentação</entry>
+
+                <entry>±3 a ±22</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+
+        <para><emphasis role="bold">Ajuste da tensão de off-set no
+        741</emphasis></para>
+
+        <para>O amplificador operacional 741 dispõe de duas entradas para a
+        correção da tensão de off-set de entrada. O circuito típico para esta
+        correção é:</para>
+
+        <figure>
+          <title>Ajuste de off-set do 741</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab6.image3.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para><emphasis role="bold">Ajuste da tensão de off-set em
+        amplificadores operacionais que não dispõem de entradas próprias para
+        isso.</emphasis></para>
+
+        <para>Os circuitos abaixo, entre outros, podem ser utilizadas para
+        esta finalidade:</para>
+
+        <figure>
+          <title>Ajustes de off-set para outros circuitos operacionais</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab6.image4.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </section>
+
+      <section>
+        <title>Montar e analisar prática e teoricamente o funcionamento dos
+        circuitos abaixo.</title>
+
+        <para>Cada grupo deve montar um dos circuitos e passar os resultados
+        para os demais.</para>
+
+        <para>5.1 - Amplificador inversor de ganho K = 10</para>
+
+        <para>5.2 - Somador/subtrator de ganho K=1</para>
+
+        <para>5.3 - Diodo de precisão e detetor de pico.</para>
+
+        <figure>
+          <title>Circuito da prática</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/lab6.image5.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para><link linkend="extra">Extra Material</link></para>
+      </section>
+    </section>
+  </chapter>
+
+  <chapter id="extra">
+    <title>Extra Material</title>
+
+    <section id="extra_multimeter">
+      <title>Digital Multimeter MIC-2200 A</title>
+
+      <para>O multímetro digital MIC 2200 A possui uma chave rotativa que
+      seleciona a faixa e a função simultaneamente. Existem terminais de
+      entrada: dois para medidas de tensão CA e CC, resistências e correntes
+      até 10 A; o terceiro terminal utilizado exclusivamente para correntes de
+      2A a 10 A.</para>
+
+      <section>
+        <title>Identificação dos Controles</title>
+
+        <para>Todas as características externas do MIC-2200A são ilustradas e
+        descritas abaixo:</para>
+
+        <figure>
+          <title>Multímetro</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/anexo1.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1- Mostrador</para>
+
+        <para>2- Chave rotativa</para>
+
+        <para>3- Terminal de entrada de "10 A".</para>
+
+        <para>4- Terminal de entrada "COM".</para>
+
+        <para>5- Terminal de entrada "V Ohm A".</para>
+
+        <para>6- Interruptor de alimentação.</para>
+
+        <para>7- Tampa da bateria.</para>
+
+        <para>8- Parafuso da caixa</para>
+      </section>
+
+      <section>
+        <title>Medições de Voltagem CA</title>
+
+        <para>O multímetro MIC-2200A mede o valor médio de um sinal de CA e o
+        exibe como valor RMS equivalente de uma onda senoidal. Erros de edição
+        são introduzidos quando a forma de onda de entrada e distorcida (não
+        senoidal). A quantidade de erro depende da quantidade de distorção. A
+        figura abaixo mostra a relação entre formas de onda senoidal, quadrada
+        e triangular e os fatores de conversão necessários.</para>
+
+        <figure>
+          <title>Medição CA</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/anexo2.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1- Posicione a chave rotativa na faixa desejada na seção de ACV.
+        (se você não tem idéia do valor da voltagem a medir, sugerimos que
+        sempre com a faixa mais alta).</para>
+
+        <para>2- Conecte a ponta de prova vermelha ao terminal de entrada
+        marcado 'V Ω A' e a preta no terminal "COM".</para>
+
+        <para>3- Ligue o instrumento. Conecte as pontas de prova aos pontos de
+        medição e leia o valor no display. Mude a posição das pontas de prova;
+        compare com a leitura anterior.</para>
+      </section>
+
+      <section>
+        <title>Medição de Corrente CC</title>
+
+        <para>1. Posicione a chave rotativa na faixa desejada da seção de DCA.
+        (se você não tem idéia da grandeza da corrente a medir, sugerimos que
+        inicie na faixa mais alta).</para>
+
+        <para>2. Conecte a ponta de prova preta no terminal 'COM' e a vermelha
+        no 'V Ω A' ou no terminal '10A'. (Para medição de correntes maiores
+        que 10 A a ponta de prova vermelha deve ser colocada no terminal
+        marcado '10 A'. Para outras medições, ela é colocada no terminal 'V Ω
+        A').</para>
+
+        <warning>
+          <remark>Se a ponta de prova vermelha for conectada ao terminal de
+          entrada marcado 'V Ω A' e a corrente de entrada for maior do que 2
+          A, o fusível queimará para proteger o circuito.</remark>
+        </warning>
+
+        <para>3. Ligue o instrumento. Conecte as pontas de prova aos pontos de
+        medição e leia o valor no display.</para>
+      </section>
+
+      <section>
+        <title>Medição de Resistência</title>
+
+        <para>1. Posicione a chave relativa na faixa desejada da seção
+        OHM.</para>
+
+        <para>2. Conecte as pontas de prova nos terminais de entrada 'V Ω A' e
+        'COM', respectivamente.</para>
+
+        <para>3. Ligue o instrumento. Conecte as pontas de prova aos pontos de
+        medição e leia o valor no display.</para>
+      </section>
+
+      <section>
+        <title>Teste de Diodos</title>
+
+        <para>1. Posicione a chave rotativa na posição do diodo, na seção de
+        OHM.</para>
+
+        <para>2. Conecte a ponta de prova preta no terminal 'COM' e à vermelha
+        no terminal 'V ? A'.</para>
+
+        <para>3. Ligue o instrumento. Conecte as pontas de prova à junção do
+        semicondutor (diodo ou transistor) como mostrado nas figuras abaixo, e
+        leia o valor no display.</para>
+
+        <figure>
+          <title>Teste de Diodos 1</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/anexo3.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>No caso da figura acima, a leitura deverá ser aproximadamente a
+        queda de voltagem direta na junção do semicondutor. Se a leitura for
+        [.000] isto significa que a junção está em curto. Se a leitura for [1.
+        ], significa junção aberta.</para>
+
+        <figure>
+          <title>Teste de Diodos 2</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/anexo4.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>No caso da figura acima, a leitura deverá ser [1. ]. Se a
+        leitura for diferente ([.000] ou outro número) isto significa que a
+        junção do semicondutor está defeituosa.</para>
+      </section>
+    </section>
+
+    <section id="extra_generator_it100k">
+      <title>Function Generator IT100K</title>
+
+      <itemizedlist>
+        <listitem>
+          <para>Formas de onda: quadrada, senoidal e triangular.</para>
+        </listitem>
+
+        <listitem>
+          <para>Frequência: 1Hz a 100000Hz em 5 fixas.</para>
+        </listitem>
+
+        <listitem>
+          <para>Nível DC:</para>
+
+          <para>+4V a -4V (sem carga)</para>
+
+          <para>+2V a -2V (com 600 Ω)</para>
+        </listitem>
+
+        <listitem>
+          <para>Amplitude de saída:</para>
+
+          <para>8Vpp (sem carga)</para>
+
+          <para>4Vpp (com 600 Ω)</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>Identificação dos Controles</title>
+
+        <figure>
+          <title>Gerador de Funções IT100K</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/anexo5.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>A - <emphasis role="bold">CHAVE LIGA/DESLIGA</emphasis> -
+        Comutadora do circuíto de alimentação.</para>
+
+        <para>B - <emphasis role="bold">MULTIPLICADOR</emphasis> - Chave
+        rotativa de 5 posições utilizada para ampliar a faixa de
+        frequência.<informalexample>
+            <para><emphasis role="bold">Exemplos:</emphasis> Varedura (Knob C)
+            indicando posição 5, multiplicador posição 1 = 5Hz. Mantendo o
+            Knob na mesma posição e alterando a posição do multiplicador para
+            10, teremos 50Hz; mantendo sempre o Knob C na posição inicial
+            indicada e o multiplicador em 100 será = 500Hz; passando o
+            multiplicador para 1 K = 5.000Hz e passando o multiplicador para
+            10K = 50.000Hz.</para>
+          </informalexample></para>
+
+        <para>C - <emphasis role="bold">KNOB DE VARREDURA</emphasis> -
+        Seleciona a frequência desejada dentro da faixa escolhida.</para>
+
+        <para>D - <emphasis role="bold">LED INDICADOR</emphasis> do
+        equipamento ligado e flexa indicadora do ponto referencial para
+        indicação da frequência.</para>
+
+        <para>E - <emphasis role="bold">FUNÇÃO</emphasis> - Chave rotativa de
+        3 posições utilizada para selecionar a forma de onda desejada na
+        saída.</para>
+
+        <para>F - <emphasis role="bold">NÍVEL DC</emphasis> - Potenciômetro de
+        ajuste que permite fornecer um nível de tensão contínua de 4 volts a -
+        4 volts continuamente ajustável.</para>
+
+        <para>G - <emphasis role="bold">AMPLITUDE</emphasis> - Potenciômetro
+        para ajuste da amplitude de saída continuamente ajustável.</para>
+
+        <para>H - <emphasis role="bold">SAÍDA</emphasis> - Terminais de saída
+        sendo (preto) terra e (vermelho) para as formas de onda.</para>
+      </section>
+
+      <section>
+        <title>Instruções de Uso</title>
+
+        <para>1. Selecione a tensão de operação a qual o instrumento será
+        ligado. Verifique a chave comutadora (J).</para>
+
+        <para>2. Certifique-se de que a temperatura ambiente seja compatível
+        com a especificada (vide características elétricas).</para>
+
+        <para><emphasis role="bold">Início da Operação</emphasis></para>
+
+        <para>1. Ligue o instrumento através da chave liga (A) e observe se o
+        Diodo LED (D) acende.</para>
+
+        <para>2. Selecione a forma de onda desejada na saída, usando a chave
+        de função (E).</para>
+
+        <para>3. Selecionar a faixa de frequência na qual pretende operar,
+        utilizando para isso a chave (B) multiplicador.</para>
+
+        <para>4. Selecione a frequência pretendida usando o controle de
+        Varredura (C).</para>
+
+        <para>5. Colocar o controle de amplitude (G) na posição zero.</para>
+
+        <para>6. Igualmente coloque o controle Nível DC (F) na posição
+        zero.</para>
+
+        <para>7. Conectar a carga aos terminais de saída (H), respeitando a
+        polaridade.</para>
+
+        <para>8. Conectar um osciloscópio ou multímetro a saída e ajuste
+        através de controle (G) de amplitude para o nível pretendido, ajuste o
+        controle (F) Nível DC para o valor pretendido.</para>
+      </section>
+    </section>
+
+    <section id="extra_generator_tr-0463">
+      <title>Function Generator TR-0463</title>
+
+      <para>Similar ao IT-100K com alguns recursos adicionais. O modo de
+      operação é também similar ao do IT-100K.</para>
+
+      <section>
+        <title>Identificação dos Controles</title>
+
+        <figure>
+          <title>Gerador de Funções TR-0463</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/anexo6.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <programlisting>FREQ      1- A row of nine push-buttons, for the coarse
+             selection 
+             of the basic generator frequency. 
+          2- Dial of continuous frequency variation. 
+FUNCTION  3- Three push-buttons for waveform selection. 
+OFFSET    4- Potentiometer for continuous DC offset. 
+ON        5- Push-button for switching on and off the DC
+             offset. 
+AMPL      6- Potentiometer for continuous amplitude
+             variation. 
+          7- Three push-buttons for amplitude selection in
+             steps of 20 dB. 
+SYM       8- Potentiometer for varying the time symmetry of 
+             the triangular signal and the duty cycle of the
+             pulse. 
+VAR       9- Control 8 is only effective when this
+             push-button is depressed. 
+TRIG OUT  10- The sync signal provided by the generator is 
+              available at this BNC connector. 
+OUT       11- The output signal of the generator is
+              available at this BNC connector. 
+MODULATOR 12- RCYW of function selector push-buttons. 
+    EXT       Depressed when an external signal is used for 
+              driving the generator 
+    AM        Amplitude modulation 
+    FM        Frequency modulation 
+    SWP       Sweep mode 
+    TRIG      Triggered mode 
+    GATE      Gated mode 
+    OFF       Switching-off of controlled and modulation
+              modes. 
+FREQ      13- Potentiometer for continuous variation of the 
+              modulation generator frequency. 
+          14- Three push-buttons for frequency band
+              selection. 
+AMPL      15- Potentiometer for adjustment of the modulation 
+              generator signal amplitude. 
+FUNCTION  16- Row of push-buttons for selecting the signal 
+              waveform of the modulation generator. 
+SYM       17- Potentiometer for adjustment of the time
+              symmetry of the modulation signal. 
+EXT IN    18- BNC connector for receiving an external 
+              modulation signal/gate pulse, trigger pulse/. 
+MOD OUT   19- Output of internal modulation generator. 
+POWER     20- Led indicating the switched-on state.</programlisting>
+      </section>
+    </section>
+
+    <section id="extra_power_supply">
+      <title>Power Supply SME 59</title>
+
+      <para>Este aparelho apresenta os seguintes elementos:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Fonte de tensão contínua: 1 fonte simétrica +/- 20V ou 2
+          fontes de 0 a 2 A.</para>
+        </listitem>
+
+        <listitem>
+          <para>Fonte de corrente contínua: 0 - 2A.</para>
+        </listitem>
+
+        <listitem>
+          <para>Multímetro de 3 1/2 digitos em 3 escalas:(2V, 20V e
+          200V).</para>
+        </listitem>
+
+        <listitem>
+          <para>Amperímetro de 3 1/2 dig. em 3 escalas:(2mA, 20mA,
+          200mA).</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>Identificação dos controles</title>
+
+        <figure>
+          <title>Fonte de Alimentação</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/anexo7.jpg" />
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>1. LED indicador de operação no modo de tensão-constante para a
+        fonte mestra.</para>
+
+        <para>2. Medidor digital de 3 1/2 dígitos da fonte mestra, utilizado
+        também para medições externas.</para>
+
+        <para>3. LED indicador de operação no modo de corrente-constante da
+        fonte mestra.</para>
+
+        <para>4. Chave INT/EXT. utilizada para comutar a operação do medidor
+        de fonte - mestra para medições internas ou externas, sendo que neste
+        ultimo caso o medidor permanece totalmente isolado galvanicamente das
+        fontes.</para>
+
+        <para>5. Chave V/A. comuta a função do medidor da fonte mestra de
+        voltímetro para amperímetro e vice versa, tanto no modo interno com
+        externo.</para>
+
+        <para>6. Teclas de mudança de escala do medidor da fonte mestra.
+        Permitem 3 escalas de tensão nos modos interno ou externo e três
+        escalas de corrente somente no modo externo (no modo interno esta
+        disponível somente uma escala).</para>
+
+        <para>7. Bornes de Entrada para medições externas.</para>
+
+        <para>8. LED piloto.</para>
+
+        <para>9. Interruptor geral da Fonte.</para>
+
+        <para>10. Controle de corrente de fonte mestra, ajusta o limite de
+        corrente no modo de Tensão-Constante ou a corrente no modo de
+        Corrente-Constante.</para>
+
+        <para>11. Bornes de saída, positivo e negativo respectivamente da
+        fonte mestra.</para>
+
+        <para>12. Controle de Tensão, ajusta a tensão de saída da fonte mestra
+        no modo de Tensão-Constante ou o 'teto' de tensão no modo de
+        Corrente-Constante.</para>
+
+        <para>13. Borne de Aterramento, ligado galvanicamente a caixa de
+        fonte.</para>
+
+        <para>14. Idem 11 somente que para a fonte escrava.</para>
+
+        <para>15. Controle de corrente de fonte escrava. ajusta o limite de
+        corrente no modo de Tensão-Constante ou a corrente no modo de
+        Corrente-Constante.</para>
+
+        <para>16. Controle de Tensão, ajusta a tensão de saída da fonte
+        escrava no modo de Tensão-Constante ou o 'teto' de tensão no modo de
+        Corrente-Constante. Não tem atuação quando a chave INDEP./SIMET
+        estiver na posição SIMET.</para>
+
+        <para>17. LED indicador de operação no modo de tensão-constante para a
+        fonte escrava.</para>
+
+        <para>18. LED indicador de operação. no modo de corrente-constante
+        para a fonte escrava.</para>
+
+        <para>19. Chave INDEP./SIMET., quando na posição INDEP permite a
+        operação independente das duas fontes, estando as mesmas isoladas
+        galvanicamente. Na posição SIMET, efetuando as ligações conforme
+        indicado na fig. 2. a tensão da fonte escrava será igual a da fonte
+        mestra, operando as duas em simétrica.</para>
+
+        <para>20. Medidor digital de 3 1/2 dígitos usado para medidas internas
+        na fonte escrava.</para>
+
+        <para>21. Chave ALTO/BAIXO do medidor digital. atua somente na função
+        de voltímetro fazendo-o operar nas seguintes escalas: BAIXO: 0 A
+        19,99V ALTO: 0 A 199.9V</para>
+
+        <para>22. Chave V/A, comuta a função do medidor digital para as
+        funções V (voltímetro).</para>
+      </section>
+
+      <section>
+        <title>Modo de operação</title>
+
+        <para><emphasis role="bold">1 - OPERANDO COM FONTE
+        INDEPENDENTE</emphasis></para>
+
+        <para>O ajuste da tensão de saída poderá ser feito com ou sem carga
+        aplicada, para tanto, coloque a chave 5 da fonte mestra ou 22 da fonte
+        escrava na posição V, os controles de corrente 10 ou 15 no máximo, a
+        chave 6 à posição 200 V ou a chave 21 na posição ALTO, em seguida,
+        variando o ajuste de tensão la ou 16 determine a tensão desejada. Caso
+        a tensão seja inferior a 20 V, utilize o voltímetro na posição 20V na
+        fonte mestra ou BAIXO na fonte escrava para obter uma leitura com
+        maior precisão.</para>
+
+        <para>Em seguida, ajuste o limite de corrente da seguinte forma:
+        coloque a chave 5 ou 22 na posição A ( nesta condição a posição de 6
+        ou 21 é indiferente, pois há somente uma escala de corrente para os
+        medidores para medidas internas a fonte) e ajuste os controles de
+        corrente 10 ou 15 no mínimo. Curto-circuite os bornes de saída da 11
+        ou 14 com um fio que possa suportar a corrente a ser determinada.
+        Agindo agora sobre o controle de corrente 10 ou 15 procure obter no
+        medidor o valor da corrente que estabeleceu como limite.</para>
+
+        <para>OBS.: no modo de Corrente-Constante o LED Icte ficará
+        aceso.</para>
+
+        <para><emphasis role="bold">2 - OPERANDO COMO FONTE
+        SIMÉTRICA</emphasis></para>
+
+        <para>Para operar como fonte simétrica faça a interligação dos bornes
+        conforme fig. 19 e coloque a chave INDEP/SIMET na posição SIMET. O
+        ajuste da tensão deverá ser feito através do controle da fonte mestra
+        12. Para o ajuste da corrente proceda conforme o parágrafo 1 com uma
+        única diferença o controle de corrente da fonte escrava deverá estar
+        no máximo de modo que o limite possa ser estabelecido pela fonte
+        mestra.</para>
+
+        <para><emphasis role="bold">3 - OPERANDO EM MODO DE
+        CORRENTE-CONSTANTE</emphasis></para>
+
+        <para>Proceda como no parágrafo 2 para o ajuste da fonte. Neste caso
+        para as fontes operando de modo independente, a corrente será
+        determinada por 10 ou 15 e a tensão estabelecida por 12 ou 16 será o
+        'teto' ou limite de tensão. Para a operação simétrica proceder
+        conforme item 2.</para>
+
+        <para><emphasis role="bold">4 - LIGAÇÃO DA CARGA</emphasis></para>
+
+        <para>Ao ligar a carga, assegure-se de que esta utilizando condutores
+        de baixa resistência, o mais curtos possível e de bitola compatível
+        com a corrente ao ser fornecida pela fonte, pois, destes cuidados
+        dependem muito o desempenho do conjunto, principalmente a boa
+        regulação e segurança.</para>
+
+        <para>4.1 - ATERRAMENTO DA FONTE</para>
+
+        <para>É fornecido um borne de aterramento 13. que está ligado
+        galvanicamente ao chassis, podendo ser deixado flutuante ou ligado a
+        qualquer das saídas.</para>
+
+        <para><emphasis role="bold">5 - UTILIZAÇÃO DO MEDIDOR PARA MEDIÇÕES
+        EXTERNAS</emphasis></para>
+
+        <para>Uma característica extremamente interessante deste aparelho é a
+        possibilidade que oferece de efetuar medições externas a fonte tanto
+        em partes alimentadas por esta como por qualquer outra.</para>
+
+        <para>No modo externo, o medidor esta totalmente isolado da fonte de
+        alimentação, permitindo efetuar medições com relação a qualquer ponto
+        da mesma, respeitados naturalmente os limites de segurança
+        especificados.</para>
+
+        <para>Para utiliza-lo neste modo, aperte a tecla INT/EXT 4 para a
+        posição EXT, a entrada do medidor esta nos dois bornes 7 abaixo do
+        teclado.</para>
+      </section>
+    </section>
+
+    <section id="extra_resistors">
+      <title>Reading Resistors</title>
+
+      <para>Os resistores de carbono apresentam 4 faixas coloridas em uma das
+      extremidades que indicam:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>2 primeiras - algarismos significativos.</para>
+        </listitem>
+
+        <listitem>
+          <para>3a. - valor do multiplicador</para>
+        </listitem>
+
+        <listitem>
+          <para>4a. - tolerância</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>O código de cores segue a tabela a seguir:</para>
+
+      <programlisting>      Cor      Valor     Multiplicador    Tolerância
+      Preto      0     x 1                   -
+      Marrom     1     x l0                 ± 1%
+      Vermelho   2     x l00                ± 2%
+      Laranja    3     x 1 000               -
+      Amarelo    4     x 10 000              -
+      Verde      5     x 100 000           ± 0.5%
+      Azul       6     x 1 000 000         ± 0,25%
+      Violeta    7         -               ± 0,10%
+      Cinza      8         -                 -
+      Branco     9         -                 -
+      Ouro       -     x 0,1               ± 5%
+      Praia      -     x 0,01              ± 10%
+      Incolor    -         -               ± 20%
+</programlisting>
+
+      <para>Exemplo: Um resistor com as seguintes faixas:</para>
+
+      <figure>
+        <title>Resistores</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="img/anexo8.gif" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>É um resistor de 10x100 = 1000 1K com 2% de precisão 1K +/- 2%
+      --&gt; 980 Ω --- 1020 Ω</para>
+
+      <para>Resistores de 1% de tolerância são dispositivos de grande
+      precisão. Na maioria dos casos utiliza-se resistores de 10 e 5% de
+      precisão.</para>
+    </section>
+
+    <section id="extra_protoboards">
+      <title>PROTOBOARDS</title>
+
+      <para>São placas utilizadas para montagem onde tem-se um grande número
+      de furos onde os dispositivos elétricos/eletrônicos serão
+      conectados.</para>
+
+      <para>O protoboard a ser utilizado é o PL552 que apresenta
+      aproximadamente 1100 pontos no layout abaixo.</para>
+
+      <figure>
+        <title>Protoboard</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="img/anexo9.jpg" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+  </chapter>
+</book>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-default-dtd-file:"/home/ldp/SGML/emacs/book-cnc-2.0.ced"
+End:
+-->

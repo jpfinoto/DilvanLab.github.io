@@ -1,0 +1,57 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;AWT 1.0 Menus</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Distributed Programming using Java"><link rel="up" href="extra_reading_awt_1.0.html" title="Chapter&nbsp;10.&nbsp;Extra Reading: AWT 1.0"><link rel="prev" href="extra_reading_awt_1.0_awt_1.0_components.html" title="1.&nbsp;AWT 1.0 Components"><link rel="next" href="extra_reading_awt_1.0_awt_1.0_containers.html" title="3.&nbsp;AWT 1.0 Containers"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;AWT 1.0 Menus</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="extra_reading_awt_1.0_awt_1.0_components.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Extra Reading: AWT 1.0</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="extra_reading_awt_1.0_awt_1.0_containers.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="extra_reading_awt_1.0_awt_1.0_menus"></a>2.&nbsp;AWT 1.0 Menus</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e6292"></a>2.1.&nbsp;Code Example</h3></div></div></div><pre class="programlisting">public class MenuWindow extends Frame {
+    . . .
+    public MenuWindow() {
+        
+        //Build the menu bar.
+        mb = new MenuBar();
+        setMenuBar(mb);
+ 
+        //Build first menu in the menu bar.
+        m1 = new Menu("Menu 1", true);
+        mb.add(m1);
+        mi1_1 = new MenuItem("Menu Item 1_1");
+        m1.add(mi1_1);
+           . . .
+
+        //Build help menu.
+        m5 = new Menu("Menu 5");
+        mb.add(m5); //just setting the help menu doesn't work; must add it
+        mb.setHelpMenu(m5);
+        mi5_1 = new MenuItem("Menu Item 5_1");
+        m5.add(mi5_1);
+           . . .
+
+        //Build second menu in the menu bar.
+        m2 = new Menu("Menu 2");
+        mb.add(m2);
+        mi2_1 = new CheckboxMenuItem("Menu Item 2_1");
+        m2.add(mi2_1);
+ 
+        //Build third menu in the menu bar.
+           . . .
+    }
+    . . .
+    public boolean action(Event event, Object arg) {
+        String str = "Action detected";
+        if (event.target instanceof MenuItem) {
+            MenuItem mi=(MenuItem)(event.target);
+            str += " on " + arg;
+            if (mi instanceof CheckboxMenuItem) {
+                    str += " (state is " 
+                           + ((CheckboxMenuItem)mi).getState()
+                           + ")";
+            }
+            MenuContainer parent = mi.getParent();
+            if (parent instanceof Menu) {
+                str += " in " + ((Menu)parent).getLabel();
+            } else {
+                str += " in a container that isn't a Menu";
+            }
+        }
+        str += ".\n";
+        ...//Display the string in the output area...
+        return false;
+    }
+}</pre><p><a href="../audio/Gui16.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="extra_reading_awt_1.0_awt_1.0_components.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="extra_reading_awt_1.0.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="extra_reading_awt_1.0_awt_1.0_containers.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;AWT 1.0 Components&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;AWT 1.0 Containers</td></tr></table></div></body></html>

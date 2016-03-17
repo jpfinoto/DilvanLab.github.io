@@ -1,0 +1,217 @@
+<html>
+<head>
+<title>Reconhecedores</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33ff33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF" size="5"><b>Reconhecedores</b></font></p>
+<p><font color="#FFFFFF" size="4">Os reconhecedores (<i><a href="../../ref/api/javax/speech/recognition/Recognizer.html" target="_blank">recognizers</a></i>) 
+  s&atilde;o as entidades respons&aacute;veis pelo reconhecimento de voz. S&atilde;o 
+  objetos instanciados pela Central e cujas funcionalidades s&atilde;o disparadas 
+  pelo m&eacute;todo <i><a href="../../ref/api/javax/speech/Engine.html#allocate()" target="_blank">alocate</a></i>, 
+  ficando este atuando em paralelo com a aplica&ccedil;&atilde;o principal, recebendo 
+  todas as entradas de &aacute;udio</font><font color="#FFFFFF" size="4">.</font></p>
+<p><font size="4" color="#FFFFFF">O reconhecimento &eacute; realizado com o aux&iacute;lio 
+  de conjuntos de palavras que limitam o universo de possibilidades que podem 
+  ser pronunciadas pelo usu&aacute;rio. S&atilde;o conjuntos extens&iacute;veis 
+  que podem receber qualquer nova entrada, aumentando a funcionalidade da aplica&ccedil;&atilde;o. 
+  Estes conjuntos s&atilde;o denominados gram&aacute;ticas e &eacute; necess&aacute;rio 
+  ter-se no m&iacute;nimo uma gram&aacute;tica associada a um reconhecedor para 
+  que se tenha o reconhecimento realizado.</font></p>
+<p><font size="4" color="#FFFFFF">Perante a entrada de &aacute;udio os reconhecedores 
+  procuram identificar uma associa&ccedil;&atilde;o entre as palavras que est&atilde;o 
+  sendo ditas e as gram&aacute;ticas associadas a eles. O processo de reconhecimento 
+  determina a cria&ccedil;&atilde;o de resultados, estes s&atilde;o aceitos (<a href="../ouvidores/ouvidores_top.htm#accepted" target="_blank">ACCEPTED</a>) 
+  ou rejeitados (<a href="../ouvidores/ouvidores_top.htm#rejected" target="_blank">REJECTED</a>) 
+  segundo um n&iacute;vel de confiabilidade determinado pelo m&eacute;todo <a href="../../ref/api/javax/speech/recognition/RecognizerProperties.html#setConfidenceLevel(float)" target="_blank"><i>setConfidenceLevel</i></a> 
+  (o valor padr&atilde;o de 0.5).</font></p>
+<ul>
+  <li> <font color="#FFFF00"><b><font size="4">Instanciando um reconhecedor de 
+    voz:</font></b></font><font color="#FFFFFF" size="4"> da mesma forma que os 
+    sintetizadores, existem duas maneiras para instanciar um reconhecedor:</font> 
+    <blockquote>
+      <p><font size="4" color="#FFFFFF">1. Acessando o reconhecedor padr&atilde;o 
+        que melhor se adapta &agrave; localidade padr&atilde;o da aplica&ccedil;&atilde;o. 
+        &Eacute; a maneira mais simples e comum, &eacute; necess&aacute;rio definir 
+        a localidade antes de instanciar o reconhecedor.</font></p>
+      <table width="80%" border="1" height="74" align="center">
+        <tr> 
+          <td> 
+            <p><font color="#FFFFFF" size="4">Locale.setDefault(&quot;en&quot;,&quot;US&quot;);</font><br>
+              <font color="#FFFFFF" size="4">Recognizer recognizer = Central.createRocognizer(null); 
+              </font></p>
+          </td>
+        </tr>
+      </table>
+      <p align="center"><b>Tabela 5- Exemplo de instancia&ccedil;&atilde;o de 
+        um objeto reconhecedor.</b></p>
+    </blockquote>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<p align="right"><a href="../../exemplos/reconhecimento/reconhecimento_exemplo1.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p>&nbsp;</p>
+<blockquote> 
+  <blockquote> 
+    <p><font size="4" color="#FFFFFF">2. </font><font color="#FFFFFF"> </font><font color="#FFFFFF" size="4">Acessando 
+      um reconhecedor que satisfa&ccedil;a condi&ccedil;&otilde;es pr&eacute;-definidas: 
+      &eacute; utilizado caso existam diferentes implementa&ccedil;&otilde;es 
+      de reconhecedores dispon&iacute;veis. Deve-se definir os mesmos par&acirc;metros
+    definidos no caso dos sintetizadores, a n&atilde;o ser pelos dois &uacute;ltimos:</font><font color="#FFFFFF" size="4"> 
+      </font></p>
+    <ul>
+      <li><font color="#FFFFFF" size="4">nome do engine que ser&aacute; utilizado</font></li>
+      <li><font color="#FFFFFF" size="4">nome do modo no qual ser&aacute; utilizado 
+        o engine</font></li>
+      <li><font color="#FFFFFF" size="4">a localidade suportada pelo engine</font></li>
+      <li><font color="#FFFFFF" size="4">um valor booleano que serve como flag 
+        de controle do funcionamento do engine</font></li>
+      <li><font size="4" color="#FFFFFF">um valor booleano indicando se o reconhecedor 
+        suporta gram&aacute;tica de ditado</font></li>
+      <li><font color="#FFFFFF" size="4">um array de objetos <i><a href="../../ref/api/javax/speech/recognition/SpeakerProfile.html" target="_blank">SpeakerProfile</a></i><br>
+        </font></li>
+    </ul>
+    <blockquote>
+      <p><font color="#FFFFFF" size="4">Sendo que qualquer um dos par&acirc;metros 
+        pode ser null, ou seja, este par&acirc;mtro n&atilde;o tem import&acirc;ncia 
+        e n&atilde;o deve ser considerado para a escolha do reconhecedor. </font><font color="#FFFFFF" size="4">Um 
+        conjunto destes par&acirc;mteros &eacute; passado para a Central atrav&eacute;s 
+        de um objeto RecognizerModeDesc como vemos na tabela abaixo.</font><br>
+      </p>
+      </blockquote>
+  </blockquote>
+</blockquote>
+<table width="108%" border="1" height="67" align="center">
+  <tr> 
+    <td height="95"><font color="#FFFFFF" size="3"><a href="../../ref/api/javax/speech/recognition/RecognizerModeDesc.html" target="_blank"><font size="2">RecognizerModeDesc(String
+      engine, String mode, Locale locale, Boolean running, Boolean
+      dictationGrammarSupported, SpeakerProfile[] profiles) </font></a></font></td>
+  </tr>
+</table>
+<p align="center"><b>Tabela 6 - Construtor de um objeto RecognizerModeDesc.</b></p>
+<p align="right"><a href="../../exemplos/reconhecimento/reconhecimento_exemplo2.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<ul>
+  <li><b><font color="#FFFF00" size="4">Reconhecendo voz: </font></b><font color="#FFFFFF" size="4">o 
+    reconhecimento de voz, como </font><font color="#FFFFFF"><font size="4"> j&aacute;
+    foi mencionado, &eacute; baseado em conjuntos 
+    de palavras (fonemas) denominados gram&aacute;ticas. Um reconhecedor 
+    instanciado pode ter n gram&aacute;ticas associadas a ele, aumentando seu 
+    dom&iacute;nio de reconhecimento segundo as necessidades da aplica&ccedil;&atilde;o. 
+    Tendo gram&aacute;ticas associadas, os reconhecedores geram, perante </font></font><font color="#FFFFFF" size="4">uma
+    </font><font color="#FFFF00" size="4"><font color="#FFFFFF">entrada 
+    de voz, objetos denominados </font><font color="#FFFF00" size="4"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank">Result</a></font></font> 
+    <font color="#FFFFFF">que cont&eacute;m informa&ccedil;&atilde;o a respeito 
+    do reconhecimento realizado</font></font><font color="#FFFFFF" size="4">.</font><font color="#FFFFFF"><font size="4">
+    Estes objetos tornam esta informa&ccedil;&atilde;o 
+    dispon&iacute;vel atrav&eacute;s de objetos</font></font><font color="#FFFF00" size="4"> <a href="../../ref/api/javax/speech/recognition/ResultEvent.html" target="_blank">ResultEvent</a> 
+    </font><font color="#FFFFFF" size="4"> 
+    que s&atilde;o enviados para os ouvidores </font><font color="#FFFF00" size="4"> <a href="../ouvidores/ouvidores_top.htm#resultlistener" target="_blank">ResultListener</a> 
+    </font><font color="#FFFFFF" size="4"> 
+    respons&aacute;veis por extrair a informa&ccedil;&atilde;o vocal e determinar o 
+    processamento que ser&aacute; desencadeado.</font> 
+    <p><font size="4" color="#FFFFFF">Pode-se notar a esta altura a grande similariedade 
+      desta API com as API's para programa&ccedil;&atilde;o de interfaces gr&aacute;ficas
+    (GUI). Eventos desencadeados pelo usu&aacute;rio s&atilde;o tratados por 
+      ouvidores que desencadeiam processamentos pr&eacute;-determinados. Assim os 
+      reconhecedores trabalham procurando associar o que vem pela entrada de &aacute;udio 
+      com as poss&iacute;veis palavras de seu conjunto de palavras poss&iacute;veis, 
+      gerando eventos a cada vez que esta tentativa de associa&ccedil;&atilde;o 
+      &eacute; bem sucedida.</font></p>
+    <p><font color="#FFFFFF" size="4">Para realizar esta tarefa os reconhecedores 
+      podem ter dois tipos de gram&aacute;ticas associadas, cada uma delas
+    possui 
+      seu pr&oacute;prio dom&iacute;nio de palavras distinto em tamanho e elementos. 
+      Cada uma determina um tipo de funcionamento para o reconhecedor. S&atilde;o 
+      elas:</font></p>
+    <blockquote> 
+      <p><font size="4" color="#FFFFFF">1.</font> <font color="#FFFFFF" size="4"><a href="../../ref/api/javax/speech/recognition/DictationGrammar.html" target="_blank">Gram&aacute;tica 
+        de ditado</a>: as gram&aacute;ticas de ditado s&atilde;o constitu&iacute;das 
+        de conjuntos de palavras da ordem de milhares de elementos, s&atilde;o 
+        gram&aacute;ticas denominadas e definidas segundo sua compet&ecirc;ncia 
+        abrangida. Por exemplo, podemos ter gram&aacute;ticas de ditado espec&iacute;ficas 
+        para a &aacute;rea de direito, medicina ou de prop&oacute;sito geral como 
+        a que &eacute; distribu&iacute;da junto com o kit de desenvolvimento do 
+        presente estudo.</font></p>
+      <p><font size="4" color="#FFFFFF">Estas gram&aacute;ticas tem um funcionamento 
+        peculiar e &eacute; necess&aacute;rio que o reconhecedor sendo utilizado 
+        suporte sua utiliza&ccedil;&atilde;o. Devido &agrave; sua grande abrang&ecirc;ncia 
+        elas funcionam analisando o contexto do que est&aacute; sendo dito procurando 
+        limitar ao m&aacute;ximo poss&iacute;vel a pr&oacute;xima palavra que 
+        poder&aacute; ser pronunciada. A utiliza&ccedil;&atilde;o como o pr&oacute;prio 
+        nome diz &eacute; para que se suporte o ditado de senten&ccedil;as, textos 
+        inteiros, que n&atilde;o possam ser pr&eacute; definidos. Este modo demanda 
+        uma grande capacidade de processamento e sua utilização requer que as aplica&ccedil;&otilde;es sejam cuidadosamente projetadas.</font></p>
+      <p><font size="4" color="#FFFFFF">As gram&aacute;ticas de ditado devem ser 
+        suportadas pelos reconhecedores, que s&atilde;o respons&aacute;veis por 
+        gerar instancias das mesmas possibilitando o reconhecimento, assim como 
+        no exemplo:</font></p>
+      <p>&nbsp;</p>
+      <table width="91%" border="1" height="74" align="center">
+        <tr> 
+          <td> 
+            <p><font size="4" color="#FFFFFF">DictationGrammar dictationGrammar 
+              = recognizer.getDictationGrammar(null);</font><br>
+              <font size="4" color="#FFFFFF">dictationGrammar.setEnabled(true);</font> 
+            </p>
+          </td>
+        </tr>
+      </table>
+      <p align="center"><b>Tabela 7 - Exemplo de como instanciar uma gram&aacute;tica 
+        de ditado.</b></p>
+      <p align="right"><a href="../../exemplos/reconhecimento/reconhecimento_exemplo2.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+      <p><font size="4" color="#FFFFFF">O kit de desenvolvimento n&atilde;o prov&ecirc; 
+        meios de desenvolvimento de gram&aacute;ticas de ditado, no entanto, possibilita 
+        que palavras sejam adicionadas ou eliminadas do conjunto abrangido pela 
+        mesma em tempo de execu&ccedil;&atilde;o, sendo as altera&ccedil;&otilde;es 
+        perdidas com o encerramento da aplica&ccedil;&atilde;o. </font></p>
+      <p><font color="#FFFFFF" size="4">2. <a href="../../ref/api/javax/speech/recognition/RuleGrammar.html" target="_blank">Gram&aacute;tica 
+        de regras</a>: s&atilde;o gram&aacute;ticas bem mais simples do que as 
+        gram&aacute;ticas de ditado tanto na utiliza&ccedil;&atilde;o quanto no 
+        funcionamento e defini&ccedil;&atilde;o. Elas s&atilde;o constitu&iacute;das 
+        de regras, estas regras s&atilde;o elementos que determinam o que pode 
+        ser dito e como isto ser&aacute; representado dentro da aplica&ccedil;&atilde;o. 
+        As regras s&atilde;o definidas utilizando-se um formato especial denominado 
+        <a href="../jsgf/jsgf_top.htm" target="_blank">JSGF (<i>Java Speech Grammar 
+        Format</i>)</a> e podem ser carregadas uma a uma em tempo de execu&ccedil;&atilde;o 
+        ou v&aacute;rias ao mesmo tempo a partir de um arquivo texto com todas 
+        as regras definidas.</font></p>
+      <p><font size="4" color="#FFFFFF">Esta gram&aacute;tica demanda muito menos 
+        capacidade de processamento do que a de ditado, da mesma forma seu aproveitamento 
+        medido atrav&eacute;s do n&uacute;mero de eventos reconhecidos &eacute; 
+        bem maior, consequência direta do conjunto limitado de palavras 
+        que s&atilde;o esperadas pelo reconhecedor. &Eacute; uma gram&aacute;tica 
+        muito bem utilizada para a defini&ccedil;&atilde;o de comandos que possam 
+        ser proferidos pelo usu&aacute;rio, desencadeando processamento espec&iacute;fico 
+        para cada contexto da aplica&ccedil;&atilde;o quando novas regras podem 
+        ser carregadas.</font></p>
+      <p><font size="4" color="#FFFFFF">Existem duas maneiras de se criar uma gram&aacute;tica 
+        de regras:</font></p>
+      <ul>
+        <li><font size="4" color="#FFFFFF">atrav&eacute;s de uma das varia&ccedil;&otilde;es 
+          do comando <a href="../../ref/api/javax/speech/recognition/Recognizer.html#loadJSGF(java.io.Reader)" target="_blank"><i>loadJSGF</i></a>, 
+          quando um conjunto de regras &eacute; carregado a partir de uma arquivo 
+          texto.</font></li>
+        <li><font size="4" color="#FFFFFF">atrav&eacute;s do comando <a href="../../ref/api/javax/speech/recognition/Recognizer.html#newRuleGrammar(java.lang.String)" target="_blank"><i>newRuleGrammar</i></a> 
+          que retorna uma gram&aacute;tica de regras sem qualquer regra definida, 
+          sendo necess&aacute;rio carreg&aacute;-las durante a execu&ccedil;&atilde;o.<br>
+          </font><br>
+        </li>
+      </ul>
+      <p><font size="4" color="#FFFFFF">Ambos os comandos pertencem &agrave; interface 
+        do objeto recognizer ficando a gram&aacute;tica criada automaticamente 
+        associada &agrave; instancia do reconhecedor em quest&atilde;o.</font></p>
+    </blockquote>
+  </li>
+</ul>
+<p align="right"><a href="../../exemplos/reconhecimento/reconhecimento_exemplo4.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p><font size="4" color="#FFFFFF">Obs.: como se nota nos exemplos a utiliza&ccedil;&atilde;o 
+  dos reconhecedores e das gram&aacute;ticas s&oacute; &eacute; poss&iacute;vel 
+  atrav&eacute;s da implementa&ccedil;&atilde;o de interfaces especiais denominadas 
+  <i><a href="../ouvidores/ouvidores_top.htm#resultlistener" target="_blank">ResultListener</a></i>. 
+  Desde j&aacute;, a partir dos exemplos, &eacute; poss&iacute;vel compreender 
+  a estrutura de funcionamento deste modelo. No entanto, uma abordagem mais detalhada 
+  ser&aacute; vista no t&oacute;pico sobre <a href="../resultados/resultados.htm" target="topicos">resultados</a> 
+  dos reconhecedores mais adiante.</font></p>
+</body>
+</html>

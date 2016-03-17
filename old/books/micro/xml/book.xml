@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" -->
+<book id="micro">
+  <bookinfo>
+    <title>Microprocessors</title>
+
+    <subtitle>A Course about Microprocessors</subtitle>
+
+    <author>
+      <firstname>Dilvan</firstname>
+
+      <othername>de Abreu</othername>
+
+      <surname>Moreira</surname>
+
+      <email>dilvan@computer.org</email>
+    </author>
+
+    <editor>
+      <firstname>Dilvan</firstname>
+
+      <surname>Moreira</surname>
+    </editor>
+
+    <copyright>
+      <year>1999</year>
+
+      <year>2000</year>
+
+      <year>2001</year>
+
+      <year>2002</year>
+
+      <year>2003</year>
+
+      <year>2004</year>
+
+      <holder>Dilvan Moreira</holder>
+    </copyright>
+
+    <edition>First</edition>
+
+    <publisher>
+      <publishername>Dilvan Moreira</publishername>
+
+      <address><city>São Carlos </city><country>Brazil</country></address>
+    </publisher>
+
+    <revhistory>
+      <revision>
+        <revnumber>$Revision: 1.4 $</revnumber>
+
+        <date>$Date: 2004/08/03 15:44:34 $</date>
+      </revision>
+    </revhistory>
+
+    <pubdate>March 1999</pubdate>
+  </bookinfo>
+
+  <chapter id="introduction">
+    <title>Introduction</title>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Using Osciloscopes.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Power Supply - Half 1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Keyboard - Half 1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Clock - Half 1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Read Cycle - Half 1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Write Cycle - Half 1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Power Supply - Half 2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Keyboard - Half 2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Clock - Half 2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Read Cycle - Half 2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Write Cycle - Half 2.</emphasis></para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+
+  <chapter id="microprocessors">
+    <title>Microprocessors</title>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Zilog: Z80 and family.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Motorola: 68HC12.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Intel: I386.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Pentium: Intel &amp;
+        IBM.</emphasis></para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+
+  <chapter id="hardware_presentations">
+    <title>Hardware Presentations</title>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Parallel Interface - Half
+        1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Parallel Interface - Half
+        2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Serial Interface - Half
+        1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Serial Interface - Half
+        2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Digital/Analog Converter - Half
+        1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Digital/Analog Converter - Half
+        2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Analog/Digital Converter - Half
+        1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Analog/Digital Converter - Half
+        2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Memory Bank - Half 1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Memory Bank - Half 2.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Logic Analyser - Half 1.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Logic Analyser - Half 2.</emphasis></para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+
+  <chapter id="software_presentations">
+    <title>Software Presentations</title>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Windows 95/98 Device
+        Drivers.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Simple Windows 95/98
+        Driver.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Windows NT Device
+        Drivers.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Simple Windows NT
+        Driver.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Linux Device Drivers.</emphasis></para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Simple Linux Driver.</emphasis></para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+
+  <chapter id="group_assignments" role="assignments">
+    <title>Group Assignments</title>
+
+    <section id="group_assignments_homework1">
+      <title>Homework 1</title>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Parallel Interface.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Serial Interface.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Digital/Analog
+          Converter.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Analog/Digital
+          Converter.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Memory Bank.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Disk Driver.</emphasis></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="group_assignments_homework2">
+      <title>Homework 2</title>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Windows 95/98 Device
+          Drivers.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Simple Windows 95/98
+          Driver.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Windows NT Device
+          Drivers.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Simple Windows NT
+          Driver.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Linux Device Drivers.</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Simple Linux Driver.</emphasis></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </chapter>
+</book>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-default-dtd-file:"/home/ldp/SGML/emacs/book-cnc-2.0.ced"
+End:
+-->

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 9: AWT Components</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Components</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/components/button.html">Buttons</A></H2>
+
+<BLOCKQUOTE>
+<P>The Button class provides a default button implementation. A button
+is a simple control that generates an action event when the user clicks
+it. </P>
+
+<P><IMG SRC="gifs/GUI6.gif" HEIGHT=33 WIDTH=396></P>
+
+<H3>Code Example:</H3>
+
+<BLOCKQUOTE>
+<PRE>    b1 = new Button();
+    b1.setLabel(&quot;Disable middle button&quot;);
+    b2 = new Button(&quot;Middle button&quot;);
+    b3 = new Button(&quot;Enable middle button&quot;);
+    b3.disable();
+    . . .
+public boolean action(Event e, Object arg) {
+    Object target = e.target;
+    if (target == b1) { //They clicked &quot;Disable middle button&quot;
+        b2.disable();
+        b1.disable();
+        b3.enable();
+        return true;
+    }
+    if (target == b3) { //They clicked &quot;Enable middle button&quot;
+        b2.enable();
+        b1.enable();
+        b3.disable();
+        return true;
+    }
+    return false;
+}</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/components/label.html">Labels</A></H2>
+
+<BLOCKQUOTE>
+<P>The Label class provides an easy way of putting unselectable text in
+your program's GUI. Labels are aligned to the left of their drawing area,
+by default.</P>
+
+<BLOCKQUOTE>
+<CENTER><P><IMG SRC="gifs/GUI11.gif" HEIGHT=89 WIDTH=160></P></CENTER>
+
+<H3>Code Example:</H3>
+</BLOCKQUOTE>
+
+<PRE>          Label label1 = new Label();
+          label1.setText(&quot;Left&quot;);
+          Label label2 = new Label(&quot;Center&quot;);
+          label2.setAlignment(Label.CENTER);
+          Label label3 = new Label(&quot;Right&quot;, Label.RIGHT);</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld10.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld10.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

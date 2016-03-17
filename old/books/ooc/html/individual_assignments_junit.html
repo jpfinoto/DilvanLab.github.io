@@ -1,0 +1,81 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>7.&nbsp;Using JUnit with Eclipse</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="individual_assignments.html" title="Chapter&nbsp;21.&nbsp;Individual Assignments - Laboratory"><link rel="prev" href="individual_assignments_pocket_calculator.html" title="6.&nbsp;Pocket Calculator"><link rel="next" href="group_assignments.html" title="Chapter&nbsp;22.&nbsp;Group Assignments"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">7.&nbsp;Using JUnit with Eclipse</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="individual_assignments_pocket_calculator.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;21.&nbsp;Individual Assignments - Laboratory</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="group_assignments.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="individual_assignments.html">Individual Assignments - Laboratory</a></span> &gt; <span class="breadcrumb-node">Using JUnit with Eclipse</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="individual_assignments_junit"></a>7.&nbsp;Using JUnit with Eclipse</h2></div></div></div><p>This practice will introduce you to use the JUnit Framework
+      integrated with the Eclipse IDE. Be sure you have the latest version of
+      JUnit plugin installed (you can download it from the site <a class="ulink" href="http://www.junit.org" target="_top">http://www.junit.org</a>).</p><p><span class="bold"><strong>Step 1 - Writing the code</strong></span></p><p>First of all, create a new project in the Eclipse IDE and add to
+      it the two classes: <a class="ulink" href="../src/ShoppingCart.java" target="_top"><code class="classname">ShoppingCart</code></a>
+      and <a class="ulink" href="../src/ShoppingItem.java" target="_top"><code class="classname">ShoppingItem</code></a>.
+      You should understand the structure of these classes and
+      <span class="emphasis"><em>complete</em></span> the methods with the comment
+      <code class="computeroutput">TODO</code> on it. The objective is to
+      simulate a simple e-commerce's shopping cart and to test the integrity
+      of the code you've wrote.</p><p><span class="bold"><strong>Step 2 - Creating the test</strong></span></p><p>In the Eclipse IDE, create a new test case from the menu
+      <span class="emphasis"><em>File -&gt; New -&gt; JUnit Test Case</em></span>. Give the name
+      <code class="classname">ShoppingTest</code> to it, check the boxes to create the
+      <code class="methodname">setUp()</code> and <code class="methodname">tearDown()</code>
+      methods and choose <code class="classname">ShoppingCart</code> to be the class
+      under test. Choose <span class="emphasis"><em>Next</em></span>. Now you can select the
+      methods for which test method stubs should be created. Choose the
+      methods <code class="methodname">addItem(), removeItem(),
+      removeAllItems()</code> and then click
+      <span class="emphasis"><em>Finish</em></span>.</p><p><span class="bold"><strong>Step 3 - Writing the test</strong></span></p><p>In the <code class="methodname">testAddItem()</code> method of the class
+      you've created, write the following code:</p><pre class="programlisting">ShoppingCart cart = new ShoppingCart();
+ShoppingItem item1 = new ShoppingItem(1, "item 1", 80.0, 10.0);
+ShoppingItem item2 = new ShoppingItem(2, "item 2", 110.0, 15.0);
+
+assertTrue(cart.addItem(item1));
+assertTrue(cart.addItem(item2));
+
+assertEquals(cart.getTotal(), 190.0, 0.0);
+assertEquals(cart.getDiscount(), 24.5, 0.0);
+assertEquals(cart.getTotalWithDiscount(), 165.5, 0.0);
+assertEquals(cart.getNumberOfItems(), 2);
+
+assertFalse(cart.addItem(item1));
+assertFalse(cart.addItem(null));</pre><p>What this code is testing? Write down your answers. If you detect
+      a failure in your code, do not correct it yet.</p><p>Now, copy the following code to the
+      <code class="methodname">testRemoveItem()</code> method:</p><pre class="programlisting">ShoppingCart cart = new ShoppingCart();
+ShoppingItem item1 = new ShoppingItem(1, "item 1", 80.0, 10.0);
+ShoppingItem item2 = new ShoppingItem(2, "item 2", 110.0, 15.0);
+
+cart.addItem(item1);
+cart.addItem(item2);
+
+assertTrue(cart.removeItem(item1));
+
+assertEquals(cart.getTotal(), 110.0, 0.0);
+assertEquals(cart.getDiscount(), 16.5, 0.0);
+assertEquals(cart.getTotalWithDiscount(), 93.5, 0.0);
+assertEquals(cart.getNumberOfItems(), 1);
+
+assertFalse(cart.removeItem(item1));
+assertFalse(cart.removeItem(null));</pre><p>What this code is testing? Write down your answers.</p><p>Now, in the <code class="methodname">testRemoveAllItems()</code>, copy
+      the code below:</p><pre class="programlisting">ShoppingCart cart = new ShoppingCart();
+ShoppingItem item1 = new ShoppingItem(1, "item 1", 80.0, 10.0);
+ShoppingItem item2 = new ShoppingItem(2, "item 2", 110.0, 15.0);
+
+cart.addItem(item1);
+cart.addItem(item2);
+
+assertTrue(cart.removeAllItems());
+
+assertEquals(cart.getTotal(), 0.0, 0.0);
+assertEquals(cart.getDiscount(), 0.0, 0.0);
+assertEquals(cart.getTotalWithDiscount(), 0.0, 0.0);
+assertEquals(cart.getNumberOfItems(), 0);</pre><p>What this code is testing?</p><p><span class="bold"><strong>Step 4 - Running the test</strong></span></p><p>Finally, you can run the tests. In the Eclipse menu, click on
+      <span class="emphasis"><em>Run -&gt; Run As -&gt; JUnit Test.</em></span> You'll see the
+      JUnit graphics interface integrated in the IDE. Check the results. If
+      there are errors or failures, correct your code and rerun the
+      tests.</p><p><span class="bold"><strong>Step 5 - Refining the test</strong></span></p><p>Identify the <span class="emphasis"><em>fixture</em></span> for the test case
+      <code class="classname">ShoppingTest</code> and write the
+      <code class="methodname">setUp()</code> and <code class="methodname">tearDown()</code>
+      methods. Rerun the test to check if there are any error.</p><p>Hand in all material you've created.</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="individual_assignments_pocket_calculator.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="individual_assignments.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="group_assignments.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">6.&nbsp;Pocket Calculator&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;22.&nbsp;Group Assignments</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

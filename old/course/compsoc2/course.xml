@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../XSL/root.xsl"?>
+
+<course>
+  <id>
+    <title>Computers and Society II</title>
+    <www>http://java.icmc.usp.br</www> 
+    <name>compsoc2</name>
+    <teacher>
+      <name>
+        <first>Dilvan</first>
+        <last>Moreira</last>
+      </name>
+      <email>dilvan@icmc.usp.br</email>
+      <www>http://java.icmc.usp.br/dilvan</www>
+    </teacher>
+
+     <monitor>
+      <name>
+        <first>Priscila</first>
+        <last>Lucena</last>
+      </name>
+      <email>priluca@icmc.usp.br</email>
+      <www>http://www.icmc.usp.br/~priluca</www>
+    </monitor>
+  </id>
+
+  <book>compsoc</book>
+</course>

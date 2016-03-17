@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../XSL/root.xsl"?>
+
+<course>
+  <id>
+    <title>Distributed Programming using Java</title>
+    <www>http://java.icmc.usp.br</www>    
+    <name>java</name>
+    <teacher>
+      <name>
+        <first>Dilvan</first>
+        <last>Moreira</last>
+      </name>
+      <email>dilvan@icmc.usp.br</email>
+      <www>http://java.icmc.usp.br/dilvan</www>
+    </teacher>
+
+    <monitor>
+      <name>
+        <first>Dilvan</first>
+        <last>Moreira</last>
+      </name>
+      <email>dilvan@icmc.usp.br</email>
+      <www>http://java.icmc.usp.br/dilvan</www>
+    </monitor>
+  </id>
+
+  <book>java</book>
+</course>

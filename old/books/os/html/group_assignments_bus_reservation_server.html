@@ -1,0 +1,26 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>5.&nbsp;Bus Reservation Server</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="group_assignments.html" title="Chapter&nbsp;11.&nbsp;Group Assignments - Homeworks"><link rel="prev" href="group_assignments_chat_server.html" title="4.&nbsp;Chat Server"><link rel="next" href="group_assignments_linux_threads_seminar.html" title="6.&nbsp;Linux Threads Seminar"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.&nbsp;Bus Reservation Server</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="group_assignments_chat_server.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;11.&nbsp;Group Assignments - Homeworks</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="group_assignments_linux_threads_seminar.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="group_assignments_bus_reservation_server"></a>5.&nbsp;Bus Reservation Server</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Bus Reservation Server</p><p>This program should implement a server that is able to do bookings for a bus service company. The server has to hold a database (free implementation) with all buses' routes. This database has to hold at least the following information for each route:</p><p>For instance:</p><pre class="programlisting">Route 1:Initial City  -  Stopovers      -      Final Destination
+ Rib. Preto   S.Carlos, Araraq.   Catanduva
+Bus1         6:00          7:00     7:30         8:30
+Bus2        11:00         12:00    12:30      13:30
+Bus3        15:00         16:00    16:30      17:30
+
+Bus1:
+Seat     Rib. Preto     S.Carlos, Araraq.   Catanduva
+  01            X--------Ocupied-------X
+  02                                  X-------Ocupied-----X
+  03            X---Ocupied---X        X--Ocupied-X
+  04          </pre><p>The client should be able to execute at least the following commands:</p><p>list1 &lt;Departure City&gt; &lt;Destination&gt; : It shows the available buses and number of seats in each bus connecting the two destinations:</p><pre class="programlisting">list1 RibPreto SCarlos
+
+Bus1   6:00   7:00   12 seats
+Bus2  11:00  12:00    4 seats
+Bus3  15:00  16:00    8 seats
+</pre><p>list2 &lt;Departure City&gt; &lt;Destination&gt; &lt;Bus&gt;: It shows the available seats in a particular bus connecting the two destinations:</p><pre class="programlisting">list2 RibPreto SCarlos Bus2
+
+Bus2  2 34 35 40</pre><p>get &lt;Departure City&gt; &lt;Destination&gt; &lt;Bus&gt; &lt;seat&gt;: It books a particular seat for a passenger (It can return OK or failure):</p><pre class="programlisting">get RibPreto SCarlos Bus2 34
+
+OK: RibPreto 11:00 SCarlos 12:00 Bus2 34
+</pre><p>cancel &lt;Departure City&gt; &lt;Destination&gt; &lt;Bus&gt; &lt;seat&gt;: It cancels a particular seat for a passenger (It can return OK or failure):</p><pre class="programlisting">cancel RibPreto SCarlos Bus2 34
+
+OK: RibPreto 11:00 SCarlos 12:00 Bus2 34           </pre><p>The server should be able to book and to cancel slots. If a seat is booked between Rib. Preto and S. Carlos, it should be able to book the same seat between S. Carlos and Catanduva.</p><p>NOTE: The program must use shared memory and threads in its implementation (take care to protected shared memory areas with mutex and/or semaphores). The program does not need to keep information on files, it does not have to be persistent.</p></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="group_assignments_chat_server.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="group_assignments.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="group_assignments_linux_threads_seminar.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">4.&nbsp;Chat Server&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;6.&nbsp;Linux Threads Seminar</td></tr></table></div></body></html>

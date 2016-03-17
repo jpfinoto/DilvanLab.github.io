@@ -1,0 +1,446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>ICECS - 96</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<H2 ALIGN=CENTER>PLACEMENT OPTIMIZATION USING BEHAVIOR BASED SOFTWARE AGENTS
+AND THE GENETIC ALGORITHM*</H2>
+
+<CENTER><P><BR>
+<FONT SIZE=+1>D. de Abreu Moreira<SUP>1</SUP> &amp; L. T. Walczowski<SUP>2</SUP></FONT></P></CENTER>
+
+<CENTER><P><SUP>1</SUP>DSIF-FEE - UNICAMP, Caixa Postal 6101 - Cid. Universit&aacute;ria,
+Brazil<BR>
+<SUP>2</SUP> Electronic Engineering Laboratory, The University, Canterbury,
+Kent, CT2 7NT, U.K.<BR>
+<I>Email: dilvan@lcaee.fee.unicamp.br</I></P></CENTER>
+
+<H2 ALIGN=CENTER><BR>
+<BR>
+<BR>
+ABSTRACT</H2>
+
+<P>Agents are defined as software components that communicate with their
+peers by exchanging messages in a communication language. They are used
+in the placer server of the <B>Agents</B> system, a distributed, client-server
+system that generates mask level layout of full custom VLSI leaf cells.
+The system is formed from four server programs: the Placer, Router, Database
+and Broker. This paper describes the placer server which uses groups of
+these small software agents and the genetic algorithm to place optimally
+the components of a leaf cell.</P>
+
+<P>*This work was caried out with the financial support of CNPq - National
+Council for Research, an agency of the Braziliean Federal Governments.</P>
+
+<P><A NAME="HEADING1-3"></A></P>
+
+<H2 ALIGN=CENTER>1.0 INTRODUCTION</H2>
+
+<P>In the literature, agents are defined as software components that communicate
+with their peers by exchanging messages in a communication language <A HREF="#REF1">[1]</A>.
+Whilst agents can be as simple as subroutines, usually they are bigger
+entities with some sort of persistent control and autonomy. This paper
+examines the implementation of agents in the placement server of the Agents
+system <A HREF="#REF2">[2]</A> which is a CAD system that generates mask
+level layout of full custom leaf cells. Leaf cells are subcircuits of a
+complexity comparable with SSI (Small Scale Integration) components such
+as one-bit adders, flip-flops or multiplexers.</P>
+
+<P>The Agents system is formed from four server programs: the Placer, Router,
+Database and Broker. The Placer places components in a cell, the Router
+wires the circuits sent to it, the Database keeps all the information that
+is dependent upon the fabrication process, such as the design rules, and
+the Broker makes the services of the other servers available. </P>
+
+<P>The Placer server receives from its client the description and netlist
+of the circuit to be generated using EDIF (Electronic Design Interchange
+Format). It undertakes its tasks by using groups of small software agents
+to join leaf cell components in groups and the genetic algorithm to place
+them. Their implementation is described below.</P>
+
+<P><A NAME="HEADING1-7"></A></P>
+
+<H2 ALIGN=CENTER>2.0 DISTRIBUTED BEHAVIOR</H2>
+
+<P>Agent objects are small agents responsible for all the reasoning undertaken
+by the Placer server. The design philosophy is that competence should emerge
+out of the collective behavior of a large number of relatively simple agents.
+These small agents are implemented as C++ objects. The base class agent
+holds the basic inference routines and the derived classes add the knowledge
+needed for a particular application <A HREF="#REF3">[3]</A>. </P>
+
+<P>The class agent uses a model based on behaviors. A behavior approach
+starts from the view point of behaviors as the fundamental unit of analysis.
+A behavior is a regularity in the interaction dynamics between an agent
+and its environment <A HREF="#REF4">[4]</A>. For example, when an agent
+maintains a certain distance from a wall, as long as this regularity holds,
+observers may say that there is an &quot;obstacle avoidance behavior&quot;.
+</P>
+
+<P>Each agent object has a &quot;personality&quot; and an aim in life.
+Its personality is determined by the set of behaviors it can perform. Changes
+in behavior can be dictated by an object's perception of changes in its
+environment, similar to the mechanisms present in the interaction of individuals.
+Alternatively they can be directly commanded by another agent. In agent
+objects, behaviors are implemented through the use of rules which test
+external input points, and determine from them which responses are appropriate.</P>
+
+<P><A NAME="HEADING1-11"></A></P>
+
+<H2 ALIGN=CENTER>3.0 THE GENETIC ALGORITHM</H2>
+
+<P>The genetic algorithm, first proposed by Holland in 1975 <A HREF="#REF5">[5]</A>,
+mimics natural evolution to solve problems in a wide variety of domains
+<A HREF="#REF6">[6]</A>. It is particularly suitable for solving complex,
+search intensive, optimization problems, such as the placement of component
+cells in a leaf cell.</P>
+
+<P>The genetic algorithm is formed from a set of individual elements (the
+population) and a set of biological inspired operators, which can change
+these individuals. According to evolutionary theory, only the individuals
+that are the more suited in the population are likely to survive and to
+generate off-spring, thus transmitting their biological heredity to new
+generations.</P>
+
+<P>In computing terms, the genetic algorithm maps strings of numbers to
+each potential solution. Each solution becomes an individual in the population,
+and each string becomes a representation of an individual. There should
+be a way to derive each individual from its string representation. The
+genetic algorithm then manipulates the most promising strings in its search
+for an improved solution. </P>
+
+<P>The algorithm operates through a simple cycle. In each cycle, a new
+generation of possible solutions (individuals) for a given problem is produced.
+At the first stage, a population of possible solutions is created as a
+start point. Each individual in this population is encoded into a string
+(the chromosome) to be manipulated by the genetic operators. In the next
+stage, the individuals are evaluated, first the individual is created from
+its string description (its chromosome) and its performance in relation
+to a target response is evaluated. This determines how fit this individual
+is in relation to the others in the population. Based on each individual's
+fitness, a selection mechanism chooses the best pairs for the genetic manipulation
+process. The selection policy is responsible to ensure the survival of
+the fittest individuals. Genetic operators are then used to produce new
+populations of individuals, the offspring, by manipulating the genetic
+information possessed by the pairs chosen to reproduce. This information
+is stored in strings (chromosomes) that describe the individuals. </P>
+
+<P>The two main genetic operators used are <I>crossover</I> and <I>mutation</I>.
+The offspring generated by this process take the place of the older population
+and the cycle is repeated until a desired level of fitness is attained
+or a determined number of cycles is reached.</P>
+
+<P><A NAME="HEADING1-17"></A></P>
+
+<H3>3.1 Genetic operators</H3>
+
+<UL>
+<LI>Crossover is one of the genetic operators used to recombine the population
+genetic material. It takes two chromosomes and swaps part of their genetic
+information to produce new chromosomes. This operation is similar to sexual
+reproduction in nature. After the crossover point has been randomly chosen,
+portions of both parents' chromosomes are combined to produce the new offspring.
+The selection process associated with the recombination made by crossover
+assures that special genetic structures, called building blocks, are retained
+for future generations. These building blocks represent the most fit genetic
+structures in the population. </LI>
+
+<LI>Mutation is used because the recombination process alone cannot explore
+search space sections not represented in the population's genetic structures.
+This could make the search become stuck around local minima. The mutation
+operator introduces new genetic structures in the population by randomly
+changing some of its building blocks, helping the algorithm escape local
+minima traps. Since the modification is totally random and thus not related
+to any previous genetic structures present in the population, it creates
+different structures related to other sections of the search space. Mutation
+is implemented by occasionally altering a random part of a chromosome.</LI>
+</UL>
+
+<P>A number of other operators, other than crossover and mutation, have
+been introduced since the basic model was proposed. They are usually versions
+of the recombination and genetic alteration processes adapted to constraints
+of a particular problem. </P>
+
+<P><A NAME="HEADING1-21"></A></P>
+
+<H3>3.2 Problem dependent parameters</H3>
+
+<P>This description of the genetic algorithm's computational model reviews
+the steps needed to create the algorithm. However, a real implementation
+takes account of a number of problem-dependent parameters:</P>
+
+<UL>
+<LI>The choice of the underlying encoding of the individuals on the population
+is critical to the algorithm performance. It is desirable that the encoding
+makes the representation as robust as possible. This means that even if
+a piece of the representation is randomly changed, in the majority of cases,
+it should still represent a viable individual.</LI>
+
+<LI>The evaluation is a step closely related to the actual system the algorithm
+is trying to optmize. It takes the strings representing the individuals
+of the population, creates from them the actual individuals and then tests
+and scores them. The testing depends on those characteristics which should
+be optimized and the scoring depends on the relative importance of each
+different characteristic value obtained during testing.</LI>
+</UL>
+
+<P>Other parameters to be adjusted are the population size, crossover and
+mutation rates, evaluation method, and convergence criteria. </P>
+
+<P><A NAME="HEADING1-26"></A></P>
+
+<H2 ALIGN=CENTER>4.0 THE PLACER SERVER</H2>
+
+<P>The Placer server undertakes the placement of circuit components in
+a defined area. After reading the design information from its client through
+a network in EDIF format, the server performs the placement of components
+basically in three steps: </P>
+
+<UL>
+<LI>It forms columns of related transistors. These columns can be formed
+from MOS transistors that are connected by their gates, MOS transistors
+that have their source and drain interconnected (pass pair) or bipolar
+transistors that share connections.</LI>
+
+<LI>It forms groups joining columns that share drain or source connections.
+As these connections are implemented using diffusion layers, the line of
+transistors, formed by joining the MOSFET columns, can be laid out in the
+same strip of diffusion.</LI>
+
+<LI>It performs the layout of each cell by placing the groups using genetic
+algorithm techniques and by calling Router servers to route them.</LI>
+</UL>
+
+<P>The best placement successfully routed becomes the final circuit. This
+circuit is then sent back to the client application, again, as an EDIF
+description.</P>
+
+<P><A NAME="HEADING1-32"></A></P>
+
+<H3>4.1 Column formation</H3>
+
+<P>There are three kinds of agent objects for placement: the <I>Cont</I>
+agent object controls all the operations; the <I>Abutted</I> agent object
+first builds columns of related transistors and subsequently tries to unite
+with other Abutted agents to form groups, and the <I>Eval</I> agent object
+uses the genetic algorithm to find a good placement for the groups.</P>
+
+<P>The Cont agent coordinates all the actions. It receives the new circuit
+as a list, after it has been interpreted from EDIF. It separates the NMOS,
+PMOS and bipolar transistors and general cells in different lists and creates
+the first Abutted agent.</P>
+
+<P>An Abutted agent has two behaviors. When it is created it performs its
+first behavior: it goes to the lists of available cells in the Cont agent,
+and grabs the first cell it can obtain in the following order: NMOS, PMOS,
+bipolar or general cell. Then it tries to create the biggest possible column
+formed by other related cells:</P>
+
+<UL>
+<LI>It tries to join MOS transistors that have their gates connected or
+form a pass pair (two transistors which have their source and drain interconnected).
+</LI>
+
+<LI>It tries to join bipolar transistors that share interconnections.</LI>
+</UL>
+
+<P>When an agent forms its column of transistors or gets a cell, it tries
+to reproduce. If there are more cells to be obtained in the Cont agent,
+a new Abutted agent is created and it tries to obtain its own set of cells.
+Abutted agents behave like a culture of bacteria, they keep reproducing
+until there is no more &quot;food&quot; (cells).</P>
+
+<P><A NAME="HEADING1-39"></A></P>
+
+<H3>4.2 Group formation</H3>
+
+<P>When the column creation process finishes, the Abutted agents switch
+to their second behavior, group formation. They now try to pair up with
+other agents by joining columns of MOSFETs together. Only Abutted agents
+holding MOSFETs' columns can pair up. The group formation process is performed
+in cycles controlled by the Cont agent. In this process only Abutted agents
+holding columns of MOSFETs are considered. In each cycle, the Cont agent
+goes through the list of Abutted agents, exposes each agent to the others
+and asks the other agents how well they connect to this agent. Each agent
+then creates a report showing its situation relating to the exposed agent.
+This report states if a match is possible, how good this match is and details
+how it should be implemented. At the end of a cycle, the two agents that
+have the best connections between each other are joined. These cycles continue
+until no agents can be joined or the quality of the possible connections
+is too poor.</P>
+
+<P><A NAME="HEADING1-41"></A></P>
+
+<H2 ALIGN=CENTER>5.0 THE GENETIC ALGORITHM PLACEMENT</H2>
+
+<P>After formation, the group placement is optimized using the genetic
+algorithm encapsulated in the Eval agent object. The inputs for the Eval
+agent are an empty leaf cell and a list holding the groups of components
+to be placed. The empty leaf cell is the same as that received by the server.
+The list of groups comes from the Cont agent and it holds three kinds of
+groups of components: arrays of MOSFETs, a list of bipolar transistors
+and individual general cells. The Eval agent has to position them in the
+empty cell in the best possible way. Before describing the actual algorithm
+implementation, some steps should be defined because they are closely related
+to the system being optimized. There are two main points to be defined:
+encoding and evaluation.</P>
+
+<P><A NAME="HEADING1-43"></A></P>
+
+<H3>5.1 Encoding</H3>
+
+<P>Each individual solution in the population is represented by a chromosome
+and this representation should be as robust as possible. Figure <A HREF="#fig1">1</A>
+shows an individual and figure <A HREF="#fig2">2</A> the chromosome that
+represents it. The chromosome is not represented by a string, as would
+be expected, but by a list. This avoids Hamming cliffs <A HREF="#REF6">[6]</A>
+and enhances robustness. The elements of this list represent each group
+being laid out. For each group there is another list describing how that
+particular group will be laid out. This list has the following elements:</P>
+
+<UL>
+<LI><B>Group number</B>, the group's identification.</LI>
+
+<LI><B>Flip flag</B>, indicating if the group is to be mirrored in the
+Y axis.</LI>
+
+<LI><B>Line list</B>, a list with the order that the lines in the group
+should be laid out. </LI>
+
+<LI><B>Dx</B>, representing the distance between this group and the last
+group laid out.</LI>
+
+<LI><B>Dy</B>, representing the distance between the group and the Y axis.</LI>
+
+<LI><B>Gap</B>, which is the gap added to the minimum separation between
+a cell's transistors.</LI>
+</UL>
+
+<CENTER><P><A NAME="fig1"></A><IMG SRC="icecs96-1.gif" HEIGHT=301 WIDTH=409></P></CENTER>
+
+<CENTER><P><A NAME="fig2"></A><IMG SRC="icecs96-2.gif" HEIGHT=206 WIDTH=441></P></CENTER>
+
+<P>With the information provided by the chromosome, the individual, shown
+in figure <A HREF="#fig1">1</A>, is laid out in a cell containing only
+the pads (Vss, Vee, Input and Output). The way the genetic operations are
+carried out is dependent upon the chosen encoding for the genes. As figure
+<A HREF="#fig3">3</A> shows, when two individuals mate, their genetic material
+mix, in this case the list containing placement information for each group.
+A parent is chosen randomly to be the main parent, the order of the groups
+in its chromosome determining the order in the offspring chromosome. In
+figure <A HREF="#fig3">3</A>, parent 1 was chosen as the main parent, the
+order of groups in the offspring reassembling its own. However placement
+information came randomly from both parents. </P>
+
+<CENTER><P><A NAME="fig3"></A><IMG SRC="icecs96-3.gif" HEIGHT=226 WIDTH=366></P></CENTER>
+
+<P>After an offspring has been generated, mutation operations can be applied.
+At the top level, mutation can be used to swap the position of some groups
+in the offspring. Inside each group description, cross-over and mutation
+can happen. The FLIP flag can be changed by mutation and the group's lines
+can be swapped.</P>
+
+<P>Cross-over and mutation operations can generate <I>illegal</I> individuals
+(placements that violate design rules). When evaluated they will be classified
+as &quot;born dead&quot; individuals and will not be added to the population
+list. </P>
+
+<P><A NAME="HEADING1-54"></A></P>
+
+<H3>5.2 Evaluation</H3>
+
+<P>The created individuals are evaluated to determine how good their placement
+is. The evaluation routine uses the same wiring algorithms that the router
+uses but does not test for design rule violations. All connections are
+carried out with the smallest wire possible. As the evaluation pseudo routing
+takes place, the cost of the wires is computed. The routine that calculates
+the cost of each wire is the same as the one used by the router. The number
+of crossings of each new wire with all the old ones, already laid out,
+is accumulated. At the end, the evaluation routine calculates a fitness
+value from the total cost of the pseudo routing and the total number of
+crossings.</P>
+
+<P>The whole population of individuals is kept in a list, which is ordered
+by fitness with the fittest individuals coming first in the list. Every
+new individual is appended to this list in the appropriate position. </P>
+
+<P>The offspring produced by genetic manipulation (the next population
+to be evaluated) replace its less fit members (steady-state approach).
+New individuals are thus continuously appended to the population list.
+When the population reaches a predetermined maximum number, half of it
+is killed.</P>
+
+<P><A NAME="HEADING1-58"></A></P>
+
+<H3>5.3 Implementation of the Algorithm</H3>
+
+<P>The inputs for the Eval agent are an empty cell and a list holding the
+groups of components to be placed. When the Eval agent is created it generates
+four individuals by placing then randomly. These individuals are then evaluated
+and classified becoming the population. The program then runs a certain
+number of generations or cycles. When it finishes it sends the placed circuit
+to be wired by a router server. The Cont agent refines the placement of
+a circuit by doing placement/routing cycles. First, the Cont agent runs
+a number of generations in the Eval agent to produce a placement for the
+design and then it sends it to a Router server. This cycle is repeated
+until one of the router servers successfully wires one design. An example
+of a placed circuit is shown in figure <A HREF="#fig4">4</A>.</P>
+
+<CENTER><P><A NAME="fig4"></A><IMG SRC="icecs96-4.gif" HEIGHT=254 WIDTH=376></P></CENTER>
+
+<P><A NAME="HEADING1-60"></A></P>
+
+<H2 ALIGN=CENTER>6.0 CONCLUSION</H2>
+
+<P>The genetic algorithm is a very powerful and flexible optimization algorithm.
+The Placer server within the <B>Agents</B> system, uses it in conjunction
+with small behavior based software agents to generate layout flexibly.
+It offers the designer flexibility in that a richer set of layout options
+and fabrication process independence are available. Finally, the use of
+a standard circuit description language (EDIF) facilitates the integration
+of the program in other design systems.</P>
+
+<P><A NAME="HEADING1-62"></A></P>
+
+<H2 ALIGN=CENTER>7.0 REFERENCES</H2>
+
+<DL COMPACT>
+<DT>[1]</DT>
+
+<DD><A NAME="REF1"></A>M.R. Genesereth and S.P. Ketchpel, “Software Agents”,
+Communications of the ACM, Vol. 37, No. 7, July 1994, pp. 48-53, 147.</DD>
+
+<DT>[2]</DT>
+
+<DD><A NAME="REF2"></A>D.A. Moreira and L.T. Walczowski, “Automated Placement
+for a Leaf Cell Generator”, ISCAS 94, Proc. of the IEEE Inter. Symposium
+on Circuits and Systems, June 1994, vol. 1, pp 117-120.</DD>
+
+<DT>[3]</DT>
+
+<DD><A NAME="REF3"></A>D.A. Moreira and L.T. Walczowski, “A Leaf-Cell Generator
+for Silicon Compilers”, ACM OOPS Messenger, Vol. 6, No. 3, July 1995, pp.50-51.</DD>
+
+<DT>[4]</DT>
+
+<DD><A NAME="REF4"></A>L. Steels, “Mathematical analysis of behavior systems”,
+Proceedings of the From Perception to Action Conference, IEEE Computer
+Society Press, September 1994, pp. 88-95.</DD>
+
+<DT>[5]</DT>
+
+<DD><A NAME="REF5"></A>J.H. Holland, Adaptation in Natural and Artificial
+Systems, Univ. of Michigan Press, Ann Arbor, Mich. 1975.</DD>
+
+<DT>[6]</DT>
+
+<DD><A NAME="REF6"></A>J.L. Ribeiro Filho, P.C. Treleaven and C. Alippi,
+“Genetic-Algorithm Programming Environments”, Computer, vol. 27, no. 6,
+June 1994, pp. 28-43.</DD>
+</DL>
+
+</BODY>
+</HTML>

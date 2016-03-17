@@ -1,0 +1,83 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;URLs</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Object Oriented Computing"><link rel="up" href="distributed_programming.html" title="Chapter&nbsp;10.&nbsp;Distributed Programming"><link rel="prev" href="distributed_programming_the_client_server_model.html" title="1.&nbsp;The Client/Server Model"><link rel="next" href="distributed_programming_sockets_and_streams.html" title="3.&nbsp;Sockets and Streams"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;URLs</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="distributed_programming_the_client_server_model.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Distributed Programming</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="distributed_programming_sockets_and_streams.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="distributed_programming_urls"></a>2.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/networking/urls/index.html" target="_top">URLs</a></h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5395"></a>2.1.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/networking/urls/definition.html" target="_top">What Is a URL</a>?</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5400"></a>2.1.1.&nbsp;Definition</h4></div></div></div><p>URL is an acronym that stands for Uniform Resource Locator and is a reference (an address) to a resource on the Internet.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5405"></a>2.1.2.&nbsp;Components</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Protocol identifier</p><div class="itemizedlist"><ul type="circle"><li><p>HTTP - http://www.unicamp.br:80/lecture.html#TITLE</p></li><li><p>FTP - ftp://ftp.fee.unicamp.br/linux/Read.me</p></li><li><p>JDBC - jdbc:msql://lcaee.fee.unicamp.br:4333/group1</p></li></ul></div></li><li><p>Resource Name</p><div class="itemizedlist"><ul type="circle"><li><p>www.unicamp.br:80/lecture.html#TITLE</p></li><li><p>ftp.fee.unicamp.br/linux/Read.me</p></li><li><p>msql://lcaee.fee.unicamp.br:4333/group1</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5435"></a>2.1.3.&nbsp;Resource name format (protocol dependent):</h4></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e5438"></a>2.1.3.1.&nbsp;host name</h5></div></div></div><p>www.unicamp.br</p><p>the name of the machine the resource lives on.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e5445"></a>2.1.3.2.&nbsp;filename</h5></div></div></div><p>/lecture.html</p><p>the pathname to the file on the machine.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e5452"></a>2.1.3.3.&nbsp;port number</h5></div></div></div><p>:80</p><p>the port number to connect to (this is typically optional).</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="d0e5459"></a>2.1.3.4.&nbsp;reference</h5></div></div></div><p>#TITLE</p><p>a reference to a named anchor within a resource.</p><p><a href="../audio/Servers5.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5470"></a>2.2.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/networking/urls/creatingUrls.html" target="_top">Creating a URL</a></h3></div></div></div><p>Simplest way:</p><pre class="programlisting">http://www.gamelan.com/
+URL gamelan = new URL("http://www.gamelan.com/");</pre><p>Creating a URL Relative to Another:</p><pre class="programlisting">URL gamelan = new URL("http://www.gamelan.com/");
+URL gamelanNetwork = new URL(gamelan, "Gamelan.network.html");
+URL gamelanNetworkBottom = new URL(gamelanNetwork, "#BOTTOM");</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5482"></a>2.3.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/networking/urls/urlInfo.html" target="_top">Parsing a URL</a></h3></div></div></div><p>getProtocol() - Returns the protocol identifier component of the URL;</p><p>getHost()- Returns the host name component of the URL.;</p><p>getPort() - Returns the port number component of the URL;</p><p>getFile() - Returns the filename component of the URL;</p><p>getRef() - Returns the reference component of the URL.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Remember that not all URL addresses contain these components.</p></td></tr></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5499"></a>2.4.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/networking/urls/readingURL.html" target="_top">Reading Directly from a URL</a></h3></div></div></div><pre class="programlisting">class OpenStreamTest {
+     public static void main(String[] args) {
+        try {
+           URL yahoo = new URL("http://www.yahoo.com/");
+           DataInputStream dis = new DataInputStream(yahoo.openStream());
+           String inputLine;
+
+           while ((inputLine = dis.readLine()) != null) {
+              System.out.println(inputLine);
+           }
+           dis.close();
+        } catch (Exception me) {
+           System.out.println("Exception: " + me);
+        }
+     }
+}</pre><p><a href="../audio/Servers6.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5509"></a>2.5.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/networking/urls/connecting.html" target="_top">Connecting to a URL</a></h3></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Note: URLConnection is an HTTP-centric class--many of its methods are useful only when working with HTTP URLs.</p></td></tr></table></div><pre class="programlisting">try {
+     URL yahoo = new URL("http://www.yahoo.com/");
+     yahoo.openConnection();
+  } catch (MalformedURLException e) { // new URL() failed
+     . . .
+  } catch (IOException e) { // openConnection() failed
+     . . .
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5518"></a>2.6.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/networking/urls/readingWriting.html" target="_top">Reading from and Writing to a URLConnection</a></h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5522"></a>2.6.1.&nbsp;Reading from a URLConnection</h4></div></div></div><pre class="programlisting">import java.net.*;
+import java.io.*;
+
+class ConnectionTest {
+    public static void main(String[] args) {
+        try {
+            URL yahoo = new URL("http://www.yahoo.com/");
+            URLConnection yahooConnection = yahoo.openConnection();
+            DataInputStream dis = new DataInputStream(yahooConnection.getInputStream());
+            String inputLine;
+
+            while ((inputLine = dis.readLine()) != null) {
+                System.out.println(inputLine);
+            }
+            dis.close();
+        } catch (MalformedURLException me) {
+            System.out.println("MalformedURLException: " + me);
+        } catch (IOException ioe) {
+            System.out.println("IOException: " + ioe);
+        }
+    }
+}</pre><p><a href="../audio/Servers7.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e5531"></a>2.7.&nbsp;Writing to a URLConnection (cgi-bin script)</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>Create a URL.</p></li><li><p>Open a connection to the URL.</p></li><li><p>Get an output stream from the connection. This output stream is connected to the standard input stream of the cgi-bin script on the server.</p></li><li><p>Write to the output stream.</p></li><li><p>Close the output stream.</p></li></ol></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5550"></a>2.7.1.&nbsp;Program</h4></div></div></div><pre class="programlisting">import java.io.*;
+import java.net.*;
+
+public class ReverseTest {
+    public static void main(String[] args) {
+        try {
+            if (args.length != 1) {
+                System.err.println("Usage:  java ReverseTest string_to_reverse");
+                System.exit(1);
+            }
+            String stringToReverse = URLEncoder.encode(args[0]);
+
+            URL url = new URL("http://java.sun.com/cgi-bin/backwards");
+            URLConnection connection = url.openConnection();
+
+            PrintStream outStream = new PrintStream(connection.getOutputStream());
+            outStream.println("string=" + stringToReverse);
+            outStream.close();
+
+            DataInputStream inStream = new DataInputStream(connection.getInputStream());
+            String inputLine;
+
+            while ((inputLine = inStream.readLine()) != null) {
+                System.out.println(inputLine);
+            }
+            inStream.close();
+        } catch (MalformedURLException me) {
+            System.err.println("MalformedURLException: " + me);
+        } catch (IOException ioe) {
+            System.err.println("IOException: " + ioe);
+        }
+    }
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e5555"></a>2.7.2.&nbsp;Output</h4></div></div></div><pre class="programlisting">Reverse Me
+ reversed is:
+eM esreveR</pre><p><a href="../audio/Servers8.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="distributed_programming_the_client_server_model.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="distributed_programming.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="distributed_programming_sockets_and_streams.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;The Client/Server Model&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Sockets and Streams</td></tr></table></div></body></html>

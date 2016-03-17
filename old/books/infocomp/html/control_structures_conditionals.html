@@ -1,0 +1,73 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>1.&nbsp;Conditionals</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Informatics and Computing"><link rel="up" href="control_structures.html" title="Chapter&nbsp;3.&nbsp;Control Structures"><link rel="prev" href="control_structures.html" title="Chapter&nbsp;3.&nbsp;Control Structures"><link rel="next" href="control_structures_conditional_exercises.html" title="2.&nbsp;Conditionals Exercises"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.&nbsp;Conditionals</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="control_structures.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;3.&nbsp;Control Structures</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="control_structures_conditional_exercises.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="control_structures_conditionals"></a>1.&nbsp;Conditionals</h2></div></div></div><p>As we have seen following logical operations exist in C:</p><pre class="programlisting"> ==, !=, ||, &amp;&amp;.</pre><p>One other operator is the unitary - it takes only one argument - not <code class="code">!</code>.</p><p>These operators are used in conjunction with the following statements.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e289"></a>1.1.&nbsp;The <code class="code">if</code> statement</h3></div></div></div><p>The <span><strong class="command">if</strong></span> statement has the same function as other languages. It has three basic forms:</p><pre class="programlisting">  if  (expression)
+      <span class="emphasis"><em>statement</em></span>
+
+...or:
+
+  if  (expression)
+      <span class="emphasis"><em>statement1</em></span>
+  else
+      <span class="emphasis"><em>statement2</em></span>
+
+...or:
+
+  if  (expression)
+      <span class="emphasis"><em>statement1</em></span>
+  else if (expression)
+      <span class="emphasis"><em>statement2</em></span>
+  else
+      <span class="emphasis"><em>statement3</em></span></pre><p>For example:</p><pre class="programlisting">int x;
+ 
+main() {
+   printf("Enter x:"); scanf("%d",x);
+   if (x&gt;=0) {
+
+      printf(" X is positive.\n");
+
+   }
+   else
+   {
+
+      printf(" X is negative.\n");
+
+   }
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e323"></a>1.2.&nbsp;The <code class="code">switch</code> statement</h3></div></div></div><p>The C <code class="code">switch</code> statement allows multiple choice of a selection of items at one level of a conditional where it is a far neater way of writing multiple if statements:</p><pre class="programlisting">switch (expression) {
+   case item<sub>1</sub>:
+      <span class="emphasis"><em>statement1</em></span>;
+   break;
+   case item<sub>2</sub>:
+      <span class="emphasis"><em>statement2</em></span>;
+   break;
+     .
+     .
+     .
+   case item<sub>n</sub>:
+      <span class="emphasis"><em>statementn</em></span>;
+   break;
+   default:
+      <span class="emphasis"><em>statement</em></span>;
+   break;
+}</pre><p>In each case the value of itemi must be a constant, variables are not allowed.</p><p>The break is needed if you want to terminate the switch after execution of one choice. Otherwise the next case would get evaluated.</p><p>We can also have null statements by just including a ; or let the switch statement fall through by omitting any statements (see below).</p><p>The default case is optional and catches any other cases.</p><p>For example:</p><pre class="programlisting">char letter;
+
+main(){
+   printf("Enter letter:"); letter= getchar();
+
+   switch (letter) {
+      case 'A':
+      case 'E':
+      case 'I':
+      case 'O':
+      case 'U':
+         printf(" is a vowel.\n");
+      break;
+
+      case ' ':
+         printf(" is space.\n");
+      break;
+
+      default:
+         printf(" is not a vowel.\n");
+      break;
+   }
+}</pre><p>In the above example if the value of letter is <code class="code">'A'</code>, <code class="code">'E'</code>, <code class="code">'I'</code>, <code class="code">'O'</code> or <code class="code">'U'</code> then <code class="code">" is a vowel."</code> is printed.</p><p>If the value of letter is <code class="code">' '</code> then <code class="code">" is space."</code> is printed.</p><p>If none of these is true then the default condition is executed, that is <code class="code">" is not a vowel."</code> is printed.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="control_structures.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="control_structures.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="control_structures_conditional_exercises.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;3.&nbsp;Control Structures&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;2.&nbsp;Conditionals Exercises</td></tr></table></div></body></html>

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 14: AWT Menus</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Menus</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/components/label.html">Menus</A></H2>
+
+<BLOCKQUOTE>
+<P>The following applet shows many of the menu features you're likely to
+use</P>
+
+<CENTER><P><IMG SRC="gifs/GUI13.gif" HEIGHT=151 WIDTH=500></P></CENTER>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B></P>
+
+<BLOCKQUOTE>
+<LI>Menus can exist only in menu bars, and menu bars can be attached only
+to windows (specifically, to Frames).</LI>
+
+<LI>Classes that provide menu functionality do <B>not</B> inherit from
+Component, since many platforms place severe limits on menu capabilities.</LI>
+</BLOCKQUOTE>
+
+<H3>MenuComponent subclasses: </H3>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<DL>
+<PRE><FONT SIZE=+1>         </FONT>MenuComponent
+                 |
+          +--------------+
+       MenuItem       MenuBar
+          |
+        +--------------+
+      Menu     CheckboxMenuItem</PRE>
+</DL>
+</BLOCKQUOTE>
+
+<DT><B><FONT COLOR="#800080">MenuItem</FONT></B></DT>
+
+<DD>Each item in a menu is represented by a MenuItem object. </DD>
+
+<DT><B><FONT COLOR="#800080">CheckboxMenuItem</FONT></B></DT>
+
+<DD>Each menu item that contains a checkbox is represented by a CheckboxMenuItem
+object.</DD>
+
+<DT><B><FONT COLOR="#800080">Menu</FONT></B></DT>
+
+<DD>Each menu is represented by a Menu object. Menu is a subclass of MenuItem
+so that you can easily create a submenu by adding one menu to another.
+</DD>
+
+<DT><B><FONT COLOR="#800080">MenuBar</FONT></B></DT>
+
+<DD>The MenuBar class represents the platform-dependent notion of a group
+of menus attached to a window. MenuBars can <I>not</I> be bound to Panels.
+</DD>
+</BLOCKQUOTE>
+
+<H3>MenuContainer Interface:</H3>
+
+<BLOCKQUOTE>
+<P>To be able to contain a MenuComponent, an object must adhere to the
+MenuContainer interface (Frame, Menu, and MenuBar classes do).</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE>
+<HR></PRE>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld15.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld15.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

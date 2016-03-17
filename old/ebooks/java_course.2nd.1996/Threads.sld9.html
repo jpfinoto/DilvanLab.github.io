@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Threads Slide 9: Synchronizing Threads</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Threads:</FONT> </FONT><B><FONT COLOR="#0000FF">Synchronizing
+Threads</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/threads/waitAndNotify.html">The
+<TT>wait()</TT> and <TT>notify()</TT> Methods</A></H2>
+</UL>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3>The <TT>wait()</TT> method</H3>
+
+<BLOCKQUOTE>
+<P>The <TT>wait()</TT> method causes the current thread to:<BR>
+&nbsp;&nbsp;&nbsp;1. Wait until another thread notifies it of a condition
+change.<BR>
+&nbsp;&nbsp;&nbsp;2. Release the monitor for the object.</P>
+
+<PRE>public synchronized int get() {
+    while (available == false) {
+        try {
+            wait();          <B><FONT COLOR="#800000">// waits for notify() call from Producer
+</FONT></B>        } catch (InterruptedException e) {
+        }
+    }
+    available = false;
+    notify();
+    return contents;
+}</PRE>
+
+<DT><B>Other versions:</B></DT>
+
+<DD><TT>wait(long <I>timeout</I>)</TT></DD>
+
+<DD><TT>wait(long <I>timeout</I>, int <I>nanos</I>)</TT></DD>
+</BLOCKQUOTE>
+
+<H3>The <TT>notify()</TT> method</H3>
+
+<BLOCKQUOTE>
+<P>The <TT>notify()</TT> method chooses one thread that is waiting on the
+monitor held by the current thread and wakes it up.</P>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B> The Java
+runtime system makes no commitments or guarantees about which thread will
+be chosen.</P>
+
+<PRE>public synchronized int get() {
+    while (available == false) {
+        try {
+            wait();
+        } catch (InterruptedException e) {
+        }
+    }
+    available = false;
+    notify();           <B><FONT COLOR="#800000">// notifies Producer
+</FONT></B>    return contents;
+}</PRE>
+
+<H4><TT>notifyAll():</TT></H4>
+
+<OL>
+<LI>It wakes up all the threads waiting on the same monitor.</LI>
+
+<LI>The awakened threads compete for the monitor.</LI>
+
+<LI>One thread gets the monitor and the others go back to waiting.</LI>
+</OL>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld1.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld1.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

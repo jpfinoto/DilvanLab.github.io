@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Threads Slide 5: Threads Attributes</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Threads:</FONT> </FONT><B><FONT COLOR="#0000FF">Threads
+Attributes</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><B><A HREF="tutorial/java/threads/priority.html">Thread
+Priority</A></B></H2>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<P><B>Scheduling:</B> Execution of multiple threads on a single CPU, in
+some order.</P>
+
+<P><B>Priority:</B> The Java supports a very simple, deterministic scheduling
+algorithm known as <I>fixed priority scheduling</I>.</P>
+
+<P>When a Java thread is created, it inherits its priority from the thread
+that created it.</P>
+
+<P><B>Priority Modification:</B> <TT>setPriority()</TT> method. Thread
+priorities are integers ranging between MIN_PRIORITY and MAX_PRIORITY.</P>
+
+<P><B>Preemptive Scheduling:</B> If a thread with a higher priority than
+the currently executing thread needs to execute, the higher priority thread
+is immediately scheduled.</P>
+
+<P><B>Equal Priority Scheduling:</B></P>
+
+<BLOCKQUOTE>
+<P>The scheduler chooses in a round-robin fashion. The chosen thread will
+run until one of the following conditions is true:</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<UL>
+<UL>
+<UL>
+<LI>a higher priority thread becomes &quot;Runnable&quot;</LI>
+
+<LI>it yields, or its <TT>run()</TT> method exits</LI>
+
+<LI>on systems that support time-slicing, its time allotment has expired</LI>
+</UL>
+
+<P>Then the second thread is given a chance to run, and so on, until the
+interpreter exits.</P>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B> Use priority
+only to affect scheduling policy for efficiency purposes. Do not rely on
+thread priority for algorithm correctness.</P>
+</UL>
+
+<H4>Time-Slicing:</H4>
+
+<UL>
+<P>Time-sliced system divides the CPU into time slots and iteratively gives
+each of the equal-and-highest priority threads a time slot in which to
+run.</P>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note</FONT>:</FONT></B> The Java
+runtime does not implement (and therefore does not guarantee) time-slicing.</P>
+</UL>
+</UL>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><B><A HREF="tutorial/java/threads/daemon.html">Daemon
+Threads</A></B></H2>
+
+<BLOCKQUOTE>
+<DL>
+<DL>
+<LI>Daemon threads are those that provide a service for other threads in
+the system.</LI>
+
+<LI>When the only remaining threads in a process are daemon threads, the
+interpreter exits.</LI>
+</DL>
+</DL>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Threads.sld6.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Threads.sld6.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

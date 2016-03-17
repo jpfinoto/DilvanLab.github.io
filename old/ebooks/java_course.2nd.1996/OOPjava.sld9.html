@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 9: Interfaces</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Interfaces</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/interfaces.html">Interfaces</A></H2>
+
+<BLOCKQUOTE>
+<H3>Definition:</H3>
+
+<P>An interface is a collection of method definitions (without implementations)
+and constant values.<BR>
+</P>
+
+<H3>Advantages:</H3>
+
+<UL>
+<LI>capturing similarities between unrelated classes without forcing a
+class relationship.</LI>
+
+<LI>declaring methods that one or more classes are expected to implement.</LI>
+
+<LI>revealing an object's programming interface without revealing its class
+(objects such as these are called anonymous objects and can be useful when
+shipping a package of classes to other developers)</LI>
+</UL>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/createinterface.html">Defining
+an Interface</A></H2>
+
+<BLOCKQUOTE>
+<P>The interface declaration and the interface body;</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000"><I>interfaceDeclaration</I> {
+    <I>interfaceBody
+</I>}</FONT>
+</PRE>
+</BLOCKQUOTE>
+
+<H4>The interfaceDeclaration:</H4>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">[public] interface InterfaceName [extends listOfSuperInterfaces] {
+&nbsp;&nbsp;&nbsp;&nbsp; . . .
+}</FONT></PRE>
+
+<PRE><FONT COLOR="#800000">interface Collection {
+&nbsp;&nbsp;&nbsp;int MAXIMUM = 500;</FONT></PRE>
+
+<PRE><FONT COLOR="#800000">&nbsp;&nbsp;&nbsp;void add(Object obj);
+&nbsp;&nbsp; void delete(Object obj);
+&nbsp;&nbsp; Object find(Object obj);
+&nbsp;&nbsp; int currentCount();
+}</FONT>
+</PRE>
+</BLOCKQUOTE>
+
+<H4><FONT COLOR="#000000">Multiple Extensions (<I>Inheritance</I>)</FONT></H4>
+
+<P><FONT COLOR="#000000">An interface can <TT><FONT SIZE=+1>extend </FONT></TT>multiple
+interfaces (while a class can only extend one), and an interface cannot
+extend classes.</FONT></P>
+</BLOCKQUOTE>
+
+<P><BR>
+</P>
+</BLOCKQUOTE>
+
+<P>
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="OOPjava.sld10.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="OOPjava.sld10.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

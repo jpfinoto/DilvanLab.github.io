@@ -1,0 +1,23 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Hashing</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="object_contract.html" title="Chapter&nbsp;16.&nbsp;Object Contract"><link rel="prev" href="object_contract_equality_properties.html" title="1.&nbsp;Equality Properties"><link rel="next" href="object_contract_clone.html" title="3.&nbsp;Clone"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Hashing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="object_contract_equality_properties.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;16.&nbsp;Object Contract</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="object_contract_clone.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="object_contract.html">Object Contract</a></span> &gt; <span class="breadcrumb-node">Hashing</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="object_contract_hashing"></a>2.&nbsp;Hashing</h2></div></div></div><p>If two objects a and b are equals, <span class="command"><strong>a.equals(b)</strong></span>
+      is true, they should have return the same hash code.</p><p>The standard way to construct a e reasonable hash code that still
+      satisfies the contract is:</p><div class="orderedlist"><ol type="1"><li><p>to compute a hash code for each component of the object that
+          is used in the determination of equality (usually by calling the
+          hashCode method of each component).</p></li><li><p>to combine them throwing in a few arithmetic
+          operations.</p></li></ol></div><p>Look at Bloch&#8217;s book for details.</p><p><span class="bold"><strong>Note:</strong></span> if you don&#8217;t override
+      <span class="command"><strong>hashCode</strong></span> at all, you&#8217;ll get the one from
+      <span class="command"><strong>Object</strong></span>, which is based on the address of the object
+      (like the default equals). If you have overridden
+      <span class="command"><strong>equals</strong></span>, this will mean that you will have almost
+      certainly violated the contract. So as a general rule:</p><p><span class="emphasis"><em>Always override hashCode when you override
+      equals.</em></span></p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="object_contract_equality_properties.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="object_contract.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="object_contract_clone.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Equality Properties&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Clone</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

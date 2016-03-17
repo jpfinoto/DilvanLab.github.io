@@ -1,0 +1,25 @@
+grammar hello;
+
+/*Definition of the rule <first> that is associated to any of the 3 names bellow*/
+<first> = Bruce {Bruce}
+	| Andrew {Andrew}
+	| Stuart {Stuart}
+	;    
+
+/*Definition of the rule <last> that is associated to any of the 3 names bellow*/
+<last>  = Lucas {Lucas}
+	| Hunt {Hunt}
+	| Adams {Adams}
+	;
+
+/*The rule <name> is associated to the cartesian product of all the elements associated to the rules <first> and <last>*/
+<name> = <first> <last>;
+
+/*This rule is associated to the sentence My name is "any name associated to the rule <name>"*/
+public <nameis> = My name is {name} <name>;
+
+public <begin> = Repeat after me {begin};
+
+public <stop> = That's all {stop};
+
+public <bye> = Good bye {bye} | So long {bye};

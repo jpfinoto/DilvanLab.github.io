@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Exceptions Slide 7: Catching and handling exceptions</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="Description" CONTENT="Copyrighted material for a Java Course">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Exceptions:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Catching and handling exceptions</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/exceptions/finally.html">The
+finally Block</A></H3>
+
+<BLOCKQUOTE>
+<P>The statements within the <TT>finaly </TT>block are <B><FONT COLOR="#FF0000"><FONT SIZE=+1>always
+</FONT></FONT></B>executed.</P>
+
+<H3>Why?</H3>
+
+<P>To provides a mechanism that allows your method to clean up after itself
+regardless of what happens within the <TT>try</TT> block. Use the <TT>finally</TT>
+block to close files or release other system resources.</P>
+
+<PRE>finally {
+&nbsp;&nbsp;&nbsp;if (pStr != null) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;Closing PrintStream&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pStr.close();
+&nbsp;&nbsp;&nbsp;} else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(&quot;PrintStream not open&quot;);
+&nbsp;&nbsp;&nbsp;}
+}</PRE>
+</BLOCKQUOTE>
+
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<TR>
+<TD VALIGN=TOP><IMG SRC="gifs/noc++.gif" HSPACE=5 HEIGHT=57 WIDTH=59 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H3>C++ exception handlers can not have a <TT>finally </TT>block.</H3>
+</TD>
+</TR>
+</TABLE>
+
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/exceptions/putItTogether.html">Putting
+It All Together</A></H3>
+
+<BLOCKQUOTE>
+<PRE>public void writeList() {
+    PrintStream pStr = null;
+
+    try {
+        int i;
+
+        System.out.println(&quot;Entering try statement&quot;);
+        pStr = new PrintStream(
+                new BufferedOutputStream(
+                 new FileOutputStream(&quot;OutFile.txt&quot;)));
+
+        for (i = 0; i &lt; size; i++)
+            pStr.println(&quot;Value at: &quot; + i + &quot; = &quot; + victor.elementAt(i));
+    } catch (ArrayIndexOutOfBoundsException e) {
+        System.err.println(&quot;Caught ArrayIndexOutOfBoundsException: &quot; + e.getMessage());
+    } catch (IOException e) {
+        System.err.println(&quot;Caught IOException: &quot; + e.getMessage());
+    } finally {
+        if (pStr != null) {
+            System.out.println(&quot;Closing PrintStream&quot;);
+            pStr.close();
+        } else {
+            System.out.println(&quot;PrintStream not open&quot;);
+        }
+    }
+}
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Threads.sld1.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld1.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,13 @@
+grammar teste;
+
+public <1> = hi {hi};
+
+public <2> = how are you doing {how};
+
+public <3> = bye {bye};
+
+public <4> = suspend {suspend};
+
+public <5> = deactivate {deactivate};
+
+public <6> = Hi computer, I'm your master.{master};

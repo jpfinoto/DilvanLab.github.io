@@ -1,0 +1,32 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Catch or specify requirement</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="exceptions.html" title="Chapter&nbsp;6.&nbsp;Exceptions"><link rel="prev" href="exceptions_throwing_exceptions.html" title="2.&nbsp;Throwing exceptions"><link rel="next" href="exceptions_catching_and_handling_exceptions.html" title="4.&nbsp;Catching and handling exceptions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Catch
+      or specify requirement</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="exceptions_throwing_exceptions.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;6.&nbsp;Exceptions</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="exceptions_catching_and_handling_exceptions.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="exceptions.html">Exceptions</a></span> &gt; <span class="breadcrumb-node">Catch
+      or specify requirement</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="exceptions_catch_or_specify_requirement"></a>3.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/essential/exceptions/catchOrDeclare.html" target="_top">Catch
+      or specify requirement</a></h2></div></div></div><p>Java requires that a method either catch or specify all checked
+      exceptions that can be thrown within the scope of the method.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2495"></a>3.1.&nbsp;Catch</h3></div></div></div><p>A method can catch an exception by providing a method can catch
+        an exception by providing an exception handler for that type of
+        exception.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2500"></a>3.2.&nbsp;Specify</h3></div></div></div><p>If a method chooses not to catch an exception, the method must
+        specify that it can throw that exception.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2505"></a>3.3.&nbsp;Why Specify?</h3></div></div></div><p>Because any exception that can be thrown by a method is really
+        part of the method's public programming interface</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2510"></a>3.4.&nbsp;Checked Exceptions</h3></div></div></div><p>Checked exceptions are exceptions that are not runtime
+        exceptions and are checked by the compiler.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2515"></a>3.5.&nbsp;Why not catch Runtime exceptions?</h3></div></div></div><p>Runtime exceptions can occur anywhere in a program and in a
+        typical program can be very numerous. Often the cost of checking for
+        runtime exceptions exceeds the benefit of catching or specifying
+        them.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2520"></a>3.6.&nbsp;Do not make all of your's exceptions Runtime</h3></div></div></div><p>Do not throw a runtime exception or create a subclass of
+        RuntimeException simply because you don't want to be bothered with
+        specifying them.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2525"></a>3.7.&nbsp;Exceptions that can be thrown within the scope of the
+        method</h3></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Exceptions that are thrown directly by the method with
+            Java's throw statement;</p></li><li><p>Exceptions that are thrown indirectly by the method through
+            calls to other methods.</p></li></ul></div><p><a class="ulink" href="../audio/Exceptions4.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+        Portuguese</a></p></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="exceptions_throwing_exceptions.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="exceptions.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="exceptions_catching_and_handling_exceptions.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Throwing
+      exceptions&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Catching
+      and handling exceptions</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

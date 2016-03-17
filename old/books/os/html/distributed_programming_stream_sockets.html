@@ -1,0 +1,116 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Stream Sockets</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="distributed_programming.html" title="Chapter&nbsp;4.&nbsp;Distribution Programming"><link rel="prev" href="distributed_programming_the_client_server_model.html" title="1.&nbsp;The Client/Server Model"><link rel="next" href="distributed_programming_datagram_sockets.html" title="3.&nbsp;Datagram Sockets"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Stream Sockets</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="distributed_programming_the_client_server_model.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;Distribution Programming</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="distributed_programming_datagram_sockets.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="distributed_programming_stream_sockets"></a>2.&nbsp;Stream Sockets</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>What is a Socket?</strong></span></p><p><span class="bold"><strong>Definition:</strong></span></p><p>A socket is one end-point of a two-way communication link between two programs running on the network.</p><p><span class="bold"><strong>Stream Socket:</strong></span></p><p>It provides bidirectional, reliable, sequenced, and unduplicated flow of data with no record boundaries.</p></li><li><p><span class="bold"><strong>Socket Creation</strong></span></p><p>The socket() call creates a socket:</p><pre class="programlisting">s= socket( domain, type, protocol);
+</pre><p><span class="bold"><strong>Domain:</strong></span></p><p>It is specified by one of the constants defined in &lt;sys/socket.h&gt;.</p><div class="itemizedlist"><ul type="circle"><li><p>For the UNIX domain: AF_UNIX</p></li><li><p>For the Internet domain: AF_INET.</p></li></ul></div><p><span class="bold"><strong>Type:</strong></span></p><p>Socket types are defined in &lt;sys/socket.h&gt;. Three types are supported by AF_UNIX and AF_INET domains:</p><p>- SOCK_STREAM for stream sockets.</p><p>- SOCK_DGRAM for datagram sockets.</p><p>- SOCK_RAW for row sockets.</p><p><span class="bold"><strong>Protocol:</strong></span></p><p>The argument 0 should be used in most cases. The system will select a protocol that supports the requested socket type.</p></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Binding</strong></span></p><p>A socket is created with no name. A remote process has no way to refer to a socket until an address is bound to it.</p><p>In the Internet domain a connection is composed of &lt;local address, local port, foreign address foreign port&gt;.</p><p>The bind() call allows a process to specify half of an association, such as &lt;local address, local port&gt;:</p><pre class="programlisting">bind (s, name, namelen);</pre><p>- s is the socket handle.</p><p>- name is a byte string that is interpreted by the supporting protocol. Internet domain names contain an Internet address and port number.</p><p><span class="bold"><strong>Internet binding:</strong></span></p><pre class="programlisting">struct sockaddr_in name;
+...
+name.sin_family = AF_INET;
+name.sin_addr.s_addr = INADDR_ANY;
+name.sin_port = 0;
+bind (sock, (struct sockaddr *)&amp;name, sizeof(name));</pre></li><li><p><span class="bold"><strong>Connection Establishment</strong></span></p><p>Connection establishment is usually asymmetric, with one process acting as the client and the other as the server:</p><div class="orderedlist"><ol type="1"><li><p>The server binds a socket to a well known address.</p></li><li><p>It blocks on its socket for a connect request.</p></li><li><p>An unrelated process can connect to the server.</p></li></ol></div><p><span class="bold"><strong>Listening and Communicating:</strong></span></p><div class="orderedlist"><ol type="1"><li><p><span class="bold"><strong>Request channel:</strong></span> Server do the listening.</p></li><li><p><span class="bold"><strong>Communication channel:</strong></span> Created for each connection</p></li></ol></div><div class="figure"><a name="d0e2481"></a><p class="title"><b>Figure&nbsp;4.5.&nbsp;Stream Sockets - Port Numbers</b></p><div class="mediaobject"><img src="resources/Servers4.gif" alt="Stream Sockets - Port Numbers"></div></div><p><span class="bold"><strong>Client side:</strong></span></p><p>On the client side the connect() call initiates a connection:</p><pre class="programlisting">struct sockaddr_in server;
+struct hostent *hp;
+...
+server.sin_family= AF_INET;
+hp= gethostbyname( "host name");
+memcpy( (char*) &amp;server.sin_addr, (char*) hp-&gt;h_addr, 
+        hp-&gt;h_length);
+server.sin_port= htons( port_number );
+...
+connect( s, (struct sockaddr*) &amp;server, sizeof server);</pre><p>gethostbyname() returns a structure including the network address of the specified host.</p><p>If the client's socket is unbound at the time of the connect call, the system automatically selects and bind a name to the socket.</p><p><span class="bold"><strong>Server side:</strong></span></p><p>To receive a client's connection , a server must perform two steps after binding:</p><div class="orderedlist"><ol type="1"><li><p>Indicate how many connections can be queued using the listen() call.</p></li><li><p>Accept the connection using the accept() call.</p></li></ol></div><pre class="programlisting">struct sockaddr_in from;
+...
+listen(s, 5);
+fromlen= sizeof( from );
+newsock= accept( s, (struct sockaddr *) &amp;from, &amp;fromlen);</pre><p><span class="emphasis"><em>listen() call:</em></span></p><p>s is the socket bound to the address to which the connection request is sent. The second parameter specifies the maximum number of outstanding connections that may be queued.</p><p><span class="emphasis"><em>accept() call:</em></span></p><p>from is a structure that is filled with the address of a client. It can be a NULL pointer. accept() normally blocks.</p><p><span class="bold"><strong>Note:</strong></span></p><p>accept() returns a <span class="bold"><strong>new socket</strong></span> descriptor that is connected to the requesting client.</p></li><li><p><span class="bold"><strong>Data Transfer</strong></span></p><p>There are several functions to send and receive data. The socket() call returns a file descriptor that can be used with many I/O Unix calls like:</p><pre class="programlisting">write( s, buf, sizeof buf):
+read( s, buf, sizeof buf);</pre><p>Or the calls send() and recv() can be used (they include a flag argument):</p><pre class="programlisting">send( s, buf, sizeof buf, flags);
+recv( s, buf, sizeof buf, flags);</pre></li><li><p><span class="bold"><strong>Closing Sockets</strong></span></p><p>Sockets can be closed using the close() system call (because they are referenced by file descriptors).</p></li><li><p><span class="bold"><strong>Client Example</strong></span></p></li></ul></div><pre class="programlisting">#include &lt;sys/types.h&gt; 
+      #include &lt;sys/socket.h&gt;
+      #include &lt;netinet/in.h&gt; 
+      #include &lt;netdb.h&gt; 
+      #include &lt;stdio.h&gt; 
+
+      #define DATA "1 2 3 TESTING ... " 
+
+      
+      main (int argc, char* argv[]) 
+      { 
+        int sock; 
+        struct sockaddr_in server; 
+        struct hostent *hp, *gethostbyname(); 
+
+        sock = socket (AF_INET, SOCK_STREAM, 0); 
+        if (sock == -1) { 
+          perror ("Opening stream socket"); 
+          exit (1);
+        }
+       
+        hp = gethostbyname(argv[1]); 
+
+        memcpy ((char*)&amp;server.sin_addr, (char*) hp-&gt;h_addr, hp-&gt;h_length);
+
+        server.sin_family = AF_INET; 
+        server.sin_port = htons(atoi(argv[2]));
+
+        if ( connect(sock, (struct sockaddr *)&amp;server, sizeof server) == -1) {
+          perror("Connecting stream socket"); 
+          exit(1); 
+        }
+
+        if (write(sock, DATA, sizeof DATA) == -1) 
+          perror("Writing data to stream socket"); 
+
+        close (sock); 
+        exit (0); 
+      } </pre><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Server Example</strong></span></p></li></ul></div><pre class="programlisting">#include
+      &lt;sys/types.h&gt; 
+      #include &lt;sys/socket.h&gt; 
+      #include &lt;netinet/in.h&gt; 
+      #include &lt;netdb.h&gt; 
+      #include &lt;stdio.h&gt; 
+
+      #define TRUE 1 main() 
+
+      { 
+
+        int sock, length; struct
+        sockaddr_in server; 
+        int msgsock; 
+        char buf[1024]; 
+        int rval; 
+
+        sock = socket (AF_INET, SOCK_STREAM, 0); 
+        if (sock==-1) { 
+          perror( "Opening stream socket"); 
+          exit(1); 
+        }
+
+        server.sin_family = AF_INET;
+        server.sin_addr.s_addr = INADDR_ANY; 
+        server.sin_port = 0; 
+        if (bind (sock, (struct sockaddr *)&amp;server, sizeof(server)) == -1){
+          perror("Binding stream socket"); 
+          exit (1); 
+        } 
+        length = sizeof server; 
+        if (getsockname (sock, (struct sockaddr *)&amp;server,&amp;length) == -1){ 
+          perror("Getting socket name"); 
+          exit (1); 
+        }
+        printf("Socket port # %d\n", ntohs(server.sin_port)); 
+        /* Start accepting connections */ 
+        listen( sock, 5); 
+        do { 
+          msgsock = accept( sock, (struct sockaddr *) 0, (int*) 0); 
+          if (msgsock==-1)
+            perror("accept"); 
+          else do { 
+            memset( buf, 0, sizeof buf);
+            if ((rval= read( msgsock, buf, 1024)) == -1) 
+              perror("Reading data stream"); 
+            if (rval == 0) 
+              printf("Ending connection\n");
+            else
+              printf( "--&gt;%s\n", buf);
+          } while (rval!=0); 
+          close(msgsock);
+        } while (TRUE); 
+        exit(0); 
+    }</pre><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Supporting Multiple Clients</strong></span> </p><div class="itemizedlist"><ul type="circle"><li><p><span class="bold"><strong>Requests treated by one execution thread.</strong></span></p></li><li><p><span class="bold"><strong>Individual communication treated by: </strong></span></p><div class="itemizedlist"><ul type="disc"><li><p>Another process</p></li><li><p>Another thread in the same process.</p><div class="figure"><a name="d0e2583"></a><p class="title"><b>Figure&nbsp;4.6.&nbsp;Stream Sockets - Multiple Clients</b></p><div class="mediaobject"><img src="resources/Servers6.gif" alt="Stream Sockets - Multiple Clients"></div></div></li></ul></div></li></ul></div></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="distributed_programming_the_client_server_model.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="distributed_programming.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="distributed_programming_datagram_sockets.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;The Client/Server Model&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Datagram Sockets</td></tr></table></div></body></html>

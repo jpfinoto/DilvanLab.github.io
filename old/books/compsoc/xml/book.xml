@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" -->
+<book id="compsoc">
+  <bookinfo>
+    <title>Computers and Society</title>
+
+    <subtitle>Seminars About the Influence of Computers in Society</subtitle>
+
+    <author>
+      <firstname>Dilvan</firstname>
+
+      <othername>de Abreu</othername>
+
+      <surname>Moreira</surname>
+
+      <email>dilvan@computer.org</email>
+    </author>
+
+    <editor>
+      <firstname>Dilvan</firstname>
+
+      <surname>Moreira</surname>
+    </editor>
+
+    <copyright>
+      <year>2003</year>
+
+      <year>2004</year>
+
+      <holder>Dilvan Moreira</holder>
+    </copyright>
+
+    <edition>First</edition>
+
+    <publisher>
+      <publishername>Dilvan Moreira</publishername>
+
+      <address><city>São Carlos </city><country>Brazil</country></address>
+    </publisher>
+
+    <revhistory>
+      <revision>
+        <revnumber>$Revision: 1.1 $</revnumber>
+
+        <date>$Date: 2004/09/28 15:31:36 $</date>
+      </revision>
+    </revhistory>
+
+    <pubdate>September 2004</pubdate>
+  </bookinfo>
+
+  <chapter id="seminars_goals">
+    <title>Seminars Goals</title>
+
+    <section id="seminar_goals_goals">
+      <title>Goals</title>
+
+      <para>O propósito deste curso é conscientizar os estudantes de alguns
+      dos problemas que surgem, para o indivíduo e sociedade, com a introdução
+      dos computadores digitais. Espera-se, ainda, que o curso ajude os
+      estudantes a tomarem ciência de suas futuras responsabilidades como
+      profissionais em computação.</para>
+
+      <para>Possíveis temas:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">ACESSO NÃO AUTORIZADO</emphasis>: o que
+          é considerado hacking ?, tipos de invasões, as motivações dos
+          hackers, os códigos de ética da ACM e unificado e o acesso não
+          autorizado;</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">PROPRIEDADE INTELECTUAL</emphasis>: a
+          importância da proteção à propriedade intelectual , a propriedade
+          intelectual e os códigos de ética da ACM e unificado , direito
+          autoral, patente, segredos de negócio , engenharia reversa , novas
+          tecnologias associadas ao direito autoral ;</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">A ÉTICA NA INTERNET</emphasis>:
+          liberdade de informação na internet, mensagens eletrônicas ,
+          habeas-data e privacidade , outras formas de privacidade
+          relacionadas com a internet, privacidade nas telecomunicações -
+          criptografia ; Sistemas Críticos com Relação à Segurança; Denúncia;
+          Doenças Profissionais na Área de Computação; Gerenciamento da
+          Carreira Profissional.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </chapter>
+
+  <chapter id="assignments" role="assignments">
+    <title>Assignments</title>
+
+    <section id="assignments_basic_seminar">
+      <title>Basic Seminar</title>
+
+      <para>Seminario sobre um tema relacionado a Computadores e
+      Sociedade.</para>
+    </section>
+  </chapter>
+</book>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-default-dtd-file:"/home/ldp/SGML/emacs/book-cnc-2.0.ced"
+End:
+-->

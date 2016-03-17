@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 28: Layout Managers</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Layout
+Managers</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/layout/none.html">No
+Layout Manager (Absolute Positioning)</A></H2>
+</UL>
+
+<BLOCKQUOTE>
+<CENTER><TABLE>
+<TR>
+<TD VALIGN=TOP><IMG SRC="gifs/GUI30.gif" HEIGHT=130 WIDTH=260>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+
+<TD><IMG SRC="gifs/GUI31.gif" HEIGHT=195 WIDTH=330><BR>
+</TD>
+</TR>
+</TABLE></CENTER>
+
+<BLOCKQUOTE>
+<H3>If possible use a Layout Manager:</H3>
+
+<BLOCKQUOTE>
+<P>Layout managers make it easy to resize a container and adjust to platform-dependent
+component appearance and to different font sizes. They also can be reused
+easily by other containers and other programs. </P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<H3>Absolute Positioning Code Example:</H3>
+
+<BLOCKQUOTE>
+<PRE>public class NoneWindow extends Frame {
+    private boolean laidOut = false;
+    private Button b1, b2, b3;
+
+    public NoneWindow() {
+        super();
+        setLayout(null);
+
+        b1 = new Button(&quot;one&quot;);
+        add(b1);
+        b2 = new Button(&quot;two&quot;);
+        add(b2);
+        b3 = new Button(&quot;three&quot;);
+        add(b3);
+    }
+
+    public void paint(Graphics g) {
+        if (!laidOut) {
+            Insets insets = insets();
+
+            b1.reshape(50 + insets.left, 5 + insets.top, 50, 20);
+            b2.reshape(70 + insets.left, 35 + insets.top, 50, 20);
+            b3.reshape(130 + insets.left, 15 + insets.top, 50, 30);
+
+            laidOut = true;
+        }
+    }
+ 
+    . . .
+}
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld29.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld29.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

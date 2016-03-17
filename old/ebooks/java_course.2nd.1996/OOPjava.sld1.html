@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 1: Objects</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Objects</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/objectcreation.html">Objects</A></H2>
+
+<UL>
+<H3><FONT COLOR="#0000FF">Instantiating an Object (the <TT>new </TT>operator)</FONT></H3>
+
+<P>The new operator instantiates a class by allocating memory for a new
+object of that type. new requires a single argument: <FONT COLOR="#000040"><B>a
+call to a constructor method</B>.</FONT> Constructor methods are special
+methods provided by each Java class that are responsible for initializing
+new objects of that type.</P>
+
+<UL>
+<P><FONT COLOR="#800000"><FONT SIZE=+1><B>The new operator creates the
+object, the constructor initializes it</B>.</FONT></FONT></P>
+</UL>
+
+<P>The new operator returns a reference to the newly created object. This
+reference can be assigned to a variable of the appropriate type.</P>
+
+<UL>
+<PRE>Rectangle rect = new Rectangle(0, 0, 100, 200)</PRE>
+</UL>
+
+<H2><FONT COLOR="#0000FF"><A HREF="tutorial/java/javaOO/usingobject.html">Using
+Objects</A></FONT></H2>
+
+<BLOCKQUOTE>
+<P>There are two ways to change the state of an object:</P>
+
+<BLOCKQUOTE>
+<H3><IMG SRC="gifs/smallredball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><FONT COLOR="#800000">Manipulate
+the object's variables directly<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 HEIGHT=8 WIDTH=8>Call
+one of the object's methods.</FONT></H3>
+</BLOCKQUOTE>
+
+<P>The second option is more object-oriented and safer because you manipulate
+the object's variables indirectly through its protective layer of methods
+rather than twiddling directly with them. </P>
+
+<P>Manipulating an object's variables directly is often considered error-prone;
+you could potentially put the object into an inconsistent state. </P>
+
+<H3><A HREF="tutorial/java/javaOO/usingobject.html#variables">Referencing
+an Object's Variables</A>:</H3>
+
+<P>To access an object's variables, simply append the variable name to
+an object reference with an intervening '.' (period).</P>
+
+<BLOCKQUOTE>
+<PRE><I>objectReference</I>.<I>variable</I></PRE>
+</BLOCKQUOTE>
+
+<H3><A HREF="tutorial/java/javaOO/usingobject.html#methods">Calling
+an Object's Methods</A>:</H3>
+
+<P>Calling an object's method is similar to getting an object's variable.
+To call an object's method, simply append the method name to an object
+reference with an intervening '.' (period), and provide any arguments to
+the method within enclosing parentheses. If the method does not require
+any arguments, just use empty parentheses.</P>
+
+<BLOCKQUOTE>
+<P><I>objectReference</I>.<I>methodName</I>(<I>argumentList</I>);<BR>
+   <I>or<BR>
+objectReference</I>.<I>methodName</I>();<BR>
+</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</UL>
+
+<P>
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="OOPjava.sld2.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="OOPjava.sld2.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

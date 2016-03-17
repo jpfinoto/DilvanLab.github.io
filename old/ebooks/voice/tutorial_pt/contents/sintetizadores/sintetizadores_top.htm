@@ -1,0 +1,269 @@
+<html>
+<head>
+<title>Sintetizadores</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33FF33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF" size="4"><b><font size="5">Sintetizadores</font></b></font> 
+</p>
+<p><font color="#FFFFFF" size="4">Os sintetizadores, como o pr&oacute;prio nome 
+  diz, s&atilde;o as entidades respons&aacute;veis pela s&iacute;ntese de voz. 
+  Eles s&atilde;o criados atrav&eacute;s da classe Central que implementa a interface 
+  Engine (herdada pelos sintetizadores) respons&aacute;vel por acessar a aplica&ccedil;&atilde;o 
+  Engine.</font></p>
+<ul>
+  <li> <font color="#FFFF00"><b><font size="4">Instanciando um sintetizador de 
+    voz:</font></b></font><font color="#FFFFFF" size="4"> existem duas maneiras 
+    de se criar uma instancia de um objeto capaz de sintetizar voz, ambas s&atilde;o 
+    atrav&eacute;s do m&eacute;todo est&aacute;tico <i><a href="../../ref/api/javax/speech/Central.html#createSynthesizer(javax.speech.EngineModeDesc)" target="_blank">createSynthesizer</a></i> 
+    da classe Central:</font> 
+    <blockquote> 
+      <p><font size="4" color="#FFFFFF">1. Acessando o sintetizador padr&atilde;o 
+        que suporta a localidade especificada: &eacute; a maneira mais simples 
+        e comum, geralmente se obt&eacute;m acesso &agrave; implementa&ccedil;&atilde;o 
+        de sintetizador distribu&iacute;da com o pacote de software. Deve-se fornecer 
+        um argumento null ao m&eacute;todo <i>createSynthesizer</i> e definir 
+        a localidade padr&atilde;o da aplica&ccedil;&atilde;o 
+        que ser&aacute; a informa&ccedil;&atilde;o sobre a qual a Central ir&aacute; 
+        se basear para definir o melhor sintetizador.</font></p>
+    </blockquote>
+  </li>
+  <blockquote> 
+    <p>&nbsp;</p>
+  </blockquote>
+  <table width="80%" border="1" height="74" align="center">
+    <tr> 
+      <td> 
+        <p><font color="#FFFFFF" size="4">Locale.setDefault(&quot;pt&quot;,&quot;BR&quot;);</font><br>
+          <font color="#FFFFFF" size="4">Synthesizer sintetizador = Central.createSynthesizer(null); 
+          </font></p>
+      </td>
+    </tr>
+  </table>
+</ul>
+<p align="center"><b>Tabela 1 - Exemplo de instancia&ccedil;&atilde;o de um objeto 
+  sintetizador.<br>
+  </b></p>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo2.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p align="right">&nbsp; </p>
+<ul>
+  <blockquote> 
+    <p><font color="#FFFFFF">2. </font><font color="#FFFFFF" size="4">Acessando 
+      um sintetizador que satisfa&ccedil;a a condi&ccedil;&otilde;es pr&eacute;-definidas: 
+      &eacute; utilizado caso existam diferentes implementa&ccedil;&otilde;es 
+      de sintetizadores dispon&iacute;veis. Deve-se definir os seguintes par&acirc;metros: 
+      </font></p>
+    <ul>
+      <li><font color="#FFFFFF" size="4">nome do engine que ser&aacute; utilizado</font></li>
+      <li><font color="#FFFFFF" size="4">nome do modo no qual ser&aacute; utilizado 
+        o engine</font></li>
+      <li><font color="#FFFFFF" size="4">a localidade suportada pelo engine</font></li>
+      <li><font color="#FFFFFF" size="4">um valor booleano que serve como flag 
+        de controle do funcionamento do engine</font></li>
+      <li><font size="4" color="#FFFFFF">um array de objetos <i><a href="../../ref/api/javax/speech/synthesis/Voice.html" target="_blank">Voice</a></i> 
+        que ser&atilde;o utilizados pela s&iacute;ntese</font> 
+        <p><font color="#FFFFFF" size="4">Estes par&acirc;metros s&atilde;o definidos 
+          criando-se um objeto <i><a href="../../ref/api/javax/speech/synthesis/SynthesizerModeDesc.html" target="_blank">SynthesizerModeDesc</a></i> 
+          que ser&aacute; passado para o m&eacute;todo <i>createSynthesizer</i>. 
+          Estes par&acirc;metros devem ser em sua maioria fornecidos pelo fabricante 
+          do engine sendo utilizado. O formato mais abrangente do construtor deste 
+          objeto segue abaixo:</font></p>
+      </li>
+    </ul>
+  </blockquote>
+</ul>
+<table width="99%" border="1" height="67" align="center">
+  <tr> 
+    <td height="95"><font color="#FFFFFF" size="3"><a href="../../ref/api/javax/speech/synthesis/SynthesizerModeDesc.html" target="_blank">public 
+      SynthesizerModeDesc(String engineName, String modeName, Locale locale, Boolean 
+      running, Voice[] voices)</a> </font></td>
+  </tr>
+</table>
+<p align="center"><b><font color="#000000">Tabela 2- Formato do construtor do 
+  objeto <i>SynthesizerModeDesc</i></font>.</b></p>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo3.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<blockquote>
+  <p><font color="#FFFFFF" size="4">Lembrando que qualquer destes atributos pode
+  ter um valor null, ficando a Central respons&aacute;vel por identificar um 
+    sintetizador que satisfa&ccedil;a aos par&acirc;metros que foram especificados.</font></p>
+</blockquote>
+<ul>
+  <li><b><font color="#FFFF00" size="4">Sintetizando voz:</font></b><font color="#FFFFFF" size="4"> 
+    uma vez criado o sintetizador j&aacute; podemos utilizar as fun&ccedil;&otilde;es 
+    de s&iacute;ntese. Elas são acessadas atrav&eacute;s da premissa <i>speak</i>, 
+    m&eacute;todo implementado pelos sintetizadores. Fornecer simplesmente um 
+    argumento texto (<i>String</i>) &eacute; suficiente para ter acesso &agrave; 
+    fun&ccedil;&atilde;o b&aacute;sica de voz, mas existem outras possibilidades:
+    o m&eacute;todo <i>speak</i>  pode receber um texto formatado em <a href="../../ref/jsml/index.html" target="_blank">JSML</a>(<i>Java 
+    Speech Markup Language</i>)* como argumento, receber um arquivo referenciado 
+    por uma URL ou receber um objeto <i><a href="../../ref/api/javax/speech/synthesis/Speakable.html" target="_blank">speakable</a></i>.<br>
+    <br>
+    </font>* a especifica&ccedil;&atilde;o JSML ser&aacute; vista no pr&oacute;ximo 
+    cap&iacute;tulo </li>
+</ul>
+<blockquote> 
+  <p><font size="4" color="#FFFFFF"> Os objetos <i>speakable</i>  podem
+  pertencer a qualquer classe, desde que esta implemente a interface <i>speakable.&nbsp;</i>
+  Essa classe deve implementar o m&eacute;todo <i><a href="../../ref/api/javax/speech/synthesis/Speakable.html#getJSMLText()" target="_blank">getJSMLText</a>,</i> 
+    que especifica uma <i>String</i> para ser pronunciada, quando o objeto é submetido ao m&eacute;todo <i>speak</i> . No pr&oacute;ximo c&oacute;digo 
+    exemplo est&aacute; ilustrada a utiliza&ccedil;&atilde;o desta t&eacute;cnica 
+    ao se definir um frame que pode ser pronunciado.</font></p>
+</blockquote>
+<ul>
+  <li> 
+    <p><font size="4" color="#FFFFFF"><a name="sintese"></a>A s&iacute;ntese pode 
+      ser realizada de 4 maneiras diferentes, atrav&eacute;s dos m&eacute;todos 
+      do objeto sintetizador.</font></p>
+  </li>
+</ul>
+<table width="99%" border="1">
+  <tr> 
+    <td width="52%"> 
+      <div align="center"><font color="#FFFF00"><b>M&eacute;todo</b></font></div>
+    </td>
+    <td width="48%"> 
+      <div align="center"><font color="#FFFF00"><b>Fun&ccedil;&atilde;o</b></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="52%"> 
+      <div align="left"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html" target="_blank">void 
+        speakPlainText(String text, SpeakableListener listener)</a></font></div>
+    </td>
+    <td width="48%"><font color="#FFFFFF">Sintetiza um texto puro, sendo que o 
+      resultado apresenta pouca naturalidade.</font></td>
+  </tr>
+  <tr> 
+    <td width="52%"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html" target="_blank">void 
+      speak(Speakable JSMLtext, SpeakableListener listener)</a> </font></td>
+    <td width="48%"><font color="#FFFFFF">Sintetiza um objeto que implementa a 
+      interface Speakable.</font></td>
+  </tr>
+  <tr> 
+    <td width="52%"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html" target="_blank">void 
+      speak(URL JSMLurl, SpeakableListener listener) </a></font></td>
+    <td width="48%"><font color="#FFFFFF">Realiza a s&iacute;ntese a partir de 
+      um arquivo que contenha texto formatado em JSML</font></td>
+  </tr>
+  <tr> 
+    <td width="52%"><font color="#FFFFFF"><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html" target="_blank">void 
+      speak(String JSMLText, SpeakableListener listener) </a></font></td>
+    <td width="48%"><font color="#FFFFFF">Sintetiza um texto formatado com JSML, 
+      sendo que o resultado apresenta maior naturalidade.</font></td>
+  </tr>
+</table>
+<p align="center"><b><font color="#000000">Tabela 3- M&eacute;todos utilizados 
+  para s&iacute;ntese de voz</font>.</b></p>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo4.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo5.jsml" target="_blank">Arquivo 
+  JSML referenciado pelo exemplo acima.</a></p>
+<p align="left">&nbsp;</p>
+<ul>
+  <li><font size="4" color="#FFFF00"><b><a href="../ouvidores/ouvidores.htm#speakablelistener" target="_blank">O 
+    SpeakableListener</a>:</b> </font><font color="#FFFFFF" size="4">aos m&eacute;todos 
+    da tabela acima pode ser fornecido um elemento extra, um ouvidor </font><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html" target="_blank"><font color="#33FF33" size="4"><i>S</i></font></a><i><font color="#33FF33"><a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html" target="_blank"><font size="4">peakableListener</font></a></font></i><font color="#FFFFFF" size="4"> 
+    que receber&aacute; eventos espec&iacute;ficos para cada palavra pronunciada 
+    pela aplica&ccedil;&atilde;o. Diferentes eventos s&atilde;o gerados em fun&ccedil;&atilde;o 
+    da etapa da s&iacute;ntese, estes eventos s&atilde;o sinalizadores utilizados 
+    para controlar o fluxo dos fonemas pronunciados possibilitando uma maior 
+    intera&ccedil;&atilde;o da aplica&ccedil;&atilde;o. S&atilde;o eventos que 
+    indicam quando uma nova palavra come&ccedil;ou a ser pronunciada, se sua s&iacute;ntese 
+    foi cancelada, se chegou ao fim ou foi pausada. Esses e outros eventos permitem
+    a monitoração de toda a s&iacute;ntese, desencadeando qualquer tipo de processamento 
+    em fun&ccedil;&atilde;o do que foi &quot;dito&quot; pelo computador. <a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html" target="_blank">Mais 
+    detalhes.</a></font> 
+    <p><font size="4" color="#FFFFFF">Os eventos gerados s&atilde;o entidades 
+      da classe <a href="../../ref/api/javax/speech/synthesis/SpeakableEvent.html" target="_blank"><i>SpeakableEvent</i></a> 
+      que s&atilde;o &quot;jogados&quot; pelo sintetizador e posteriormente tratados 
+      pelos ouvidores. Estas entidades carregam informa&ccedil;&otilde;es sobre 
+      a palavra que gerou o evento: tais como o texto que representa a palavra propriamente 
+      dita ou o &iacute;ndice do primeiro caractere da palavra de um tag em JSML. 
+      <a href="../../ref/api/javax/speech/synthesis/SpeakableEvent.html" target="_blank">Mais 
+      detalhes.</a></font></p>
+    <p><font color="#FFFFFF" size="4">Estes ouvidores s&atilde;o opcionais, podendo-se 
+      passar um argumento nulo que indica que nenhum ouvidor est&aacute; associado 
+      &agrave; sintese e portanto os eventos gerados podem ser ignorados.</font></p>
+    <p><font color="#FFFFFF" size="4">Os ouvidores podem ser usados de duas maneiras:</font></p>
+    <ul>
+      <li><font color="#FFFFFF" size="4"> podemos associar ouvidores junto com 
+        o m&eacute;todo speak, como visto na tabela 3, neste caso os eventos gerados 
+        s&atilde;o &quot;pegos&quot; apenas pelo ouvidor passado como argumento 
+        para o m&eacute;todo.</font></li>
+      <li><font color="#FFFFFF" size="4"> podemos associar um ouvidor a um objeto 
+        <i>Synthesizer</i> atrav&eacute;s do m&eacute;todo <i><a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#addSpeakableListener(javax.speech.synthesis.SpeakableListener)" target="_blank">addSpeakableListener</a></i>, 
+        desta forma toda a s&iacute;ntese realizada por um determinado sintetizador 
+        ter&aacute; seus eventos pegos pelo ouvidor associado. Assim n&atilde;o 
+        precisamos passar o ouvidor como argumento para o m&eacute;todo speak 
+        e toda vez que uma das formas do m&eacute;todo for utilizada, seus eventos 
+        ser&atilde;o &quot;pegos&quot; pelo ouvidor correspondente.</font> </li>
+    </ul>
+    <p>&nbsp;</p>
+    <p><font size="4" color="#FFFFFF">Se no entanto tivermos um ouvidor x associado 
+      a um sintetizador e passarmos um ouvidor y pelo m&eacute;todo speak, ambos 
+      ir&atilde;o receber os eventos gerados sendo que o ouvidor y os receber&aacute; 
+      primeiro.</font></p>
+  </li>
+</ul>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo5.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p>&nbsp;</p>
+<ul>
+  <li><font size="4" color="#FFFF00"> <a name="fila"></a><b>A fila de itens:</b> 
+    </font><font size="4" color="#FFFFFF"> o envio de itens para serem sintetizados 
+    pode ocorrer mais rapidamente do que a habilidade do sintetizador de pronunci&aacute;-los, 
+    o sintetizador trata isto gerenciando um fila FIFO de itens para serem processados. 
+    O objeto do topo da fila &eacute; o item que est&aacute; sendo processado 
+    ou que est&aacute; prestes a ser. Esta fila pode ser acessada pelo programador 
+    para um maior controle do processo de s&iacute;ntese atrav&eacute;s de <a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#enumerateQueue()" target="_blank">m&eacute;todos 
+    espec&iacute;ficos</a>.</font> <br>
+    <br>
+  </li>
+  <li><font color="#FFFFFF" size="4"><b><font color="#FFFF00">A voz:</font></b> 
+    como funcionalidade adicional dos sintetizadores temos a possibilidade de 
+    escolher a voz (<a href="../../ref/api/javax/speech/synthesis/Voice.html" target="_blank"><i>Voice</i></a>) 
+    que ser&aacute; utilizada. Como par&acirc;metros para determina&ccedil;&atilde;o 
+    do som gerado pelo sintetizador temos:</font></li>
+  <ul>
+    <li><font color="#FFFFFF" size="4"> sexo: <a href="../../ref/api/javax/speech/synthesis/Voice.html#GENDER_MALE" target="_blank">GENDER_MALE</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#GENDER_FEMALE" target="_blank">GENDER_FEMALE</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#GENDER_NEUTRAL" target="_blank">GENDER_NEUTRAL</a> 
+      e <a href="../../ref/api/javax/speech/synthesis/Voice.html#GENDER_DONT_CARE" target="_blank">GENDER_DONT_CARE</a>.</font></li>
+    <li><font color="#FFFFFF" size="4"> idade: <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_CHILD" target="_blank">AGE_CHILD</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_DONT_CARE" target="_blank">AGE_DONT_CARE</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_MIDDLE_ADULT" target="_blank">AGE_MIDDLE_ADULT</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_NEUTRAL" target="_blank">AGE_NEUTRAL</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_OLDER_ADULT" target="_blank">AGE_OLDER_ADULT</a>, 
+      <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_TEENAGER" target="_blank">AGE_TEENAGER</a> 
+      e <a href="../../ref/api/javax/speech/synthesis/Voice.html#AGE_YOUNGER_ADULT" target="_blank">AGE_YOUNGER_ADULT</a>. 
+      </font></li>
+  </ul>
+</ul>
+<blockquote> 
+  <p><font color="#FFFFFF" size="4">Temos duas maneiras de criar um objeto <a href="../../ref/api/javax/speech/synthesis/Voice.html" target="_blank"><i>Voice</i></a>:</font></p>
+</blockquote>
+<ul>
+  <ul>
+    <li><font size="4" color="#FFFFFF">criamos um objeto Voice com par&acirc;metros 
+      padr&otilde;es, isto &eacute;, idade e sexo como DONT_CARE. Isto &eacute; 
+      feito com o construtor <a href="../../ref/api/javax/speech/synthesis/Voice.html#Voice()" target="_blank"><i>Voice</i></a> 
+      sem par&acirc;metros.</font></li>
+    <li><font size="4" color="#FFFFFF">utilizamos o construtor <i><a href="../../ref/api/javax/speech/synthesis/Voice.html#Voice(java.lang.String,%20int,%20int,%20java.lang.String)" target="_blank">Voice</a> 
+      </i>definindo os par&acirc;metros nome (uma String para identificar a voz), 
+      sexo, idade e estilo (uma String para classificar a voz).</font> </li>
+  </ul>
+</ul>
+<blockquote>
+  <p><font size="4" color="#FFFFFF">Para associarmos uma voz com um sintetizador 
+    precisamos recuperar um objeto <a href="../../ref/api/javax/speech/synthesis/SynthesizerProperties.html" target="_blank"> 
+    <i>SynthesizerProperties</i></a> atrav&eacute;s do m&eacute;todo <a href="../../ref/api/javax/speech/synthesis/Synthesizer.html#getSynthesizerProperties()" target="_blank"><i>getSynthesizerProperties</i></a> 
+    do sintetizador e determinar a voz atrav&eacute;s do m&eacute;todo <a href="../../ref/api/javax/speech/synthesis/SynthesizerProperties.html#setVoice(javax.speech.synthesis.Voice)" target="_blank"><i>setVoice</i></a>.</font></p>
+</blockquote>
+<blockquote>&nbsp;</blockquote>
+<p align="right"><a href="../../exemplos/sintese/sintese_exemplo6.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

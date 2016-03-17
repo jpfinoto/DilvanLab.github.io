@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Applets Slide 6: Creating an Interface.</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Applets:</FONT> </FONT><B><FONT COLOR="#0000FF">Creating
+an Interface</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/applet/ui/properties.html">Reading
+System Properties</A> </H2>
+
+<UL>
+<H3><BR>
+Command to Read System Properties:</H3>
+</UL>
+</UL>
+
+<PRE>              String s = System.getProperty(&quot;os.name&quot;);
+</PRE>
+
+<UL>
+<UL>
+<H3>System Properties that Applets Can Read:<BR>
+</H3>
+</UL>
+</UL>
+
+<PRE>               Key                     Meaning
+               -------------------     ------------------------------
+               &quot;file.separator&quot;        File separator (e.g., &quot;/&quot;)
+
+               &quot;java.class.version&quot;    Java class version number
+               &quot;java.vendor&quot;           Java vendor-specific string
+               &quot;java.vendor.url&quot;       Java vendor URL
+               &quot;java.version&quot;          Java version number
+
+               &quot;line.separator&quot;        Line separator 
+
+               &quot;os.arch&quot;               Operating system architecture
+               &quot;os.name&quot;               Operating system name
+
+               &quot;path.separator&quot;        Path separator (e.g., &quot;:&quot;)
+</PRE>
+
+<UL>
+<UL>
+<H3>Forbidden System Properties:<BR>
+</H3>
+</UL>
+</UL>
+
+<PRE>               Key                     Meaning
+               -------------------     ------------------------------
+               &quot;java.class.path&quot;       Java classpath
+               &quot;java.home&quot;             Java installation directory
+
+               &quot;user.dir&quot;              User's current working directory
+               &quot;user.home&quot;             User home directory
+               &quot;user.name&quot;             User account name
+</PRE>
+
+<UL>
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/applet/ui/showStatus.html">Displaying
+Short Strings</A> </H2>
+
+<UL>
+<H3><BR>
+Print in the browser status line:</H3>
+</UL>
+
+<PRE>
+         showStatus(&quot;MyApplet: Loading image file &quot; + file);</PRE>
+
+<PRE>
+
+</PRE>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Applets.sld7.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Applets.sld7.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

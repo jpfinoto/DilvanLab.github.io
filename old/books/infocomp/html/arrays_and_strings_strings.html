@@ -1,0 +1,66 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Strings</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Informatics and Computing"><link rel="up" href="arrays_and_strings.html" title="Chapter&nbsp;4.&nbsp;Arrays and Strings"><link rel="prev" href="arrays_and_strings_arrays.html" title="1.&nbsp;Arrays"><link rel="next" href="arrays_and_strings_exercises.html" title="3.&nbsp;Exercises"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Strings</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="arrays_and_strings_arrays.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;Arrays and Strings</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="arrays_and_strings_exercises.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="arrays_and_strings_strings"></a>2.&nbsp;Strings</h2></div></div></div><p>In C Strings are defined as arrays of characters. For example, the following defines a string of 50 characters:</p><pre class="programlisting">char name[50];</pre><p>C has no string handling facilities built in and so the following are all illegal:</p><pre class="programlisting">char firstname[50],lastname[50],fullname[100];
+
+firstname= "Arnold"; /* Illegal */
+lastname= "Schwarznegger"; /* Illegal */
+fullname= "Mr" + firstname + lastname; /* Illegal */ </pre><p>However, there is a special library of string handling routines which we will come across later.</p><p>To print a string we use printf with a special <code class="code">%s</code> control character:</p><pre class="programlisting">printf("%s",name);</pre><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="images/important.png"></td><th align="left">Important</th></tr><tr><td align="left" valign="top"><p>We just need to give the name of the string.</p></td></tr></table></div><p>In order to allow variable length strings the <code class="code">\0</code> character is used to indicate the end of a string.</p><p>So we if we have a string, <code class="code">char name[10];</code> and we store the <code class="code">"DAVE"</code> in it its contents will look like:</p><pre class="programlisting">name= | D | A | V | E | 0 |   |   |   |   |   |
+        0   1   2   3   4   5   6   7   8   9</pre><p>Devemos lembrar que o tamanho da string deve incluir o '\0' final.</p><p>A biblioteca padr&atilde;o do C possui diversas fun&ccedil;&otilde;es que manipulam strings. Estas fun&ccedil;&otilde;es s&atilde;o &uacute;teis pois n&atilde;o se pode, por exemplo, igualar duas strings:</p><pre class="programlisting">string1=string2;        /* NAO faca isto */</pre><p>Fazer isto &eacute; um desastre. As strings devem ser igualadas elemento a elemento.</p><p>Vamos ver agora algumas fun&ccedil;&otilde;es b&aacute;sicas para manipula&ccedil;&atilde;o de strings.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e699"></a>2.1.&nbsp;<code class="code">gets(string)</code></h3></div></div></div><p>A fun&ccedil;&atilde;o <code class="code">gets()</code> l&ecirc; uma string do teclado. Sua forma geral &eacute;:</p><pre class="programlisting">gets (nome_da_string);</pre><p>O programa abaixo demonstra o funcionamento da fun&ccedil;&atilde;o <code class="code">gets()</code>:</p><pre class="programlisting">#include &lt;stdio.h&gt;
+int main () {
+   char string[100];
+   printf ("Digite o seu nome: ");
+   gets (string);
+   printf ("\n\n Ola %s",string);
+   return(0);
+}</pre><p>Repare que &eacute; v&aacute;lido passar para a fun&ccedil;&atilde;o <code class="code">printf()</code> o nome da string. Como o primeiro argumento da fun&ccedil;&atilde;o <code class="code">printf()</code> &eacute; uma string tamb&eacute;m &eacute; v&aacute;lido fazer:</p><pre class="programlisting">printf (string);</pre><p>isto simplesmente imprimir&aacute; a string.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e729"></a>2.2.&nbsp;<code class="code">strcpy(destino, origem)</code></h3></div></div></div><p>Sua forma geral &eacute;:</p><pre class="programlisting">strcpy (string_destino,string_origem);</pre><p>A fun&ccedil;&atilde;o <code class="code">strcpy()</code> copia a string-origem para a string-destino. As fun&ccedil;&otilde;es apresentadas nestas se&ccedil;&otilde;es est&atilde;o no arquivo cabe&ccedil;alho <code class="code">string.h</code>. A seguir apresentamos um exemplo de uso da fun&ccedil;&atilde;o <code class="code">strcpy()</code>:</p><pre class="programlisting">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[100], str2[100], str3[100];
+
+   printf ("Entre com uma string: ");
+   gets (str1);
+   strcpy (str2,str1);    /* Copia str1 em str2 */
+   strcpy (str3,"Voce digitou a string "); /* Copia "Voce digitou a string" em str3 */
+   printf ("\n\n%s%s",str3,str2);
+   return 0;
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e750"></a>2.3.&nbsp;<code class="code">strcat(destino, origem)</code></h3></div></div></div><p>A fun&ccedil;&atilde;o <code class="code">strcat()</code> tem a seguinte forma geral:</p><pre class="programlisting">strcat (string_destino,string_origem);</pre><p>A string de origem permanecer&aacute; inalterada e ser&aacute; anexada ao fim da string de destino. Um exemplo:</p><pre class="programlisting">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[100],str2[100];
+
+   printf ("Entre com uma string: ");
+   gets (str1);
+   strcpy (str2,"Voce digitou a string ");
+   strcat (str2,str1);   /* str2 armazenara' Voce digitou a string + o conteudo de str1 */
+   printf ("\n\n%s",str2);
+   return 0;
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e766"></a>2.4.&nbsp;<code class="code">strlen(string)</code></h3></div></div></div><p>Sua forma geral &eacute;:</p><pre class="programlisting">strlen (string);</pre><p>A fun&ccedil;&atilde;o <code class="code">strlen()</code> retorna o comprimento da string fornecida. O terminador nulo n&atilde;o &eacute; contado. Isto quer dizer que, de fato, o comprimento do vetor da string deve ser um a mais que o inteiro retornado por <code class="code">strlen()</code>. Um exemplo do seu uso:</p><pre class="programlisting">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   int size;
+   char str[100];
+
+   printf ("Entre com uma string: ");
+   gets (str);
+   size=strlen (str);
+   printf ("\n\nA string que voce digitou tem tamanho %d",size);
+   return 0;
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e785"></a>2.5.&nbsp;<code class="code">strcmp(string1, string2)</code></h3></div></div></div><p>Sua forma geral &eacute;:</p><pre class="programlisting">strcmp (string1,string2);</pre><p>A fun&ccedil;&atilde;o <code class="code">strcmp()</code> compara a string 1 com a string 2. Se as duas forem id&ecirc;nticas a fun&ccedil;&atilde;o retorna zero. Se elas forem diferentes a fun&ccedil;&atilde;o retorna n&atilde;o-zero. Um exemplo da sua utiliza&ccedil;&atilde;o:</p><pre class="programlisting">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main () {
+   char str1[100],str2[100];
+
+   printf ("Entre com uma string: ");
+   gets (str1);
+   printf ("\n\nEntre com outra string: ");
+   gets (str2);
+   if (strcmp(str1,str2))
+      printf ("\n\nAs duas strings s&atilde;o diferentes.");
+   else
+      printf ("\n\nAs duas strings s&atilde;o iguais.");
+   return 0;
+}</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="arrays_and_strings_arrays.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="arrays_and_strings.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="arrays_and_strings_exercises.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Arrays&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Exercises</td></tr></table></div></body></html>

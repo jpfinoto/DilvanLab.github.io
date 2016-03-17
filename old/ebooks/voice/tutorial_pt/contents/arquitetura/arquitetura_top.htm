@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Arquitetura SDK Java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="">
+<p align="center"><font color="#FFFFFF" size="4"><b><font size="5">Arquitetura</font></b></font> 
+</p>
+<p><font color="#FFFFFF" size="4">A arquitetura de funcionamento da tecnologia 
+  pode ser vista na figura 1 a seguir:</font></p>
+<p align="center"><img src="../../imagens/ilustracoes/arquitetura/arquitetura_basica/arquitetura_basica.gif" width="741" height="537"></p>
+<p align="center"><b>Figura 1 - Arquitetura simplificada das aplica&ccedil;&otilde;es 
+  IBM SDK Tecnologia Java.</b></p>
+<p><font color="#FFFFFF" size="4">Na figura 1 podemos observar que a aparelhagem 
+  de som &eacute; controlada pelo Sistema Operacional, logo acima deste est&aacute; 
+  a aplica&ccedil;&atilde;o Engine.exe que &eacute; iniciada automaticamente quando 
+  as aplica&ccedil;&otilde;es com s&iacute;ntese e/o reconhecimento s&atilde;o 
+  acionadas. O Engine &eacute; o cora&ccedil;&atilde;o do IBM ViaVoice, tanto 
+  na vers&atilde;o comercial quanto na distribu&iacute;da com o kit de desenvolvimento, 
+  ele &eacute; respons&aacute;vel por acessar todo as funcionalidades especiais 
+  oferecidas.</font></p>
+<p><font color="#FFFFFF" size="4">Ainda, na ilustra&ccedil;&atilde;o podemos observar 
+  os componentes fundamentais de uma aplica&ccedil;&atilde;o SDK Java: as entidades 
+  de reconhecimento (<i>Recognizer</i>) e s&iacute;ntese (<i>Synthesizer</i>), 
+  a classe Central e, notadamente, a Interface Engine da qual as entidades vitais 
+  (<i>Synthesizer</i> e <i>Recognizer</i>) s&atilde;o herdeiros. Esta interface 
+  possui todos os m&eacute;todos b&aacute;sicos de controle e acesso &agrave; 
+  m&aacute;quina de processamento do ViaVoice que s&atilde;o a base da interface 
+  das aplica&ccedil;&otilde;es.</font></p>
+<p><font color="#FFFFFF" size="4">A interface 
+  Engine é importante porque Java é uma linguagem multiplataforma: O mesmo 
+  kit de desenvolvimento Java &eacute; usado nas plataformas Unix, Linux e Windows, 
+  as quais possuem implementa&ccedil;&otilde;es distintas da m&aacute;quina de 
+  processamento do IBM ViaVoice. Portanto a interface Engine &eacute; respons&aacute;vel 
+  por esconder as peculiaridades de cada implementa&ccedil;&atilde;o fornecendo 
+  o acesso adequado para Reconhecedores e Sintetizadores implementados nos&nbsp;
+diversos ambientes de processamento.</font></p>
+<p><font color="#FFFFFF" size="4">Neste ponto devemos descrever a fun&ccedil;&atilde;o 
+  da classe Central. Ela &eacute; respons&aacute;vel por implementar a interface
+Engine, isto &eacute;, a Central &eacute; responsável em abstrair as
+peculiaridades da plataforma 
+  em quest&atilde;o fornecendo a devida implementa&ccedil;&atilde;o das fun&ccedil;&otilde;es 
+  da Interface Engine e, consequentemente, dos Sintetizadores e Reconhecedores. 
+  A Central, em um primeiro momento, fica entre a Interface Engine e a aplica&ccedil;&atilde;o 
+  Engine.exe determinando como ser&aacute; realizado o processamento de di&aacute;logo 
+  propriamente dito. Ap&oacute;s esta etapa os Sintetizadores e Reconhecedores
+(implementando extens&otilde;es da Interface Engine) podem acessar diretamente a m&aacute;quina 
+  de processamento sem interm&eacute;dio de nenhuma outra entidade.</font></p>
+<p align="center"><img src="../../imagens/ilustracoes/arquitetura/arquitetura_completa/arquitetura_completa.gif" width="747" height="699"></p>
+<p align="center"><b>Figura 2- Arquitetura completa das aplica&ccedil;&otilde;es 
+  IBM SDK Tecnologia Java.</b></p>
+<p align="left"><font color="#FFFFFF" size="4">Nesta segunda ilustra&ccedil;&atilde;o 
+  temos um esquema mais detalhado da arquitetura de funcionamento das aplica&ccedil;&otilde;es 
+  que s&atilde;o o nosso objeto de estudo. Al&eacute;m do relacionamento com as fun&ccedil;&otilde;es 
+  do ViaVoice, que j&aacute; foram vistas na figura 1, aqui podemos observar as 
+  entidades que, funcionando conjuntamente com os objetos Recognizer e Sinthesizer, 
+  determinam o suporte da s&iacute;ntese e reconhecimento. S&atilde;o os ouvidores 
+  e as gram&aacute;ticas de reconhecimento.</font></p>
+<p align="left"><font size="4" color="#FFFFFF">A seguir temos c&oacute;digo exemplo 
+  ilustrando </font><font size="4" color="#FFFFFF">a forma mais simples de se 
+  criar uma aplica&ccedil;&atilde;o com um sintetizador e um reconhecedor, que 
+  no exemplo s&atilde;o apenas instanciados mas nenhuma de suas funcionalidades 
+  &eacute; acessada.</font></p>
+<p align="right"><a href="../../exemplos/exemplo1.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+</body>
+</html>

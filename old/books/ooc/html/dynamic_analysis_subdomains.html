@@ -1,0 +1,24 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Subdomains</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="dynamic_analysis.html" title="Chapter&nbsp;18.&nbsp;Dynamic Analysis"><link rel="prev" href="dynamic_analysis_criteria.html" title="3.&nbsp;Criteria"><link rel="next" href="dynamic_analysis_subdomain_criteria.html" title="5.&nbsp;Subdomain Criteria"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Subdomains</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="dynamic_analysis_criteria.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;18.&nbsp;Dynamic Analysis</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="dynamic_analysis_subdomain_criteria.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="dynamic_analysis.html">Dynamic Analysis</a></span> &gt; <span class="breadcrumb-node">Subdomains</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="dynamic_analysis_subdomains"></a>4.&nbsp;Subdomains</h2></div></div></div><p>The input space is divided into regions usually called <span class="bold"><strong>subdomains</strong></span>, each containing a set of inputs. The
+      subdomains together exhaust the input space &#8211; that is, every input is in
+      at least one subdomain. The criterion used here is that there be at
+      least one test case from each subdomain.</p><p>The intuition behind subdomains is two-fold:</p><div class="orderedlist"><ol type="1"><li><p>It&#8217;s an easy way (at least conceptually) to determine if a
+          test suite is good enough.</p></li><li><p>We hope that by requiring a case from each subdomain, we will
+          drive testing into regions of the input space most likely to find
+          bugs</p></li></ol></div><p>In the best case, a subdomain is <span class="emphasis"><em>revealing</em></span>:
+      This means that every test case in it either causes the program to fail
+      or to succeed.</p><p>In practice, it&#8217;s very hard to get <span class="emphasis"><em>revealing</em></span>
+      subdomains. But by careful choice of subdomains it&#8217;s possible to have at
+      least some subdomains whose error rate &#8211; the proportion of inputs that
+      lead to bad outputs &#8211; is much higher than the average error rate for the
+      input space as a whole.</p></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="dynamic_analysis_criteria.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="dynamic_analysis.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="dynamic_analysis_subdomain_criteria.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Criteria&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Subdomain Criteria</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

@@ -1,0 +1,108 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Synchronization</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="threads.html" title="Chapter&nbsp;3.&nbsp;Threads"><link rel="prev" href="threads_scheduling.html" title="3.&nbsp;Scheduling"><link rel="next" href="distributed_programming.html" title="Chapter&nbsp;4.&nbsp;Distribution Programming"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Synchronization</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="threads_scheduling.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;3.&nbsp;Threads</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="distributed_programming.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="threads_synchronization"></a>4.&nbsp;Synchronization</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Thread Synchronization</p><p>Synchronization objects are variables in memory that you access just like data.</p><p>The main types of synchronization objects are:</p><div class="itemizedlist"><ul type="circle"><li><p>Mutex Locks</p></li><li><p>Condition Variables</p></li><li><p>Semaphores</p></li></ul></div><p><span class="bold"><strong>Note: </strong></span>Synchronization is the only way to ensure consistency of shared data.</p><p><span class="bold"><strong>Synchronization Variables:</strong></span></p><p>The default blocking behavior is to put a thread to sleep.</p><p>Each synchronization variable has a sleep queue associated with it:</p><div class="orderedlist"><ol type="1"><li><p>The synchronization primitives put the blocking threads on the synchronization variable's sleep queue</p></li><li><p>They surrenders the executing thread to the scheduler.</p></li><li><p>The scheduler tries to execute another thread.</p></li></ol></div><p>Blocked threads are awakened when the synchronization variables become available:</p><div class="orderedlist"><ol type="1"><li><p>The synchronization primitives check if threads are waiting for the synchronization variables.</p></li><li><p>The unblocked threads are removed from the synchronization variable's sleep queue.</p></li><li><p>The scheduler places the threads on a run queue corresponding to their priority.</p></li><li><p>The thread are then dispatched to execution in priority order.</p></li></ol></div></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p>Mutual Exclusion Locks</p><p>Mutual exclusion locks (mutexes) are used to serialize thread execution, by ensuring that only one thread at a time executes a critical section of code.</p><div class="orderedlist"><ol type="1"><li><p>A thread acquires the lock.</p></li><li><p>Executes critical section of code.</p></li><li><p>Releases lock.</p></li></ol></div><p><span class="bold"><strong>Note:</strong></span> Mutex locks can also preserve code that was written to run serially and thus is not thread safe.</p><pre class="programlisting"><span class="bold"><strong>Basic Routines*         Operation </strong></span>
+pthread_mutex_init      Initialize a Mutual Exclusion Lock 
+pthread_mutex_lock      Lock a Mutex
+pthread_mutex_unlock    Unlock a Mutex
+pthread_mutex_destroy   Destroy Mutex State</pre><p>Producer-Consumer Example:</p><pre class="programlisting">pthread_mutex_t count_mutex;
+int count;
+
+increment_count() {
+   <span class="bold"><strong>pthread_mutex_lock(&amp;count_mutex);</strong></span>
+   count = count + 1;
+   <span class="emphasis"><em><span class="bold"><strong>pthread_mutex_unlock(&amp;count_mutex);</strong></span>
+}</em></span>
+
+int get_count() {
+   int c;
+   <span class="bold"><strong>pthread_mutex_lock(&amp;count_mutex);</strong></span>
+   c = count;
+   <span class="bold"><strong>mutex_unlock(&amp;count_mutex);</strong></span>
+   return (c);
+}</pre><p>* The examples as implemented using the Linux threads library based on the POSIX 1003.c standard.</p></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p>Condition Variables</p><p>Condition variables atomically block threads until a particular condition is true.</p><p>With a condition variable, a thread can atomically block until a condition is satisfied:</p><div class="itemizedlist"><ul type="circle"><li><p>When the condition is false:</p><div class="orderedlist"><ol type="1"><li><p>A thread acquires the mutex.</p></li><li><p>It blocks on the condition variable.</p></li><li><p>It atomically releases the mutex waiting for the condition to change.</p></li></ol></div></li><li><p>When another thread changes the condition:</p><div class="orderedlist"><ol type="1"><li><p>The associated condition variable is signaled to cause waiting threads to wake up.</p></li><li><p>One of the threads reacquire the mutex, and re-evaluate the condition.</p></li><li><p>It continues critical code execution.</p></li><li><p>It releases the mutex allowing other blocked threads to proceed.</p></li></ol></div></li></ul></div><p>Note: Always test condition variables under the protection of a mutex lock.</p><pre class="programlisting"><span class="bold"><strong>Basic Routines            Operation</strong></span>
+
+pthread_cond_init         Initialize a Condition Variable
+pthread_cond_wait         Block on a Condition Variable
+pthread_cond_signal       Unblock a Specific Thread
+pthread_cond_timedwait    Block Until a Specified Event
+pthread_cond_broadcast    Unblock All Threads
+pthread_cond_destroy      Destroy Condition Variable State</pre><p>Producer-Consumer Example:</p><pre class="programlisting">typedef struct {
+    char buf[BSIZE];
+    int occupied;
+    int nextin;
+    int nextout;
+    pthread_mutex_t mutex;
+    pthread_cond_t more;
+    pthread_cond_t less;
+} buffer_t;
+
+buffer_t buffer;
+void producer(buffer_t *b, char item) {
+    <span class="bold"><strong>pthread_mutex_lock(&amp;b-&gt;mutex);</strong></span>
+    while (b-&gt;occupied == BSIZE)
+        <span class="bold"><strong>pthread_cond_wait(&amp;b-&gt;less, &amp;b-&gt;mutex);</strong></span>
+    b-&gt;buf[b-&gt;nextin] = item;
+    nextin++;
+    b-&gt;nextin %= BSIZE; /* Makes nextin &lt; BSIZE or 0 */
+    b-&gt;occupied++;
+  
+    <span class="bold"><strong>pthread_cond_signal(&amp;b-&gt;more);</strong></span>
+    <span class="bold"><strong>pthread_mutex_unlock(&amp;b-&gt;mutex);</strong></span>
+}
+char consumer(buffer_t *b) {
+    char item;
+    <span class="bold"><strong>pthread_mutex_lock(&amp;b-&gt;mutex);</strong></span>
+    while(b-&gt;occupied == 0)
+        <span class="bold"><strong>pthread_cond_wait(&amp;b-&gt;more, &amp;b-&gt;mutex);</strong></span>
+    item = b-&gt;buf[b-&gt;nextout];
+    b-&gt;nextout++;
+    b-&gt;nextout %= BSIZE;  /* Makes nextout &lt; BSIZE or 0 */
+    b-&gt;occupied--;
+    
+    <span class="bold"><strong>pthread_cond_signal(&amp;b-&gt;less);</strong></span>
+    <span class="bold"><strong>pthread_mutex_unlock(&amp;b-&gt;mutex);</strong></span>
+    return(item);
+}</pre></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p>Semaphores</p><p>Semaphores are modeled after the operation of single track railroads: A train must wait a semaphore signal before entering a single track.</p><p>In the computer version, a semaphore uses a simple integer:</p><p>Producer-Consumer Example:</p><p>In the computer version, a semaphore uses a simple integer:</p><div class="orderedlist"><ol type="1"><li><p>A thread waits for permission to proceed (It waits until the semaphore value is positive).</p></li><li><p>Then signals that it has proceeded by subtracting one from the semaphore.</p></li><li><p>It executes some restricted code.</p></li><li><p>When it is finished, the thread adds one to the semaphore's value.</p></li></ol></div><p><span class="bold"><strong>Note: </strong></span>All these semaphore operations take place atomically, they cannot be subdivided into pieces between which other actions on the semaphore can take place.</p><p>There are two basic sorts of semaphores:</p><div class="itemizedlist"><ul type="circle"><li><p><span class="bold"><strong>Binary semaphores</strong></span>, which never take on values other than zero or one (It is like a mutex).</p></li><li><p><span class="bold"><strong>Counting semaphores</strong></span>, which can take on arbitrary nonnegative values.</p></li></ul></div><p>Semaphores are typically used to coordinate access to resources, with the semaphore count initialized to the number of free resources:</p><div class="itemizedlist"><ul type="circle"><li><p>Threads atomically increment the count when resources are added.</p></li><li><p>Threads atomically decrement the count when resources are removed.</p></li><li><p>Threads block when no resources are available.</p></li></ul></div><pre class="programlisting"><span class="bold"><strong>Basic Routines   Operation</strong></span>
+sem_init         Initialize a Semaphore
+sem_post         Increment a Semaphore
+sem_wait         Block on a Semaphore Count
+sem_trywait      Decrement a Semaphore Count
+sem_destroy      Destroy the Semaphore State
+</pre><p>Producer-Consumer Example:</p><pre class="programlisting">typedef struct {
+    char buf[BSIZE];
+    sem_t occupied;
+    sem_t empty;
+    int nextin;
+    int nextout;
+    sem_t pmut;
+    sem_t cmut;
+} buffer_t;
+
+buffer_t buffer;
+
+<span class="bold"><strong>sem_init(&amp;buffer.occupied, USYNC_THREAD, 0);
+sem_init(&amp;buffer.empty, USYNC_THREAD, BSIZE);
+sem_init(&amp;buffer.pmut, USYNC_THREAD, 1);
+sem_init(&amp;buffer.cmut, USYNC_THREAD, 1);</strong></span>
+
+buffer.nextin = buffer.nextout = 0;
+void producer(buffer_t *b, char item) {
+    <span class="bold"><strong>sem_wait(&amp;b-&gt;empty);
+    sem_wait(&amp;b-&gt;pmut);</strong></span>
+    b-&gt;buf[b-&gt;nextin] = item;
+    b-&gt;nextin++;
+    b-&gt;nextin %= BSIZE;
+    <span class="bold"><strong>sem_post(&amp;b-&gt;pmut);
+    sem_post(&amp;b-&gt;occupied);</strong></span>
+}
+char consumer(buffer_t *b) {
+    char item;
+ <span class="bold"><strong>   sem_wait(&amp;b-&gt;occupied);
+    sem_wait(&amp;b-&gt;cmut);</strong></span>
+    item = b-&gt;buf[b-&gt;nextout];
+    b-&gt;nextout++;
+    b-&gt;nextout %= BSIZE;
+ <span class="emphasis"><em>   sem_post(&amp;b-&gt;cmut);
+    sem_post(&amp;b-&gt;empty);</em></span>
+    return(item);
+}</pre></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="threads_scheduling.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="threads.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="distributed_programming.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Scheduling&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;4.&nbsp;Distribution Programming</td></tr></table></div></body></html>

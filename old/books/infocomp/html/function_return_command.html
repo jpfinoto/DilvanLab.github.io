@@ -1,0 +1,27 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Return Command</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Informatics and Computing"><link rel="up" href="function.html" title="Chapter&nbsp;5.&nbsp;Functions"><link rel="prev" href="function_the_function.html" title="1.&nbsp;The Function"><link rel="next" href="function_void_function.html" title="3.&nbsp;void Functions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Return Command</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="function_the_function.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;5.&nbsp;Functions</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="function_void_function.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="function_return_command"></a>2.&nbsp;Return Command</h2></div></div></div><p>O comando return tem a seguinte forma geral:</p><pre class="programlisting">return value_returned; <span class="emphasis"><em>or</em></span> return;</pre><p>Digamos que uma fun&ccedil;&atilde;o est&aacute; sendo executada. Quando se chega a uma declara&ccedil;&atilde;o return a fun&ccedil;&atilde;o &eacute; encerrada imediatamente e, se o valor de retorno &eacute; informado, a fun&ccedil;&atilde;o retorna este valor. </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="images/important.png"></td><th align="left">Important</th></tr><tr><td align="left" valign="top"><p>&Eacute; importante lembrar que o valor de retorno fornecido tem que ser compat&iacute;vel com o tipo de retorno declarado para a fun&ccedil;&atilde;o.</p></td></tr></table></div><p>Uma fun&ccedil;&atilde;o pode ter mais de uma declara&ccedil;&atilde;o <code class="code">return</code>. Isto se torna claro quando pensamos que a fun&ccedil;&atilde;o &eacute; terminada quando o programa chega &agrave; primeira declara&ccedil;&atilde;o <code class="code">return</code>: </p><pre class="programlisting">#include &lt;stdio.h&gt;
+
+int isEven(int a)
+{
+   int b;
+
+   b= a % 2;        /* divide by 2 and take the rest */
+   if (b==0)           
+      return 1;     /* Return true if even */
+   else
+      return 0;     /* Return false if odd */
+}
+
+int main ()
+{
+   int num;
+
+   printf ("Enter a number: ");
+   scanf ("%d",&amp;num);
+   if (isEven(num))
+      printf ("\n\nEven number.\n");
+   else
+      printf ("\n\nOdd number.\n");
+   return 0;
+}</pre><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Caution"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Caution]" src="images/caution.png"></td><th align="left">Caution</th></tr><tr><td align="left" valign="top"><p>Como as fun&ccedil;&otilde;es retornam valores, podemos aproveit&aacute;-los para fazer atribui&ccedil;&otilde;es ou usa-los em express&otilde;es. Mas n&atilde;o podemos fazer:</p><pre class="programlisting">func(a,b)=x;    /* Errado! */</pre></td></tr></table></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Important]" src="images/important.png"></td><th align="left">Important</th></tr><tr><td align="left" valign="top"><p>Se uma fun&ccedil;&atilde;o retorna um valor voc&ecirc; n&atilde;o precisa aproveitar este valor. Se voc&ecirc; n&atilde;o fizer nada com o valor de retorno de uma fun&ccedil;&atilde;o ele ser&aacute; descartado. Por exemplo, a fun&ccedil;&atilde;o <code class="code">printf()</code> retorna um inteiro que foi descartado.</p></td></tr></table></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="function_the_function.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="function.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="function_void_function.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;The Function&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;<code class="code">void</code> Functions</td></tr></table></div></body></html>

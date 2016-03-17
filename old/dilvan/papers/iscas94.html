@@ -1,0 +1,103 @@
+
+<html> <head>
+<title>ISCAS 94</title>
+</head>
+<body BGCOLOR="FFFFFF">
+<a NAME="HEADING1"></a>
+<center>
+<h1>Automated Placement for a Leaf Cell Generator<br><br></h1>
+<p>
+<font SIZE="4">D. de Abreu Moreira &amp; L.T. Walczowski</font><p>
+Electronic Engineering Laboratories,<br>
+ University of Kent,<br>
+Canterbury, Kent, CT2 7NT<br>
+England.<br>
+(+44) 227 764000<br>
+ltw@ukc.ac.uk<br>
+</center>
+<p>
+<p>
+<a NAME="HEADING1-0"></a>
+<h2> ABSTRACT</h2>
+ A program for the design of leaf cells for silicon compilers of digital VLSI circuits, is being developed. It uses rule based modules to put together basic circuits, check design rules, check designs constraints and to control each of these constituent tasks. An optimization algorithm, in this case a genetic algorithm, optimizes the layout, under the control of the rule system. The program is divided into modules that can run together using a client-server model. <p>
+<a NAME="HEADING1-2"></a>
+<h2> INTRODUCTION</h2>
+ Leaf cells are subcircuits of a complexity comparable with SSI (Small Scale Integration) components such as one-bit adders, flip-flops or multiplexers. Custom integrated circuits are generally based on a hierarchy of sub-circuits with high level modules composed of submodules and so on. At the leaves of this tree like structure are modules that contain only transistors. These are called leaf cells. They typically contain between 10 to 100 transistors. <p>
+ Silicon compilers either use libraries of ready designed leaf cells or each leaf cell is automatically generated <a HREF="#ref1">[1]</a> by synthesis tools such as the program we describe in this paper. The main advantage of the synthesis approach is that circuit performance will not be sacrificed since a new, optimal layout will be produced whatever the complexity of the circuit and whenever the fabrication process is upgraded.<p>
+ Our cell synthesis system divides into three parts, first a placement program which positions transistors based on connectivity information obtained from a netlist, then the basic routing program and finally the two programs are integrated in the distributed environment. This paper is concerned mainly with the placement program. <p>
+ The program uses production rules to recognize specific situations during design and for taking decisions, and simulated evolution to search for near optimal solutions. To accommodate with ease both methods (rule based and algorithms) and to cope both with the complexity of the program and with the demand for resources, especially cpu time, two techniques have been employed: Object Oriented Programming (OOP) and the distributed system approach using a client-server model.<p>
+<a NAME="HEADING1-7"></a>
+<h2> CLIENT-SERVER MODEL</h2>
+ Since the program uses search algorithms (Genetic Algorithm) to achieve near optimal solutions, a good deal of cpu power is necessary to reduce the execution time. One way of obtaining more cpu time is by using parallel processing and one standard and widely available form of running parallel programs is by distributing the work-load through out a network of workstations. The standard model for this kind of parallelism is the client-server model <a HREF="#ref2">[2]</a>. As the name implies, the server provides the service that the client requests. Usually, clients communicate with the server through a network, and client and server exchange data using a protocol understood by both.<p>
+ In our program, sockets are used to interchange information through strings of ASCII characters in the form of a LISP like language. This form was chosen to facilitate debugging (the messages can be easily read) and for compatibility with EDIF (Electronic Design Interchange Format)<a HREF="#ref3">[3]</a>, which is a Lisp like description language. EDIF is used in the communication between the placement and routing program modules and in representing the final circuits.<p>
+<a NAME="HEADING1-10"></a>
+<h2> THE PLACEMENT</h2>
+ The program starts a design using a basic algorithm, and applies rules to fit the transistors in a standard pattern. Subsequently, it attempts to improve this basic pattern using simulated evolution. The basic technique of placement is similar to that described in <a HREF="#ref1">[1]</a> and <a HREF="#ref4">[4]</a>. It basically consists of forming groups of transistors, joined in lines of diffusion, and then positioning them. In the program this is controlled by an inference engine. This engine is formed by 'agents' or 'actors', which are objects that hold data, and groups of rules that can be activated or deactivated by other actors. In each cycle the matching part of all rules of all active rule groups inside the actors are tested. All those that can fire will be placed in the conflict set. The rule with the biggest preference will be fired; if more than one can be fired using these criteria (i.e. if they have the same preference) the first one to get into the conflict set is fired. The actors have their rules evaluated concurrently. The preferences and the entrance order in the conflict set is the only mechanism to order the rule firing. The rules define the 'personality' of each actor, in other words, how it reacts to changes in environment and its aims in 'life'.<p>
+ There are five kinds of actors or nodes in the placer: <i>Info</i>, <i>Cont</i>, <i>Abutted</i>, <i>Group</i> and <i>EvalPlacement</i>. All actors are derived from the same basic type called <i>Rule</i> which itself has no rules, but is used to hold functions shared by all actors. The Info actor is used to hold only circuit information. The Cont actor controls the computations and which actor's rule group is activated each time. An Abutted actor is created to obtain a transistor in the Info actor and to try to get the maximum number of transistors that can be put together in the same column. The transistors should either have their gates connected or be a transmission pair. Group actors have two kinds of behaviour (or rule groups). When they are created they receive an Abutted actor each. In the first behaviour they rank themselves against one Group actor exposed by Cont (if they have not been exposed yet), by reporting on their capacity of forming a group with it and indicating the best side for doing this. A group is a series of transistor columns linked together by diffusion abutments. In the second behaviour, they destroy all Abutted actors under their control and transform the transistors they hold in a matrix. EvalPlacement houses the placement evaluation program. It routes the pads around the circuit, the aligned gates in polysilicon and then all nodes in metal allowing them to overlap freely. Afterwards, it sends back a report with a rank for the circuit including the total metal length and the number of overlaps. This gives the Cont actor more flexibility in making judgements about the circuit.<p>
+ When the computation begins there are two actors, an Info and a Cont <a HREF="#fig1">(Fig. 1)</a>. Cont then passes through three states or behaviours. In the first one, <i>Create_Columns</i>, it creates Abutted actors until there are no transistors left in the Info actors. As Cont actors' rules have the smallest preferences among the actors, each newly created Abutted node creates its column of transistors until no more columns can be added. Cont will create new Abutted actors until no more transistors remain <a HREF="#fig2">(Fig. 2)</a>. When there are no transistors left, Cont turns off the rules in all Abutted actors, which is not strictly necessary but avoids time wasted in analyzing rules that will not fire any more, and passes to the next state.<p>
+<p>
+<a NAME="fig1"></a><center><img SRC="iscas94-1.gif" WIDTH="249" HEIGHT="185">
+<p>
+<h4>Figure 1: Computation Begins.</h4></center>
+<p>
+<p>
+<a NAME="fig2"></a><center><img SRC="iscas94-2.gif" WIDTH="480" HEIGHT="262">
+<p>
+<h4>Figure 2: Creation of abutted Actors.</h4></center>
+<p>
+Once all transistors are divided in columns, the next step is to form groups of columns that can be joined by either the source or the drain side. This means that the transistors in this column can be made in the same diffusion strip, i.e. they can be abutted. To carry this out, Cont creates a Group actor to take each Abutted actor, forming groups with one column. Then it tries to join as many groups as possible. It chooses each Group in turn, and asks the others to compare themselves with the exposed one. Immediately all Group actors, which have not as yet been exposed, rank themselves against this one. Each Group actor creates a report showing its situation relative to the exposed actor. This report states whether a match is possible, how good this match is and details which side of each group can be joined. This report is sent to Cont. The process continues until all Groups have been exposed <a HREF="#fig3">(Fig. 3)</a>. Cont then joins the two best candidates. All groups are marked unexposed and the process continues until no join is possible. Cont then commands the Group actors to delete all Abutted actors and combines the columns they hold in a matrix.<p>
+ <p>
+<a NAME="fig3"></a><center><img SRC="iscas94-3.gif" WIDTH="593" HEIGHT="311">
+<p>
+<h4>Figure 3: Group Exposure Diagram.</h4></center>
+<p>
+The last state is Placement. In this state Cont tries to place the groups formed on a grid. The group's positioning is determined randomly. A report showing the position of each transistor on the grid is generated. This report is used to generate a placement on the grid and is sent to the EvalPlacement actor. It sends back another report giving a ranking in the design, the total length of metal interconnections and the number of crossovers of the metal layers. <p>
+ From this first circuit report, another report is generated by a procedure using mutation and cross-over techniques. This report is used to create another circuit that is analyzed by the EvalPlacement actor. The result of the two circuits are compared. The best is selected for creating the next generation and the other is discarded. After a certain number of cycles, Cont takes the best circuits it has obtained as the result and ends the rule firing.<p>
+ This process of ranking the groups, joining then, and selecting the best placement is not very fast, but leaf cell circuits are not very big and the number of groups should be small.<p>
+<a NAME="HEADING1-18"></a>
+<h2> GENETIC ALGORITHM</h2>
+ The biological solution to selection is evolution from one generation to another eliminating bad individuals and keeping fit ones, and in the case of design, the near optimal ones <a HREF="#ref5">[5]</a>. The overall purpose is to create individuals which are perfectly adapted to the given constraints of a design environment. The design world is even better suited to this algorithm than the natural world, because the constraints remain constant. <p>
+ The usual way of preventing 'getting stuck at local optima' from developing is by using mutation. Mutation is a pseudorandom process which changes the design characteristics in unpredictable ways. The altered design is subject to some form of evaluation which determines its survival. The subsequent generation is derived from the surviving designs.<p>
+ In our program each circuit is represented by a report list. Each report has a list for each group. The order of the group lists inside the report, is the order they are going to be placed. Each list contains the following information: The group number, Flip flag (Flip means the group will be mirrored in y before placement) and a list with the line order inside the group. The report works as the circuits' genetic material or genes. When reproducing a circuit the algorithm randomly changes the order of the groups and the order of the lines inside each group (cross-over) and sometimes changes the Flip flag (mutation). The probabilities of change can be controlled and are usually reasonably small. If not, the offspring circuits would inherit few characteristics from their fathers, the fit individuals. The main aim of this is to have a progressive development.<p>
+<a NAME="HEADING1-22"></a>
+<h2> RESULTS</h2>
+ Figure 4 shows an example of a leaf cell circuit placed by the program. The placement diagram <a HREF="#fig5">(Fig. 5)</a> shows the transistor distribution and circuit connectivity. In this circuit, the transistor columns could not be bigger than 3, and space for the for the n-well should be provided. The program divided the transistors into 4 groups where all transistors are gate connected (this has precedence over a pass pair). The placement was satisfactory with few groups and with the input/output signal nets laid out near the borders.<p>
+<p>
+<a NAME="fig4"></a><center><img SRC="iscas94-4.gif" WIDTH="493" HEIGHT="364">
+<p>
+<h4>Figure 4: Example Leaf Cell Schematic.</h4></center>
+<p>
+<p>
+<a NAME="fig5"></a><center><img SRC="iscas94-5.gif" WIDTH="642" HEIGHT="314">
+<p>
+<h4>Figure 5: Placement Diagram.</h4></center>
+<p>
+<a NAME="HEADING1-24"></a>
+<h2> CONCLUSIONS</h2>
+ At this stage the circuits generated by the placement programs are being used to test a prototype router. Restrictions can be imposed over the maximum number of transistors per column or per line. When the router is finished the placement will be upgraded. This upgrade will include an ability to generate various placements, calling a router server to route each placement in parallel. Constraints could be added such as maximum size. If a router can not finish the routing in the space provided it will fail and send back a report giving information about the failure.The report can be used by the placer to ease the constraints, whenever possible, or try another kind of placement.<p>
+ The complete synthesis system will include a placement, a router and a database server. The placement server will attend requests from a socket, and receive the circuit data through EDIF statements embedded in the control language. It will communicate with various routing servers working in parallel using the same control language. All placement and routing servers will read process rules from the database server, which should be the only one requiring modification when process data changes. A process independent silicon compiler can subsequently use the package to generate leaf cells eliminating the necessity for standard cell libraries.<p>
+<a NAME="HEADING1-27"></a>
+<h2> ACKNOWLEDGEMENT</h2>
+ The authors would like to thank the CNPq, the Brazilian National Research Council, for partially supporting this work.<p>
+<a NAME="HEADING1-29"></a>
+<h2> REFERENCES</h2>
+
+<dl COMPACT>
+<dt><a NAME="ref1"></a>[1]<dd> Y-C. Hsieh, C-Y. Hwamg, Y-L. Lin, and Y-C. Hsu, &quot;LiB: A CMOS cell 
+compiler&quot;, <i>IEEE Transactions on CAD,</i> Vol.10, No. 8, August 1991, pp. 994-1005.<p>
+
+<dt><a NAME="ref2"></a>[2]<dd> N. Barkakati, <i>Object-Oriented Programming in C++,</i> SAMS, 
+Carmel Indiana, 1991.<p>
+
+<dt><a NAME="ref3"></a>[3]<dd> <i>EDIF Specification EDIF Electronic Design Interchange Format 
+Version 0 9 5,</i> EDIF Steering Committee, November 1984.<p>
+
+<dt><a NAME="ref4"></a>[4]<dd> C. J. Poirier, &quot;Excellerator: Custom CMOS Leaf Cell Layout Generator&quot;,
+<i>IEEE Transactions on CAD,</i> Vol.8, No.7, July 1989, pp. 744-755.<p>
+
+<dt><a NAME="ref5"></a>[5]<dd> R. M. King and P. Banerjee, &quot;ESP: Placement by Simulated Evolution&quot;,
+<i>IEEE Transactions on CAD,</i> Vol.8, No 3, March 1989, pp. 245-256.<p>
+</dl>
+
+</body>
+</html> 

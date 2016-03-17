@@ -1,0 +1,49 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Algorithms in C</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Informatics and Computing"><link rel="up" href="introduction_to_c.html" title="Chapter&nbsp;2.&nbsp;Introduction to C"><link rel="prev" href="introduction_to_c_language_and_algorithms.html" title="2.&nbsp;Languages and Algorithms"><link rel="next" href="introduction_to_c_basics.html" title="4.&nbsp;Basics"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Algorithms in C</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="introduction_to_c_language_and_algorithms.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;2.&nbsp;Introduction to C</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="introduction_to_c_basics.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="introduction_to_c_algorithms_in_c"></a>3.&nbsp;Algorithms in C</h2></div></div></div><p>Based on <a href="http://coteia.icmc.usp.br/coteia/get.php?swiki=115&amp;arq=%285-1%29PascalBasico%28Graca%29.pdf" target="_top">Pascal B&aacute;sico PDF</a> by Rosane Minghim.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e173"></a>3.1.&nbsp;Language C</h3></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Versatile.</p></li><li><p>Adequate for Most Programming Tasks.</p></li><li><p>It runs Everywhere.</p></li><li><p>It runs on Everything.</p></li><li><p>It fits into Windows, Linux and Unix systems.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e192"></a>3.2.&nbsp;Algorithm Example</h3></div></div></div><pre class="programlisting">Algoritmo Ra&iacute;zes
+
+vari&aacute;veis
+   real a,b,c
+   real delta
+   real x1,x2
+
+programa
+   leia(a,b,c)
+   delta= b*b - 4*a*c
+
+   se (delta &lt; 0) ent&atilde;o
+      escreva('Esta equa&ccedil;&atilde;o n&atilde;o possui ra&iacute;zes reais.')
+   sen&atilde;o
+      x1= (-1*b - raiz(delta)) / (2*a)
+      x2= (-1*b + raiz(delta)) / (2*a)
+      escreva('As ra&iacute;zes s&atilde;o ',x1,' e ', x2)
+   fim se
+fim</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e197"></a>3.3.&nbsp;C Program</h3></div></div></div><pre class="programlisting">//Programa Raizes
+
+//vari&aacute;veis
+   float a, b,c;
+   float delta;
+   float x1, x2;
+
+//programa
+
+int main() {
+
+   printf("Digite o valor de a:");
+   scanf("%f", &amp;a);
+   printf("Digite o valor de b:");
+   scanf("%f", &amp;b);
+   printf("Digite o valor de c:");
+   scanf("%f", &amp;c);
+
+   delta= b*b - 4*a*c;
+
+   if (delta &lt; 0) {
+      printf("Esta equacao nao possui raizes reais.");
+   } else {
+      x1= (-b - sqrt(delta)) / (2*a);
+      x2= (-b + sqrt(delta)) / (2*a);
+      printf("As raizes sao %f e %f", x1, x2);
+   }
+   
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e202"></a>3.4.&nbsp;Characteristics</h3></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Semelhan&ccedil;a com o pseudo-c&oacute;digo;</p></li><li><p>Alguns comandos foram adicionados, mas estruturalmente o algoritmo e o programa s&atilde;o muito parecidos;</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e212"></a>3.5.&nbsp;What changes?</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>A sintaxe torna-se mais r&iacute;gida, restrita ao vocabul&aacute;rio espec&iacute;fico da linguagem de programa&ccedil;&atilde;o;</p></li><li><p>A pontua&ccedil;&atilde;o torna-se necess&aacute;ria;</p></li><li><p>No algoritmo a capacidade de representa&ccedil;&atilde;o (tamanho) e a precis&atilde;o das vari&aacute;veis num&eacute;ricas s&atilde;o infinitos.</p></li><li><p>Eventualmente alguma constru&ccedil;&atilde;o que fazemos em algoritmos pode n&atilde;o ser eficiente na linguagem de programa&ccedil;&atilde;o (melhorar a efici&ecirc;ncia).</p></li><li><p>Devemos nos preocupar com erros e situa&ccedil;&otilde;es excepcionais, como divis&atilde;o por zero e vari&aacute;veis com valores inadequados fornecidos pelo usu&aacute;rio.</p></li><li><p>Os coment&aacute;rios que identificam o algoritmo e que esclarecem sua constru&ccedil;&atilde;o devem ser transcritos na codifica&ccedil;&atilde;o.</p></li><li><p>A forma de intera&ccedil;&atilde;o do programa com as pessoas deve ser planejada e inclu&iacute;da no programa.</p></li><li><p>Os c&aacute;lculos devem ser codificados de forma a torn&aacute;los r&aacute;pidos e precisos conforme os recursos apresentados pela linguagem.</p></li></ol></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e240"></a>3.6.&nbsp;Recommendations</h3></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Procure estabelecer e manter um padr&atilde;o de documenta&ccedil;&atilde;o.</p></li><li><p>Comente o objetivo do programa, a autoria do programa, os trechos menos &oacute;bvios de c&oacute;digo, e o significado das vari&aacute;veis menos &oacute;bvias.</p></li><li><p>Escolha mensagens claras e procure definir bons casos de teste para o seu programa.</p></li><li><p>Revise o c&oacute;digo desenvolvido pelo menos uma vez para programas pequenos, e pelo menos duas para programas maiores.</p></li></ul></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="introduction_to_c_language_and_algorithms.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="introduction_to_c.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="introduction_to_c_basics.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Languages and Algorithms&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Basics</td></tr></table></div></body></html>

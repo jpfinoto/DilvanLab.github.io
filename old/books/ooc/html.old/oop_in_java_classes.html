@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>2.&nbsp;Classes</title>
+
+<link rel="stylesheet" href="html.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="index.html" title="Object Oriented Computing">
+<link rel="up" href="oop_in_java.html" title="Chapter&nbsp;5.&nbsp;OOP in Java">
+<link rel="prev" href="oop_in_java_objetcs.html" title="1.&nbsp;Objects">
+<link rel="next" href="oop_in_java_subclasses_and_inheritance.html" title="3.&nbsp;Subclasses and Inheritance">
+</head><body style="color: black; background-color: white;" alink="#0000ff" link="#0000ff" vlink="#840084">
+<div class="navheader">
+<table summary="Navigation header" width="100%">
+<tbody>
+<tr>
+<th colspan="3" align="center">2.&nbsp;Classes</th>
+</tr>
+<tr>
+<td align="left" width="20%"><a accesskey="p" href="oop_in_java_objetcs.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td>
+<th align="center" width="60%">Chapter&nbsp;5.&nbsp;OOP
+in Java</th>
+<td align="right" width="20%">&nbsp;<a accesskey="n" href="oop_in_java_subclasses_and_inheritance.html"><img src="images/next.gif" alt="Next"></a></td>
+</tr>
+</tbody>
+</table>
+<hr></div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both;"><a name="oop_in_java_classes"></a>2.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/classes.html" target="_top">Classes</a></h2>
+</div>
+</div>
+</div>
+<p>A class is a blueprint or prototype that you can use to create
+many objects.</p>
+<pre class="programlisting">classDeclaration { <br> memberVariableDeclarations<br> methodDeclarations <br>}</pre>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="d0e1626"></a>2.1.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/classdecl.html" target="_top">The Class Declaration</a></h3>
+</div>
+</div>
+</div>
+<p>At minimum, a class declaration must contain the class keyword
+and the name of the class that you are defining:</p>
+<pre class="programlisting">class NameOfClass {<br> . . .<br>}</pre>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1634"></a>2.1.1.&nbsp;Declaring
+a Class's Superclass</h4>
+</div>
+</div>
+</div>
+<p>In Java, every class has a superclass. If you do not specify a
+superclass for your class, it is assumed to be the Object class
+(declared in java.lang).</p>
+<pre class="programlisting">class NameOfClass extends SuperClassName {<br> . . .<br>}</pre>
+<p>A subclass inherits variables and methods from its superclass.</p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1643"></a>2.1.2.&nbsp;Listing
+the Interfaces Implemented by a Class</h4>
+</div>
+</div>
+</div>
+<p>An interface declares a set of methods and constants without
+specifying the implementation for any of the methods. When a class
+claims to implement an interface, it's claiming to provide
+implementations for all of the methods declared in the interface.</p>
+<pre class="programlisting">class ImaginaryNumber extends Number implements Arithmetic {<br> . . .<br>}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1650"></a>2.1.3.&nbsp;Summary
+of a Class Declaration</h4>
+</div>
+</div>
+</div>
+<pre class="programlisting">[ modifiers ] class ClassName [ extends SuperClassName ] [ implements InterfaceNames ] {<br> . . .<br>}</pre>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p>modifiers declare whether the class is public, abstract,
+or final</p>
+</li>
+<li>
+<p>ClassName sets the name of the class you are declaring</p>
+</li>
+<li>
+<p>SuperClassName is the name of ClassName's superclass</p>
+</li>
+<li>
+<p>InterfaceNames is a comma-delimited list of the interfaces
+implemented</p>
+</li>
+</ul>
+</div>
+<p><a href="../audio/OOPJava2.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="d0e1672"></a>2.2.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/variables.html" target="_top">Declaring Member Variables</a></h3>
+</div>
+</div>
+</div>
+<pre class="programlisting">class IntegerClass {<br> int anInteger;<br> . . . // define methods here . . .<br>}</pre>
+<div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;">
+<table summary="Caution" border="0">
+<tbody>
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Caution]" src="images/caution.png"></td>
+<th align="left">Caution</th>
+</tr>
+<tr>
+<td align="left" valign="top">
+<div class="informalfigure">
+<div class="mediaobject"><img src="resources/noc++.gif"></div>
+</div>
+<p>A member variable and a method can have the same name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In short, a member variable declaration looks like this:</p>
+<pre class="programlisting">[accessSpecifier] [static] [final] type variableName</pre>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+<p>accessSpecifier defines which other classes have access to
+the variable. You control access to methods using the same specifiers,
+so Controlling Access to Members of a Class covers how you can control
+access to both member variables and methods.</p>
+</li>
+<li>
+<p>static indicates that the variable is a class member
+variable as opposed to an instance member variable. You also use static
+to declare class methods. Instance and Class Members talks about
+declaring instance and class variables and writing instance and class
+methods.</p>
+</li>
+</ul>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1696"></a>2.2.1.&nbsp;Declaring
+Constants</h4>
+</div>
+</div>
+</div>
+<pre class="programlisting">class Avo {<br> final double AVOGADRO = 6.023e23;<br>}</pre>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="d0e1701"></a>2.3.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/methods.html" target="_top">The Method Declaration</a></h3>
+</div>
+</div>
+</div>
+<pre class="programlisting">returnType methodName() {<br> . . . <br>}</pre>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1707"></a>2.3.1.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/arguments.html" target="_top">Passing Information into a Method</a></h4>
+</div>
+</div>
+</div>
+<div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;">
+<table summary="Caution" border="0">
+<tbody>
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Caution]" src="images/caution.png"></td>
+<th align="left">Caution</th>
+</tr>
+<tr>
+<td align="left" valign="top">
+<div class="informalfigure">
+<div class="mediaobject"><img src="resources/noc++.gif"></div>
+</div>
+<p>In Java methods arguments are passed only by value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h5 class="title"><a name="d0e1718"></a>2.3.1.1.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/methodbody.html" target="_top">The Method Body</a></h5>
+</div>
+</div>
+</div>
+<pre class="programlisting">. . .<br>boolean isEmpty() {<br> if (topelement == STACK_EMPTY)<br> return true;<br> else<br> return false;<br>}</pre>
+<p><a href="../audio/OOPJava3.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p>
+</div>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="d0e1728"></a>2.4.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" target="_top">Controlling Access to Members of a Class</a></h3>
+</div>
+</div>
+</div>
+<div class="table"><a name="d0e1732"></a>
+<p class="title"><b>Table&nbsp;5.1.&nbsp;Access
+to Members of a Class</b></p>
+<table summary="Access to Members of a Class" border="0">
+<colgroup><col align="center" width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%"></colgroup><thead><tr>
+<th align="center">Specifier</th>
+<th align="center">class</th>
+<th align="center">subclass</th>
+<th align="center">package</th>
+<th align="center">world</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">private</td>
+<td align="center">X</td>
+<td align="center">&nbsp;</td>
+<td align="center">&nbsp;</td>
+<td align="center">&nbsp;</td>
+</tr>
+<tr>
+<td align="left">protected</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">&nbsp;</td>
+</tr>
+<tr>
+<td align="left">public</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+<td align="center">X</td>
+</tr>
+<tr>
+<td align="left">package</td>
+<td align="center">X</td>
+<td align="center">&nbsp;</td>
+<td align="center">X</td>
+<td align="center">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1788"></a>2.4.1.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" target="_top">Private</a></h4>
+</div>
+</div>
+</div>
+<p>The most restrictive access level is private. A private member
+is accessible only to the class in which it is defined.</p>
+<pre class="programlisting">class Alpha {<br> private int iamprivate;<br> private void privateMethod() {<br> System.out.println("privateMethod");<br> }<br>}<br>class Beta {<br> void accessMethod() {<br> Alpha a = new Alpha();<br> a.iamprivate = 10; // illegal<br> a.privateMethod(); // illegal<br> }<br>}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1796"></a>2.4.2.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" target="_top">Protected</a></h4>
+</div>
+</div>
+</div>
+<p>It allows the class itself, subclasses, and all classes in the
+same package to access the members.</p>
+<pre class="programlisting">package Greek;<br>class Alpha {<br> protected int iamprotected;<br> protected void protectedMethod() {<br> System.out.println("protectedMethod");<br> }<br>}<br>package Greek;<br>class Gamma {<br> void accessMethod() {<br> Alpha a = new Alpha();<br> a.iamprotected = 10; // legal<br> a.protectedMethod(); // legal<br> }<br>}<br>package Latin;<br>class Delta extends Alpha {<br> void accessMethod(Alpha a, Delta d) {<br> a.iamprotected = 10; a.protectedMethod(); // illegal<br> d.iamprotected = 10; d.protectedMethod(); // legal<br> }<br>}</pre>
+<p><span class="emphasis"><em><img src="resources/asf.gif">Audio in Portuguese</em></span></p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1808"></a>2.4.3.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" target="_top">Public</a></h4>
+</div>
+</div>
+</div>
+<p>Any class, in any package, has access to a class's public
+members.</p>
+<pre class="programlisting">package Greek;<br><br>class Alpha {<br> public int iampublic;<br> public void publicMethod() {<br> System.out.println("publicMethod");<br> }<br>}<br>import Greek.*;<br><br>package Roman;<br><br>class Beta {<br> void accessMethod() {<br> Alpha a = new Alpha();<br> a.iampublic = 10; // legal<br> a.publicMethod(); // legal<br> }<br>}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h4 class="title"><a name="d0e1816"></a>2.4.4.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/accesscontrol.html" target="_top">Package-Access</a></h4>
+</div>
+</div>
+</div>
+<p>The last access level is what you get if you don't explicitly
+set a member's access to one of the other levels. This access level
+allows classes in the same package as your class to access the members.</p>
+<pre class="programlisting">package Greek;<br><br>class Alpha {<br> int iampackage;<br> void packageMetho() {<br> System.out.println("packageMethod");<br> }<br>}<br>package Greek;<br><br>class Beta {<br> void accessMethod() {<br> Alpha a = new Alpha();<br> a.iampackage = 10; // legal<br> a.packageMethod(); // legal<br> }<br>}</pre>
+<p><a href="../audio/OOPJava5.wav" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p>
+</div>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="d0e1701"></a>2.5.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/java/javaOO/constructors.html" target="_top">Constructors</a></h3>
+</div>
+</div>
+</div>Constructors&nbsp;create objects from the class blueprint.<br>They look 
+like normal methods&#8212;except:<br><ul><li>They use the name of the class and</li><li>&nbsp;have no return type.</li></ul>&nbsp;For example, <code>Bicycle</code> has one constructor:<br><pre>public class Bicycle {<br>	<br>    // <b>the Bicycle class has three <i>fields</i></b><br>    public int cadence;<br>    public int gear;<br>    public int speed;<br>	<br>    // <b>the Bicycle class has one <i>constructor</i></b><br>    public Bicycle(int startCadence, int startSpeed, int startGear) {<br>        gear = startGear;<br>        cadence = startCadence;<br>        speed = startSpeed;<br>    }<br>...<br>}<br></pre>To create a new <code>Bicycle</code> object called <code>myBike</code>, a constructor is called by the <code>new</code> operator:
+<blockquote><pre>Bicycle myBike = new Bicycle(30, 0, 8);<br></pre></blockquote>
+<code>new Bicycle(30, 0, 8)</code> creates space in memory for the object and initializes
+its fields.<br>
+
+<p>
+&nbsp;<code>Bicycle</code>
+could have others, including a no-argument constructor:
+</p><blockquote><pre>public Bicycle() {<br>	gear = 1;<br>	cadence = 10;<br>	speed = 0;<br>}<br></pre></blockquote><br></div>
+<div class="navfooter">
+<hr>
+<table summary="Navigation footer" width="100%">
+<tbody>
+<tr>
+<td align="left" width="40%"><a accesskey="p" href="oop_in_java_objetcs.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td>
+<td align="center" width="20%"><a accesskey="u" href="oop_in_java.html"><img src="images/up.gif" alt="Up"></a></td>
+<td align="right" width="40%">&nbsp;<a accesskey="n" href="oop_in_java_subclasses_and_inheritance.html"><img src="images/next.gif" alt="Next"></a></td>
+</tr>
+<tr>
+<td align="left" valign="top" width="40%">1.&nbsp;Objects&nbsp;</td>
+<td align="center" width="20%"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td>
+<td align="right" valign="top" width="40%">&nbsp;3.&nbsp;Subclasses
+and Inheritance</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body></html>

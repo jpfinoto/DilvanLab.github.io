@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../XSL/root.xsl"?>
+
+<course>
+  <id>
+    <title>Object Oriented Computing</title>
+    <www>http://java.icmc.usp.br</www>
+    <name>ooc</name>
+    <teacher>
+      <name>
+        <first>Dilvan</first>
+        <last>Moreira</last>
+      </name>
+      <email>dilvan@icmc.usp.br</email>
+      <www>http://java.icmc.usp.br/dilvan</www>
+    </teacher>
+
+    <monitor>
+      <name>
+        <first>Valter</first>
+        <last>Inacio</last>
+      </name>
+      <email>inacio@icmc.usp.br</email>
+      <www>http://www.icmc.usp.br/~inacio</www>
+    </monitor>
+  </id>
+
+  <book>ooc</book>
+
+  <calendar>
+    <day d="28" m="2" y="2005">
+      <body>Course Beginning.</body>
+    </day>
+    <day d="1" m="3" y="2005">
+      <chapter id="object_oriented_programming"/>
+      <section id="object_oriented_programming_semantic_gap"/>
+      <section id="object_oriented_programming_objects"/>
+      <section id="object_oriented_programming_classes_and_instances"/>
+      <section id="object_oriented_programming_inheritance"/>
+      <section id="object_oriented_programming_polimorphism"/>
+    </day>
+    <day d="8" m="3" y="2005">
+      <chapter id="decoupling"/>
+      <section id="decoupling_why_decompose"/>
+      <section id="decoupling_dependence_relationships"/>
+      <section id="decoupling_dependences_specifications"/>
+    </day>
+    <day d="14" m="3" y="2005">
+      <section id="decoupling_techniques_for_decoupling"/>
+      <section id="decoupling_coupling_due_to_share_constraints"/>
+      <section id="decoupling_lecture_notes"/>
+
+      <chapter id="java_software"/>
+      <section id="java_software_introduction"/>
+      <section id="java_software_java_interpreter"/>
+      <section id="java_software_differences"/>
+      <section id="java_software_objects_in_java"/>
+    </day>
+    <day d="15" m="3" y="2005">
+      <chapter id="the_java_language"/>
+      <section id="the_java_language_variables_and_data_types"/>
+      <section id="the_java_language_operators"/>
+      <section id="the_java_language_expressions_and_control_flow_statements"/>
+    </day>
+    <day d="28" m="3" y="2005">
+      <section id="the_java_language_arrays"/>
+      
+      <chapter id="oop_in_java"/>
+      <section id="oop_in_java_objetcs"/>
+      <section id="oop_in_java_classes"/>
+    </day>
+    <day d="29" m="3" y="2005">      
+      <section id="oop_in_java_subclasses_and_inheritance"/>
+      <section id="oop_in_java_interfaces"/>
+      <section id="oop_in_java_packages"/>
+      <section id="oop_in_java_string_class"/>
+      <section id="oop_in_java_system_class"/>
+      <section id="oop_in_java_input_output_streams"/>
+    </day>
+    <day d="4" m="4" y="2005">
+      <chapter id="exceptions"/>
+      <section id="exceptions_what_are_exceptions"/>
+      <section id="exceptions_throwing_exceptions"/>
+      <section id="exceptions_catch_or_specify_requirement"/>
+      <section id="exceptions_catching_and_handling_exceptions"/>
+      
+      <chapter id="exercises"/>
+      <section id="exercises_getting_started"/>
+    </day>
+    <day d="5" m="4" y="2005">
+      <chapter role="assignments" id="individual_assignments"/>
+      <section id="individual_assignments_eclipse"/>
+    </day>
+    <day d="11" m="4" y="2005">
+      <chapter id="threads"/>
+      <section id="threads_what_is_a_thread"/>
+      <section id="threads_thread_attributes"/>
+      <section id="threads_thread_group"/>
+      <section id="threads_synchronizing_threads"/>
+    </day>
+    <day d="12" m="4" y="2005">    
+      <chapter role="assignments" id="individual_assignments"/>
+      <section id="individual_assignments_complex"/>
+    </day>
+    <day d="18" m="4" y="2005">    
+      <body>Extra class: review.</body>
+    </day>
+    <day d="19" m="4" y="2005">    
+      <body>Extra class: laboratory review.</body>
+    </day>
+    <day d="25" m="4" y="2005">    
+      <chapter id="uml"/>
+      <section id="uml_uml_unified_modeling_language"/>
+      <section id="uml_uml_diagrams"/>
+      <section id="uml_main_diagrams"/>
+      <section id="uml_uses_cases_diagrams"/>
+      <section id="uml_class_diagrams"/>
+      <section id="uml_sequence_and_activity_diagrams"/>
+      <section id="uml_summary"/>
+    </day>
+    <day d="26" m="4" y="2005">
+      <chapter role="assignments" id="individual_assignments"/>
+      <section id="individual_assignments_UML_netbeans"/>
+    </day>
+    <day d="2" m="5" y="2005">
+      <chapter id="gui"/>
+      <section id="gui_overview"/>
+      <section id="gui_swing_containers"/>
+      <section id="gui_swing_components"/>
+    </day>
+    <day d="3" m="5" y="2005">
+      <chapter role="assignments" id="individual_assignments"/>
+      <section id="individual_assignments_interval_class"/>
+    </day>
+    <day d="9" m="5" y="2005">
+      <section id="gui_swing_menus"/>
+      <section id="gui_handling_events"/>
+      <section id="gui_layout_manager"/>
+      <section id="gui_awt_awt_graphics"/>
+      <section id="gui_images"/>
+    </day>
+    <day d="10" m="5" y="2005">
+      <chapter role="assignments" id="individual_assignments"/>
+      <section id="individual_assignments_visual_editor"/>
+    </day>
+    <day d="16" m="5" y="2005">
+      <chapter id="case_study_junit"/>
+      <section id="case_study_junit_overview"/>
+      <section id="case_study_junit_the_example_problem"/>
+      <section id="case_study_junit_making_a_test_suite"/>
+      <section id="case_study_junit_running_the_tests"/>
+      <section id="case_study_junit_adding_new_code"/>
+      <section id="case_study_junit_testing_practice"/>
+      <section id="case_study_junit_lecture_notes"/>
+
+      <chapter id="exercises"/>
+      <section id="exercises_java_exercises"/>
+    </day>
+    <day d="17" m="5" y="2005">
+      <chapter role="assignments" id="individual_assignments"/>
+      <section id="individual_assignments_pocket_calculator"/>
+    </day>
+    <day d="23" m="5" y="2005">
+      <chapter id="decoupling_in_java"/>
+      <section id="decoupling_in_java_java_name_space"/>
+      <section id="decoupling_in_java_access_control"/>
+      <section id="decoupling_in_java_safe_languages"/>
+      <section id="decoupling_in_java_interfaces"/>
+      <section id="decoupling_in_java_lecture_notes"/>
+
+      <chapter id="exercises"/>
+      <section id="exercises_design_abstract_data_type"/>
+    </day>
+    <day d="24" m="5" y="2005">
+      <chapter role="assignments" id="individual_assignments"/>
+      <section id="individual_assignments_junit"/>
+
+      <chapter id="udf"/>
+      <section id="udf_unit_development_folder"/>
+      <section id="udf_unit_development_folder_guide"/>
+    </day>
+    <day d="30" m="5" y="2005">
+      <chapter id="object_contract"/>
+      <section id="object_contract_equality_properties"/>
+      <section id="object_contract_hashing"/>
+      <section id="object_contract_clone"/>
+      <section id="object_contract_lecture_notes"/>
+    </day>
+    <day d="31" m="5" y="2005">
+      <chapter id="specification"/>
+      <section id="specification_introduction"/>
+      <section id="specification_behavioral_equivalence"/>
+      <section id="specification_specification_structure"/>
+      <section id="specification_declarative_specification"/>
+    </day>
+    <day d="6" m="6" y="2005">      
+      <section id="specification_exceptions_and_preconditions"/>
+      <section id="specification_shorthands"/>
+      <section id="specification_judging_specifications"/>
+      <section id="specification_lecture_notes"/>
+    </day>
+    <day d="7" m="6" y="2005">
+      <chapter id="dynamic_analysis"/>
+      <section id="dynamic_analysis_defensive_programming"/>
+      <section id="dynamic_analysis_testing"/>
+      <section id="dynamic_analysis_criteria"/>
+      <section id="dynamic_analysis_subdomains"/>
+      <section id="dynamic_analysis_subdomain_criteria"/>
+      <section id="dynamic_analysis_feasibility"/>
+      <section id="dynamic_analysis_lecture_notes"/>
+    </day>
+    <day d="13" m="6" y="2005">      
+      <body>Written Test.</body>
+    </day>
+    <day d="14" m="6" y="2005">
+      <body>Presentation 1.</body>
+    </day>
+    <day d="20" m="6" y="2005">
+      <body>Presentation 2.</body>
+    </day>
+    <day d="21" m="6" y="2005">
+      <body>Presentation 3.</body>
+    </day>
+    <day d="27" m="6" y="2005">
+      <body>Presentation 4.</body>
+    </day>
+    <day d="28" m="6" y="2005">
+     <body>Course Finishing.</body>
+  </day>
+  </calendar>
+</course>

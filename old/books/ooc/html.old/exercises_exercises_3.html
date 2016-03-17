@@ -1,0 +1,77 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Basic Exercises 3</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Object Oriented Computing"><link rel="up" href="exercises.html" title="Chapter&nbsp;18.&nbsp;Exercises"><link rel="prev" href="exercises_exercises_2.html" title="2.&nbsp;Basic Exercises 2"><link rel="next" href="exercises_getting_started.html" title="4.&nbsp;Getting Started with Java"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Basic Exercises 3</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="exercises_exercises_2.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;18.&nbsp;Exercises</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="exercises_getting_started.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="exercises_exercises_3"></a>3.&nbsp;Basic Exercises 3</h2></div></div></div><div class="orderedlist"><ol type="1"><li><p>Quais das seguintes declara&ccedil;&otilde;es s&atilde;o ilegais? (escolha uma ou mais)</p><div class="orderedlist"><ol type="a"><li><p>friendly String s;</p></li><li><p>transient int i = 41;</p></li><li><p>public final static native int w();</p></li><li><p>abstract double d;</p></li><li><p>abstract final double hyperbolicCosine();</p></li></ol></div></li><li><p>Qual das seguintes declara&ccedil;&otilde;es &eacute; correta?</p><div class="orderedlist"><ol type="a"><li><p>Uma abstract class n&atilde;o pode ter nenhum m&eacute;todo final</p></li><li><p>Uma final classe n&atilde;o pode ter nenhum m&eacute;todo abstrato</p></li></ol></div></li><li><p>Qual &eacute; a &#8216;m&iacute;nima&#8217; modifica&ccedil;&atilde;o que dever&aacute; ser feita no c&oacute;digo abaixo para que ele compile corretamente?</p><pre class="programlisting">1.      final class Aaa
+2.      { 
+3.         int xxx 
+4.        void yyy() {xxx = 1;} 
+5.      } 
+6. 
+7. 
+8.      class Bbb extends Aaa 
+9.      { 
+10.     final Aaa finalref = new Aaa() 
+11.      
+12.     final void yyy() 
+13.     { 
+14.        System.out.println(&#8220;In method yyy()"); 
+15.        finalref.xxx = 12345; 
+16.     } 
+17.  }</pre><div class="orderedlist"><ol type="a"><li><p>Na linha 1, remover o modificador &#8216;final&#8217;</p></li><li><p>Na linha 10, remover o modificador &#8216;final&#8217;</p></li><li><p>Remover linha 15</p></li><li><p>Nas linhas 1 e 10, remover o modificador &#8216;final&#8217;</p></li><li><p>O c&oacute;digo ser&aacute; compilado como &eacute;, e nenhuma modifica&ccedil;&atilde;o &eacute; necess&aacute;ria</p></li></ol></div></li><li><p>Qual das seguintes statements s&atilde;o verdadeiras?</p><div class="orderedlist"><ol type="a"><li><p>M&eacute;todos transient n&atilde;o podem ser overridden</p></li><li><p>M&eacute;todos transient devem ser overridden</p></li><li><p>Classes transient n&atilde;o podem ser serialized</p></li><li><p>Vari&aacute;veis transient devem ser estatic</p></li><li><p>Vari&aacute;veis transients n&atilde;o s&atilde;o serialized</p></li></ol></div></li><li><p>Qual statements &eacute; verdadeiro sobre a aplica&ccedil;&atilde;o abaixo?</p><pre class="programlisting">1.      class StaticStuff
+2.      { 
+3.         static int x = 10; 
+4.        
+5.      static { x += 5;} 
+6.        
+7.          public static void main(string args[]) 
+8.         { 
+9.             System.out.println(&#8220;x = &#8220; + x); 
+10.      } 
+11.    
+12.      static {x /= 5; } 
+13.  }</pre><div class="orderedlist"><ol type="a"><li><p>As linhas 5 e 12 nao compilar&atilde;o, porque o nome do m&eacute;todo e o type de retorno est&atilde;o errados</p></li><li><p>A linha 12 n&atilde;o compilar&aacute;, porque pode haver somente um inicializador static</p></li><li><p>O c&oacute;digo compilar&aacute;, e a execu&ccedil;&atilde;o produzir&aacute; a sa&iacute;da x = 10;</p></li><li><p>O c&oacute;digo compilar&aacute;, e a execu&ccedil;&atilde;o produzir&aacute; a sa&iacute;da x = 15;</p></li><li><p>O c&oacute;digo compilar&aacute;, e a execu&ccedil;&atilde;o produzir&aacute; a sa&iacute;da x = 3;</p></li></ol></div></li><li><p>Qual afirma&ccedil;&atilde;o &eacute; verdadeira para o c&oacute;digo abaixo?</p><pre class="programlisting">1.      class HasStatic; 
+2.      { 
+3.          private static int x = 100; 
+4.        
+5.          public static void main(String args[]) 
+6.          { 
+7.               HasStatic hs1 = new HasStatic(); 
+8.               hs1.x++; 
+9.               HasStatic hs2 = new HasStatic(); 
+10.           hs2.x++; 
+11.           hs1 = new HasStatic(); 
+12.           hs1.x++; 
+13.           HasStatic.x++; 
+14.           System.out.println(&#8220;x = &#8220; + x); 
+15.        } 
+16.   }</pre><div class="orderedlist"><ol type="a"><li><p>A linha 8 n&atilde;o compilar&aacute;, porque ela &eacute; uma referencia static a uma vari&aacute;vel private.</p></li><li><p>A linha 13 nao compilar&aacute;, porque ele &eacute; uma referencia static para uma vari&aacute;vel private</p></li><li><p>O programa compilar&aacute;, e a sa&iacute;da ser&aacute;: x = 102;</p></li><li><p>O programa compilar&aacute;, e a sa&iacute;da ser&aacute;: x = 103</p></li><li><p>O programa compilar&aacute;, e a sa&iacute;da ser&aacute;: x = 104</p></li></ol></div></li><li><p>Dado o c&oacute;digo abaixo, e n&atilde;o fazendo outra mudan&ccedil;a, qual modificador de acesso ( public, protected, private) pode ser colocado antes de aMethod() na linha 3? Se a linha 3 for deixada como ela &eacute;, qual keyword pode ser colocada antes de &#8216;aMethod&#8217; na linha 8?</p><pre class="programlisting">1.      class SuperDuper 
+2.      { 
+3.            void aMethod() { } 
+4.       } 
+5.        
+6.      class Sub extends SuperDuper 
+7.      { 
+8.          void aMethod() { } 
+9.      }</pre><h3><a name="d0e8756"></a>As proximas relacionam-se &agrave; seguinte defini&ccedil;&atilde;o de class.</h3><pre class="programlisting">1.      package abcde; 
+2.        
+3.      public class Bird   { 
+4.         protected static int referenceCount = 0; 
+5.         public Bird() { referenceCount++; } 
+6.         protected void fly() { /* Flap wings, etc.*/ } 
+7.         static int getRefCount() { return referenceCount; } 
+8.      }</pre></li><li><p>Qual afirma&ccedil;&atilde;o &eacute; verdadeira sobre a class Bird acima e a class Parrot abaixo?</p><pre class="programlisting">1.      package abcde; 
+2.        
+3.      class Parrot extends abcde.Bird { 
+4.         public void fly() { /* Parrot specific flight code. */} 
+5.         public int getRefcount() { return referenceCount; } 
+6.      }</pre><div class="orderedlist"><ol type="a"><li><p>Compila&ccedil;&atilde;o de Parrot.java falha na linha 4, porque o method fly() &eacute; protected na superclasse e classes Bird e Parrot est&atilde;o no mesmo pakage.</p></li><li><p>Compila&ccedil;&atilde;o de Parrot.Java falha na linha 4, porque o m&eacute;todo fly() &eacute; protected na superclasse e public na suclasse e o m&eacute;todo n&atilde;o pode ser &#8216;overhidden&#8217; para ser public.&#8217;</p></li><li><p>Compila&ccedil;&atilde;o de Parrot falhar&aacute; na linha 5, porque o m&eacute;todo getRefCount() &eacute; static na superclasse e metidos static n&atilde;o podem ser &#8216;overhidden&#8217;para ser n&atilde;o-static.</p></li><li><p>O programa compilar&aacute; e executar&aacute;, mas surge uma runtime exceptions se o m&eacute;todo fly() &eacute; sempre chamado na instancia da class Parrot.</p></li><li><p>Compila&ccedil;&atilde;o de Parrot.Java tem sucesso, mas surge uma runtime exceptions se o m&eacute;todo getRefCount() &eacute; sempre chamado na inst&acirc;ncia da class Parrot.</p></li></ol></div></li><li><p>Qual afirma&ccedil;&atilde;o &eacute; verdadeira sobre a class Bird acima e sobre a class Nightingale abaixo:</p><pre class="programlisting">1.      pachage singers; 
+2.        
+3.      class Nightingale extends abcde.Bird { 
+4.         Nightingale() { referenceCount++; } 
+5.        
+6.         public static void main(String args[]) { 
+7.             System.out.print(&#8220;Before: &#8220; + referenceCount); 
+8.             Nightingale florence = new Nightingale(); 
+9.             System.out.println(&#8220;   After: &#8220; + referenceCount); 
+10.         florence.fly(); 
+11.     } 
+12.  }</pre><div class="orderedlist"><ol type="a"><li><p>O programa compilar&aacute; e executar&aacute;. A sa&iacute;da ser&aacute;: Before: 0 After: 2.</p></li><li><p>O programa compilar&aacute; e executar&aacute;. A sa&iacute;da ser&aacute;: Before: 0 After: 1</p></li><li><p>Compila&ccedil;&atilde;o de Nightingale falhar&aacute; na linha 4, porque membros static n&atilde;o podem ser &#8216;overhidden&#8217;</p></li><li><p>Compila&ccedil;&atilde;o de Nightingale falhar&aacute; na linha 10, porque o m&eacute;todo fly() &eacute; protegido na superclasse</p></li><li><p>Compila&ccedil;&atilde;o de Nightingale ter&aacute; sucesso, mas surge uma exception na linha 10, porque o m&eacute;todo fly() &eacute; protected na superclasse</p></li></ol></div></li></ol></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="exercises_exercises_2.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="exercises.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="exercises_getting_started.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Basic Exercises 2&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Getting Started with Java</td></tr></table></div></body></html>

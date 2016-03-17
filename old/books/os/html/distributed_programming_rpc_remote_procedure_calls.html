@@ -1,0 +1,104 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;RPC - Remote Procedure Calls</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="distributed_programming.html" title="Chapter&nbsp;4.&nbsp;Distribution Programming"><link rel="prev" href="distributed_programming_datagram_sockets.html" title="3.&nbsp;Datagram Sockets"><link rel="next" href="distributed_applications.html" title="Chapter&nbsp;5.&nbsp;Distributed Applications"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;RPC - Remote Procedure Calls</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="distributed_programming_datagram_sockets.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;Distribution Programming</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="distributed_applications.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="distributed_programming_rpc_remote_procedure_calls"></a>4.&nbsp;RPC - Remote Procedure Calls</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Remote Procedure Calls</strong></span></p><p><span class="bold"><strong>Definition:</strong></span></p><p>RPCs translate local procedure calls to remote procedure calls in a way transparent to the calling procedure.</p></li><li><p><span class="bold"><strong>Transparency</strong></span></p><p>To be transparent to client and servers routines, RPCs use stubs:</p><p><span class="bold"><strong>Client Stubs</strong></span> are local procedures that are called by clients and handle all packaging of arguments and server communication.</p><p><span class="emphasis"><em>It appears to the client that the client stub's procedure is the actual server procedure it wants to call.</em></span></p><p><span class="bold"><strong>Server Stubs</strong></span> are local procedures that wait for client requests, handle packaging of arguments and call servers' local procedures (that implement the server's service).</p><p><span class="emphasis"><em>It appears to the server that the server stub's call is the actual client call it needs to serve.</em></span></p><p><span class="bold"><strong>Parameter Passing:</strong></span></p><p>To make transparent parameter passing between client and servers procedures, stubs need to:</p><p>- Pack and unpack procedures parameters for transmission over the network.</p><p>- Convert the representation of parameters from one machine to another.</p></li><li><p><span class="bold"><strong>A Remote Procedure Call</strong></span></p><div class="figure"><a name="d0e2735"></a><p class="title"><b>Figure&nbsp;4.7.&nbsp;RPC</b></p><div class="mediaobject"><img src="resources/Servers12.gif" alt="RPC"></div></div><p>Steps of a RPC:</p><div class="orderedlist"><ol type="1"><li><p><span class="bold"><strong>Client procedure</strong></span> calls the client stub in the normal way.</p></li><li><p><span class="bold"><strong>Client stub</strong></span> builds a message and calls the kernel.</p></li><li><p><span class="bold"><strong>Kernel</strong></span> sends the message to the kernel in a remote machine.</p></li><li><p><span class="bold"><strong>Remote kernel</strong></span> passes the message to the server stub.</p></li><li><p><span class="bold"><strong>Server stub</strong></span> unpacks the parameters and calls the server procedure.</p></li><li><p><span class="bold"><strong>Server procedure</strong></span> does the work and returns the results to the stub.</p></li><li><p><span class="bold"><strong><span class="bold"><strong>Server stu</strong></span>b</strong></span> packs it in a message and calls the remote kernel.</p></li><li><p><span class="bold"><strong>Remote kernel</strong></span> sends the message to the client's kernel.</p></li><li><p><span class="bold"><strong>Kernel</strong></span> passes the message to the client stub.</p></li><li><p><span class="bold"><strong>Client stub</strong></span> unpack the result and returns it to the client procedure.</p></li><li><p><span class="bold"><strong>Client procedure</strong></span> gets the result in the normal way.</p></li></ol></div></li><li><p><span class="bold"><strong>Sun RPC</strong></span></p><p>Sun RPC is the most used implementation of RPCs.</p><p>It has four parts:</p><p>&#8729; rpcgen - A compiler that takes the definition of a remote procedure interface, and generates the client and server stubs.</p><p>&#8729; XDR (eXternal Data Representation), a standard way of encoding data in a portable fashion between different systems.</p><p>&#8729; A daemon to bind program numbers and versions to UDP ports.</p><p>&#8729; A run-time library to handle all the details.</p><p><span class="bold"><strong> &#8729;rpcgen</strong></span></p><p>operation:</p><pre class="programlisting">      +------------+                                                 +-----------+
+      | dateproc.c |-------------------------------------------&gt;cc--&gt;| date_svc  | 
+      +------------+                                         /  |    +-----------+
+                                                           /    |
+                                       server stub       /      |         
+                                      +-------------+  /        |
+                                      | date_svc.c  |/          |
+                                    / +-------------+           |
+                                   /                            |
+                                  /                         +--------+
+      specification RPC          /                          |        |
+       +------------+           /     +-------------+       |  RPC   |
+       |   date.x   |--&gt; rpcgen -----&gt;|   date.h    |       |run-time|
+       +------------+           \     +-------------+       |library |
+                                 \                          |        |
+                                  \                         +--------+
+                                   \                            |
+                                    \ +-------------+           |
+                                      | date_clnt.c |\          |
+                                      +-------------+  \        |
+                                       client  stub      \      |
+         client                                            \    |      client prg.
+       +------------+                                        \  |      +----------+
+       |   rdate.c  |------------------------------------------&gt; cc --&gt;|  rdate   |
+       +------------+                                                  +----------+</pre><p><span class="bold"><strong>Example:</strong></span></p><pre class="programlisting">program DATE_PROG {
+    version DATE_VERS {
+        long BIN_DATE(void) = 1;   /* Procedure number 1 */
+        string STR_DATE(long) = 2; /* Procedure number 2 */
+    } = 1;                         /* Version number 1   */
+} = 0x31234567;                    /* Program number 0x31234567 */</pre><p>The program numbers are 32-bit integers assigned as follows:</p><p><span class="bold"><strong>Program number:</strong></span></p><pre class="programlisting">0x00000000 - 0x1fffffff  defined by Sun
+0x20000000 - 0x3fffffff  defined by users
+0x40000000 - 0x5fffffff  transient
+0x60000000 - 0xffffffff  reserved</pre><p><span class="bold"><strong>Note:</strong></span></p><p>Procedure numbers start at 0. Every remote program and version must define procedure number 0 as the "null procedure".</p><p>It is automatically generated by the rpcgen compiler to allow a client to call it, to verify that a particular program version exist.</p><p><span class="bold"><strong>&#8729;Binding</strong></span></p><p>The portmapper daemon on the remote server is contacted to locate a specific program and version:</p><div class="figure"><a name="d0e2848"></a><p class="title"><b>Figure&nbsp;4.8.&nbsp;RPC Binding</b></p><div class="mediaobject"><img src="resources/Servers13.gif" alt="RPC Binding"></div></div></li><li><p><span class="bold"><strong>Writing a RPC Client and Server</strong></span></p><p><span class="bold"><strong>The Time Server</strong></span></p><p>The Time server serves the computer's local time to RPC requests.</p><p>It has two procedures:</p><div class="itemizedlist"><ul type="circle"><li><p>bin_time - Returns the current time as a long int.</p></li><li><p>str_time - Convert the time from long int to string.</p></li></ul></div><p>rpcgen can generate all the necessary files to compile a RPC application. Using the -a flag, rpcgen will generate sample files and a makefile for the application.</p><p>The time.xdr file describes the procedures:</p><pre class="programlisting">program TIME_PROG {
+    version TIME_VERS {
+        long BIN_TIME(void) = 1;   /* Procedure number 1 */
+        string STR_TIME(long) = 2; /* Procedure number 2 */
+    } = 1;                         /* Version number 1   */
+} = 0x31234567;                    /* Program number 0x31234567 */</pre><p>The following command does the compilation (the -C flag generates ANSI C code):</p><pre class="programlisting">rpcgen -a -C time.xdr</pre><p>rpcgen generates 6 files:</p><div class="orderedlist"><ol type="1"><li><p>time.h - To be included by all files.</p></li><li><p>time_clnt.c - Stubs for the client.</p></li><li><p>time_client.c - Sample file for the client.</p></li><li><p>time_svc.c - Stubs for the server.</p></li><li><p>time_server.c - Sample file for the server.</p></li><li><p>makefile.time - Makefile to compile the application.</p></li></ol></div><p><span class="bold"><strong>&#8729; Writing the server procedures:</strong></span></p><p><span class="bold"><strong>This is the sample generated by rpcgen:</strong></span></p><pre class="programlisting">long * bin_time_1_svc(void *argp, struct svc_req *rqstp)
+{
+        static long  result;
+        /* insert server code here */
+        return (&amp;result);
+}
+
+char ** str_time_1_svc(long *argp, struct svc_req *rqstp)
+{
+        static char * result;
+        /* insert server code here*/
+        return (&amp;result);
+}</pre><p><span class="bold"><strong>This is the modified program:</strong></span></p><pre class="programlisting">long * bin_time_1_svc(void *argp, struct svc_req *rqstp)
+{
+        static long  result;
+
+        <span class="bold"><strong>result= time((time_t *) 0);</strong></span>
+
+        return (&amp;result);
+}
+
+char ** str_time_1_svc(long *argp, struct svc_req *rqstp)
+{
+        static char * result;
+
+        <span class="bold"><strong>static tstr[128];
+        long t;
+
+        t= *argp;
+        sec= t % 60;   t /= 60;
+        min= t % 60;   t /= 60;
+        hour= t % 24;
+        sprintf(tstr, "Time %u:%u:%u", hour, min, sec);
+        result= tstr;</strong></span>
+
+        return (&amp;result);
+}</pre><p><span class="bold"><strong>&#8729;The Time client</strong></span></p><p><span class="bold"><strong>This is the sample from rpcgen:</strong></span></p><pre class="programlisting">void time_prog_1(char *host)
+{
+    ...
+    clnt = clnt_create(host, TIME_PROG, TIME_VERS, "netpath");
+    ...
+    result_1 = bin_time_1((void *)&amp;bin_time_1_arg, clnt);
+    if (result_1 == (long *) NULL) 
+        clnt_perror(clnt, "call failed");
+    result_2 = str_time_1(&amp;str_time_1_arg, clnt);
+    if (result_2 == (char **) NULL) 
+       clnt_perror(clnt, "call failed");
+    clnt_destroy(clnt);
+}
+
+main(int argc, char *argv[])
+{
+    time_prog_1(argv[1]);
+}</pre><p><span class="bold"><strong>This is the modified program:</strong></span></p><pre class="programlisting">void time_prog_1(char *host)
+{
+    ...
+    result_1 = bin_date_1((void *)&amp;bin_date_1_arg, clnt);
+    if (result_1 == (long *) NULL) 
+        clnt_perror(clnt, "call failed");
+    result_2 = str_date_1( <span class="bold"><strong>(long *) result_1</strong></span>, clnt);
+    if (result_2 == (char **) NULL)
+        clnt_perror(clnt, "call failed");
+    <span class="bold"><strong>printf("Time: %u %s\n", *result_1, *result_2);</strong></span>
+}
+ ...</pre><p><span class="bold"><strong>&#8729; Running the client:</strong></span></p><pre class="programlisting">Time: 862359655 0:20:55</pre></li><li><p><span class="bold"><strong>RPC call interface</strong></span></p><p>RPC has multiple levels of interface to its services. These levels provide different degrees of control balanced with different levels of complexity:</p><div class="itemizedlist"><ul type="circle"><li><p>Simplified interface.</p></li><li><p>Top level.</p></li><li><p>Intermediate level.</p></li><li><p>Expert level.</p></li><li><p>Bottom level.</p></li></ul></div><p><span class="bold"><strong>Simplified Interface:</strong></span></p><p>The simplified interface (the highest application level) is very simple, but limits control of the underlying communications mechanisms. It specifies only the type of transport to use.</p><p><span class="bold"><strong>Advantages:</strong></span></p><div class="itemizedlist"><ul type="circle"><li><p>Simplicity.</p></li><li><p>Program development can be rapid.</p></li><li><p>It is directly supported by the rpcgen compiler.</p></li><li><p>It is sufficient for most applications.</p></li></ul></div><p>RPC routines:</p><p>rpc_reg(): Registers a procedure as an RPC program on all transports.</p><p>rpc_call(): Remote calls the specified procedure on the specified remote host.</p><p>rpc_broadcast(): Broadcasts a call message across all transports of the specified type.</p><p>svc_run(): RPC library's remote procedure dispatcher.</p></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="distributed_programming_datagram_sockets.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="distributed_programming.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="distributed_applications.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Datagram Sockets&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;5.&nbsp;Distributed Applications</td></tr></table></div></body></html>

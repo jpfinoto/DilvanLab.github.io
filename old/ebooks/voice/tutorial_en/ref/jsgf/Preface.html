@@ -1,0 +1,151 @@
+<html><head><title>Java Speech Grammar Format</title></head>
+<!--Intermediate split file from a FrameMaker file-->
+<body BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#990000" ALINK="#333399" VLINK="#333399">
+<!--#include virtual="/products/java-media/include/speechGlobal.html"-->
+
+
+<table align="center" CELLSPACING=20 CELLPADDING=6 bgcolor="#f0f0ff">
+<tr>
+<td><code>
+<a href="index.html">Contents</a>
+</code>
+<td><code>
+<a href="index.html">Previous</a>  </code>
+<td><code>
+&nbsp;&nbsp;<a href="Contrib.html">Next</a>&nbsp;&nbsp;  </code>
+</table>
+
+
+<blockquote>
+
+<a name="1106"></a><p>
+<em>
+</em></p><a name="1140"></a><hr size=7 noshade>
+<h1 align="right"><font size="+4">
+Preface
+
+<BR>&nbsp;
+</font></h1>
+<a name="2740"></a><p>
+This document is the technical specification for the Java Speech Grammar Format 
+(JSGF). The Java Speech Grammar Format is a platform-independent, vendor-
+independent textual representation of grammars for use in speech recognition. 
+JSGF adopts the style and conventions of the Java programming language in 
+addition to use of traditional grammar notations.
+</p><P>&nbsp;</P>
+<hr width="30%" align="center" noshade>
+<P>&nbsp;</P>
+<a name="2469"></a><h2> Technical Scope </h2>
+<a name="2470"></a><p>
+This specification does not address programmatic issues. Programming issues, 
+including those listed below, are covered in the documentation for the Java Speech 
+API (JSAPI).
+</p><ul><li><a name="2471"></a>Mechanisms for loading, creating and deleting of grammars in a speech 
+recognizer, activation of grammars for recognition, and other grammar 
+management functionality.
+</ul>
+
+<!-- <li><a name="2471"></a>Mechanisms for loading, creating and deleting of grammars in a speech 
+recognizer, activation of grammars for recognition, and other grammar 
+management functionality.
+ --><ul><li><a name="2653"></a>Conventions for loading grammars: for example, via URLs on a web site.
+</ul>
+
+<!-- <li><a name="2653"></a>Conventions for loading grammars: for example, via URLs on a web site.
+ --><ul><li><a name="2656"></a>Mechanisms for receiving results of recognition for a grammar and processing
+of those results.
+</ul>
+
+<!-- <li><a name="2656"></a>Mechanisms for receiving results of recognition for a grammar and processing
+of those results.
+ --><ul><li><a name="2473"></a>Error handling for syntactically incorrect grammar definitions.
+</ul>
+
+<!-- <li><a name="2473"></a>Error handling for syntactically incorrect grammar definitions.
+ --><ul><li><a name="2474"></a>Vocabulary management including handling of token pronunciations.
+</ul>
+
+<!-- <li><a name="2474"></a>Vocabulary management including handling of token pronunciations.
+ --><P>&nbsp;</P>
+<hr width="30%" align="center" noshade>
+<P>&nbsp;</P>
+<a name="2489"></a><h2> Web Resources </h2>
+<a name="2490"></a><p>
+For more information about the Java Speech API and for the latest information on 
+the Java Speech Grammar Format visit the Java Speech API home page: 
+</p><DL><DD><pre>
+<a name="2491"></a><a href="http://java.sun.com/products/java-media/speech/">http://java.sun.com/products/java-media/speech/</a>
+</pre></DL>
+<P>&nbsp;</P>
+<hr width="30%" align="center" noshade>
+<P>&nbsp;</P>
+<a name="2494"></a><h2> Mailing Lists </h2>
+<a name="2495"></a><p>
+Discussion lists have been set up for everyone interested in the Java Speech API, 
+the Java Speech Grammar Format specification, the Java Synthesis Markup 
+Language, and related technologies. The <code>javaspeech-announce</code> mailing list 
+carries important announcements about releases and updates. The <code>javaspeech-
+interest</code> mailing list is for open discussion of the Java Speech API and the 
+associated specifications. 
+</p><a name="2496"></a><p>
+To subscribe to the <code>javaspeech-announce</code> list or the <code>javaspeech-interest</code> 
+list, send email with <code>subscribe javaspeech-announce</code> or <code>subscribe 
+javaspeech-interest</code> or both in the message body to:
+</p><DL><DD><pre>
+<a name="2497"></a><a href="mailto:javamedia-request@sun.com">javamedia-request@sun.com</a>
+</pre></DL>
+<a name="2498"></a><p>
+The <code>javaspeech-announce</code> mailing list is moderated. It is not possible to send 
+email to that list. 
+</p><a name="2499"></a><p>
+To send messages to the interest list, send email to:
+</p><DL><DD><pre>
+<a name="2500"></a><a href="mailto:javaspeech-interest@sun.com">javaspeech-interest@sun.com</a>
+</pre></DL>
+<a name="2501"></a><p>
+To unsubscribe from the <code>javaspeech-announce</code> list or the <code>javaspeech-
+interest</code> list, send email with <code>unsubscribe javaspeech-announce</code> or 
+<code>unsubscribe javaspeech-interest</code> or both in the message body to:
+</p><DL><DD><pre>
+<a name="2502"></a><a href="mailto:javamedia-request@sun.com">javamedia-request@sun.com</a>
+</pre></DL>
+<a name="2800"></a><p>
+Comments and submission proposals for enhancements should be sent to:
+</p><DL><DD><pre>
+<a name="2803"></a><a href="mailto:javaspeech-comments@sun.com">javaspeech-comments@sun.com</a>
+</pre></DL>
+<P>&nbsp;</P>
+<hr width="30%" align="center" noshade>
+<P>&nbsp;</P>
+<a name="2503"></a><h2> Revision History </h2>
+<a name="2677"></a>
+ Version 1.0: October 26, 1998
+<p>
+
+<hr size=7 noshade>
+
+</blockquote>
+
+<!-- This inserts footnotes--><p>
+<table align="center" CELLSPACING=20 CELLPADDING=6 bgcolor="#f0f0ff">
+<tr>
+<td><code>
+<a href="index.html">Contents</a>
+</code>
+<td><code>
+<a href="index.html">Previous</a>  </code>
+<td><code>
+&nbsp;&nbsp;<a href="Contrib.html">Next</a>&nbsp;&nbsp;  </code>
+</table>
+
+<HR width="30%" noshade align="center">
+<P align="center">
+<font size=-1>Java<SUP><font size="-2">TM</font></sup> Speech Grammar Format Specification<br>
+<a href="Copyright.html">Copyright &#169 1997-1998 Sun Microsystems, Inc.</a>
+All rights reserved<br>
+Send comments or corrections to <a href="mailto:javaspeech-comments@sun.com">javaspeech-comments@sun.com</a>
+</font>
+</P>
+
+
+</body></html>

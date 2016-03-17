@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>Java Speech Markup Language</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" vlink="#99FFFF" link="#33FF33">
+<p align="center"><font color="#FFFFFF" size="5"><a href="../../ref/jsml/index.html" target="_blank">Java Speech Markup
+Language (JSML)</a> </font></p>
+<p><font size="4" color="#FFFFFF">JSML is a markup language derived from XML used 
+  to describe an audio entrance in the synthesizers of the API. Its elements 
+  are able to supply detailed information about how to pronounce the text provided 
+  to the synthesizer. These elements describe the structure of a document (paragraphs, phrases), the words pronounce, text markers and prosodic 
+  elements that control phrasing, emphasis, pitch, speaking rate, and other important 
+  characteristics. Appropriate markup of text improves the quality and naturalness 
+  of the synthesized voice.</font></p>
+<p><font size="4" color="#FFFFFF">JSML is used as argument to the synthesizers 
+  and can be accessed through one of the forms of the method <a href="../sintetizadores/sintetizadores.htm#sintese" target="_blank">speak</a>. 
+  It might be provided in a text file with the JSML formatted text or in small phrases 
+  as arguments for the method. Table</font><font size="4" color="#FFFFFF"> 4 shows the JSML tags:</font></p>
+<table width="92%" border="1">
+  <tr> 
+    <td width="18%"> 
+      <div align="center"><font color="#FFFF00"><b><font size="4">Element</font></b></font></div>
+    </td>
+    <td width="52%"> 
+      <div align="center"><font color="#FFFF00"><b><font size="4">Description</font></b></font></div>
+    </td>
+    <td width="30%"> 
+      <div align="center"><font color="#FFFF00"><b><font size="4">Example</font></b></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="18%"><font color="#FFFFFF" size="4">PARA</font></td>
+    <td width="52%"><font color="#FFFFFF" size="4">Determines that the marked 
+      text must be pronounced as a paragraph.</font></td>
+    <td width="30%"><font color="#FFFFFF" size="4"><para>&lt;PARA&gt;This is a 
+      short paragraph.&lt;/PARA&gt; </para> <para>&lt;PARA&gt;The subject has 
+      changed, so this is a new paragraph.</para> &lt;/PARA&gt; </font></td>
+  </tr>
+  <tr> 
+    <td width="18%"><font color="#FFFFFF" size="4">SENT</font></td>
+    <td width="52%"><font color="#FFFFFF" size="4">Determines that the marked 
+      text must be pronounced as a phrase.</font></td>
+    <td width="30%"><font color="#FFFFFF" size="4"><para><sent>&lt;PARA>&lt;SENT&gt;So 
+      long.</sent> <sent> &lt;/SENT&gt;&lt;SENT&gt;See you later.&lt;/SENT&gt;&lt;/PARA&gt;</sent></para></font></td>
+  </tr>
+  <tr> 
+    <td width="18%"><font color="#FFFFFF" size="4">SAYAS</font></td>
+    <td width="52%"><font color="#FFFFFF" size="4">Specifies how the marked text 
+      must be read.</font></td>
+    <td width="30%"><font color="#FFFFFF" size="4"><sayas sub="0x0">&lt;SAYAS 
+      SUB="0x0"&gt;zero draw&lt;/SAYAS&gt;</sayas></font></td>
+  </tr>
+  <tr> 
+    <td width="18%"><font color="#FFFFFF" size="4">EMP</font></td>
+    <td width="52%"><font color="#FFFFFF" size="4">Determines the emphasis of 
+      the pronounce. The values might be: "strong", "moderate", "none", or "reduced".</font></td>
+    <td width="30%"><font color="#FFFFFF" size="4"><emp level="reduced">&lt;EMP 
+      LEVEL="reduced">Whispering is not polite.&lt;/EMP&gt;<emp></font></td>
+  </tr>
+  <tr> 
+    <td width="18%"><font color="#FFFFFF" size="4">BREAK</font></td>
+    <td width="52%"><font color="#FFFFFF" size="4">Determines a stop during synthesis.
+      Milliseconds or size can be used: "none", "small", "medium", or "large".</font></td>
+    <td width="30%"><font color="#FFFFFF" size="4">&lt;BREAK MSECS="300"/&gt;<break msecs="300"/> 
+      or &lt;BREAK SIZE="small"/&gt;<break size="small"/> <break msecs="300"/> 
+      <break size="small"/> <break msecs="300"/> <break size="small"/> </font></td>
+  </tr>
+  <tr> 
+    <td width="18%"><font color="#FFFFFF" size="4">PROS</font></td>
+    <td width="52%"><font color="#FFFFFF" size="4">Determines the speech properties: 
+      volume (VOL absolute number between 0.0 e 1.0), rhythm (RATE in words per 
+      minute), frequency (PITCH in hertz), frequency interval (RANGE in hertz).</font></td>
+    <td width="30%"><font color="#FFFFFF" size="4"><pros rate= "50" vol="+80%">&lt;PROS 
+      RATE= "50" VOL="+80%"&gt;&Iacute;'ll repeat loud and clear, just one more 
+      time.</pros> &lt;/PROS&gt;</font></td>
+  </tr>
+  <tr> 
+    <td width="18%"><font color="#FFFFFF" size="4"><a name="marker"></a>MARKER</font></td>
+    <td width="52%"><font color="#FFFFFF" size="4">When this tag is reached a 
+      <a href="../../ref/api/javax/speech/synthesis/SpeakableListener.html#markerReached(javax.speech.synthesis.SpeakableEvent)" target="_blank">markerReached</a> 
+      event is triggered, this might be interpreted by a <a href="../ouvidores/ouvidores.htm#speakablelistener" target="_blank">SpeakableListener</a>. A tag MARKER can be positioned anywhere in the 
+      JSML text, making it possible to monitor the whole text being pronounced.</font></td>
+    <td width="30%"><font color="#FFFFFF" size="4">Answer &lt;MARKER MARK= "yes_no"/&gt; 
+      <marker mark= "sim_nao" /> yes ou no. </font></td>
+  </tr>
+  <tr> 
+    <td width="18%"><font color="#FFFFFF" size="4">ENGINE</font></td>
+    <td width="52%"><font color="#FFFFFF" size="4">Provides information to the 
+      synthesizer identified by the ENGID, that will pronounce what is defined 
+      by the DATA parameter. If the synthesizer is not available, the marked
+      text will be pronounced instead.</font></td>
+    <td width="30%"><font color="#FFFFFF" size="4">The frog does<engine engid= "Sapo_Sint1.0" data= "&lt;ribbit=1>" sintetizador inadequado ></engine> 
+      &lt;ENGINE ENGID= &quot;Frog_Sint1.0&quot; DATA= &quot;ribbit=1&quot;&gt; 
+      improper synthesizer &lt;/ENGINE&gt;</font></td>
+  </tr>
+</table>
+<p align="center"><b>Table 4- Main JSML tags.</b></p>
+<p align="right"><a href="../../exemplos/jsml/jsml_exemplo1.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<p align="right"><a href="../../exemplos/jsml/jsml_exemplo1.jsml" target="_blank">JSML 
+  file referenced in the above example.</a></p>
+<br>
+<br>
+</body>
+</html>

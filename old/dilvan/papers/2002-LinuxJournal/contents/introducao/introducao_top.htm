@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Tutorial Speech Development Kit Java Technology</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="">
+<p align="center"><font color="#FFFFFF" size="4"><b><font size="5">Introduction</font></b></font> 
+</p>
+<p><font color="#FFFFFF" size="4">The <b>Speech Development Kit Java Technology</b> 
+  is a Java programming package, 100% object oriented, that uses the 
+  speech recognition and synthesis technology known as ViaVoice commercialized by IBM
+. This API makes possible to built application interfaces that 
+  take advantage of speech.</font></p>
+<p><font color="#FFFFFF" size="4">The recognition and synthesis operations are not processed 
+  by the Java software. The kit is just a way to built speech oriented 
+  interfaces. Applications &quot;throw&quot; the speech processing to the software 
+  behind it, the IBM ViaVoice (commercial or free version).</font></p>
+<p><font color="#FFFFFF" size="4">This way, just like any other interface programming 
+  models - like GUIs - the Java Speech Kit is also event oriented but now these events 
+  are not fired by the mouse or the keyboard, they are created due to human speech 
+  via a microphone.</font></p>
+<p><font color="#FFFFFF" size="4"> As mentioned the software is based upon two 
+  major features: speech synthesis and recognition.</font></p>
+<ul>
+  <li><font color="#FFFFFF" size="4"> The recognition can be done through the 
+    use of grammars, that are entities providing information about how the
+    recognition 
+    will be done. There are two kinds of grammars:</font></li>
+</ul>
+<blockquote> 
+  <blockquote> 
+    <p><font color="#FFFFFF" size="4">- dictation: it's specially designed for 
+      continuous speech, when the software tries to determine what is being spoken 
+      using a wide word database that associates a sound to each word. To increase 
+      accuracy and performance, contextual data is considered in order to establish
+    the pronounced words. It is possible to use different dictation grammars for
+    different domains, such as medicine, engineering or computer science.</font></p>
+    <p><font color="#FFFFFF" size="4">- rule: these grammars use rules, user's&nbsp;
+    definitions of what might be spoken and how that will be interpreted by 
+      the application. The set of rules can take any size, but usually it is limited 
+      by the context in which the application is inserted. In this way, commands might be
+    established in execution time to enhance responsiveness.</font></p>
+  </blockquote>
+</blockquote>
+<ul>
+  <li><font color="#FFFFFF" size="4">The voice synthesis might provide the 
+    application with simple string sentences as arguments to the method speak. 
+    An improved naturalness can be reached via the use of a special markup language 
+    - named Java Speech Markup Language (JSML). Through its use properties like voice, 
+    frequency, rhythm and volume can be dynamically altered.</font></li>
+</ul>
+<br>
+<br>
+</body>
+</html>

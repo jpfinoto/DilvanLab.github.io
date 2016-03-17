@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 17: Security Manager</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Security Manager</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><BR>
+<BR>
+<BR>
+The code:</H3>
+
+<PRE>class PasswordSecurityManager extends SecurityManager {</PRE>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PasswordSecurityManager(String password) {
+    &nbsp;&nbsp;&nbsp;&nbsp;super();
+    &nbsp;&nbsp;&nbsp;&nbsp;this.password = password;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</PRE>
+
+<BLOCKQUOTE>
+<PRE>private boolean accessOK() {
+    . . . 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Asks a password from the user using stdin
+    . . .
+} </PRE>
+
+<PRE>public void checkRead(FileDescriptor filedescriptor) {
+    if (!accessOK())
+        throw new SecurityException(&quot;Not a Chance!&quot;);
+}
+public void checkRead(String filename) {
+    if (!accessOK())
+        throw new SecurityException(&quot;No Way!&quot;);
+}
+public void checkRead(String filename, Object executionContext) {
+    if (!accessOK())
+        throw new SecurityException(&quot;Forget It!&quot;);
+}
+public void checkWrite(FileDescriptor filedescriptor) {
+    if (!accessOK())
+        throw new SecurityException(&quot;Not!&quot;);
+}
+public void checkWrite(String filename) {
+    if (!accessOK())
+        throw new SecurityException(&quot;Not Even!&quot;);
+}
+</PRE>
+</BLOCKQUOTE>
+
+<PRE>}</PRE>
+</BLOCKQUOTE>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/security/installSMgr.html">Installing
+Your Security Manager</A></H2>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {
+              System.setSecurityManager(new PasswordSecurityManager(&quot;Booga Booga&quot;));
+          } catch (SecurityException se) {
+              System.out.println(&quot;SecurityManager already set!&quot;);
+          }</PRE>
+
+<BLOCKQUOTE>
+<P><FONT COLOR="#FF0000"><B><FONT SIZE=+1>Note:</FONT></B> </FONT>The security
+manager for an application can be set <B><FONT COLOR="#FF0000"><FONT SIZE=+1>only
+once</FONT></FONT></B>. Typically, a browser sets its security manager
+during its startup procedure. </P>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE></BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld18.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld18.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

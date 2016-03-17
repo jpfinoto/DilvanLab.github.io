@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Arquitetura SDK Java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="">
+<p align="center"><font color="#FFFFFF" size="4"><b><font size="5">Architecture</font></b></font> 
+</p>
+<p><font color="#FFFFFF" size="4">The architecture of the speech development kit can be summarized 
+  as shown in figure 1:</font></p>
+<p align="center"><img border="0" src="../../imagens/ilustracoes/arquitetura/arquitetura_basica/arquitetura_basica.gif" width="640" height="560"></p>
+<p align="center"><b>Figure 1 - Simplified architecture of the IBM SDK Java Technology.</b></p>
+<p><font color="#FFFFFF" size="4">In figure 1, we can see that the sound hardware 
+  is controlled by the operating system. Right above it is the Engine.exe binary 
+  application, which is automatically initialized when the voice
+synthesis/recognition applications are started. The Engine is the heart of the IBM
+ViaVoice ( in the commercial or free versions). It is responsible 
+  for accessing all the ViaVoice's features.</font></p>
+<p><font color="#FFFFFF" size="4">Also, in figure 1, we can see the basic components of voice&nbsp; applications: the entities <b>Recognizer</b> 
+  and <b>Synthesizer</b>, the Central class and, specially, the Engine Interface 
+  - extended by the Synthesizer and Recognizer Interfaces. This interface has all the basic 
+  methods for controlling and accessing the ViaVoice processing engine.</font></p>
+<p><font color="#FFFFFF" size="4">The Engine Interface is important due to the
+fact that Java is a multplatform language. For that reason, the same development kit is used 
+  on the Unix, Linux and Windows systems, but each system has its own binary 
+  implementation of the IBM ViaVoice processing engine. The Engine interface 
+  hides the details of the platform dependent software offering proper access 
+  for the Recognizers and Synthesizers.</font></p>
+<p><font color="#FFFFFF" size="4">Now it is necessary to describe the Central
+class. It is in charge of implementing the Engine interface. The Central class 
+  is, in fact, responsible for abstracting platform details by providing the 
+  correct implementation of the Engine Interface. The recognizers and synthesizers
+extend the Engine Interface.</font></p>
+<p align="left"><img border="0" src="../../imagens/ilustracoes/arquitetura/arquitetura_completa/arquitetura_completa.gif" width="800" height="960"></p>
+<p align="center"><b>Figure 2- Full architecture of the IBM SDK Java Technology.</b></p>
+<p align="left"><font size="4" color="#FFFFFF">Following, we have a code example 
+  illustrating </font><font size="4" color="#FFFFFF">the most simple way to create 
+  an application with a recognizer and a synthesizer, with no working functionality.</font></p>
+<p align="right"><a href="../../exemplos/exemplo1.java" target="_blank"><img src="../../imagens/codigo_exemplo.gif" width="324" height="59" border="0"></a></p>
+<br>
+<br>
+</body>
+</html>

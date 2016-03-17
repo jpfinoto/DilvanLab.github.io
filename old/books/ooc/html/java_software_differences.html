@@ -1,0 +1,25 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Differences from C++</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="java_software.html" title="Chapter&nbsp;2.&nbsp;The Java Software"><link rel="prev" href="java_software_java_interpreter.html" title="2.&nbsp;Java Interpreter"><link rel="next" href="java_software_objects_in_java.html" title="4.&nbsp;Objects in Java"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Differences from C++</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="java_software_java_interpreter.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;2.&nbsp;The Java Software</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="java_software_objects_in_java.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="java_software.html">The Java Software</a></span> &gt; <span class="breadcrumb-node">Differences from C++</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="java_software_differences"></a>3.&nbsp;Differences from C++</h2></div></div></div><p><span class="bold"><strong>No typedefs, defines or
+      preprocessors</strong></span></p><p>There is no <span class="command"><strong>typedef</strong></span> command, Java uses only
+      classes. There are no <code class="filename">#define</code> macros, Java uses
+      constants. Java does not use header files.</p><p><span class="bold"><strong>No structure or union</strong></span></p><p>Java allows only class definitions.</p><p><span class="bold"><strong>No functions</strong></span></p><p>Java is a more pure OOP language than C++. It does not allow the
+      definition of pure functions only methods attached to classes.</p><p><span class="bold"><strong>No multiple inheritance</strong></span></p><p><span class="bold"><strong>No goto</strong></span></p><p><span class="bold"><strong>No operator overload</strong></span></p><p><span class="bold"><strong>No automatic casting</strong></span></p><pre class="programlisting">    int i;
+    double x = 4.567;
+    i = x; ERROR
+
+    It needs a casting operation:
+
+    i = (int) x;</pre><p><span class="bold"><strong>No pointers!</strong></span></p><p>Pointers are a great source of hard to find bugs. Even when
+      dealing with arrays the Java runtime system checks for index
+      problems.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e434"></a>3.1.&nbsp;Audio</h3></div></div></div><p><a class="ulink" href="../audio/JavaSoftware3.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+        Portuguese</a></p></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="java_software_java_interpreter.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="java_software.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="java_software_objects_in_java.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Java Interpreter&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Objects in Java</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

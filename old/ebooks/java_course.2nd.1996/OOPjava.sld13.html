@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 13: String Class</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">String Class</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/strings/index.html">String
+Class</A></H2>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/strings/whytwo.html">Two
+classes for strings:</A></H2>
+
+<UL>
+<LI><I>String</I>, for constant strings.</LI>
+
+<LI><I>StringBuffer</I>, for strings that can change.</LI>
+</UL>
+
+<P><B><FONT COLOR="#0000FF"><FONT SIZE=+1>Why use String?</FONT></FONT></B>
+Because they are constants, Strings are cheaper than StringBuffers and
+they can be shared.</P>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/strings/creating.html">Creating
+Strings and StringBuffers</A></H2>
+
+<BLOCKQUOTE>
+<PRE>StringBuffer dest = new StringBuffer(len);
+StringBuffer dest = new StringBuffer();</PRE>
+
+<PRE>String dest = new String(&quot;Destination&quot;);</PRE>
+
+<H3>String literals</H3>
+
+<PRE><FONT COLOR="#800000">&quot;Gobbledy gook.&quot;
+</FONT>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B><FONT COLOR="#FF0000">is equivalent to:
+</FONT></B><FONT COLOR="#800000">new String(&quot;Gobbledy gook.&quot;)</FONT></PRE>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/strings/accessors.html">Accessor
+Methods</A></H2>
+
+<BLOCKQUOTE>
+<P><TT>charAt()</TT> and <TT>length()</TT>.</P>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/strings/modifying.html">Modifying
+StringBuffers</A></H2>
+
+<BLOCKQUOTE>
+<P><TT>append()</TT>.</P>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/strings/conversion.html">Converting
+Objects to Strings</A></H2>
+
+<BLOCKQUOTE>
+<PRE><B><FONT SIZE=+1>toString();</FONT></B></PRE>
+
+<P>All classes inherit toString() from the Object class and many classes
+override this method to provide an implementation that is meaningful to
+that class. <B><FONT COLOR="#FF0000"><FONT SIZE=+1>Implement it in your
+classes too !</FONT></FONT></B></P>
+
+<P><B><FONT SIZE=+1>valueOf()</FONT></B></P>
+
+<P>Static member of String that can be used to convert variables of different
+types to Strings.</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="OOPjava.sld14.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="OOPjava.sld14.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

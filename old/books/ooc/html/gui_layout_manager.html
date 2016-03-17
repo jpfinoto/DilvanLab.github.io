@@ -1,0 +1,281 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>6.&nbsp;Layout Managers</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="gui.html" title="Chapter&nbsp;10.&nbsp;Graphic User Interface"><link rel="prev" href="gui_handling_events.html" title="5.&nbsp;Handling Events"><link rel="next" href="gui_awt_graphics.html" title="7.&nbsp;AWT Graphics"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">6.&nbsp;Layout
+      Managers</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="gui_handling_events.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Graphic User Interface</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="gui_awt_graphics.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="gui.html">Graphic User Interface</a></span> &gt; <span class="breadcrumb-node">Layout
+      Managers</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="gui_layout_manager"></a>6.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/layout/index.html" target="_top">Layout
+      Managers</a></h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4488"></a>6.1.&nbsp;Definition</h3></div></div></div><p>A layout manager is an object that controls the size and the
+        position of components in a container. Every
+        <code class="classname">Container</code> object has a
+        <code class="classname">LayoutManager</code> object that controls its
+        layout.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4499"></a>6.2.&nbsp;AWT has 5 Layout Managers classes</h3></div></div></div><div class="orderedlist"><ol type="1"><li><p>FlowLayout</p></li><li><p>GridLayout</p></li><li><p>BorderLayout</p></li><li><p>CardLayout</p></li><li><p>GridBagLayout</p></li></ol></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4518"></a>6.3.&nbsp;General Rules for Using Layout Managers</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4521"></a>6.3.1.&nbsp;Default Managers</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>For <code class="classname">JPanel</code> objects, the default
+              layout manager is an instance of the
+              <code class="classname">FlowLayout</code> class.</p></li><li><p>For <code class="classname">JFrame</code> objects, the default
+              layout manager is an instance of the
+              <code class="classname">BorderLayout</code> class.</p></li></ul></div><p>This layout manager is automatically consulted every time the
+          <code class="classname">Container</code> might need to change its
+          appearance.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4548"></a>6.3.2.&nbsp;How to Create a Layout Manager and Associate It with a
+          Container</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>To use the default layout manager: Don't do anything. The
+              constructor for each <code class="classname">Container</code> creates a
+              layout manager instance and initializes the
+              <code class="classname">Container</code> to use it.</p></li><li><p>To use a non-default layout manager: Create an instance of
+              the desired layout manager class and tell the
+              <code class="classname">Container</code> to use it:</p><pre class="programlisting">aContainer.setLayout(new CardLayout());</pre></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4569"></a>6.3.3.&nbsp;Methods that result in calls to the Container's layout
+          manager</h4></div></div></div><div class="orderedlist"><ol type="1"><li><p><code class="methodname">add(), remove(), removeAll()</code> -
+              They add and remove <code class="classname">Component</code>s from a
+              <code class="classname">Container</code>; you can call them at any
+              time.</p></li><li><p><code class="methodname">doLayout()</code> - Is called as the
+              result of any paint request to a
+              <code class="classname">Container</code>. It requests that the
+              <code class="classname">Container</code> place and size itself and the
+              <code class="classname">Component</code>s it contains.</p></li><li><p><code class="methodname">getPreferredSize(), getMinimumSize(),
+              getMaximumSize()</code> - They return the
+              <code class="classname">Container</code>'s ideal size, minimum size and
+              maximum size, respectively. The values returned are just hints;
+              they have no effect unless your program enforces these
+              sizes.</p></li></ol></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4606"></a>6.4.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/layout/border.html" target="_top">BorderLayout</a></h3></div></div></div><div class="figure"><a name="d0e4610"></a><p class="title"><b>Figure&nbsp;10.20.&nbsp;BorderLayout</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI19.gif" width="210" height="125" alt="BorderLayout"></div></div></div><br class="figure-break"><div class="figure"><a name="d0e4616"></a><p class="title"><b>Figure&nbsp;10.21.&nbsp;BorderLayout Expanded</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI18.gif" width="412" height="283" alt="BorderLayout Expanded"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4622"></a>6.4.1.&nbsp;Behavior</h4></div></div></div><p>A <code class="classname">BorderLayout</code> has five areas: north,
+          south, east, west, and center.</p><p>If you enlarge the window, you'll see that the center area
+          gets as much of the newly available space as possible. The other
+          areas expand only as much as necessary to keep all available space
+          filled.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4632"></a>6.4.2.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">setLayout(new BorderLayout());
+setFont(new Font("Helvetica", Font.PLAIN, 14));
+             
+add(new JButton("North"), BorderLayout.NORTH);
+add(new JButton("South"), BorderLayout.SOUTH);
+add(new JButton("East"), BorderLayout.EAST);
+add(new JButton("West"), BorderLayout.WEST);
+add(new JButton("Center"), BorderLayout.CENTER);</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>When adding a component to a container that uses
+            <code class="classname">BorderLayout</code>, you must use the two-argument
+            version of the <code class="methodname">add()</code> method, and the
+            second argument must be any of the constants showed in the code
+            example. If you use the one-argument version of
+            <code class="methodname">add()</code>, or if you specify an invalid first
+            argument, your component might not be visible.</p></td></tr></table></div><p>To add a gap between the components you can use the
+          constructor:</p><pre class="programlisting">public BorderLayout(int horizontalGap, int verticalGap)</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4653"></a>6.5.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/layout/card.html" target="_top">CardLayout</a></h3></div></div></div><div class="figure"><a name="d0e4657"></a><p class="title"><b>Figure&nbsp;10.22.&nbsp;CardLayout: Buttons</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI20.gif" width="282" height="137" alt="CardLayout: Buttons"></div></div></div><br class="figure-break"><div class="figure"><a name="d0e4663"></a><p class="title"><b>Figure&nbsp;10.23.&nbsp;CardLayout: TextField</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI21.gif" width="282" height="137" alt="CardLayout: TextField"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4669"></a>6.5.1.&nbsp;Behavior</h4></div></div></div><p>The <code class="classname">CardLayout</code> class manages two or
+          more components that share the same display space. Conceptually,
+          each component is like a playing card in a stack, where only the top
+          card is visible at any time.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4677"></a>6.5.2.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">    private final static String BUTTON_PANEL = "Panel with Buttons";
+    private final static String TEXT_PANEL = "Panel with TextField";
+    
+    private JPanel cards;
+    private JComboBox cbox;
+
+    ...
+
+    // Create the panels
+    JPanel p1 = new JPanel();
+    p1.add(new JButton("Button 1"));
+    p1.add(new JButton("Button 2"));
+    p1.add(new JButton("Button 3"));
+    
+    JPanel p2 = new JPanel();
+    p2.add(new JTextField("TextField", 20));
+    
+    // Where the container is initialized
+    cards = new JPanel();
+    cards.setLayout(new CardLayout());
+    cards.add(BUTTON_PANEL, p1);
+    cards.add(TEXT_PANEL, p2);
+    
+    // Create a combobox to choose between the cards
+    cbox = new JComboBox();
+    cbox.addItem(BUTTON_PANEL);
+    cbox.addItem(TEXT_PANEL);
+    cbox.addActionListener(this);
+    
+    // Put the combo box in a panel to get a nicer look
+    JPanel panel = new JPanel();
+    panel.add(cbox);
+    
+    // Put it all together
+    setLayout(new BorderLayout());
+    add(panel, BorderLayout.NORTH);
+    add(cards, BorderLayout.CENTER);
+
+    ...
+
+    // The code for the ActionListener implementation
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == cbox) {
+            String option = (String) cbox.getSelectedItem();
+            CardLayout layout = (CardLayout) cards.getLayout(); 
+            layout.show(cards, option);
+        }    
+    }</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4682"></a>6.5.3.&nbsp;Methods to chose a component</h4></div></div></div><pre class="programlisting">public void first(Container parent)
+public void next(Container parent)
+public void previous(Container parent)
+public void last(Container parent)
+public void show(Container parent, String name)</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4687"></a>6.6.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/layout/flow.html" target="_top">FlowLayout</a></h3></div></div></div><div class="figure"><a name="d0e4691"></a><p class="title"><b>Figure&nbsp;10.24.&nbsp;FlowLayout</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI23.gif" width="346" height="116.00000000000001" alt="FlowLayout"></div></div></div><br class="figure-break"><div class="figure"><a name="d0e4697"></a><p class="title"><b>Figure&nbsp;10.25.&nbsp;FlowLayout: Expanded</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI22.gif" width="417.00000000000006" height="86.99999999999999" alt="FlowLayout: Expanded"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4703"></a>6.6.1.&nbsp;Behaviour</h4></div></div></div><p><code class="classname">FlowLayout</code> puts components in a row,
+          sized at their preferred size. If the horizontal space in the
+          container is too small to put all the components in one row,
+          <code class="classname">FlowLayout</code> uses multiple rows.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4713"></a>6.6.2.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">setLayout(new FlowLayout());
+setFont(new Font("Helvetica", Font.PLAIN, 14));
+             
+add(new JButton("Button 1"));
+add(new JButton("2"));
+add(new JButton("Button 3"));
+add(new JButton("Long-Named Button 4"));
+add(new JButton("Button 5"));</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4718"></a>6.6.3.&nbsp;FlowLayout constructors</h4></div></div></div><pre class="programlisting">public FlowLayout()
+public FlowLayout(int alignment)
+public FlowLayout(int alignment, int horizontalGap, int verticalGap)</pre><p>Alignment argument must have the value:</p><pre class="programlisting">FlowLayout.LEFT, FlowLayout.CENTER, or FlowLayout.RIGHT</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4727"></a>6.7.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/layout/grid.html" target="_top">GridLayout</a></h3></div></div></div><div class="figure"><a name="d0e4731"></a><p class="title"><b>Figure&nbsp;10.26.&nbsp;GridLayout</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI24.gif" width="312" height="125" alt="GridLayout"></div></div></div><br class="figure-break"><div class="figure"><a name="d0e4737"></a><p class="title"><b>Figure&nbsp;10.27.&nbsp;GridLayout: Expanded</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI25.gif" width="381" height="195.99999999999997" alt="GridLayout: Expanded"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4743"></a>6.7.1.&nbsp;Behaviour</h4></div></div></div><p><code class="classname">GridLayout</code> places components in a grid
+          of cells. Each component takes all the available space within its
+          cell, and each cell has exactly the same size. If the
+          <code class="classname">GridLayout</code> window is resized, the
+          <code class="classname">GridLayout</code> changes the cell size so that the
+          cells are as large as possible.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4756"></a>6.7.2.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">// Construct a GridLayout with 2 columns and an unspecified number of rows
+setLayout(new GridLayout(0, 2));
+setFont(new Font("Helvetica", Font.PLAIN, 14));
+             
+add(new JButton("Button 1"));
+add(new JButton("2"));
+add(new JButton("Button 3"));
+add(new JButton("Long-Named Button 4"));
+add(new JButton("Button 5"));</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4761"></a>6.7.3.&nbsp;GridLayout constructors</h4></div></div></div><pre class="programlisting">public GridLayout(int rows, int columns)
+public GridLayout(int rows, int columns, int horizontalGap, int verticalGap)</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4766"></a>6.8.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/layout/gridbag.html" target="_top">GridBagLayout</a></h3></div></div></div><div class="figure"><a name="d0e4770"></a><p class="title"><b>Figure&nbsp;10.28.&nbsp;GridBagLayout</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI26.gif" width="260" height="173" alt="GridBagLayout"></div></div></div><br class="figure-break"><div class="figure"><a name="d0e4776"></a><p class="title"><b>Figure&nbsp;10.29.&nbsp;GridBagLayout: Expanded</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI27.gif" width="318" height="214" alt="GridBagLayout: Expanded"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4782"></a>6.8.1.&nbsp;Behaviour</h4></div></div></div><p><code class="classname">GridBagLayout</code> places components in a
+          grid of rows and columns, allowing specified components to span
+          multiple rows or columns. Not all rows or columns have to have the
+          same height or width.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4789"></a>6.8.2.&nbsp;Specifying Constraints</h4></div></div></div><p><code class="classname">GridBagLayout</code> specifies the size and
+          position characteristics of its components by specifying constraints
+          for each component:</p><pre class="programlisting">GridBagLayout gridbag = new GridBagLayout();
+GridBagConstraints constraints = new GridBagConstraints();
+setLayout(gridbag);
+
+// For each component to be added to this container:
+
+// Create the component
+JButton button = new JButton("Button");
+
+// Set instance variables in the GridBagConstraints instance
+constraints.fill = GridBagConstraints.BOTH;
+constraints.gridheight = 2;
+constraints.weighty = 1.0;
+
+// Add the component with the constraints
+add(button, constraints);</pre><p><code class="classname">GridBagConstraints</code> instance
+          variables:</p><pre class="programlisting">gridx, gridy, gridwidth, gridheight, fill, ipadx, ipady,
+insets, anchor, weightx, weighty.</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4804"></a>6.8.3.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">    // Set the layout and create the constraints object
+    setLayout(new GridBagLayout());
+    GridBagConstraints c = new GridBagConstraints();
+    
+    // Define the common constraints
+    c.fill = GridBagConstraints.BOTH;
+    c.weightx = 1.0;
+    c.weighty = 1.0;
+                    
+    // Create the components
+    JButton b1 = new JButton("Button1"); // Row 0, Col 0
+    add(b1, c);
+    
+    JButton b2 = <code class="classname">new JButton("Button2"); // Row 0, Col 1
+    c.gridx = 1;  
+    add(b2, c);
+    
+    JButton b3 = new JButton("Button3"); // Row 0, Col 2 
+    c.gridx = 2;        
+    add(b3, c);
+    
+    JButton b4 = new JButton("Button4"); // Row 0, Col 3
+    c.gridx = 3;          
+    add(b4, c);
+    
+    JButton b5 = new JButton("Button5"); // Row 1, Col 0, Width 4 
+    c.gridy = 1;
+    c.gridx = 0;
+    c.gridwidth = 4;
+    add(b5, c);
+    
+    JButton b6 = new JButton("Button6"); // Row 2, Col 0, Width 3
+    c.gridy = 2;
+    c.gridx = 0;
+    c.gridwidth = 3;        
+    add(b6, c);
+    
+    JButton b7 = new JButton("Button7"); // Row 2, Col 3, Width 1
+    c.gridx = 3;
+    c.gridwidth = 1;
+    add(b7, c);
+    
+    JButton b8 = new JButton("Button8"); // Row 3, Col 0, Height 2
+    c.ipady = 20; // Make the component taller
+    c.gridy = 3;
+    c.gridx = 0;
+    c.gridheight = 2;
+    add(b8, c);
+    
+    JButton b9 = new JButton("Button9"); // Row 3, Col 1, Height 1
+    c.ipady = 0; // Reset the default value
+    c.gridy = 3;
+    c.gridx = 1;
+    c.gridwidth = 3;
+    c.gridheight = 1;
+    add(b9, c);
+    
+    JButton b10 = new JButton("Button10"); // Row 4, Col 1
+    c.ipady = 40; // Make the component taller
+    c.gridy = 4; 
+    add(b10, c);</code></pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4811"></a>6.9.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/layout/custom.html" target="_top">Custom
+        Layout Manager</a></h3></div></div></div><div class="figure"><a name="d0e4815"></a><p class="title"><b>Figure&nbsp;10.30.&nbsp;Custom Layout</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI28.gif" width="206.99999999999997" height="193" alt="Custom Layout"></div></div></div><br class="figure-break"><div class="figure"><a name="d0e4821"></a><p class="title"><b>Figure&nbsp;10.31.&nbsp;Custom Layout: Expanded</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI29.gif" width="399" height="225" alt="Custom Layout: Expanded"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4827"></a>6.9.1.&nbsp;To create a new Layout Manager</h4></div></div></div><p>A layout manager has just to implement the
+          <code class="classname">LayoutManager</code> Interface.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4835"></a>6.9.2.&nbsp;The LayoutManager interface</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><pre class="programlisting">public void addLayoutComponent(String name, Component comp)</pre><p>Called only by the <code class="classname">Container</code>
+              <code class="methodname">add(name, component)</code> method. Layout
+              managers that don't require that their components have names
+              generally do nothing in this method.</p></li><li><pre class="programlisting">public void removeLayoutComponent(Component comp) </pre><p>Called by the <code class="classname">Container</code>
+              <code class="methodname">remove()</code> and
+              <code class="methodname">removeAll()</code> methods. Layout managers
+              that don't require that their components have names generally do
+              nothing in this method, since they can query the container for
+              its components using the <code class="classname">Container</code>
+              <code class="methodname">getComponents()</code> method.</p></li><li><pre class="programlisting">public Dimension preferredLayoutSize(Container parent)</pre><p>Called by the <code class="classname">Container</code>
+              <code class="methodname">getPreferredSize()</code> method. This method
+              should calculate the ideal size of the parent, assuming that the
+              components it contains will be at or above their preferred
+              sizes.</p></li><li><pre class="programlisting">public Dimension minimumLayoutSize(Container parent)</pre><p>Called by the <code class="classname">Container</code>
+              <code class="methodname">minimumSize()</code> method. This method
+              should calculate the minimum size of the parent, assuming that
+              the components it contains will be at or above their minimum
+              sizes.</p></li><li><pre class="programlisting">public void layoutContainer(Container parent)</pre><p>Called when the container is first displayed, and every
+              time its size changes. A layout manager's
+              <code class="methodname">layoutContainer()</code> method doesn't
+              actually draw Components. It simply invokes each Component's
+              <code class="methodname">resize(), move(), and reshape()</code> methods
+              to set the Component's size and position.</p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e4903"></a>6.10.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/layout/none.html" target="_top">No
+        Layout Manager (Absolute Positioning)</a></h3></div></div></div><div class="figure"><a name="d0e4907"></a><p class="title"><b>Figure&nbsp;10.32.&nbsp;No Layout Manager</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI30.gif" width="260" height="130" alt="No Layout Manager"></div></div></div><br class="figure-break"><div class="figure"><a name="d0e4913"></a><p class="title"><b>Figure&nbsp;10.33.&nbsp;No Layout Manager: Expanded</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI31.gif" width="330" height="195" alt="No Layout Manager: Expanded"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4919"></a>6.10.1.&nbsp;If possible use a Layout Manager</h4></div></div></div><p>Layout managers make it easy to resize a container and adjust
+          to platform-dependent component appearance and to different font
+          sizes. They also can be reused easily by other containers and other
+          programs.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e4924"></a>6.10.2.&nbsp;Absolute Positioning Code Example</h4></div></div></div><pre class="programlisting">public class NoneWindow extends Frame {
+    private boolean laidOut = false;
+    private JButton b1, b2, b3;
+
+    public NoneWindow() {
+        super();
+        setLayout(null);
+
+        b1 = new JButton("one");
+        b2 = new JButton("two");
+        b3 = new JButton("three");
+
+        add(b1);
+        add(b2);
+        add(b3);
+    }
+
+    public void paint(Graphics g) {
+        if (!laidOut) {
+            Insets insets = insets();
+            b1.reshape(50 + insets.left, 5 + insets.top, 50, 20);
+            b2.reshape(70 + insets.left, 35 + insets.top, 50, 20);
+            b3.reshape(130 + insets.left, 15 + insets.top, 50, 30);
+            laidOut = true;
+        }
+    }
+ 
+    . . .
+}</pre></div></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="gui_handling_events.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="gui.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="gui_awt_graphics.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">5.&nbsp;Handling
+      Events&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;7.&nbsp;AWT Graphics</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

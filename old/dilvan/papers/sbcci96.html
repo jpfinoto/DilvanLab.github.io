@@ -1,0 +1,123 @@
+
+<html> <head>
+<title>SBCCI-96</title>
+</head>
+<body BGCOLOR="FFFFFF">
+<a NAME="HEADING1"></a>
+<center>
+<h1>Agents: Um sistema distribuído para geração de layouts</h1>
+ <p><br><br>
+ <font SIZE="4"><i>Dilvan de Abreu Moreira</i></font><p>
+<img SRC="sbcci96-1.gif" WIDTH="334" HEIGHT="75"><p>
+ Email: dilvan@lcaee.fee.unicamp.br<p>
+ <br><br><p>
+ <font SIZE="4"><i>Les T. Walczowski</i></font><p>
+<img SRC="sbcci96-2.gif" WIDTH="218" HEIGHT="52"><p>
+ Electronics Engineering Laboratory<br>
+ The University, Canterbury - Kent<br>
+ CT2 7NT - United Kingdom<p>
+ <br>
+ <br>
+ <br>
+ <h2>ABSTRACT</h2>
+</center>
+ The Agent system generates mask level layout of full custom CMOS, BICMOS and mixed digital/analogue leaf cells. The system is formed from four servers programs: the Placer, Router, Database and Broker. These servers communicate over a computer network using the TCP/IP Internet Protocol. The Placer server receives from its client the description and netlist of the circuit to be generated using EDIF (Electronic Design Interchange Format). In cooperation with the other servers, it generates the circuit's layout and sends it back to its client as an EDIF coded layout using the network.<p>
+<br><br><br>
+<hr><br>
+<h1 ALIGN="CENTER">Agents: Um sistema distribuído para geração de layouts</h1>
+ <p>
+<br>
+<a NAME="HEADING1-16"></a>
+<h2>1  Introdução</h2>
+ Circuitos integrados <i>Custom</i> são geralmente baseadas numa hierarquia de subcircuitos, onde circuitos complexos são compostos por vários submódulos. Nos extremos dessa estrutura em árvore estão módulos que não contem outros submódulos, apenas transistores, esses módulos são denominados &quot;leaf cells&quot;. <i>Leaf cells</i> são subcircuitos de complexidade comparável a componentes SSI (Small Scale Integration), como somadores, flip-flops ou multiplexadores.<p>
+ O modelo tradicional de criação de layouts para circuitos integrados ASIC (Application Specific Integrated Circuit) baseia-se no trabalho de um projetista usando um programa para geração de layout (CAD). Esse modelo usa uma metodologia de projeto baseada em células. Essa metodologia é adequada para projetos ASICs porque o processo de layout (principalmente posicionamento e roteamento de componentes) pode ser, em grande parte, automatizado, reduzindo o tempo gasto no projeto e aumentando a sua confiabilidade.<p>
+ Uma grande desvantagem dessa metodologia está no projeto e manutenção das bibliotecas de células, que mudam a cada mudança ocorrida nos processos de manufatura dos circuitos integrados. Adicionalmente, como o número e as variações de layout das células de qualquer biblioteca são ambos limitados, algumas células necessárias a um projeto podem não existir na biblioteca. Uma combinação de células tem então que ser usada, sacrificando a performance do circuito <a HREF="#MARKER-9-2">[1]</a>.<p>
+ Como o layout manual é um processo lento e caro, devido a grande quantidade de detalhes a ser manipulada, ferramentas automáticas de geração de layout oferecem vantagens óbvias. Se elas forem capazes de gerar layouts para uma grande gama de circuitos SSI e para diferentes regras de projeto, elas podem eventualmente tomar o lugar das bibliotecas de células. Como essas ferramentas produziriam <i>leaf cells</i> que serviriam exatamente às necessidades de cada projeto e suportariam uma grande variedade de processos de fabricação, elas resolveriam esses dois problemas da metodologia de projeto de circuitos integrados baseada em células.<p>
+<a NAME="HEADING1-21"></a>
+<br><h2>2  O sistema Agents</h2>
+ O sistema <b>Agents</b> é um conjunto de programas criados para gerar automaticamente <i>full custom</i> layout de <i>leaf cells</i> nas tecnologias CMOS, BICMOS e circuitos mistos digital/analógico. O sistema é formado por quatro módulos: Placer, Router, Database e Broker. Esses módulos podem rodar em paralelo usando o modelo de cliente/servidor.<p>
+ O servidor Placer posiciona componentes em uma célula e usa o Router para interconectá-los; o Router interconecta os circuitos que lhe são enviados; o Database guarda todas as informações que são dependentes do processo de fabricação (regras de projeto), e o Broker oferece os serviços dos outros servidores para os clientes e arbitra a comunicação entre eles.<p>
+ Esses servidores se comunicam através de uma rede de computadores usando o protocolo TCP/IP. O Placer recebe do seu cliente, conectado através da rede, a descrição e a <i>netlist</i> do circuito a ser gerado. O formato EDIF (Electronic Design Interchange Format) <a HREF="#MARKER-9-3">[3]</a> é usado para a descrição do circuito. Depois de gerado o circuito o Placer retorna ao seu cliente, através da mesma rede, o layout do circuito codificado em EDIF.
+<p>
+<a NAME="fig1"><center><img SRC="sbcci96-3.gif" WIDTH="583" HEIGHT="341">
+<p>
+<h4>Figure 1: Diagrama de distribuição dos servidores.</h4></center>
+<p>
+ O layout gerado pelo <b>Agents</b> não usa um <i>grid</i> virtual. Ele é um layout de máscara pronto para ser usado na confecção do circuito integrado. O programa não usa <i>grid</i> virtual nem durante o posicionamento dos componentes, nem durante o roteamento destes, todas as operações com layout são executadas em <i>mask layout</i>. Uma das vantagens do sistema <b>Agents</b> é sua flexibilidade em relação as tecnologias com que ele pode trabalhar, incluindo CMOS, BICMOS e bipolar. Além dessas tecnologias, o programa ainda pode trabalhar com pequenas células analógicas dentro de circuitos digitais.<p>
+<a NAME="HEADING1-26"></a>
+<br><h2>3  Software agents</h2>
+ Na literatura, agentes são definidos como componentes de software que se comunicam com seus pares por meio da troca de mensagens usando uma linguagem de comunicação <a HREF="#MARKER-9-4">[4]</a>. Eles são caracterizados por sua habilidade de comunicar e cooperar entre si. O conceito de agentes como componentes de software está no coração desse sistema, desse conceito vem o próprio nome <b>Agents</b>. Agentes são usados em dois níveis nesse programa: <p>
+<ul>
+<li>A nível de sistema os quatro servidores, que formam o sistema <b>Agents</b>, são grandes agentes que podem rodar em paralelo em diferentes máquinas para resolver cooperativamente um problema envolvendo posicionamento e roteamento de circuitos. Eles foram implementados como um sistema distribuído, usando um modelo cliente/servidor, para aumentar sua flexibilidade, portabilidade e explorar o paralelismo inerente desse modelo.<p>
+<li>A nível de programa, pequenos agentes (<i>agent objects</i>), implementados como objetos na linguagem C++, são usado para as tarefas de controle e coordenação do processo de geração dos circuitos. Ao contrario de sistemas mais tradicionais, vários pequenos sistemas especialistas são usados no lugar de um grande sistema com milhares de regras.<p>
+</ul>
+ Esses pequenos e relativamente simples agentes trabalham em conjunto para realizar tarefas complexas. Eles têm embutido neles uma máquina de inferência <a HREF="#MARKER-9-7">[5]</a>, onde o processo de inferência é efetuado em dois estágios: Primeiro o conjunto de possíveis soluções é pesquisado (usando-se processos heurísticos), procurando-se pela solução de um problema particular. Num segundo estágio, depois de achada essa solução, ações são disparadas para mudar o estado corrente do problema com o intuito de se atingir uma determinada meta. Esse ciclo de busca de uma solução parcial e aplicação de ações continua até que a meta primária do programa seja atingida. <p>
+ A idéia básica, ao se usar vários agentes, é que competência deve emergir do comportamento conjunto de um grande número de agentes relativamente simples.<p>
+ Conjuntamente com esses pequenos agentes, o programa usa o algorítimo genético para a tarefa de otimização do posicionamento dos componentes dos circuitos. O algorítimo genético é baseado na teoria da evolução e pode ser usado para resolver problemas em uma grande gama de situações <a HREF="#MARKER-9-8">[6]</a>. Esse algorítimo é particularmente adequado para resolver problemas complexos de otimização e para aplicações que requeiram estratégias adaptativas para a solução de problemas. Esse algorítimo é usado no servidor Placer para melhorar o posicionamento dos componentes antes do seu roteamento.<p>
+<a NAME="HEADING1-33"></a>
+<br><h2>4  Uma arquitetura de múltiplos agentes</h2>
+ A concepção de agentes podem ser usada para repartir grandes programas em unidades menores. Esses programas podem então cooperar entre se e usar os recursos uns dos outros para realizarem grandes tarefas. Os diversos módulos (ou servidores) em que o sistema <b>Agents</b> foi repartido podem rodar paralelamente em diferentes computadores. Para organizar todos esses agentes, uma solução baseada em um <i>broker</i> foi adotada. Um <i>broker</i> e' aquele que intermedia e negocia um contrato. Em termos de computação, um <i>broker</i> é um intermediário entre clientes (pedindo serviços) e servidores (oferecendo serviços) <a HREF="#MARKER-9-9">[7]</a>.<p>
+ O servidor Broker foi criado para coordenar o acesso de clientes aos servidores Placer, Router e Database. Ele foi escrito em Lisp (Sqheme) e implementa um subconjunto da linguagem KQLM (Knowledge Query and Manipulation Language) <a HREF="#MARKER-9-10">[8]</a>. KQML e' uma linguagem especialmente desenvolvida para comunicações entre agentes <a HREF="#MARKER-9-11">[9]</a>. O Broker realiza várias funções de administração do sistema, liberando os seus clientes para tarefas mais importantes.<p>
+ O servidor Database guarda todas as informações sobre as regras de projeto. Isso é feito para que o sistema <b>Agents</b> seja independente de processos de fabricação. Toda a informação a cerca disso fica armazenada apenas no Database, que a compila de um arquivo descrevendo as regras de projeto. Caso as regras mudem, apenas essa descrição tem de ser alterada.<p>
+<a NAME="HEADING1-37"></a>
+<br><h2>5  Posicionamento de componentes e roteamento.</h2>
+ O agente Placer é quem recebe dos clientes a descrição dos circuitos a serem gerados <a HREF="#MARKER-9-12">[10]</a>. Ele usa três tipos de agentes: <code>Cont</code> coordena todo o processo, <code>Abutted</code> forma colunas e grupos de componentes e <code>Eval</code> usa o algorítimo genético para posicionar os grupos de componentes. Esses agentes trabalham em três fases:<p>
+<ul>
+<li>Os agentes <code>Cont</code> e <code>Abutted</code> geram colunas de fets que tem suas portas conectadas entre si ou de outros componentes que estejam interconectados (transistores bipolares, por exemplo).<p>
+<li>Os agentes <code>Abutted</code> tentam unir colunas de fets para formar grupos. Para se unir, colunas de fets tem de partilhar um certo numero de conexões via dreno ou fonte. A idéia é unir fets que possam ser difundidos numa mesma linha de difusão.<p>
+<li>Grupos de componentes são posicionados pelo agente <code>Eval</code> e o circuito resultante é enviado para um servidor Router para roteamento. Vários circuitos são gerados e enviados para roteamento, até que um deles seja roteado satisfatoriamente.<p>
+</ul>
+ O servidor Placer usa diversos servidores Router ao mesmo tempo, desse modo ele pode gerar vários circuitos, solicitar aos roteadores que os conectem e analisar os resultados a medida que os circuitos são roteados. Essa técnica explorara o processamento paralelo distribuindo a tarefa de rotear circuitos pelos vários computadores ligados à uma rede.<p>
+ O servidor Router tenta rotear os circuitos enviados a ele pelos seus clientes. Esse servidor tenta imitar o modo que projetistas usam um CAD para rotear circuitos. O CAD oferece ao projetistas as ferramentas básicas para manipular e armazenar o projeto, e o projetista fica a cargo de todas as decisões importantes. As funções de CAD ficam a cargo do objeto chamado Design, e as funções de projetistas a cargo dos agentes <code>RouterExpert</code> e <code>Connect</code>.<p>
+ <p>
+<a NAME="fig2"><center><img SRC="sbcci96-4.gif" WIDTH="564" HEIGHT="357">
+<p>
+<h4>Figure 2: Agents Connect testand os possíveis caminhos para uma conexção.</h4></center>
+<p>
+Juntos os agentes <code>RouterExpert</code> e <code>Connect</code> implementam o roteamento usando o <i>maze routing algorithm</i> <a HREF="#MARKER-9-13">[11]</a>. O agente <code>RouterExpert</code> controla uma &quot;população&quot; de agentes Connect e o modo como eles desenvolvem o roteamento. Os agentes <code>Connect</code> analisam e expandem os vértices da arvore de busca gerada pelo <i>maze routing algorithm</i> (<a HREF="#fig2">fig. 2</a>). Os agentes <code>Connect</code> tentam expandir ao máximo a busca para encontrar o fio ideal para fazer uma conexão, o papel do agente <code>RouterExpert</code> é então restringir os agentes <code>Connect</code> de um modo que uma boa, não necessariamente perfeita, solução seja encontrada num período de tempo razoável.<p>
+ A interação desses dois agentes cria os fios que conectam os componentes dos circuitos. Eles conectam todos os nós do circuito e remetem o circuito pronto de volta para seu cliente.<p>
+<a NAME="HEADING1-46"></a>
+<br><h2>6  Conclusão</h2>
+ Dois layouts usando processos de fabricação diferentes foram gerados como exemplos (figuras <a HREF="#fig3">3</a> - <a HREF="#fig5">5</a>). O primeiro usa um processo BICMOS de 2 mm (Orbit Semiconductors Inc. Sunnyvale, California) <a HREF="#MARKER-9-14">[12]</a>. As figuras <a HREF="#fig3">3</a> e <a HREF="#fig4">4</a> mostram o circuito e o layout de uma porta nand BICMOS gerada usando as regras desse processo.<p>
+<p>
+<a NAME="fig3"><center><img SRC="sbcci96-5.gif" WIDTH="440" HEIGHT="359">
+<p>
+<h4>Figure 3: Circuito de ua porta nand BICMOS.</h4></center>
+<p>
+O segundo usa o processo CMOS de 1.5 mm (ES<samp>2</samp> - European Silicon Structures). A figura <a HREF="#fig5">5</a> mostra o layout de um latch tipo D gerado usando as regras do porcesso ES<samp>2</samp>. Ambos os layouts apresentam boa qualidade.<p>
+ Esses dois circuitos foram gerados diversas vezes em configurações variando de um simples IBM-PC rodando Linux (Unix System V) até três workstations rodando SunOs (BSD Unix). O aumento total de velocidade para a porta nand BICMOS foi de 159% e para o latch tipo D CMOS foi de 458%. De uma para três workstations os aumentos de velocidade foram de respectivamente 43% e 381%.<p>
+<p>
+<a NAME="fig4"><center><img SRC="sbcci96-6.gif" WIDTH="580" HEIGHT="435">
+<p>
+<h4>Figure 4: Layout gerado para a porta nend BICMOS.</h4></center>
+<p>
+ Esses resultados demonstram ue o programa <b>Agents</b> pode gerar layouts VLSI de forma flexível e independente de processos de fabricação. A concepção de agentes permite que o programa seja implementado como um sistema distribuído (usando uma arquitetura cliente/servidor). Por isso aumentos de velocidade de execução são possívieis a depender do número de processadores disponíveis para uso do programa.<p>
+ Finalmente o uso de uma arquitetura baseado em clientes e servidores conjuntamente com o uso de uma linguagem padrão de descrição de circuitos (EDIF), permite que o programa seja faclmente integrados com sistemas já existentes.<p>
+<a NAME="HEADING1-52"></a>
+<br><h2>7  Agradecimentos</h2>
+ Esse trabalho contou com suporte financeiro do CNPq - Conselho Nacional de Pesquisa.<p>
+<a NAME="HEADING1-54"></a>
+<br>
+ <p>
+<a NAME="fig5"><center><img SRC="sbcci96-7.gif" WIDTH="584" HEIGHT="436">
+<p>
+<h4>Figure 5: Layout gerado para o latch tipo D CMOS.</h4></center>
+<p>
+<h2>8  Referências</h2>
+<dl COMPACT>
+<dt>[1]<dd>  <a NAME="MARKER-9-2"></a>Y-C. Hsieh, C-Y. Hwamg, Y-L. Lin, and Y-C. Hsu, &quot;LiB: A CMOS cell compiler,&quot; <i>IEEE Transactions on CAD,</i> Vol.10, No. 8, August 1991, pp. 994-1005.<p>
+<dt>[2]<dd>  D.A. Moreira and L.T. Walczowski, &quot;A Leaf-Cell Generator for Silicon Compilers&quot;, ACM OOPS Messenger, Vol. 6, No. 3, July 1995, pp. 50-51.<p>
+<dt>[3]<dd>  <i><a NAME="MARKER-9-3"></a>EDIF Specification EDIF Electronic Design Interchange Format Version 0 9 5,</i> EDIF Steering Committee, November 1984.<p>
+<dt>[4]<dd>  <a NAME="MARKER-9-4"></a><a NAME="MARKER-9-5"></a>M.R. Genesereth and S.P. Ketchpel, &quot;Software Agents&quot;, <i>Communications of the ACM,</i> Vol. 37, No. 7, July 1994, pp. 48-53, 147.<p>
+<dt>[5]<dd>  <a NAME="MARKER-9-6"></a><a NAME="MARKER-9-7"></a>A. Newell, <i>Unified Theories of Cognition,</i> Harvard University Press, Cambridge Massachusetts, 1990.<p>
+<dt>[6]<dd>  <a NAME="MARKER-9-8"></a>J.L. Ribeiro Filho, P.C. Treleaven and C. Alippi, &quot;Genetic-Algorithm Programming Environments&quot;, <i>Computer,</i> vol. 27, no. 6, June 1994, pp. 28-43.<p>
+<dt>[7]<dd>  <a NAME="MARKER-9-9"></a>M.W. Storm, <i>ObjectBroker White Paper,</i> Digital Equipment Corporation, December 1994.<p>
+<dt>[8]<dd>  <a NAME="MARKER-9-10"></a>T. Finin, J. Weber et al., <i>Specification of the KQML Agent-Communication Language,</i> The DARPA Knowledge Sharing Initiative External Interfaces Working Group, February 1994.<p>
+<dt>[9]<dd>  <a NAME="MARKER-9-11"></a>R.V. Guha and D.B. Lenat, &quot;Enabling Agents to Work Together,&quot; <i>Communications of the ACM,</i> Vol. 37, No. 7, July 1994, pp. 127-142.<p>
+<dt>[10]<dd>  <a NAME="MARKER-9-12"></a>D.A. Moreira and L.T. Walczowski, &quot;Automated Placement for a Leaf Cell Generator&quot;,<i> Proc. of the IEEE International Symposium on Circuits and Systems,</i> June 1994, vol. 1, pp 117-120.<p>
+<dt>[11]<dd>  <a NAME="MARKER-9-13"></a>M.H. Arnold and W.S. Scott, &quot;An Interactive Maze Router with Hints&quot;, <i>Proc. of the 25th ACM/IEEE Design Automation Conference,</i> 1988 IEEE Press, pp. 672-676.<p>
+<dt>[12]<dd>  <a NAME="MARKER-9-14"></a>D.A. Pucknell and K. Eshraghian, <i>Basic VLSI Design,</i> Third Edition, Prentice Hall, London, 1994, color plate 8(a).<p>
+</dl>
+
+</body>
+</html> 

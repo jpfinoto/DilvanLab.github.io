@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 30: AWT Graphics</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">AWT
+Graphics</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<UL>
+<UL>
+<H3>A Shape Sampler:</H3>
+</UL>
+
+<CENTER><P><IMG SRC="gifs/GUI33.gif" HEIGHT=93 WIDTH=543></P></CENTER>
+
+<UL>
+<UL>
+<H4>Code:</H4>
+</UL>
+</UL>
+</UL>
+
+<UL>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>Color bg = getBackground();
+Color fg = getForeground();
+. . .
+// drawLine() 
+g.drawLine(x, y+rectHeight-1, x + rectWidth, y); // x1, y1, x2, y2
+. . .
+// drawRect() 
+g.drawRect(x, y, rectWidth, rectHeight); // x, y, width, height
+. . .
+// draw3DRect() 
+g.setColor(bg);
+g.draw3DRect(x, y, rectWidth, rectHeight, true);
+g.setColor(fg);
+. . .
+// drawArc() 
+g.drawArc(x, y, rectWidth, rectHeight, 90, 135); // x, y, w, h
+. . .
+// drawPolygon() 
+Polygon polygon = new Polygon();
+polygon.addPoint(x, y);
+polygon.addPoint(x+rectWidth, y+rectHeight);
+polygon.addPoint(x, y+rectHeight);
+polygon.addPoint(x+rectWidth, y);
+//polygon.addPoint(x, y); //don't complete; fill will, draw won't
+g.drawPolygon(polygon); 
+. . .
+// fillRect() 
+g.fillRect(x, y, rectWidth, rectHeight); // x, y, width, height
+. . .
+// fill3DRect() 
+g.setColor(bg);
+g.fill3DRect(x, y, rectWidth, rectHeight, true);
+g.setColor(fg);
+. . .
+// fillArc() 
+g.fillArc(x, y, rectWidth, rectHeight, 90, 135); // x, y, w, h
+. . .
+// fillPolygon() 
+Polygon filledPolygon = new Polygon();
+filledPolygon.addPoint(x, y);
+filledPolygon.addPoint(x+rectWidth, y+rectHeight);
+filledPolygon.addPoint(x, y+rectHeight);
+filledPolygon.addPoint(x+rectWidth, y);
+//filledPolygon.addPoint(x, y);
+g.fillPolygon(filledPolygon); 
+
+
+
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld31.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld31.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

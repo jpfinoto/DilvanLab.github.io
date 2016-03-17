@@ -1,0 +1,95 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>1.&nbsp;What are exceptions?</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Distributed Programming using Java"><link rel="up" href="exceptions.html" title="Chapter&nbsp;4.&nbsp;Exceptions"><link rel="prev" href="exceptions.html" title="Chapter&nbsp;4.&nbsp;Exceptions"><link rel="next" href="exceptions_throwing_exceptions.html" title="2.&nbsp;Throwing exceptions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.&nbsp;What are exceptions?</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="exceptions.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;4.&nbsp;Exceptions</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="exceptions_throwing_exceptions.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="exceptions_what_are_exceptions"></a>1.&nbsp;<a href="http://java.sun.com/docs/books/tutorial/essential/exceptions/definition.html" target="_top">What are exceptions</a>?</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2096"></a>1.1.&nbsp;Definition</h3></div></div></div><p>An exception is an event that occurs during the execution of a program that disrupts the normal flow of instructions.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2101"></a>1.2.&nbsp;Throwing an exception</h3></div></div></div><p>It happens when an error occurs the method creates an exception object and hands it off to the runtime system.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2106"></a>1.3.&nbsp;The exception object</h3></div></div></div><p>The exception object contains information about the exception, including its type and the state of the program when the error occurred.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2111"></a>1.4.&nbsp;Catching an exception</h3></div></div></div><p>It happens when the exception object bubbles up through the call stack until an appropriate exception handler is found. The handler catches the exception.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2116"></a>1.5.&nbsp;Advantages</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2119"></a>1.5.1.&nbsp;Advantage 1: Separating Error Handling Code from "Regular" Code</h4></div></div></div><div class="table"><a name="d0e2122"></a><p class="title"><b>Table&nbsp;4.1.&nbsp;Advantage 1</b></p><table summary="Advantage 1" border="0"><colgroup><col width="50%"><col width="50%"></colgroup><tbody><tr><td><pre class="programlisting">errorCodeType readFile {
+    initialize errorCode = 0;
+    open the file;
+    if (theFileIsOpen) {
+        determine the length of the file;
+        if (gotTheFileLength) {
+            allocate that much memory;
+            if (gotEnoughMemory) {
+                read the file into memory;
+                if (readFailed) {
+                    errorCode = -1;
+                }
+            } else {
+                errorCode = -2;
+            }
+        } else {
+            errorCode = -3;
+        }
+        close the file;
+...  
+}</pre></td><td><pre class="programlisting">readFile {
+    try {
+        open the file;
+        determine its size;
+        allocate that much memory;
+        read the file into memory;
+        close the file;
+    } catch (fileOpenFailed) {
+        doSomething;
+    } catch (sizeDeterminationFailed) {
+        doSomething;
+    } catch (memoryAllocationFailed) {
+        doSomething;
+    } catch (readFailed) {
+        doSomething;
+    } catch (fileCloseFailed) {
+        doSomething;
+    }
+
+
+}</pre></td></tr></tbody></table></div><p><a href="../audio/Exceptions1.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2138"></a>1.5.2.&nbsp;Advantage 2: Propagating Errors Up the Call Stack</h4></div></div></div><div class="table"><a name="d0e2141"></a><p class="title"><b>Table&nbsp;4.2.&nbsp;Advantage 2</b></p><table summary="Advantage 2" border="1"><colgroup><col width="50%"><col width="50%"></colgroup><tbody><tr><td><pre class="programlisting">method1 {
+    errorCodeType error;
+    error = call method2;
+    if (error)
+        doErrorProcessing;
+    else
+        proceed;
+}
+errorCodeType method2 {
+    errorCodeType error;
+    error = call method3;
+    if (error)
+        return error;
+    else
+        proceed;
+}
+errorCodeType method3 {
+    errorCodeType error;
+    error = call readFile;
+    if (error)
+        return error;
+    else
+        proceed;
+}</pre></td><td><pre class="programlisting">method1 {
+    try {
+        call method2;
+    } catch (exception) {
+        doErrorProcessing;
+    }
+}
+method2 throws exception {
+    call method3;
+}
+method3 throws exception {
+    call readFile;
+}
+
+
+
+
+
+
+
+
+
+
+
+</pre></td></tr></tbody></table></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e2153"></a>1.5.3.&nbsp;Advantage 3: Grouping Error Types and Error Differentiation</h4></div></div></div><div class="figure"><a name="d0e2156"></a><p class="title"><b>Figure&nbsp;4.1.&nbsp;Advantage 3</b></p><div class="mediaobject"><img src="resources/Exceptions1.gif" width="406" height="197.00000000000003" alt="Advantage 3"></div></div><pre class="programlisting">catch (ArrayException e) {
+    . . .
+}
+catch (Exception e) {
+    . . .
+}</pre><p><a href="../audio/Exceptions2.asf" target="_top"><img src="resources/asf.gif">Audio in Portuguese</a></p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="exceptions.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="exceptions.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="exceptions_throwing_exceptions.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;4.&nbsp;Exceptions&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;2.&nbsp;Throwing exceptions</td></tr></table></div></body></html>

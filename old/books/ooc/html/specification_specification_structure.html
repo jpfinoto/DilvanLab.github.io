@@ -1,0 +1,30 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Specification Structure</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="specification.html" title="Chapter&nbsp;17.&nbsp;Specification"><link rel="prev" href="specification_behavioral_equivalence.html" title="2.&nbsp;Behavioral Equivalence"><link rel="next" href="specification_declarative_specification.html" title="4.&nbsp;Declarative Specification"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Specification Structure</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="specification_behavioral_equivalence.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;17.&nbsp;Specification</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="specification_declarative_specification.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="specification.html">Specification</a></span> &gt; <span class="breadcrumb-node">Specification Structure</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="specification_specification_structure"></a>3.&nbsp;Specification Structure</h2></div></div></div><p>A specification of a method consists of several clauses:</p><div class="itemizedlist"><ul type="disc"><li><p>a precondition, indicated by the keyword
+          <span class="emphasis"><em>requires</em></span>;</p></li><li><p>a postcondition, indicated by the keyword
+          <span class="emphasis"><em>effects</em></span>;</p></li><li><p>a frame condition, indicated by the keyword
+          <span class="emphasis"><em>modifies</em></span>.</p></li></ul></div><p>The <span class="bold"><strong>precondition</strong></span> is an obligation
+      on the client (i.e., the caller of the method). It&#8217;s a condition over
+      the state in which the method is invoked.</p><p>If the precondition does not hold, the implementation of the
+      method is free to do anything.</p><p>The <span class="bold"><strong>postcondition</strong></span> is an
+      obligation on the implementor of the method. If the precondition holds
+      for the invoking state, the method is obliged to obey the postcondition
+      by returning appropriate values, throwing specified exceptions,
+      etc.</p><p>The <span class="bold"><strong>frame</strong></span> condition identifies
+      which objects may be modified. If we say modifies x, this means that the
+      object x, which is presumed to be mutable, may be modified, but no other
+      object may be.</p><p>Omitted clauses:</p><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>precondition:</strong></span> That means that
+          every invoking state satisfies it, so there is no obligation on the
+          caller. In this case, the method is said to be total</p></li><li><p><span class="bold"><strong>postcondition:</strong></span> It is never
+          omitted.</p></li><li><p><span class="bold"><strong>frame:</strong></span> The default is
+          modifies nothing. In other words, the method makes no changes to any
+          object.</p></li></ul></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="specification_behavioral_equivalence.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="specification.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="specification_declarative_specification.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Behavioral Equivalence&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Declarative Specification</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

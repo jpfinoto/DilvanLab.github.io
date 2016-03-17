@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 11: Packages</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Packages</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/packages.html">Packages</A></H2>
+
+<BLOCKQUOTE>
+<P>Groups of related classes bundled into a package. Packages can also
+contain interface definitions.</P>
+
+<H4>Advantages:</H4>
+
+<UL>
+<LI>It makes objects easier to find and use.</LI>
+
+<LI>It avoids naming conflicts.</LI>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/createpkgs.html">Roll
+Your Own Packages</A></H2>
+
+<BLOCKQUOTE>
+<P><FONT SIZE=+1>Definition</FONT>:</P>
+
+<BLOCKQUOTE>
+<PRE>package graphics;
+interface Draggable { . . . }
+class Circle { . . . }
+class Rectangle { . . . }</PRE>
+</BLOCKQUOTE>
+
+<P><TT>T</TT>he .class files generated <FONT COLOR="#FF0000"><FONT SIZE=+1>must
+be</FONT></FONT> placed in a directory named <B><TT><FONT SIZE=+1>graphics
+</FONT></TT></B>somewhere in your CLASSPATH.</P>
+
+<P><B><FONT SIZE=+1>CLASSPATH</FONT></B>: A list of directories that indicate
+where on the file system you've installed various compiled Java classes
+and interfaces.</P>
+
+<P>Java searches your CLASSPATH for a directory whose name matches the
+package name of which the class is a member.</P>
+
+<P><B><FONT SIZE=+1>Note:</FONT></B> If you don't specify a package, your
+classes and interfaces become members of the default package, which has
+no name.</P>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/usepkgs.html">Using
+the Classes and Interfaces from a Package</A></H2>
+
+<BLOCKQUOTE>
+<P>To use the classes and interfaces defined in one package from within
+another package, you need to <I>import</I> the package:</P>
+
+<BLOCKQUOTE>
+<PRE>import graphics.Circle;
+import graphics.*;</PRE>
+</BLOCKQUOTE>
+
+<P>Also, the classes and interfaces must be declared public.<BR>
+This pakcages are always automatically imported:</P>
+
+<UL>
+<LI>The default package (a package with no name)</LI>
+
+<LI>The java.lang package.</LI>
+</UL>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="OOPjava.sld12.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="OOPjava.sld12.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

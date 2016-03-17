@@ -1,0 +1,25 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Chat Server</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.67.0"><link rel="start" href="index.html" title="Operating Systems"><link rel="up" href="group_assignments.html" title="Chapter&nbsp;11.&nbsp;Group Assignments - Homeworks"><link rel="prev" href="group_assignments_sql_server.html" title="3.&nbsp;SQL Server"><link rel="next" href="group_assignments_bus_reservation_server.html" title="5.&nbsp;Bus Reservation Server"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Chat Server</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="group_assignments_sql_server.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;11.&nbsp;Group Assignments - Homeworks</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="group_assignments_bus_reservation_server.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="group_assignments_chat_server"></a>4.&nbsp;Chat Server</h2></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Chat Server</p><p>The program should implement a chat server that is able to attend multiple clients at the same time. It can be implemented by either using a dedicated client or using the </p><pre class="programlisting">telnet</pre><p> program. It should be able to have at least 10 rooms for conversation. The clients should be able to create new rooms.</p><pre class="programlisting">
+Commands:
+
+list                        List the names of all rooms.
+nickname &lt;name&gt;             Gives a name for the user.
+join &lt;room name&gt;            Joins a room.
+\                           Leaves a room (only command possible inside a room).
+
+Events that should be broadcasted for all room members:
+
+New user enters room.
+Whatever a user types.
+User leaves room.
+
+Examples:
+
+User hotair enters room pingpong.
+User niceperson: Welcome hotair !
+User hotair: Hi.
+...
+User hotair: I don't like you, niceperson.
+User hotair leaves room pingpong.
+          </pre><p><span class="bold"><strong>NOTE:</strong></span> The program must use shared memory and threads in its implementation (take care to protected shared memory areas with mutex and/or semaphores). The program does not need to keep information on files, it does not have to be persistent.</p></li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="group_assignments_sql_server.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="group_assignments.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="group_assignments_bus_reservation_server.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;SQL Server&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;5.&nbsp;Bus Reservation Server</td></tr></table></div></body></html>

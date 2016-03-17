@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 10: Interfaces</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Interfaces</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/usinginterface.html">Implementing
+an Interface</A></H2>
+
+<BLOCKQUOTE>
+<P>To use an interface, you write a class that <B><FONT COLOR="#FF0000"><FONT SIZE=+1>implements
+</FONT></FONT></B>the interface.</P>
+
+<P><B>Definition:</B> To implement an interface a class has to provides
+a method implementation for all of the methods declared within the interface.</P>
+
+<PRE>class FIFOQueue <B>implements Collection</B> {
+&nbsp;&nbsp;&nbsp;. . .
+&nbsp;&nbsp; void add(Object obj) { . . . }
+&nbsp;&nbsp;&nbsp;. . .
+}</PRE>
+</BLOCKQUOTE>
+
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/javaOO/interfaceAsType.html">Using
+an Interface as a Type</A></H2>
+
+<BLOCKQUOTE>
+<P>An interface is a new reference <B><FONT COLOR="#FF0000">data type</FONT></B>.</P>
+
+<P>You can use interface names anywhere you'd use any other type name:
+variable declarations, method parameters and so on:</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">interface CellAble {
+&nbsp;&nbsp; void draw();
+&nbsp;&nbsp; void toString();
+&nbsp;&nbsp; void toFloat();
+}</FONT>
+</PRE>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">class Row {
+&nbsp;&nbsp;&nbsp;. . .
+&nbsp;&nbsp;&nbsp;private CellAble[] contents;
+&nbsp;&nbsp; . . .
+&nbsp;&nbsp; void setObjectAt(CellAble ca, int index) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. . .
+&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp; . . .
+}</FONT>
+</PRE>
+</BLOCKQUOTE>
+
+<P><BR>
+<BR>
+<B><FONT COLOR="#FF0000">Any </FONT></B>object that implemented the CellAble
+interface can be contained in the contents array and can be passed into
+the setObjectAt() method</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P><BR>
+
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="OOPjava.sld11.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="OOPjava.sld11.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

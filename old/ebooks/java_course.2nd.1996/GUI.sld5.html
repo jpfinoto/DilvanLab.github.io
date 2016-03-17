@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 5: Events</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Events</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">The
+Event Object</FONT></H2>
+</UL>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<P><BR>
+Each event results in the creation of an Event object. An Event object
+includes the following information: </P>
+
+<BLOCKQUOTE>
+<LI>The type of the event. </LI>
+
+<LI>The object that was the &quot;target&quot; of the event.</LI>
+
+<LI>A timestamp indicating when the event occurred. </LI>
+
+<LI>The (x,y) location where the event occurred. </LI>
+
+<LI>The key that was pressed (for keyboard events). </LI>
+
+<LI>An arbitrary argument associated with the Event. </LI>
+
+<LI>The state of modifier keys, such as Shift and Control, when the event
+occurred. </LI>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Implementing
+an Event Handler</FONT></H2>
+
+<BLOCKQUOTE>
+<P><BR>
+The Component class defines many event-handling methods, and you can override
+any of them.</P>
+
+<BLOCKQUOTE>
+<LI><TT>action()</TT> (Event.ACTION_EVENT) </LI>
+
+<LI><TT>mouseEnter()</TT> (Event.MOUSE_ENTER) </LI>
+
+<LI><TT>mouseExit()</TT> (Event.MOUSE_EXIT) </LI>
+
+<LI><TT>mouseMove()</TT> (Event.MOUSE_MOVE) </LI>
+
+<LI><TT>mouseDown()</TT> (Event.MOUSE_DOWN) </LI>
+
+<LI><TT>mouseDrag()</TT> (Event.MOUSE_DRAG) </LI>
+
+<LI><TT>mouseUp()</TT> (Event.MOUSE_UP) </LI>
+
+<LI><TT>keyDown()</TT> (Event.KEY_PRESS or Event.KEY_ACTION) </LI>
+
+<LI><TT>keyUp()</TT> (Event.KEY_RELEASE or Event.KEY_ACTION_RELEASE) </LI>
+
+<LI><TT>gotFocus()</TT> (Event.GOT_FOCUS) </LI>
+
+<LI><TT>lostFocus()</TT> (Event.LOST_FOCUS) </LI>
+
+<LI><TT>handleEvent()</TT> (all event types) </LI>
+</BLOCKQUOTE>
+
+<P><BR>
+<B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note: </FONT></FONT></B></P>
+
+<BLOCKQUOTE>
+<P>Only basic control components -- Button, Checkbox, Choice, List, MenuItem,
+and TextField objects -- produce <TT>action() </TT>events. They do so when
+the user indicates somehow that the control should perform an action. </P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<DD><BR>
+</DD>
+</BLOCKQUOTE>
+
+<P>
+<HR></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld6.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld6.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

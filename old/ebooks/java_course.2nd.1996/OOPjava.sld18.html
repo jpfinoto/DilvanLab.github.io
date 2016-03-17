@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>OOP in Java Slide 18: Input/Output Streams</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>OOP in Java:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Input/Output Streams</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/io/overview.html">Simple
+Input and Output Streams</A></H2>
+</UL>
+
+<UL>
+<UL>
+<P><B><FONT COLOR="#800080">FileInputStream and FileOutputStream<BR>
+</FONT></B>Read data from or write data to a file on the native file system.</P>
+
+<P><B><FONT COLOR="#800080">PipedInputStream and PipedOutputStream<BR>
+</FONT></B>Implement the input and output components of a pipe.</P>
+
+<P><B><FONT COLOR="#800080">ByteArrayInputStream and ByteArrayOutputStream<BR>
+</FONT></B>Read data from or write data to a byte array in memory.</P>
+
+<P><B><FONT COLOR="#800080">SequenceInputStream<BR>
+</FONT></B>Concatenate multiple input streams into one input stream.</P>
+
+<P><B><FONT COLOR="#800080">StringBufferInputStream<BR>
+</FONT></B>Allow programs to read from a StringBuffer as if it were an
+input stream.</P>
+
+<H4><FONT COLOR="#800080"><A HREF="tutorial/java/io/filtered.html">Filtered
+Streams</A></FONT></H4>
+
+<BLOCKQUOTE>
+<P>To use a filtered input (output) stream, you attach the filtered stream
+to another input (output) stream:</P>
+
+<PRE>DataInputStream dis = new DataInputStream(System.in.read());
+String input;
+while ((input = dis.readLine()) != null) {
+  . . . // do something interesting here }</PRE>
+
+<P><B><FONT COLOR="#004040">DataInputStream and DataOutputStream<BR>
+BufferedInputStream and BufferedOutputStream<BR>
+LineNumberInputStream<BR>
+PushbackInputStream<BR>
+Byte pushback buffer<BR>
+PrintStream</FONT></B><BR>
+</P>
+</BLOCKQUOTE>
+</UL>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/io/streampairs.html">Using
+Input and Output Streams</A></H2>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File inputFile = new File(&quot;farrago.txt&quot;);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; File outputFile = new File(&quot;outagain.txt&quot;);</PRE>
+
+<UL>
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis = new FileInputStream(inputFile);
+ &nbsp;&nbsp;&nbsp;FileOutputStream fos = new FileOutputStream(outputFile);</PRE>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;while ((c = fis.read()) != -1) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fos.write(c); }
+&nbsp;&nbsp;&nbsp;&nbsp;fis.close();
+&nbsp;&nbsp;&nbsp; fos.close();</PRE>
+</UL>
+</UL>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Exceptions.sld1.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Exceptions.sld1.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

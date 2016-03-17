@@ -1,0 +1,77 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>3.&nbsp;Looping</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Informatics and Computing"><link rel="up" href="control_structures.html" title="Chapter&nbsp;3.&nbsp;Control Structures"><link rel="prev" href="control_structures_conditional_exercises.html" title="2.&nbsp;Conditionals Exercises"><link rel="next" href="control_structures_looping_exercises.html" title="4.&nbsp;Looping Exercises"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">3.&nbsp;Looping</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="control_structures_conditional_exercises.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;3.&nbsp;Control Structures</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="control_structures_looping_exercises.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="control_structures_looping"></a>3.&nbsp;Looping</h2></div></div></div><p>This chapter will look at C's mechanisms for controlling looping and iteration. These mechanisms look familiar and indeed will operate in standard fashion most of the time.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e420"></a>3.1.&nbsp;The <code class="code">for</code> statement</h3></div></div></div><p>The C <code class="code">for</code> statement has the following form:</p><pre class="programlisting">for  (expression<sub>1</sub>; expression<sub>2</sub>; expression<sub>3</sub>)
+   <span class="emphasis"><em>statement</em></span>;
+   or {<span class="emphasis"><em>block of statements</em></span>}</pre><p>expression<sub>1</sub> initialises; expression<sub>2</sub> is the terminate test; expression<sub>3</sub> is the modifier (which may be more than just simple increment);</p><p>NOTE: C basically treats <code class="code">for</code> statements as <code class="code">while</code> type loops</p><p>For example:</p><pre class="programlisting">int x;
+
+main() {
+   for (x=3; x&gt;0; x--) {
+      printf("x=%d\n",x);
+   }
+}
+
+...outputs:
+
+x=3
+x=2
+x=1
+
+...to the screen</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e471"></a>3.2.&nbsp;The <code class="code">while</code> statement</h3></div></div></div><p>The C <code class="code">while</code> statement has the following form:</p><pre class="programlisting">while (expression)
+   <span class="emphasis"><em>statement</em></span></pre><p>It will execute the <span class="emphasis"><em>statement</em></span> while expression is true. For example:</p><pre class="programlisting">int x=3;
+
+main() {
+   while (x&gt;0) {
+      printf("x=%d\n",x);
+      x--;
+   }
+}
+
+...outputs:
+
+  x=3
+  x=2
+  x=1
+
+...to the screen.</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e493"></a>3.3.&nbsp;The <code class="code">do-while</code> statement</h3></div></div></div><p>The C <code class="code">do-while</code> statement has the following form:</p><pre class="programlisting">do
+   <span class="emphasis"><em>statement</em></span>
+while (expression) </pre><p>It will execute the <span class="emphasis"><em>statement</em></span> while expression is true, <span class="emphasis"><em>statement</em></span> will be always executed at least once. For example:</p><pre class="programlisting">int x=3;
+
+main() {
+   do {
+      printf("x=%d\n",x);
+      x--;
+   } while (x&gt;0)
+}
+
+...outputs:
+
+  x=3
+  x=2
+  x=1
+
+...to the screen.</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e519"></a>3.4.&nbsp;<code class="code">break</code> and <code class="code">continue</code> statements</h3></div></div></div><p>C provides two commands to control how we loop:</p><div class="itemizedlist"><ul type="disc"><li><p><code class="code">break</code> -- exit form loop or switch.</p></li><li><p><code class="code">continue</code> -- skip 1 iteration of loop.</p></li></ul></div><p>Consider the following example where we read in integer values and process them according to the following conditions. If the value we have read is negative, we wish to print an error message and abandon the loop. If the value read is great than 100, we wish to ignore it and continue to the next value in the data. If the value is zero, we wish to terminate the loop.</p><pre class="programlisting">int value;
+
+main() {
+   scanf("%d", &amp;value);
+   while (value != 0) { 
+
+      if (value &lt; 0) {
+         printf("Illegal value\n");
+         break;
+         /* Abandon the loop */
+      }
+
+      if (value &gt; 100) {
+         printf("Invalid value\n");
+         scanf("%d", &amp;value)
+         continue;
+         /* Skip to start loop again */
+      }
+
+      /* Process the value read */
+      /* guaranteed between 1 and 100 */
+      ....;
+
+      scanf("%d", &amp;value);
+   } /* end while if value &lt;= 0 */
+}</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="control_structures_conditional_exercises.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="control_structures.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="control_structures_looping_exercises.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">2.&nbsp;Conditionals Exercises&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;4.&nbsp;Looping Exercises</td></tr></table></div></body></html>

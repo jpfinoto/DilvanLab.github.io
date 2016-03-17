@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>The Java Language Slide 3: Variables and Data Types</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (X11; I; SunOS 5.5 sun4m) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>The Java Language:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Variables and Data Types</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<BR>
+<A HREF="tutorial/java/nutsandbolts/vars.html">Variable
+Names</A></H2>
+
+<UL>
+<P>In Java, a variable name:</P>
+
+<UL>
+<LI>must be a legal Java identifier comprised of a series of Unicode characters.
+This is important so that programmers can write code that is meaningful
+in their native languages.</LI>
+
+<LI>must not be the same as a keyword or a boolean literal (<TT>true</TT>
+or <TT>false</TT>)</LI>
+
+<LI>must not have the same name as another variable whose declaration appears
+in the same scope</LI>
+</UL>
+</UL>
+
+<H2><A HREF="tutorial/java/nutsandbolts/vars.html">Scope</A></H2>
+
+<UL>
+<P>A variable's scope is the block of code within which the variable is
+accessible. Also, a variable's scope determines when the variable is created
+and destroyed. Scope places a variable into one of these four categories:</P>
+
+<UL>
+<LI>member variable</LI>
+
+<LI>local variable</LI>
+
+<LI>method parameter</LI>
+
+<LI>exception handler parameter</LI>
+</UL>
+</UL>
+
+<H2><A HREF="tutorial/java/nutsandbolts/vars.html">Variable
+Initialization</A></H2>
+
+<UL>
+<P>Local variables and member variables can be initialized when they are
+declared.:</P>
+
+<BLOCKQUOTE>
+<PRE>int count <B>= 0</B>;</PRE>
+</BLOCKQUOTE>
+
+<H3>Reference type Initialization</H3>
+
+<UL>
+<P>A reference type when is created its pointer is initialized to NULL.</P>
+
+<P>All of them must be initialized before use:</P>
+
+<UL>
+<PRE>String name= new String(&quot;Java&quot;);</PRE>
+
+<P>or</P>
+
+<PRE>String name;
+name= new String(&quot;Java&quot;);</PRE>
+</UL>
+</UL>
+
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/noc++.gif" HSPACE=5 HEIGHT=57 WIDTH=59 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H2>Objects in Java have to be always explicit created using the comand
+new.</H2>
+</TD>
+</TR>
+</TABLE>
+</UL>
+
+<H3>
+<HR></H3>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="javalang.sld4.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="javalang.sld4.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

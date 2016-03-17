@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>Resultados do Reconhecimento de Voz</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33FF33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF" size="4"><b><font size="5">Results</font></b></font> 
+</p>
+<p><font color="#FFFFFF" size="4">As mentioned, the <a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank">Result</a> 
+  objects are created as answers to the recognition performed by the SDK Java. They are responsible for generating
+recognition result events 
+  or <a href="../../ref/api/javax/speech/recognition/ResultEvent.html" target="_blank">ResultEvent</a>s 
+  that might be intercepted by <a href="../../ref/api/javax/speech/recognition/ResultListener.html" target="_blank">ResultListeners</a>. 
+  These events are implemented in a way that it is possible for the application 
+  to have access to the object that generated it (following the Java standard) 
+  through the </font><font color="#33FF33" size="4">getSource</font><font color="#FFFFFF" size="4">* method. In this context we will have a Result object, or 
+  a descendent, returned.</font></p>
+<p><font size="2" color="#FFFFFF"><b>* the getSource method belongs to the java.util.EventObject 
+  class interface of which ResultEvent inherits.</b></font></p>
+<p><font size="4" color="#FFFFFF">The possible Result object states are:</font></p>
+<ul>
+  <li><font color="#FFFFFF" size="4">FINALIZED: </font> 
+    <ul>
+      <li><font color="#FFFFFF" size="4">ACCEPTED: the audio item was understood 
+        and an association with one of the active grammars was determined.</font></li>
+      <li><font color="#FFFFFF" size="4">REJECTED: the audio item was understood, 
+        but the recognizer consider a high possibility of a mistake having been 
+        done. That means, the recognizer was able to understand (to associate 
+        a string, or token, meaning the heard sound) what was said, but there
+        were not enough information to be sure of the recognizing, due to a poor 
+        sound quality, a bad pronounce or even to hardware problems. These results 
+        must be carefully treated by the application.</font></li>
+    </ul>
+  </li>
+  <li><font color="#FFFFFF" size="4">UNFINALIZED: the audio item was understood 
+    and it is been processed, but it was not possible yet to determine an association 
+    with one of the active grammars.</font></li>
+</ul>
+<p><font color="#FFFFFF" size="4">Accept or Reject: rejection of a result indicates 
+  that the recognizer is not confident that it has accurately recognized what 
+  a user said. Rejection can be controlled through the RecognizerProperties interface 
+  with the </font><font color="#33FF33" size="4"> setConfidenceLevel </font><font color="#FFFFFF" size="4"> method. Increasing the confidence level requires 
+  the recognizer to have greater confident to accept a result, so more results 
+  are likely to be rejected. </font></p>
+<p><font color="#FFFFFF" size="4">We have here an illustration of the
+recognition 
+  cycle and some of the fired events:</font></p>
+<p align="center"><img src="../../imagens/ilustracoes/resultados/reconhecedor_cicle.gif" width="900" height="750"> 
+</p>
+<p align="center"><b>Figure 8 - Recognition cycle and some of the fired events.</b></p>
+<p><font size="4" color="#FFFFFF">Observing the figure we can establish the relationship 
+  between the Result object states and the events (ResultEvent) that the listeners 
+  (ResultListeners) are able to intercept.</font></p>
+<ul>
+  <li><font color="#FFFFFF" size="4">A RESULT_CREATED event creates a Result object. 
+    A new result is started in the UNFINALIZED state.</font>
+  <li><font color="#FFFFFF" size="4"> UNFINALIZED state: RESULT_UPDATED events 
+    indicate a change in finalized and/or unfinalized tokens; a GRAMMAR_FINALIZED 
+    event indicates that the Grammar matched by this result has been identified.</font>
+  <li><font color="#FFFFFF" size="4"> The RESULT_ACCEPTED event finalizes a result 
+    by indicating a change in state from UNFINALIZED to ACCEPTED.</font>
+  <li><font color="#FFFFFF" size="4">The RESULT_REJECTED event finalizes a result 
+    by indicating a change in state from UNFINALIZED to REJECTED.</font>
+  <li><font color="#FFFFFF" size="4"> In the finalized states - ACCEPTED and REJECTED 
+    - the AUDIO_RELEASED and TRAINING_INFO_RELEASED events may also be issued.</font><br>
+    <br>
+  <li> <font size="4" color="#FFFFFF">The Result objects are:</font>
+</ul>
+<ul>
+  <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank">Result</a>: 
+    the most primitive form of a created result. This form is used until the
+    recognition 
+    cycle is finished, before all the information relating to a certain audio 
+    entrance is available. The substates might be FINALIZED or UNFINALIZED.</font></li>
+  <li><font size="4" color="#FFFFFF"> <a href="../../ref/api/javax/speech/recognition/FinalResult.html" target="_blank">FinalResult</a>:
+    it is created when we have all the information relating to a certain audio 
+    entrance, that is, it is a complete result able to supply all the possible 
+    data as a consequence of a complete recognition. Its substates being ACCEPTED 
+    or REJECTED (always FINALIZED). </font></li>
+</ul>
+<p><font size="4" color="#FFFFFF">The information available in a result is determined 
+  by the type of grammar to which it was associated. Therefore, completing the 
+  model, the FinalResult interface is inherited by two other interfaces exclusively 
+  implemented by the recognizer for a certain finalized result, they are:</font></p>
+<ul>
+  <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/FinalRuleResult.html" target="_blank">FinalRuleResult</a>:
+    it is the final result in consequence of an audio entrance associated to a 
+    <a href="../../ref/api/javax/speech/recognition/RuleGrammar.html" target="_blank">RuleGrammar</a>, 
+    being the substates ACCEPTED or REJECTED (FINALIZED). </font></li>
+  <li><a href="../../ref/api/javax/speech/recognition/FinalDictationResult.html" target="_blank"><font size="4" color="#33FF33">FinalDictationResult</font></a><font size="4" color="#FFFFFF">:
+    it is the final result in consequence of an audio entrance associated to a 
+    <a href="../../ref/api/javax/speech/recognition/DictationGrammar.html" target="_blank">DictationGrammar</a>, 
+    being the substates ACCEPTED or REJECTED (FINALIZED). </font></li>
+</ul>
+<p><font size="4" color="#FFFFFF">This schema is useful on the following situations:</font></p>
+<blockquote>
+  <p><font size="4" color="#FFFFFF">1) Makes it possible to have access to the 
+    created results before they are finalized, for that we use simple Result 
+    objects<i>.</i></font></p>
+  <p><font size="4" color="#FFFFFF">2) We can have both the types of grammars 
+    associated to the same recognizer. And, in certain moments, we might need information 
+    that is not relevant either to an association with a rule or to a dictation 
+    grammar, but simply for a finalized result. For that we can use the FinalResult 
+    interface without having to test the nature of the result.</font></p>
+  <p><font size="4" color="#FFFFFF">3) Having two types of finalized results, 
+    we can have additional data referring to the type of the grammar associated, 
+    increasing the control of applications.</font></p>
+</blockquote>
+<p> <font size="4" color="#FFFFFF">Now we can see some sample code illustrating 
+  the concepts:</font></p>
+<table width="88%" border="1" height="142" align="center">
+  <tr> 
+    <td>
+    <font size="3" color="#FFFFFF">
+    <pre>
+static ResultListener ruleListener = new ResultAdapter() {
+
+    public void <font color="#FF0000"><b>resultCreated</b></font>(ResultEventevent)
+    {
+        //the result is not finalized yet 
+        Result result_recognizer = (Result) event.getSource( );
+    }
+    
+    public void <b><font color="#FF0000">grammarFinalized</font></b>(ResultEvent event)
+    {
+        //the grammar is already known but the result is not finalized yet
+        Result result_recognizer = (Result) event.getSource( );
+    }
+    
+    public void <b><font color="#FF0000">resultUpdated</font></b>(ResultEvent event)
+    {
+        //the result is yet being created
+        Result result_recognizer = (Result) event.getSource( );
+    }
+    
+    public void <b><font color="#FF0000">resultAccepted</font></b>(ResultEvent event)
+    {
+        //if it is an accepted result, surely
+        //it is a finalized result, so we can use the casting 
+        //for any of the three result types: Result, FinalResult and
+        //FinalRule/DictationResult
+        
+        //we use Result if we do not know the type of the grammar
+        //or will not need specialized methods, but basic ones 
+        //like addResultListener 
+           
+        Result result_recognizer = (Result) event.getSource( );
+        
+        //we use FinalResult if we do not know the type of the grammar
+        //and we need to use methods like releaseAudio and 
+        //releaseTrainingInfo 
+        
+        Result result_recognizer = (FinalResult) evento.getSource();
+        
+        //in the case when both the grammars are associated with a 
+        //determined resultListener we must test the type of the 
+        //grammar in order to avoid exceptions
+        
+        Result result = event.getSource();
+        if (result.getGrammar() instanceof RuleGrammar){
+            result_recognizer = (FinalRuleResult) result;
+        } else {
+            result_recognizer = (FinalDictationResult) result;
+        }
+    }
+        
+    public void <b><font color="#FF0000">resultRejected</font></b>(ResultEvent event)
+    {
+        //equal to resulAccepted
+    }
+        
+    public void <b><font color="#FF0000">audioReleased</font></b>(ResultEvent event)
+    {
+        //equal to resulAccepted
+    }
+        
+    public void <b><font color="#FF0000">trainingInfoReleased</font></b>(ResultEvent event)
+    {
+        //equal to resulAccepted
+    }
+        
+};</pre></font>
+    </td>
+  </tr>
+</table>
+<p align="center"><b>Table 10 - Implementation of a ResultListener using accurately 
+  the different types of Result objects.</b></p>
+<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Threads Slide 7: Synchronizing Threads</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Threads:</FONT> </FONT><B><FONT COLOR="#0000FF">Synchronizing
+Threads</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/threads/synchronization.html">Synchronizing
+Threads</A></H2>
+
+<BLOCKQUOTE>
+<H2>Producer/Consumer Scenario</H2>
+
+<BLOCKQUOTE>
+<PRE>class Producer extends Thread {
+    public void run() {
+        for (int i = 0; i &lt; 10; i++) {
+            cubbyhole.put(i);
+            System.out.println(&quot;Producer #&quot; + this.number + &quot; put: &quot; + i);
+            try {
+                sleep((int)(Math.random() * 100));
+            } catch (InterruptedException e){}
+        }
+    }
+}</PRE>
+
+<P>The <A HREF="tutorial/java/threads/example/Consumer.java">Consumer</A>
+consumes all integers from the CubbyHole as quickly as they become available.</P>
+
+<PRE>class Consumer extends Thread {
+    public void run() {
+        int value = 0;
+        for (int i = 0; i &lt; 10; i++) {
+            value = cubbyhole.get();
+            System.out.println(&quot;Consumer #&quot; + this.number + &quot; got: &quot; + value);
+        }
+    }
+}</PRE>
+
+<H3>Two outcomes:</H3>
+
+<BLOCKQUOTE>
+<H4>Producer is quicker than the Consumer:</H4>
+
+<BLOCKQUOTE>
+<PRE>    . . .
+
+Consumer #1 got: 3
+Producer #1 put: 4
+Producer #1 put: 5
+Consumer #1 got: 5
+
+    . . .
+</PRE>
+</BLOCKQUOTE>
+
+<H4>Consumer is quicker than the Producer:</H4>
+
+<BLOCKQUOTE>
+<PRE>    . . .
+
+Producer #1 put: 4
+Consumer #1 got: 4
+Consumer #1 got: 4
+Producer #1 put: 5
+
+    . . .
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Threads.sld8.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Threads.sld8.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

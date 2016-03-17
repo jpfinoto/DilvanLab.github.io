@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 33: Images</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Images</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/drawing/usingImages.html">Image
+Filters</A> </H2>
+
+<CENTER><P><IMG SRC="gifs/GUI35.gif" HEIGHT=77 WIDTH=479></P></CENTER>
+
+<UL>
+<UL>
+<LI><B><FONT SIZE=+1>An image producer:</FONT></B> It produces raw data
+for Image Objects and implements the <B><FONT COLOR="#800080">ImageProducer
+</FONT></B>interface. </LI>
+
+<LI><B><FONT SIZE=+1>An image consumer:</FONT></B> It is an object interested
+in data produced by image producers and implements the <B><FONT COLOR="#800080">ImageConsumer
+</FONT></B>interface. </LI>
+
+<LI><B><FONT SIZE=+1>An image filter: </FONT></B>It sits between a producer
+and a consumer, modifying the image data before the consumer gets it and
+implements the <B><FONT COLOR="#800080">ImageConsumer </FONT></B>interface</LI>
+</UL>
+
+<H3><A HREF="tutorial/ui/drawing/useFilter.html">Using an Image Filter</A></H3>
+
+<UL>
+<H4>Code for a rotation filter:</H4>
+</UL>
+</UL>
+</UL>
+
+<PRE>                  ImageFilter filter = new RotateFilter(angle);
+                  ImageProducer producer = new FilteredImageSource(
+                                                  sourceImage.getSource(),
+                                                  filter);
+                  resultImage = createImage(producer);
+                  repaint();</PRE>
+
+<UL>
+<UL>
+<H2><A HREF="tutorial/ui/drawing/writeFilter.html">Writing an Image Filter</A>
+</H2>
+</UL>
+
+<UL>
+<UL>
+<H3>Creating an ImageFilter Subclass</H3>
+
+<BLOCKQUOTE>
+<H4>Image filters implement the ImageConsumer interface: </H4>
+
+<BLOCKQUOTE>
+<PRE>void setDimensions(int width, int height);
+void setProperties(Hashtable props);
+void setColorModel(ColorModel model);
+void setHints(int hintflags);
+void setPixels(int x, int y, int w, int h,
+               ColorModel model, byte pixels[],
+               int off, int scansize);
+void setPixels(int x, int y, int w, int h,
+               ColorModel model, int pixels[],
+               int off, int scansize);
+void imageComplete(int status);
+</PRE>
+</BLOCKQUOTE>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B></P>
+
+<P>The ImageFilter class implements all the above methods so that they
+forward the method data to the filter's consumer. <BR>
+<BR>
+<BR>
+<BR>
+</P>
+</BLOCKQUOTE>
+</UL>
+</UL>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld34.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld34.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

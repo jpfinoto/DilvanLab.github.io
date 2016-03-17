@@ -1,0 +1,78 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>1.&nbsp;Overview</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="gui.html" title="Chapter&nbsp;10.&nbsp;Graphic User Interface"><link rel="prev" href="gui.html" title="Chapter&nbsp;10.&nbsp;Graphic User Interface"><link rel="next" href="gui_swing_containers.html" title="2.&nbsp;Swing Containers"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">1.&nbsp;Overview</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="gui.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Graphic User Interface</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="gui_swing_containers.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="gui.html">Graphic User Interface</a></span> &gt; <span class="breadcrumb-node">Overview</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="gui_overview"></a>1.&nbsp;Overview</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3475"></a>1.1.&nbsp;<a class="ulink" href="http://java.sun.com/products/jfc" target="_top">Java Foundation
+        Classes</a></h3></div></div></div><p>The Java Foundation Classes (JFC) are a set of APIs developed to
+        support the creation of graphical user interfaces (GUIs) and to
+        enhance the user interactivity. Basically, the JFC is composed by the
+        following technologies:</p><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><strong>Abstract Window Toolkit
+            (AWT):</strong></span> Comprises the APIs that enable the integration
+            with the native window system, providing a basic set of graphic
+            components and support for event handling.</p></li><li><p><span class="bold"><strong>Swing:</strong></span> APIs that complement
+            the AWT to provide a more rich and complete set of graphical
+            components, including pluggable Look-and-Feel features.</p></li><li><p><span class="bold"><strong>Java 2D:</strong></span> Enables the
+            creation and manipulation of advanced 2D graphics, text and
+            images. Includes APIs for generating output to printing
+            devices.</p></li><li><p><span class="bold"><strong>Internationalization:</strong></span>
+            Include APIs to support the development of applications that can
+            interact with the users in their own languages and characters
+            sets.</p></li><li><p><span class="bold"><strong>Accessibility: </strong></span>Provide APIs
+            to enable the use of assistive technologies, increasing the
+            accessibility for users with disabilities.</p></li></ul></div><p>In this course we'll see only the two first technologies: the
+        Abstract Window Toolkit (AWT) and the Swing.</p><p><a class="ulink" href="../audio/SwingComments.wav" target="_top"><img src="../xml/img/asf.gif">Audio in Portuguese
+        (Comments)</a></p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3513"></a>1.2.&nbsp;<a class="ulink" href="http://java.sun.com/products/jdk/awt" target="_top">The Abstract
+        Window Toolkit</a></h3></div></div></div><p>The AWT contains a set of classes for writing GUI programs, do
+        layout managing and perform event handling. The AWT GUI components are
+        considered "<span class="emphasis"><em>heavyweight</em></span>" components, that is,
+        they delegate to a native platform-specific peer on the host system.
+        This have caused a lot of compatibility and performance problems,
+        constraining the resources that could be disponibilized. Because these
+        problems they were substituted by Swing components and won't be
+        detailed here.</p><div class="figure"><a name="d0e3522"></a><p class="title"><b>Figure&nbsp;10.1.&nbsp;AWT Peers</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI17.gif" width="437.99999999999994" height="187.00000000000003" alt="AWT Peers"></div></div></div><br class="figure-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3528"></a>1.3.&nbsp;<a class="ulink" href="http://java.sun.com/developer/onlineTraining/GUI/Swing1/shortcourse.html#JFCWidgets" target="_top">Swing</a></h3></div></div></div><p>Swing is the main part of the JFC and was built to complement
+        and resolve many of the AWT limitations. All the visual components are
+        drew directly on the screen and only the containers
+        <code class="classname">JFrame</code>, <code class="classname">JDialog</code>,
+        <code class="classname">JWindow</code>, and <code class="classname">JApplet</code>
+        that extend AWT components make calls to native peers. All the others
+        components are considered "<span class="emphasis"><em>lightweight</em></span>"
+        components and have no dependency with the graphics resources of the
+        operating system.</p><p>Although many says the Swing API was heavy and slow in the
+        beginning, the new implementations are becoming light and fast enough,
+        enabling the creation of Java graphical interfaces that are robust and
+        flexible.</p><div class="figure"><a name="d0e3551"></a><p class="title"><b>Figure&nbsp;10.2.&nbsp;AWT similar components</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI37.gif" width="464.00000000000006" height="455" alt="AWT similar components"></div></div></div><br class="figure-break"><div class="figure"><a name="d0e3557"></a><p class="title"><b>Figure&nbsp;10.3.&nbsp;New components</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI38.gif" width="411" height="486.00000000000006" alt="New components"></div></div></div><br class="figure-break"></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3563"></a>1.4.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/components/panel.html" target="_top">A
+        GUI based example</a></h3></div></div></div><div class="figure"><a name="d0e3567"></a><p class="title"><b>Figure&nbsp;10.4.&nbsp;Converter of distances between US and metric.</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI39.gif" width="290" height="200" alt="Converter of distances between US and metric."></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3573"></a>1.4.1.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/components/example-1dot4/index.html#Converter" target="_top">Classes
+          in the Example Program</a></h4></div></div></div><div class="figure"><a name="d0e3577"></a><p class="title"><b>Figure&nbsp;10.5.&nbsp;Classes in the Example Program</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI40.gif" width="504.99999999999994" height="180" alt="Classes in the Example Program"></div></div></div><br class="figure-break"><div class="itemizedlist"><ul type="disc"><li><p>Create the <code class="classname">ConversionPanel</code>s (one
+              for metric, another for U.S.).</p></li><li><p>The <code class="classname">ConversionPanel</code> class provides
+              a way of grouping all the controls that describe a particular
+              set of distance measurements.</p></li><li><p>The <code class="classname">Unit</code> class provides objects
+              that group a description (such as "Centimeters") with a
+              multiplier that indicates the number of units per meter (0.01,
+              for example).</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3602"></a>1.4.2.&nbsp;The Component Hierarchy</h4></div></div></div><div class="literallayout"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Converter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JPanel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ConversionPanel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ConversionPanel&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(metricPanel)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(usaPanel)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;JTextField&nbsp;&nbsp;JComboBox&nbsp;&nbsp;JSlider&nbsp;&nbsp;&nbsp;&nbsp;JTextField&nbsp;&nbsp;JComboBox&nbsp;&nbsp;JSlider</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3607"></a>1.4.3.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/14painting/concepts.html" target="_top">Drawing</a></h4></div></div></div><p>When the <code class="classname">Converter</code> application draws
+          itself, here's what happens</p><div class="orderedlist"><ol type="1"><li><p>The <code class="classname">JFrame</code> draws itself.</p></li><li><p>The <code class="classname">Converter</code> object draws itself,
+              drawing a box around its area.</p></li><li><p>One of the two <code class="classname">ConversionPanels</code>
+              draws itself, drawing a box around its area.</p></li><li><p>The contents of the <code class="classname">ConversionPanel</code>
+              -- the <code class="classname">JTextField</code>, <code class="classname">JComboBox
+              </code>and <code class="classname">JSlider</code> -- draw
+              themselves.</p></li></ol></div><p><a class="ulink" href="../audio/Swing1.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="gui.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="gui.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="gui_swing_containers.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;10.&nbsp;Graphic User Interface&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;2.&nbsp;Swing
+      Containers</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

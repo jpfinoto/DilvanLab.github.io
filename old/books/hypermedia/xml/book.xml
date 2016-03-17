@@ -1,0 +1,3076 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" -->
+<book id="hypermedia">
+  <bookinfo>
+    <title>Hypermedia</title>
+
+    <subtitle>A Course About Hypermedia</subtitle>
+
+    <author>
+      <firstname>Dilvan</firstname>
+
+      <othername>de Abreu</othername>
+
+      <surname>Moreira</surname>
+
+      <email>dilvan@computer.org</email>
+    </author>
+
+    <editor>
+      <firstname>Dilvan</firstname>
+
+      <surname>Moreira</surname>
+    </editor>
+
+    <copyright>
+      <year>2003</year>
+
+      <year>2004</year>
+
+      <holder>Dilvan Moreira</holder>
+    </copyright>
+
+    <edition>First</edition>
+
+    <publisher>
+      <publishername>Dilvan Moreira</publishername>
+
+      <address><city>São Carlos </city><country>Brazil</country></address>
+    </publisher>
+
+    <revhistory>
+      <revision>
+        <revnumber>$Revision: 1.10 $</revnumber>
+
+        <date>$Date: 2005/08/19 18:23:28 $</date>
+      </revision>
+    </revhistory>
+
+    <pubdate>August 2003</pubdate>
+  </bookinfo>
+
+  <chapter id="xml">
+    <title>eXtensible Markup Language</title>
+
+    <section id="xml_introduction">
+      <title>XML - Introduction</title>
+
+      <itemizedlist mark="bullet" spacing="normal">
+        <listitem>
+          <para>Introduction to the eXtensible Markup Language - XML</para>
+
+          <para><ulink url="../ppt/xml-introd.ppt">Power Point
+          Presentation</ulink></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="xml_sintax">
+      <title>XML - Syntax</title>
+
+      <itemizedlist mark="bullet" spacing="normal">
+        <listitem>
+          <para>Syntax of a well formed XML document</para>
+
+          <para><ulink url="../ppt/xml-sintaxe.ppt">Power Point
+          Presentation</ulink></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="dtd_document_type_definition">
+      <title>DTD - Document Type Definition</title>
+
+      <itemizedlist>
+        <listitem>
+          <para>DTD is one language to specify XML documents</para>
+
+          <para><ulink url="../ppt/dtd.ppt">Power Point
+          Presentation</ulink></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="xml_schema">
+      <title>XML Schema</title>
+
+      <itemizedlist>
+        <listitem>
+          <para>XML-Schema is the other language to specify XML documents. It
+          is a XML derived language</para>
+
+          <para><ulink url="../ppt/xml-schema.ppt">Power Point
+          Presentation</ulink></para>
+
+          <para>There is also a tutorial from the W3C:</para>
+
+          <para><ulink url="../ppt/xml-schema-tutorial.zip">XML Schema
+          Tutorial</ulink> (.zip)</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="xml_exercises">
+      <title>Exercises</title>
+
+      <section>
+        <title>XML generation</title>
+
+        <para>Create a small language derived from XML to describe a small
+        dataset (i.e. contacts information, racing cars, kinds of animals,
+        etc). This language has to have at least 10 tags and 5 attributes. It
+        should be described using a DTD file. Write at least 3 files using
+        this language.</para>
+
+        <para>To generate and test the DTD and XML files, you can use any XML
+        parsing tools. As a suggestion you can use the XMLMind editor <ulink
+        url="http://www.xmlmind.com">http://www.xmlmind.com</ulink> (a free
+        tool) or the XMLSpy editor <ulink
+        url="http://www.xmlspy.com">http://www.xmlspy.com</ulink> (free
+        demo).</para>
+      </section>
+    </section>
+  </chapter>
+
+  <chapter id="xsl">
+    <title>eXtensible Stylesheet Language</title>
+
+    <section id="xsl_xslt">
+      <title>XSLT - THE XSL Transformation Language</title>
+
+      <itemizedlist mark="bullet" spacing="normal">
+        <listitem>
+          <para>The XSLT language is used to transform a XML document into
+          another. It can be used as a presentation language when used to
+          transform XML into XHTML</para>
+
+          <para><ulink url="../ppt/xsl.ppt">Power Point
+          Presentation</ulink></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="xsl_xpath">
+      <title>XPath</title>
+
+      <para>The primary purpose of XPath is to address parts of an XML [XML]
+      document.</para>
+
+      <para>In support of this primary purpose, it also provides basic
+      facilities for manipulation of strings, numbers and booleans.</para>
+
+      <para>XPath uses a compact, non-XML syntax to facilitate use of XPath
+      within URIs and XML attribute values.</para>
+
+      <para>In addition to its use for addressing, XPath is also designed so
+      that it has a natural subset that can be used for matching (testing
+      whether or not a node matches a pattern); this use of XPath is described
+      in XSLT.</para>
+
+      <section>
+        <title>XPath Basics</title>
+
+        <para>This is a simple XML example:</para>
+
+        <programlisting>&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+
+&lt;catalog&gt;
+  &lt;cd country="USA"&gt;
+    &lt;title&gt;Empire Burlesque&lt;/title&gt;
+    &lt;artist&gt;Bob Dylan&lt;/artist&gt;
+    &lt;price&gt;10.90&lt;/price&gt;
+  &lt;/cd&gt;
+  &lt;cd country="UK"&gt;
+    &lt;title&gt;Hide your heart&lt;/title&gt;
+    &lt;artist&gt;Bonnie Tyler&lt;/artist&gt;
+    &lt;price&gt;9.90&lt;/price&gt;
+  &lt;/cd&gt;
+&lt;/catalog&gt;</programlisting>
+
+        <para>The XPath expression below selects all the price elements of the
+        cd element of the catalog element:</para>
+
+        <programlisting>/catalog/cd/price</programlisting>
+
+        <para>Note: If the path starts with a slash ( / ) it represents an
+        absolute path to an element!</para>
+
+        <para>Note: If the path starts with two slashes ( // ) then all
+        elements in the document that fulfill the criteria will be selected
+        (even if they are at different levels in the XML tree)!</para>
+
+        <para>The following XPath expression selects all the cd elements in
+        the document:</para>
+
+        <programlisting>//cd</programlisting>
+
+        <para>XPath defines a library of standard functions for working with
+        strings, numbers and Boolean expressions.</para>
+
+        <para>The XPath expression below selects all the cd elements that have
+        a price element with a value larger than 10.80:</para>
+
+        <programlisting>/catalog/cd[price&gt;10.80]</programlisting>
+      </section>
+
+      <section>
+        <title>Pattern Matching</title>
+
+        <para><emphasis role="bold">Selecting Unknown
+        Elements</emphasis></para>
+
+        <para>Wildcards ( * ) can be used to select unknown XML
+        elements.</para>
+
+        <para>The following XPath expression selects all the child elements of
+        all the cd elements of the catalog element:</para>
+
+        <programlisting>/catalog/cd/*</programlisting>
+
+        <para>The following XPath expression selects all the price elements
+        that are grandchild elements of the catalog element:</para>
+
+        <programlisting>/catalog/*/price</programlisting>
+
+        <para>The following XPath expression selects all price elements which
+        have 2 ancestors:</para>
+
+        <programlisting>/*/*/price</programlisting>
+
+        <para>The following XPath expression selects all elements in the
+        document:</para>
+
+        <programlisting>//*</programlisting>
+
+        <para><emphasis role="bold">Selecting Branches</emphasis></para>
+
+        <para>By using square brackets in an XPath expression you can specify
+        an element further.</para>
+
+        <para>The following XPath expression selects the first cd child
+        element of the catalog element:</para>
+
+        <programlisting>/catalog/cd[1]</programlisting>
+
+        <para>The following XPath expression selects the last cd child element
+        of the catalog element (Note: There is no function named
+        first()):</para>
+
+        <programlisting>/catalog/cd[last()]</programlisting>
+
+        <para>The following XPath expression selects all the price elements of
+        all the cd elements of the catalog element that have a price element
+        with a value of 10.90:</para>
+
+        <programlisting>/catalog/cd[price=10.90]/price</programlisting>
+
+        <para><emphasis role="bold">Selecting Several Paths</emphasis></para>
+
+        <para>By using the | operator in an XPath expression you can select
+        several paths.</para>
+
+        <para>The following XPath expression selects all the title and artist
+        elements in the document:</para>
+
+        <programlisting>//title | //artist</programlisting>
+
+        <para>The following XPath expression selects all the title elements of
+        the cd element of the catalog element, and all the artist elements in
+        the document:</para>
+
+        <programlisting>/catalog/cd/title | //artist</programlisting>
+
+        <para><emphasis role="bold">Selecting Attributes</emphasis></para>
+
+        <para>In XPath all attributes are specified by the @ prefix.</para>
+
+        <para>This XPath expression selects all cd elements which have an
+        attribute named country with a value of 'UK':</para>
+
+        <programlisting>//cd[@country='UK']</programlisting>
+
+        <para>This XPath expression selects all cd elements which have any
+        attribute:</para>
+
+        <programlisting>//cd[@*]</programlisting>
+      </section>
+
+      <section>
+        <title>Location Path Expression</title>
+
+        <para>A location path can be absolute or relative.</para>
+
+        <para>An absolute location path starts with a slash ( / ) and a
+        relative location path does not. In both cases the location path
+        consists of one or more location steps, each separated by a
+        slash:</para>
+
+        <programlisting>An absolute location path:
+/step/step/...
+
+A relative location path:
+step/step/...</programlisting>
+
+        <para>The location steps are evaluated in order one at a time, from
+        left to right. Each step is evaluated against the nodes in the current
+        node-set. If the location path is absolute, the current node-set
+        consists of the root node. If the location path is relative, the
+        current node-set consists of the node where the expression is being
+        used. Location steps consist of:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>an axis (specifies the tree relationship between the nodes
+            selected by the location step and the current node)</para>
+          </listitem>
+
+          <listitem>
+            <para>a node test (specifies the node type and expanded-name of
+            the nodes selected by the location step)</para>
+          </listitem>
+
+          <listitem>
+            <para>zero or more predicates (use expressions to further refine
+            the set of nodes selected by the location step)</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>The syntax for a location step is:</para>
+
+        <programlisting>axisname::nodetest[predicate]</programlisting>
+
+        <para>Example:</para>
+
+        <programlisting>child::price[price=9.90]</programlisting>
+
+        <para><emphasis role="bold">Axes and Node Tests</emphasis></para>
+
+        <para>An axis defines a node-set relative to the current node. A node
+        test is used to identify a node within an axis. We can perform a node
+        test by name or by type.</para>
+
+        <table>
+          <title>Axis Name Examples</title>
+
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry><emphasis role="bold">Example</emphasis></entry>
+
+                <entry><emphasis role="bold">Result</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>child::cd</entry>
+
+                <entry>Selects all cd elements that are children of the
+                current node (if the current node has no cd children, it will
+                select an empty node-set)</entry>
+              </row>
+
+              <row>
+                <entry>attribute::src</entry>
+
+                <entry>Selects the src attribute of the current node (if the
+                current node has no src attribute, it will select an empty
+                node-set)</entry>
+              </row>
+
+              <row>
+                <entry>child::*</entry>
+
+                <entry>Selects all child elements of the current node</entry>
+              </row>
+
+              <row>
+                <entry>attribute::*</entry>
+
+                <entry>Selects all attributes of the current node</entry>
+              </row>
+
+              <row>
+                <entry>child::text()</entry>
+
+                <entry>Selects the text node children of the current
+                node</entry>
+              </row>
+
+              <row>
+                <entry>child::node()</entry>
+
+                <entry>Selects all the children of the current node</entry>
+              </row>
+
+              <row>
+                <entry>ancestor-or-self::cd</entry>
+
+                <entry>Selects all cd ancestors of the current node and, if
+                the current node is a cd element, the current node as
+                well</entry>
+              </row>
+
+              <row>
+                <entry>child::*/child::price</entry>
+
+                <entry>Selects all price grandchildren of the current
+                node</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+
+        <para><emphasis role="bold">Predicates</emphasis></para>
+
+        <para>A predicate filters a node-set into a new node-set. A predicate
+        is placed inside square brackets ( [ ] ).</para>
+
+        <table>
+          <title>Predicates Example</title>
+
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry><emphasis role="bold">Example</emphasis></entry>
+
+                <entry><emphasis role="bold">Result</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>child::cd[position()=1]</entry>
+
+                <entry>Selects the first cd child of the current node</entry>
+              </row>
+
+              <row>
+                <entry>child::cd[position()&lt;6]</entry>
+
+                <entry>Selects the first five cd children of the current
+                node</entry>
+              </row>
+
+              <row>
+                <entry>/descendant::cd[position()=7]</entry>
+
+                <entry>Selects the seventh cd element in the document</entry>
+              </row>
+
+              <row>
+                <entry>child::cd[attribute::type="classic"]</entry>
+
+                <entry>Selects all cd children of the current node that have a
+                type attribute with value classic</entry>
+              </row>
+
+              <row>
+                <entry>child::cd[position()=last()-1]</entry>
+
+                <entry>Selects the last but one cd child of the current
+                node</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+
+      <section>
+        <title>XPath Functions</title>
+
+        <para>The XPath function library contains a set of core functions for
+        converting and translating data.</para>
+
+        <table>
+          <title>Examples of XPath Functions</title>
+
+          <tgroup cols="3">
+            <tbody>
+              <row>
+                <entry><emphasis role="bold">Name</emphasis></entry>
+
+                <entry><emphasis role="bold">Description</emphasis></entry>
+
+                <entry><emphasis role="bold">Syntax</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>count()</entry>
+
+                <entry>Returns the number of nodes in a node-set</entry>
+
+                <entry><programlisting>number=count(node-set)</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>id()</entry>
+
+                <entry>Selects elements by their unique ID</entry>
+
+                <entry><programlisting>node-set=id(value)</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>last()</entry>
+
+                <entry>Returns the position number of the last node in the
+                processed node list</entry>
+
+                <entry><programlisting>number=last()</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>local-name()</entry>
+
+                <entry>Returns the local part of a node. A node usually
+                consists of a prefix, a colon, followed by the local
+                name</entry>
+
+                <entry><programlisting>string=local-name(node)</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>name()</entry>
+
+                <entry>Returns the name of a node</entry>
+
+                <entry><programlisting>string=name(node)</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>namespace-uri()</entry>
+
+                <entry>Returns the namespace URI of a specified node</entry>
+
+                <entry><programlisting>uri=namespace-uri(node)</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>position()</entry>
+
+                <entry>Returns the position in the node list of the node that
+                is currently being processed</entry>
+
+                <entry><programlisting>number=position()</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>concat()</entry>
+
+                <entry>Returns the concatenation of all its arguments</entry>
+
+                <entry><programlisting>string=concat(val1, val2, ..)
+
+Example:
+concat('The',' ','XML')
+Result: 'The XML'
+</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>contains()</entry>
+
+                <entry>Returns true if the second string is contained within
+                the first string, otherwise it returns false</entry>
+
+                <entry><programlisting>bool=contains(val,substr)
+
+Example:
+contains('XML','X')
+Result: true</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>substring()</entry>
+
+                <entry>Returns a part of the string in the string
+                argument</entry>
+
+                <entry><programlisting>string=substring(string,start,length)
+Example:
+substring('Beetles',1,4)
+Result: 'Beet'</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>ceiling()</entry>
+
+                <entry>Returns the smallest integer that is not less than the
+                number argument</entry>
+
+                <entry><programlisting>number=ceiling(number)
+Example:
+ceiling(3.14)
+Result: 4</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>round()</entry>
+
+                <entry>Rounds the number argument to the nearest
+                integer</entry>
+
+                <entry><programlisting>integer=round(number)
+Example:
+round(3.14)
+Result: 3</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>lang()</entry>
+
+                <entry>Returns true if the language argument matches the
+                language of the xsl:lang element, otherwise it returns
+                false</entry>
+
+                <entry><programlisting>bool=lang(language)</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>not()</entry>
+
+                <entry>Returns true if the condition argument is false, and
+                false if the condition argument is true</entry>
+
+                <entry><programlisting>bool=not(condition)
+Example:
+not(false())</programlisting></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+
+      <section>
+        <title>Xpath Examples</title>
+
+        <para>You can try some of the XPath commands at the <ulink
+        url="http://www.w3schools.com/xpath/tryit.asp?filename=try_xpath_select_cdnodes">XPath
+        Tutorial Test</ulink> page. This page is a part of the <ulink
+        url="http://www.w3schools.com/xpath/">XPath Tutorial</ulink> at the
+        <ulink url="http://www.w3schools.com">http://www.w3schools.com</ulink>
+        :</para>
+      </section>
+    </section>
+
+    <section id="xsl_xslfo" role="bold">
+      <title>XSL Formatting Objects</title>
+
+      <para>Formatting is the process of turning the result of an XSL
+      transformation into a tangible form for the reader or listener.</para>
+
+      <para>Our model for formatting will be the construction of an area tree,
+      which is an ordered tree containing geometric information for the
+      placement of every</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>glyph (character representation in a specific font) ,</para>
+        </listitem>
+
+        <listitem>
+          <para>shape,</para>
+        </listitem>
+
+        <listitem>
+          <para>image,</para>
+        </listitem>
+
+        <listitem>
+          <para>together with information embodying spacing constraints and
+          other rendering information;</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Formatting objects are elements in the formatting object tree,
+      whose names are from the XSL namespace; a formatting object belongs to a
+      class of formatting objects identified by its element name.</para>
+
+      <para>Some formatting objects are <emphasis
+      role="bold">inline-level</emphasis> and others are <emphasis
+      role="bold">block-level</emphasis>. This refers to the types of areas
+      which they generate, which in turn refer to their default placement
+      method:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Inline-areas (for example, glyph-areas) are collected into
+          lines and the direction in which they are stacked is the
+          inline-progression-direction.</para>
+        </listitem>
+
+        <listitem>
+          <para>Lines are a type of block-area and these are stacked in a
+          direction perpendicular to the inline-progression-direction, called
+          the block-progression-direction</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>In Western writing systems, the block-progression-direction is
+      "top-to-bottom" and the inline-progression-direction is
+      "left-to-right".</para>
+
+      <section>
+        <title>Page Layout</title>
+
+        <para>The formatting objects supported by XSL - the set of fo: element
+        types - provides a set of typographic abstractions to layout
+        designers. Each formatting object represents a specification for a
+        part of the pagination, layout and styling information that will be
+        applied to the content.</para>
+
+        <para>Formatting consists of the generation of a tree of geometric
+        areas, called the "area tree".</para>
+
+        <para>Geometric areas are positioned on a sequence of one or more
+        pages. Each geometric area has:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>a position on the page</para>
+          </listitem>
+
+          <listitem>
+            <para>a specification of what to display in that area</para>
+          </listitem>
+
+          <listitem>
+            <para>and may have a background, padding and border</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Areas may be nested. For example, a glyph may be positioned
+        within a line, within a block, or within a page</para>
+
+        <para>The XSL layout structure is defined in terms of one or more
+        instances of a "simple-page-master" formatting object.</para>
+
+        <para>This formatting object allows designers to define independently
+        filled regions for the body (with multiple columns), a header, a
+        footer, and sidebars on a page. <figure>
+            <title>Simple Page Master</title>
+
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="img/simple-page-master.gif" />
+              </imageobject>
+            </mediaobject>
+          </figure></para>
+
+        <para>Simple-page-masters can be used in page sequences that specify
+        the order in which different simple-page-masters should be used (for
+        instance, book chapters). The page sequence specifies how styled
+        content is to fill those pages.</para>
+
+        <para>Styled content is assigned to the various regions on a page by
+        associating the name of the region with names attached to styled
+        content in the result tree.</para>
+      </section>
+
+      <section>
+        <title>Hello World</title>
+
+        <para>Let us create the shortest XSL FO document.</para>
+
+        <programlisting>&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;<co
+            id="hello1" linkends="hello.1" />
+
+&lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;<co id="hello2"
+            linkends="hello.2" />
+  &lt;fo:layout-master-set&gt;<co id="hello3" linkends="hello.3" />
+    &lt;fo:simple-page-master master-name="my-page"&gt;
+      &lt;fo:region-body margin="1in"/&gt;
+    &lt;/fo:simple-page-master&gt;
+  &lt;/fo:layout-master-set&gt;
+
+  &lt;fo:page-sequence master-reference="my-page"&gt;<co id="hello4"
+            linkends="hello.4" />
+    &lt;fo:flow flow-name="xsl-region-body"&gt;<co id="hello5"
+            linkends="hello.5" />
+      &lt;fo:block&gt;Hello, world!&lt;/fo:block&gt;<co id="hello6"
+            linkends="hello.6" />
+    &lt;/fo:flow&gt;
+  &lt;/fo:page-sequence&gt;
+&lt;/fo:root&gt;</programlisting>
+
+        <calloutlist>
+          <callout arearefs="hello1" id="hello.1">
+            <para>This is an XML declaration. XSL FO belongs to XML family, so
+            this is obligatory.</para>
+          </callout>
+
+          <callout arearefs="hello2" id="hello.2">
+            <para>Root element. The obligatory namespace attribute declares
+            the XSL Formatting Objects namespace.</para>
+          </callout>
+
+          <callout arearefs="hello3" id="hello.3">
+            <para>Layout master set. This element contains one or more
+            declarations of page masters and page sequence masters — elements
+            that define layouts of single pages and page sequences. In the
+            example, I have defined a rudimentary page master, with only one
+            area in it. The area should have a 1 inch margin from all sides of
+            the page.</para>
+          </callout>
+
+          <callout arearefs="hello4" id="hello.4">
+            <para>Page sequence. Pages in the document are grouped into
+            sequences; each sequence starts from a new page. Master-reference
+            attribute selects an appropriate layout scheme from masters listed
+            inside &lt;fo:layout-master-set&gt;. Setting master-reference to a
+            page master name means that all pages in this sequence will be
+            formatted using this page master.</para>
+          </callout>
+
+          <callout arearefs="hello5" id="hello.5">
+            <para>Flow. This is the container object for all user text in the
+            document. Everything contained in the flow will be formatted into
+            regions on pages generated inside the page sequence. Flow name
+            links the flow to a specific region on the page (defined in the
+            page master); in our example, it is the body region.</para>
+          </callout>
+
+          <callout arearefs="hello6" id="hello.6">
+            <para>Block. This object roughly corresponds to &lt;DIV&gt; in
+            HTML, and normally includes a paragraph of text. I need it here,
+            because text cannot be placed directly into a flow.</para>
+          </callout>
+        </calloutlist>
+
+        <para>Now save this document into a file and compile it using your
+        preferred XSL-FO processor to produce a PDF file. Open it with Acrobat
+        Reader: <ulink url="../pdf/HelloWorld.pdf">Hello World
+        PDF</ulink></para>
+      </section>
+
+      <section>
+        <title>Using XSLT to generate XSL-FO</title>
+
+        <para>Now, how can we apply this formating to a XML document? Using a
+        XSLT document to transform the original XML document in a XSL-FO
+        document. First we have the CD catalog example:</para>
+
+        <programlisting>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;catalog&gt;
+   &lt;cd&gt;
+       &lt;title&gt;How The West Was Won&lt;/title&gt;
+       &lt;artist&gt; Led Zeppelin &lt;/artist&gt;
+       &lt;company&gt; Warner &lt;/company&gt;
+       &lt;price&gt; 61,90 &lt;/price&gt;
+       &lt;year&gt; 2003 &lt;/year&gt;
+   &lt;/cd&gt;
+&lt;/catalog&gt;</programlisting>
+
+        <para>The following XSLT example page generates a XML-FO file that
+        prints the title of the first CD:</para>
+
+        <programlisting>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="/"&gt;
+
+    &lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;
+      &lt;fo:layout-master-set&gt;
+        &lt;fo:simple-page-master master-name="my-page"&gt;
+          &lt;fo:region-body margin="1in"/&gt;
+        &lt;/fo:simple-page-master&gt;
+      &lt;/fo:layout-master-set&gt;
+
+      &lt;fo:page-sequence master-reference="my-page"&gt;
+        &lt;fo:flow flow-name="xsl-region-body"&gt;
+          &lt;fo:block&gt;
+             &lt;xsl:value-of select="catalog/cd/title"/&gt;
+          &lt;/fo:block&gt;
+        &lt;/fo:flow&gt;
+      &lt;/fo:page-sequence&gt;
+    &lt;/fo:root&gt;
+
+  &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</programlisting>
+
+        <para>Now save this document into a file and compile it using your
+        preferred XSLT processor to produce a XLS-FO file and them compile it
+        to generate a PDF file. In the <ulink
+        url="http://www.xmlmind.com">XMLMind FO Converter</ulink>, this can be
+        done in just one step. Open it with Acrobat Reader:<ulink
+        url="../pdf/cdTitle.pdf"> CD Title PDF</ulink></para>
+      </section>
+
+      <section>
+        <title>Fonts and Text Attributes</title>
+
+        <para>Let us now enrich the text with character-level formatting.
+        Several properties control font styles — family, size, color, weight,
+        etc. Let’s look at some examples:</para>
+
+        <programlisting>&lt;fo:block font-family="Times" font-size="14pt"&gt;
+  Hello, world!
+&lt;/fo:block&gt;</programlisting>
+
+        <para>Font family is Times, and font size is 14 points.</para>
+
+        <programlisting>&lt;fo:block font-family="Times" font-size="14pt" font-style="italic"&gt;
+  &lt;fo:inline color="red"&gt;H&lt;/fo:inline&gt;ello,
+  &lt;fo:inline font-weight="bold"&gt;world!&lt;/fo:inline&gt;
+&lt;/fo:block&gt;
+</programlisting>
+
+        <para>Same as above, plus:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>the whole text is italicized (font-style="italic");</para>
+          </listitem>
+
+          <listitem>
+            <para>the first letter of the first word is written in red
+            (color="red");</para>
+          </listitem>
+
+          <listitem>
+            <para>the second word is written in bold font
+            (font-weight="bold").</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Note a new formatting object — &lt;fo:inline&gt;. It corresponds
+        to &lt;SPAN&gt; in HTML, and ascribes formatting to chunks of text
+        within a block. Font properties are inheritable. It means that, once
+        defined for a formatting object, they apply to all formatting objects
+        inside it. That’s why the first inline sequence affects only the color
+        of the font, leaving its family, size, and slant unmodified.
+        Inheritable properties can be put almost everywhere on the formatting
+        objects tree; as a rule, you specify default font for a document by
+        applying these properties to &lt;fo:flow&gt;, &lt;fo:page-sequence&gt;
+        or even &lt;fo:root&gt;. To reduce typing, you can use a shorthand
+        notation for setting font attributes as a group. For example, the
+        above example can be rewritten as follows:</para>
+
+        <programlisting>&lt;fo:block font="italic 14pt Times"&gt;
+  &lt;fo:inline color="red"&gt;H&lt;/fo:inline&gt;ello,
+  &lt;fo:inline font-weight="bold"&gt;world!&lt;/fo:inline&gt;
+&lt;/fo:block&gt;</programlisting>
+
+        <para>Let’s now build a full XSL FO example with font attributes
+        introduced above, and some new ones:</para>
+
+        <programlisting>&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:template match="/"&gt;
+
+    &lt;fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"&gt;
+
+      &lt;fo:layout-master-set&gt;
+        &lt;fo:simple-page-master master-name="my-page"&gt;
+          &lt;fo:region-body margin="1in"/&gt;
+        &lt;/fo:simple-page-master&gt;
+      &lt;/fo:layout-master-set&gt;
+
+      &lt;fo:page-sequence master-reference="my-page"&gt;
+         &lt;fo:flow flow-name="xsl-region-body" font="12pt Times"<co
+            id="xsl1" linkends="xsl.1" role="" />&gt;
+           &lt;fo:block font="italic 24pt Helvetica"&gt;
+             &lt;fo:inline color="red"&gt;F&lt;/fo:inline&gt;ont
+             &lt;fo:inline color="red"&gt;A&lt;/fo:inline&gt;ttributes
+           &lt;/fo:block&gt;
+           &lt;fo:block&gt;<co id="xsl2" linkends="xsl.2" />
+             &lt;xsl:value-of select="catalog/cd/company"/&gt; CD Catalog
+             (The inherited font for this block is 12pt Times).
+           &lt;/fo:block&gt;
+           &lt;fo:block&gt;
+             Font attributes:
+             &lt;fo:inline color="red"&gt;
+               &lt;xsl:value-of select="catalog/cd/artist"/&gt;
+               colored
+             &lt;/fo:inline&gt;,
+             &lt;fo:inline font-weight="bold"&gt;bold&lt;/fo:inline&gt;,
+             &lt;fo:inline font-style="italic"&gt;italic&lt;/fo:inline&gt;,
+             &lt;fo:inline font-size="75%"&gt;small&lt;/fo:inline&gt;,
+             &lt;fo:inline font-size="133%"&gt;large&lt;/fo:inline&gt;.
+           &lt;/fo:block&gt;
+           &lt;fo:block&gt;
+             Text attributes:<co id="xsl3" linkends="xsl.3" role="" />
+             &lt;fo:inline text-decoration="underline"&gt;
+               &lt;xsl:value-of select="catalog/cd/title"/&gt;
+               underlined
+             &lt;/fo:inline&gt;,
+             text with &lt;fo:inline baseline-shift="sub"
+             font-size="smaller"&gt;subscripts&lt;/fo:inline&gt;
+             and &lt;fo:inline baseline-shift="super"
+             font-size="smaller"&gt;superscripts&lt;/fo:inline&gt;.
+          &lt;/fo:block&gt;
+        &lt;/fo:flow&gt;
+      &lt;/fo:page-sequence&gt;
+    &lt;/fo:root&gt;
+
+  &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</programlisting>
+
+        <calloutlist>
+          <callout arearefs="xsl1" id="xsl.1">
+            <para>A common font for the whole flow is specified.</para>
+          </callout>
+
+          <callout arearefs="xsl2" id="xsl.2">
+            <para>This block inherits font attributes from the flow.</para>
+          </callout>
+
+          <callout arearefs="xsl3" id="xsl.3">
+            <para>In this block, other text-level properties were
+            introduced:</para>
+
+            <para><emphasis role="bold">text decoration</emphasis></para>
+
+            <para>underline/overline/strikethrough.</para>
+
+            <para><emphasis role="bold">shifted text </emphasis></para>
+
+            <para>subscripts and superscripts.</para>
+          </callout>
+        </calloutlist>
+
+        <para>Now save this document into a file and compile it using your
+        preferred XSLT processor to produce a XLS-FO file and them compile it
+        to generate a PDF file (if using <ulink
+        url="http://www.xmlmind.com">XMLMind FO Converter</ulink> generate a
+        RTF file). Open it with Acrobat Reader: <ulink
+        url="../pdf/cdCatalog.pdf">CD Catalog PDF</ulink></para>
+      </section>
+
+      <section>
+        <title>Conclusion</title>
+
+        <para>The XLS-FO examples shown here were very simple. They try to
+        show how XSL-FO is complex but, at the same time, powerful.</para>
+
+        <para>There are many tools supporting XLS-FO (some of them partially),
+        some examples are:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Apache Foundation <ulink
+            url="http://xml.apache.org/#fop">FOP: XSL Formatting Object
+            processor</ulink>.</para>
+          </listitem>
+
+          <listitem>
+            <para>Rendex <ulink url="http://www.renderx.com/">XEP XSL
+            Rendering Engine</ulink>, it includes a nice tutorial for XSL-FO:
+            <ulink url="http://www.renderx.com/tutorial.html">XSL-FO
+            Tutorial</ulink>.</para>
+          </listitem>
+
+          <listitem>
+            <para>XMLMind <ulink url="http://www.xmlmind.com">FO
+            Converter</ulink>.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+
+    <section id="xsl_exercises">
+      <title>Exercises</title>
+
+      <section>
+        <title>XSL transformation</title>
+
+        <para>Create two XSLT sheets to convert to HTML the files from the XML
+        language you created as an exercise in the last chapter. Each XSLT
+        sheet should take all the information in XML and display it in
+        different formats (change background, presentation order, fonts,
+        etc.).</para>
+
+        <para>To generate and test the XSLT files you may use the MS
+        IExplorer, the Xalan - XSL stylesheet processors (<ulink
+        url="http://xml.apache.org/#xalan">http://xml.apache.org/#xalan</ulink>),
+        or any other tool you like.</para>
+      </section>
+    </section>
+  </chapter>
+
+  <chapter id="uml">
+    <title>UML</title>
+
+    <section id="uml_uml_unified_modeling_language">
+      <title>UML - Unified Modeling Language</title>
+
+      <para>The UML is standard diagramming language to visualize the results
+      of analysis and design.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>An emerging standard for modeling object-oriented
+          software.</para>
+        </listitem>
+
+        <listitem>
+          <para>Resulted from the convergence of notations from three leading
+          object-oriented methods:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><emphasis>OMT</emphasis> (James Rumbaugh)</para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis>OOSE</emphasis> (Ivar Jacobson)</para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis>Booch</emphasis> (Grady Booch)</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>UML Notation is simple and relatively trivial.</para>
+        </listitem>
+
+        <listitem>
+          <para>Much more important: Skill in designing with objects.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The UML is not:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>A process or methodology.</para>
+        </listitem>
+
+        <listitem>
+          <para>Object-oriented analysis and design.</para>
+        </listitem>
+
+        <listitem>
+          <para>Guideline for design.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="uml_uml_diagrams">
+      <title>UML Diagrams</title>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Use Cases Diagrams</emphasis></para>
+
+          <para>Describe the functional behavior of the system as seen by the
+          user.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Class Diagrams</emphasis></para>
+
+          <para>Describe the static structure of the system: Objects,
+          Attributes, and Associations.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Interaction Diagrams</emphasis></para>
+
+          <para>Models that describe how groups of objects collaborate in some
+          behavior.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><emphasis role="bold">Sequence Diagrams</emphasis></para>
+
+              <para>Describe the dynamic behavior between actors and the
+              system and between objects of the system.</para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis role="bold">Collaboration
+              Diagrams</emphasis></para>
+
+              <para>Similar to Sequence diagrams, however the sequence is
+              indicated by numbering the messages.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Package Diagrams</emphasis></para>
+
+          <para>Groups classes together into high level unities.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">State Diagrams</emphasis></para>
+
+          <para>Describe the dynamic behavior of an individual object as a
+          finite state machine.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Activity Diagrams</emphasis></para>
+
+          <para>Model the dynamic behavior of a system, in particular the
+          workflow, i.e. a flowchart.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Deployment Diagrams</emphasis></para>
+
+          <para>Shows the physical relationships among software and hardware
+          components in the delivered system.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="uml_main_diagrams">
+      <title>Main Diagrams</title>
+
+      <para><ulink url="../pdf/UMLdiagrams1.pdf">Use Cases, Class, Sequence
+      and State Diagrams</ulink>.</para>
+    </section>
+
+    <section id="uml_uses_cases_diagrams">
+      <title>Uses Cases Diagrams</title>
+
+      <para><ulink url="../pdf/UMLdiagrams2.pdf">Uses Cases
+      Diagrams</ulink>.</para>
+
+      <para><ulink url="../pdf/UMLdiagrams3.pdf">Graphics</ulink>.</para>
+    </section>
+
+    <section id="uml_class_diagrams">
+      <title>Class Diagrams</title>
+
+      <para><ulink url="../pdf/UMLdiagrams4.pdf">Graphics</ulink>.</para>
+    </section>
+
+    <section id="uml_sequence_and_activity_diagrams">
+      <title>Sequence and Activity Diagrams</title>
+
+      <para>Sequence Diagrams <ulink
+      url="../pdf/UMLdiagrams5.pdf">Graphics</ulink>.</para>
+
+      <para>Activity Diagrams <ulink
+      url="../pdf/UMLdiagrams6.pdf">Graphics</ulink>.</para>
+    </section>
+
+    <section id="uml_summary">
+      <title>Summary</title>
+
+      <para>UML provides a wide variety of notations for representing many
+      aspects of software development:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Powerful, but complex language.</para>
+        </listitem>
+
+        <listitem>
+          <para>Can be misused to generate unreadable models.</para>
+        </listitem>
+
+        <listitem>
+          <para>Can be misunderstood when using too many exotic
+          features.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>We concentrate only on a few notations:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis role="bold">Functional model</emphasis>: use case
+          diagram.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Object model</emphasis>: class
+          diagram.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis role="bold">Dynamic model</emphasis>: sequence
+          diagrams, state and activity diagrams.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </chapter>
+
+  <chapter id="oohdm">
+    <title>OOHDM</title>
+
+    <section id="oohdm_navigation">
+      <title>OOHDM Navigation</title>
+
+      <para>The Object-Oriented Hypermedia Design Method (OOHDM) uses
+      abstraction and composition mechanisms in an object oriented framework
+      to, on one hand, allow a concise description of complex information
+      items, and on the other hand, allow the specification of complex
+      navigation patterns and interface transformations.</para>
+
+      <para>There is a link to the OOHDM site: <ulink
+      url="http://www.telemidia.puc-rio.br/oohdm/oohdm.html">http://www.telemidia.puc-rio.br/oohdm/oohdm.html</ulink></para>
+
+      <para>This chapter focus only on the navigational aspects of OOHDM, as a
+      complementation for the UML models:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><ulink url="../ppt/OOHDM-aula1.ppt">Introduction to
+          OOHDM</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink url="../ppt/OOHDM-aula5.ppt">Navigational
+          Project</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink url="../ppt/OOHDM-aula6.ppt">Case study: Online
+          Publication</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>As an exercise, you can draw parallels and differences between the
+      UML diagrams and the OOHDM diagrams. You can use the <ulink
+      url="../ppt/OOHDM.zip">complete OOHDM slides</ulink> and the <ulink
+      url="../ppt/Notacao_OOHDM1.zip">OOHDM specs</ulink>.</para>
+    </section>
+  </chapter>
+
+  <chapter id="jsp">
+    <title>Java Server Pages</title>
+
+    <para>A JSP page is a text document that contains two types of text:
+    static data, which can be expressed in any text-based format (such as
+    HTML, SVG, WML, and XML), and JSP elements, which construct dynamic
+    content.</para>
+
+    <section id="jsp_example">
+      <title>JSP Example</title>
+
+      <para>The next Web page is a form that allows you to select a locale and
+      displays the date in a manner appropriate to the locale:</para>
+
+      <figure>
+        <title>Localized Date Form</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="img/web-dateForm.gif" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The lines in bold in the example code contain the following types
+      of JSP constructs:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>A page directive (<command>&lt;%@page ... %&gt;</command>)
+          sets the content type returned by the page.</para>
+        </listitem>
+
+        <listitem>
+          <para>Tag library directives (<command>&lt;%@taglib ...
+          %&gt;</command>) import custom tag libraries.</para>
+        </listitem>
+
+        <listitem>
+          <para><command>jsp:useBean</command> creates an object containing a
+          collection of locales and initializes an identifier that points to
+          that object.</para>
+        </listitem>
+
+        <listitem>
+          <para>JSP expression language expressions (<command>${ }</command>)
+          retrieve the value of object properties. The values are used to set
+          custom tag attribute values and create dynamic content.</para>
+        </listitem>
+
+        <listitem>
+          <para>Custom tags set a variable (<command>c:set</command>), iterate
+          over a collection of locale names (<command>c:forEach</command>),
+          and conditionally insert HTML text into the response (<command>c:if,
+          c:choose, c:when, c:otherwise</command>).</para>
+        </listitem>
+
+        <listitem>
+          <para><command>jsp:setProperty</command> sets the value of an object
+          property.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>That is the JSP page:</para>
+
+      <programlisting>&lt;%@ <emphasis role="bold">page contentType</emphasis>="text/html; charset=UTF-8" %&gt;
+&lt;%@ <emphasis role="bold">taglib</emphasis> uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt;
+&lt;%@ <emphasis role="bold">taglib</emphasis> uri="/functions" prefix="f" %&gt;
+
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Localized Dates&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor="white"&gt;
+&lt;<emphasis role="bold">jsp:useBean</emphasis> id="locales" scope="application" class="mypkg.MyLocales"/&gt;
+
+&lt;form name="localeForm" action="index.jsp" method="post"&gt;
+&lt;<emphasis role="bold">c:set</emphasis> var="selectedLocaleString" value="<emphasis
+          role="bold">${param.locale}</emphasis>" /&gt;
+&lt;<emphasis role="bold">c:set</emphasis> var="selectedFlag" 
+  value="<emphasis role="bold">${!empty selectedLocaleString}</emphasis>" /&gt;
+&lt;b&gt;Locale:&lt;/b&gt;
+&lt;select name=locale&gt;
+&lt;<emphasis role="bold">c:forEach</emphasis> var="localeString" items="<emphasis
+          role="bold">${locales.localeNames}</emphasis>" &gt;
+  &lt;<emphasis role="bold">c:choose</emphasis>&gt;
+    &lt;<emphasis role="bold">c:when</emphasis> test="<emphasis role="bold">${selectedFlag}</emphasis>"&gt;
+      &lt;<emphasis role="bold">c:choose</emphasis>&gt;
+        &lt;<emphasis role="bold">c:when</emphasis> test="<emphasis
+          role="bold">${selectedLocaleString == localeString}</emphasis>" &gt;
+          &lt;option selected&gt;<emphasis role="bold">${localeString}</emphasis>&lt;/option&gt;
+        &lt;<emphasis role="bold">/c:when</emphasis>&gt;
+        &lt;<emphasis role="bold">c:otherwise</emphasis>&gt;
+          &lt;option&gt;<emphasis role="bold">${localeString}</emphasis>&lt;/option&gt;
+        &lt;<emphasis role="bold">/c:otherwise</emphasis>&gt;
+      &lt;<emphasis role="bold">/c:choose</emphasis>&gt;
+    &lt;<emphasis role="bold">/c:when</emphasis>&gt;
+    &lt;<emphasis role="bold">c:otherwise</emphasis>&gt;
+      &lt;option&gt;<emphasis role="bold">${localeString}</emphasis>&lt;/option&gt;
+    &lt;<emphasis role="bold">/c:otherwise</emphasis>&gt;
+  &lt;<emphasis role="bold">/c:choose</emphasis>&gt;
+&lt;<emphasis role="bold">/c:forEach</emphasis>&gt;
+&lt;/select&gt;
+&lt;input type="submit" name="Submit" value="Get Date"&gt;
+&lt;/form&gt;
+
+&lt;<emphasis role="bold">c:if</emphasis> test="<emphasis role="bold">${selectedFlag}</emphasis>" &gt;
+  &lt;<emphasis role="bold">jsp:setProperty</emphasis> name="locales"
+    property="selectedLocaleString"
+    value="<emphasis role="bold">${selectedLocaleString}</emphasis>" /&gt;
+  &lt;<emphasis role="bold">jsp:useBean</emphasis> id="date" class="mypkg.MyDate"/&gt;
+  &lt;<emphasis role="bold">jsp:setProperty</emphasis> name="date" property="locale"
+    value="<emphasis role="bold">${locales.selectedLocale}</emphasis>"/&gt;
+  &lt;b&gt;Date: &lt;/b&gt;<emphasis role="bold">${date.date}</emphasis>
+&lt;<emphasis role="bold">/c:if</emphasis>&gt;
+&lt;/body&gt;
+&lt;/html&gt;</programlisting>
+
+      <para>This JSP page has to be deployed in a JSP 2.0 compliant container,
+      such as Tomcat 5.X, with the JSTL 1.1 library installed.</para>
+    </section>
+
+    <section id="jsp_life_cycle">
+      <title>Life Cycle of a JSP Page</title>
+
+      <para>A JSP page services requests as a servlet.</para>
+
+      <para>When a request is mapped to a JSP page, the Web container first
+      checks whether the JSP page's servlet is older than the JSP page. If the
+      servlet is older, the Web container translates the JSP page into a
+      servlet class and compiles the class.</para>
+
+      <section>
+        <title>Translation and Compilation</title>
+
+        <para>During the translation phase each type of data in a JSP page is
+        treated differently. Static data is transformed into code that will
+        emit the data into the response stream. JSP elements are treated as
+        follows:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Directives are used to control how the Web container
+            translates and executes the JSP page.</para>
+          </listitem>
+
+          <listitem>
+            <para>Scripting elements are inserted into the JSP page's servlet
+            class.</para>
+          </listitem>
+
+          <listitem>
+            <para>Expression language expressions are passed as parameters to
+            calls to the JSP expression evaluator.</para>
+          </listitem>
+
+          <listitem>
+            <para><command>jsp:[set|get]Property </command>elements are
+            converted into method calls to JavaBeans components.</para>
+          </listitem>
+
+          <listitem>
+            <para><command>jsp:[include|forward]</command> elements are
+            converted into invocations of the Java Servlet API.</para>
+          </listitem>
+
+          <listitem>
+            <para>The<command> jsp:plugin</command> element is converted into
+            browser-specific markup for activating an applet.</para>
+          </listitem>
+
+          <listitem>
+            <para>Custom tags are converted into calls to the tag handler that
+            implements the custom tag.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>Execution</title>
+
+        <para>You can control various JSP page execution parameters by using
+        page directives. Such as:</para>
+
+        <para><emphasis role="bold">Handling Errors</emphasis></para>
+
+        <para>Any number of exceptions can arise when a JSP page is
+        executed.</para>
+
+        <para>To specify that the Web container should forward control to an
+        error page, use the following page directive at the beginning of the
+        JSP page:</para>
+
+        <programlisting>&lt;%@ page errorPage="<emphasis>file_name</emphasis>" %&gt;</programlisting>
+
+        <para>You access the error data object in an expression language
+        expression via the page context.</para>
+
+        <para><command>${pageContext.errorData.statusCode}</command> is used
+        to retrieve the status code, and</para>
+
+        <para><command>${pageContext.errorData.throwable}</command> retrieves
+        the exception.</para>
+
+        <para>If the exception is generated during the evaluation of an EL
+        expression, you can retrieve the root cause of the exception using:
+        <command>${pageContext.errorData.throwable.rootCause}</command></para>
+      </section>
+
+      <section>
+        <title>Response and Page Encoding</title>
+
+        <para>You use the contentType attribute to specify the encoding of the
+        response:</para>
+
+        <programlisting>&lt;%@ page contentType="text/html; charset=UTF-8" %&gt;</programlisting>
+
+        <para>This date application specifies that the page should be encoded
+        using UTF-8.</para>
+
+        <para>To set the source encoding of the page itself, you would use the
+        following page directive.</para>
+
+        <programlisting>&lt;%@ page pageEncoding="UTF-8" %&gt;</programlisting>
+      </section>
+    </section>
+
+    <section id="jsp_EL">
+      <title>Expression Language</title>
+
+      <para>A primary feature of JSP technology version 2.0 is its support for
+      an expression language (EL).</para>
+
+      <para>An expression language makes it possible to easily access
+      application data stored in JavaBeans components.</para>
+
+      <para>For example, the JSP expression language allows a page author to
+      access a bean using simple syntax such as <command>${name}</command> for
+      a simple variable or <command>${name.foo.bar} </command>for a nested
+      property.</para>
+
+      <para>EL expression can be use in attributes of tags (from tab
+      libraries), such as the test attribute of the following conditional
+      tag:</para>
+
+      <programlisting>&lt;c:if test="${sessionScope.cart.numberOfItems &gt; 0}"&gt; 
+  ...
+&lt;/c:if&gt;</programlisting>
+
+      <para>EL expressions can be used:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>In static text</para>
+        </listitem>
+
+        <listitem>
+          <para>In any standard or custom tag attribute that can accept an
+          expression</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>There are three ways to set a tag attribute value:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>With a single expression construct:</para>
+
+          <para><command>&lt;some:tag value="${expr}"/&gt;</command></para>
+        </listitem>
+
+        <listitem>
+          <para>With one or more expressions separated or surrounded by
+          text:</para>
+
+          <para><command>&lt;some:tag
+          value="some${expr}${expr}text${expr}"/&gt;</command></para>
+        </listitem>
+
+        <listitem>
+          <para>With text only:</para>
+
+          <para><command>&lt;some:tag value="sometext"/&gt;</command></para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>Implicit Objects</title>
+
+        <para>The JSP expression language defines a set of implicit
+        objects:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><command>pageContext: </command>The context for the JSP
+            page. Provides access to various objects including:</para>
+
+            <itemizedlist>
+              <listitem>
+                <para><command>servletContext:</command> The context for the
+                JSP page's servlet and any Web components contained in the
+                same application.</para>
+              </listitem>
+
+              <listitem>
+                <para><command>session:</command> The session object for the
+                client.</para>
+              </listitem>
+
+              <listitem>
+                <para><command>request: </command>The request triggering the
+                execution of the JSP page.</para>
+              </listitem>
+
+              <listitem>
+                <para><command>response:</command> The response returned by
+                the JSP page.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+
+        <para>In addition, several implicit objects are available that allow
+        easy access to the following objects:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><command>param:</command> Maps a request parameter name to a
+            single value</para>
+          </listitem>
+
+          <listitem>
+            <para><command>paramValues:</command> Maps a request parameter
+            name to an array of values</para>
+          </listitem>
+
+          <listitem>
+            <para><command>header:</command> Maps a request header name to a
+            single value</para>
+          </listitem>
+
+          <listitem>
+            <para><command>headerValues:</command> Maps a request header name
+            to an array of values</para>
+          </listitem>
+
+          <listitem>
+            <para><command>cookie:</command> Maps a cookie name to a single
+            cookie</para>
+          </listitem>
+
+          <listitem>
+            <para><command>initParam:</command> Maps a context initialization
+            parameter name to a single value</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Finally, there are objects that allow access to the various
+        scoped variables:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><command>pageScope:</command> Maps page-scoped variable
+            names to their values</para>
+          </listitem>
+
+          <listitem>
+            <para><command>requestScope:</command> Maps request-scoped
+            variable names to their values</para>
+          </listitem>
+
+          <listitem>
+            <para><command>sessionScope:</command> Maps session-scoped
+            variable names to their values</para>
+          </listitem>
+
+          <listitem>
+            <para><command>applicationScope:</command> Maps application-scoped
+            variable names to their values</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>Examples</title>
+
+        <table>
+          <title>Example Expressions</title>
+
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry><emphasis role="bold">EL Expression</emphasis></entry>
+
+                <entry><emphasis role="bold">Result</emphasis></entry>
+              </row>
+
+              <row>
+                <entry><command>${1 &gt; (4/2)} </command></entry>
+
+                <entry>false</entry>
+              </row>
+
+              <row>
+                <entry><command>${4.0 &gt;= 3} </command></entry>
+
+                <entry>true</entry>
+              </row>
+
+              <row>
+                <entry><command>${100.0 == 100}</command></entry>
+
+                <entry>true</entry>
+              </row>
+
+              <row>
+                <entry><command>${(10*10) ne 100} </command></entry>
+
+                <entry>false</entry>
+              </row>
+
+              <row>
+                <entry><command>${'a' &lt; 'b'}</command></entry>
+
+                <entry>true</entry>
+              </row>
+
+              <row>
+                <entry><command>${1.2E4 + 1.4}</command></entry>
+
+                <entry>12001.4</entry>
+              </row>
+
+              <row>
+                <entry><command>${3 div 4}</command></entry>
+
+                <entry>0.75</entry>
+              </row>
+
+              <row>
+                <entry><command>${!empty param.Add}</command></entry>
+
+                <entry>True if the request parameter named Add is null or an
+                empty string</entry>
+              </row>
+
+              <row>
+                <entry><command>${sessionScope.cart.numberOfItems}</command></entry>
+
+                <entry>The value of the <command>numberOfItems</command>
+                property of the session-scoped attribute named
+                <command>cart</command></entry>
+              </row>
+
+              <row>
+                <entry><command>${param['mycom.productId']}</command></entry>
+
+                <entry>The value of the request parameter named
+                <command>mycom.productId</command></entry>
+              </row>
+
+              <row>
+                <entry><command>${header["host"]}</command></entry>
+
+                <entry>The host</entry>
+              </row>
+
+              <row>
+                <entry><command>${requestScope['javax.servlet.
+                forward.servlet_path']}</command></entry>
+
+                <entry>The value of the request-scoped attribute named
+                <command>javax.servlet.forward.servlet_path</command></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+    </section>
+
+    <section id="jsp_functions">
+      <title>Functions</title>
+
+      <para>The JSP expression language allows you to define a function that
+      can be invoked in an expression.</para>
+
+      <para>You use a taglib directive to import the tag library containing
+      the function. Then you preface the function invocation with the prefix
+      declared in the directive. For example, the following page imports the
+      <command>/functions</command> library and invokes the function equals in
+      an expression:</para>
+
+      <programlisting>&lt;%@ taglib prefix="f" uri="/functions"%&gt;
+...
+    &lt;c:when
+      test="${f:equals(selectedLocaleString,
+        localeString)}" &gt;</programlisting>
+
+      <para><emphasis role="bold">Defining Functions</emphasis></para>
+
+      <para>To define a function you program it as a public static method in a
+      public class. The <command>mypkg.MyLocales</command> class in the
+      <command>date</command> example defines a function that tests the
+      equality of two Strings as follows:</para>
+
+      <programlisting>package mypkg;
+public class MyLocales {
+
+  ...
+  public static boolean equals( String l1, String l2 ) {
+    return l1.equals(l2);
+  }
+}</programlisting>
+
+      <para>Then you map the function name as used in the EL expression to the
+      defining class and function signature in a TLD. The following
+      <command>functions.tld</command> file in the date example maps the
+      equals function to the class containing the implementation of the
+      function equals and the signature of the function:</para>
+
+      <programlisting>&lt;function&gt;
+  &lt;name&gt;equals&lt;/name&gt;
+  &lt;function-class&gt;mypkg.MyLocales&lt;/function-class&gt;
+  &lt;function-signature&gt;
+    boolean equals( java.lang.String, java.lang.String )
+  &lt;/function-signature&gt;
+&lt;/function&gt;</programlisting>
+    </section>
+
+    <section id="jsp_javaBeans">
+      <title>JavaBeans Components</title>
+
+      <para>JavaBeans components are Java classes that can be easily reused
+      and composed together into applications.</para>
+
+      <para>Any Java class that follows certain design conventions is a
+      JavaBeans component:</para>
+
+      <programlisting>package database
+
+public class BookDB {
+   private String bookId = "0";
+   private BookDBAO database = null;
+
+   public BookDB () {} //<emphasis role="bold">-&gt; Empty Constructor</emphasis>
+
+   public void <emphasis role="bold">set</emphasis>BookId(String bookId) {
+      this.bookId = bookId;
+   }
+   public void <emphasis role="bold">set</emphasis>Database(BookDBAO database) {
+      this.database = database;
+   }
+   public BookDetails <emphasis role="bold">get</emphasis>BookDetails() throws 
+      BookNotFoundException {
+      return (BookDetails)database.getBookDetails(bookId); 
+   }
+   public List <emphasis role="bold">get</emphasis>Books() throws BooksNotFoundException {
+     return database.getBooks();
+   }
+   public void buyBooks(ShoppingCart cart) 
+     throws OrderException {
+     database.buyBooks(cart);
+   }
+   public int <emphasis role="bold">get</emphasis>NumberOfBooks() throws BooksNotFoundException {
+      return database.getNumberOfBooks();
+   }
+}</programlisting>
+
+      <para></para>
+
+      <section>
+        <title>Creating and Using a JavaBeans Component</title>
+
+        <para>To declare that your JSP page will use a JavaBeans component,
+        you use a jsp:useBean element. There are two forms:</para>
+
+        <programlisting>&lt;jsp:useBean id="beanName"
+  class="<emphasis>fully_qualified_classname</emphasis>" scope="<emphasis>scope</emphasis>"/&gt;</programlisting>
+
+        <para>or</para>
+
+        <programlisting>&lt;jsp:useBean id="beanName"
+  class="<emphasis>fully_qualified_classname</emphasis>" scope="<emphasis>scope</emphasis>"&gt;
+  &lt;jsp:setProperty .../&gt;
+&lt;/jsp:useBean&gt;</programlisting>
+
+        <para>The second form is used when you want to include
+        <command>jsp:setProperty</command> statements, described in the next
+        section, for initializing bean properties.</para>
+
+        <para><emphasis role="bold">Setting JavaBeans Component
+        Properties</emphasis></para>
+
+        <para>The standard way to set JavaBeans component properties in a JSP
+        page is by using the <command>jsp:setProperty</command>
+        element:</para>
+
+        <table>
+          <title>Valid Bean Property Assignments from String Values</title>
+
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry><emphasis role="bold">Value Source</emphasis></entry>
+
+                <entry><emphasis role="bold">Element Syntax</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>String constant</entry>
+
+                <entry><programlisting>&lt;jsp:setProperty name="<emphasis>beanName</emphasis>" 
+  property="<emphasis>propName</emphasis>" value="<emphasis>string constant</emphasis>"/&gt;</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>Request parameter</entry>
+
+                <entry><programlisting>&lt;jsp:setProperty name="<emphasis>beanName</emphasis>" 
+  property="<emphasis>propName</emphasis>" param="<emphasis>paramName</emphasis>"/&gt;</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>Request parameter name that matches bean
+                property</entry>
+
+                <entry><programlisting>&lt;jsp:setProperty name="<emphasis>beanName</emphasis>" 
+  property="<emphasis>propName</emphasis>"/&gt; 
+  
+&lt;jsp:setProperty name="<emphasis role="">beanName</emphasis>" 
+  property="<emphasis>*</emphasis>"/&gt;</programlisting></entry>
+              </row>
+
+              <row>
+                <entry>Expression</entry>
+
+                <entry><programlisting>&lt;jsp:setProperty name="<emphasis>beanName</emphasis>" 
+  property="<emphasis>propName</emphasis>" value="<emphasis>expression</emphasis>"/&gt; 
+  
+&lt;jsp:setProperty name="<emphasis>beanName</emphasis>" 
+  property="<emphasis>propName</emphasis>" &gt; 
+  &lt;jsp:attribute name="<emphasis>value</emphasis>"&gt;
+    <emphasis>expression</emphasis>
+  &lt;/jsp:attribute&gt; 
+&lt;/jsp:setProperty&gt; </programlisting></entry>
+              </row>
+
+              <row>
+                <entry></entry>
+
+                <entry><orderedlist>
+                    <listitem>
+                      <para><emphasis>beanName</emphasis> must be the same as
+                      that specified for the id attribute in a
+                      <command>useBean</command> element.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para>There must be a <emphasis>setPropName</emphasis>
+                      method in the JavaBeans component.</para>
+                    </listitem>
+
+                    <listitem>
+                      <para><emphasis>paramName</emphasis> must be a request
+                      parameter name.</para>
+                    </listitem>
+                  </orderedlist></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+
+        <para>Setting a property in a bean:</para>
+
+        <programlisting>&lt;c:set var="bid" value="${param.bookId}"/&gt;
+&lt;jsp:setProperty name="bookDB" property="bookId"
+  value="${bid}" /&gt;</programlisting>
+
+        <para><emphasis role="bold">Getting JavaBeans Component
+        Properties</emphasis></para>
+
+        <para>The main way to retrieve JavaBeans component properties is by
+        using the JSP expression language. Thus, to retrieve a book
+        title:</para>
+
+        <programlisting>${bookDB.bookDetails.title}</programlisting>
+
+        <para>Another way to retrieve component properties is to use the
+        jsp:getProperty element. This element converts the value of the
+        property into a String and inserts the value into the response
+        stream:</para>
+
+        <programlisting>&lt;jsp:getProperty name="<emphasis>beanName</emphasis>" property="<emphasis>propName</emphasis>"/&gt;</programlisting>
+      </section>
+    </section>
+
+    <section id="jsp_custom_tags">
+      <title>Using Custom Tags</title>
+
+      <para>Custom tags are user-defined JSP language elements that
+      encapsulate recurring tasks.</para>
+
+      <para>Custom tags are distributed in a tag library, which defines a set
+      of related custom tags and contains the objects that implement the
+      tags.</para>
+
+      <para>Custom tags have the syntax</para>
+
+      <programlisting>&lt;prefix:tag attr1="value" ... attrN="value" /&gt;</programlisting>
+
+      <para>or</para>
+
+      <programlisting>&lt;prefix:tag attr1="value" ... attrN="value" &gt; 
+  <emphasis>body</emphasis>
+&lt;/prefix:tag&gt;</programlisting>
+
+      <para>where <command>prefix</command> distinguishes tags for a library,
+      <command>tag</command> is the tag identifier, and <emphasis>attr1 ...
+      attrN</emphasis> are attributes that modify the behavior of the
+      tag.</para>
+
+      <para>To use a custom tag in a JSP page, you must:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Declare the tag library containing the tag</para>
+        </listitem>
+
+        <listitem>
+          <para>Make the tag library implementation available to the Web
+          application</para>
+        </listitem>
+      </itemizedlist>
+
+      <para><emphasis role="bold">Declaring Tag Libraries</emphasis></para>
+
+      <para>Include a taglib directive in the page before any custom tag from
+      that tag library is used:</para>
+
+      <programlisting>&lt;%@ taglib prefix="tt" [tagdir=/WEB-INF/tags/dir | uri=URI ] %&gt;</programlisting>
+
+      <itemizedlist>
+        <listitem>
+          <para>If the tag library is defined with tag files, you supply the
+          <command>tagdir</command> attribute to identify the location of the
+          files. The value of the attribute must start with
+          <command>/WEB-INF/tags/</command>.</para>
+        </listitem>
+
+        <listitem>
+          <para>If a Tag Library Descriptor (TLD) is used , the
+          <command>uri</command> attribute is used to refer to a URI that
+          identifies the TLD. Tag library descriptor file names must have the
+          extension <command>.tld</command>. TLD files are stored in the
+          <command>WEB-INF</command> directory or subdirectory of the WAR file
+          or in the <command>META-INF/</command> directory or subdirectory of
+          a tag library packaged in a JAR.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>You can also reference a TLD in a taglib directive by using an
+      absolute URI. For example, the absolute URIs for the JSTL library are as
+      follows:</para>
+
+      <programlisting>Core: http://java.sun.com/jsp/jstl/core
+XML: http://java.sun.com/jsp/jstl/xml
+Internationalization: http://java.sun.com/jsp/jstl/fmt
+SQL: http://java.sun.com/jsp/jstl/sql
+Functions: http://java.sun.com/jsp/jstl/functions</programlisting>
+
+      <para>When you reference a tag library with an absolute URI that exactly
+      matches the URI declared in the taglib element of the TLD , you do not
+      have to add the taglib element to <command>web.xml</command>; the JSP
+      container automatically locates the TLD inside the JSTL library
+      implementation.</para>
+
+      <para><emphasis role="bold">Including the Tag Library Implementation
+      </emphasis></para>
+
+      <para>In addition to declaring the tag library, you also must make the
+      tag library implementation available to the Web application.</para>
+
+      <para>There are several ways to do this:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Tag library implementations can be included in a WAR in an
+          unpacked format: Tag files are packaged in the /WEB-INF/tag/
+          directory, and tag handler classes are packaged in the
+          /WEB-INF/classes/ directory of the WAR.</para>
+        </listitem>
+
+        <listitem>
+          <para>Tag libraries already packaged into a JAR file are included in
+          the /WEB-INF/lib/ directory of the WAR.</para>
+        </listitem>
+
+        <listitem>
+          <para>Finally, an application server can load a tag library into all
+          the Web applications running on the server.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="jsp_lecture_notes">
+      <title id="jsp_lectures_notes">Lecture Notes</title>
+
+      <para>This chapter is based on:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><ulink
+          url="http://java.sun.com/j2ee/1.4/docs/tutorial/doc/index.html">The
+          J2EE Tutorial: Chapter 12</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </chapter>
+
+  <chapter id="jstl">
+    <title id="jstl">JSP Standard Tag Library</title>
+
+    <section id="jstl_introduction">
+      <title>Introduction</title>
+
+      <para>The JavaServer Pages Standard Tag Library (JSTL) encapsulates core
+      functionality common to many JSP applications.</para>
+
+      <para>JSTL includes a wide variety of tags that fit into discrete
+      functional areas. To reflect this, as well as to give each area its own
+      namespace, JSTL is exposed as multiple tag libraries. The URIs for the
+      libraries are as follows:</para>
+
+      <table>
+        <title>JSTL Tags</title>
+
+        <tgroup cols="3">
+          <tbody>
+            <row>
+              <entry><emphasis role="bold">Area</emphasis></entry>
+
+              <entry><emphasis role="bold">Subfunction</emphasis></entry>
+
+              <entry><emphasis role="bold">Prefix</emphasis></entry>
+            </row>
+
+            <row>
+              <entry><emphasis role="bold">Core</emphasis></entry>
+
+              <entry><programlisting>Variable support
+Flow control
+URL management
+Miscellaneous</programlisting></entry>
+
+              <entry><command>c</command></entry>
+            </row>
+
+            <row>
+              <entry><emphasis role="bold">XML</emphasis></entry>
+
+              <entry><programlisting>Core
+Flow Control
+Transformation</programlisting></entry>
+
+              <entry><command>x</command></entry>
+            </row>
+
+            <row>
+              <entry><emphasis role="bold">I18n</emphasis></entry>
+
+              <entry><programlisting>Locale
+Message formatting
+Number and date formatting</programlisting></entry>
+
+              <entry><command>fmt</command></entry>
+            </row>
+
+            <row>
+              <entry><emphasis role="bold">Database</emphasis></entry>
+
+              <entry><programlisting>SQL</programlisting></entry>
+
+              <entry><command>sql</command></entry>
+            </row>
+
+            <row>
+              <entry><emphasis role="bold">Functions</emphasis></entry>
+
+              <entry><programlisting>Collection length
+String manipulation</programlisting></entry>
+
+              <entry><command>fn</command></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="jstl_core">
+      <title>Core Tag Library</title>
+
+      <para>Core tags include those related to variables and flow control, as
+      well as a generic way to access URL-based resources whose content can
+      then be included or processed within the JSP page:</para>
+
+      <table>
+        <title>Core Tags</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry><emphasis role="bold">Function</emphasis></entry>
+
+              <entry><emphasis role="bold">Tags</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>Variable support</entry>
+
+              <entry><programlisting>remove
+set</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>Flow control</entry>
+
+              <entry><programlisting>choose 
+  when 
+  otherwise 
+forEach 
+forTokens 
+if</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>URL management</entry>
+
+              <entry><programlisting>import 
+  param 
+redirect 
+  param 
+url 
+  param</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>Miscellaneous</entry>
+
+              <entry><programlisting>catch
+out</programlisting></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <section>
+        <title>Variable Support</title>
+
+        <para>The set tag sets the value of an EL variable or the property of
+        an EL variable in any of the JSP scopes (page, request, session, or
+        application). If the variable does not already exist, it is
+        created.</para>
+
+        <para>The JSP EL variable or property can be set either from the
+        attribute value:</para>
+
+        <programlisting>&lt;c:set var="foo" scope="session" value="..."/&gt; </programlisting>
+
+        <para>or from the body of the tag:</para>
+
+        <programlisting>&lt;c:set var="foo"&gt;
+   ...  
+&lt;/c:set&gt;</programlisting>
+
+        <para>For example, the following sets an EL variable named bookID with
+        the value of the request parameter named Remove:</para>
+
+        <programlisting>&lt;c:set var="bookId" value="${param.Remove}"/&gt;</programlisting>
+
+        <para>To remove an EL variable, you use the remove tag. When the
+        bookstore JSP page bookreceipt.jsp is invoked, the shopping session is
+        finished, so the cart session attribute is removed as follows:</para>
+
+        <programlisting>&lt;c:remove var="cart" scope="session"/&gt;</programlisting>
+      </section>
+
+      <section>
+        <title>Flow Control</title>
+
+        <para>To execute flow control logic, a page author must generally
+        resort to using scriptlets. Now he can use flow control tags:</para>
+
+        <para><emphasis role="bold">Conditional Tags</emphasis></para>
+
+        <para>The <emphasis role="bold">if tag</emphasis> allows the
+        conditional execution of its body according to the value of the test
+        attribute.</para>
+
+        <para>The following example tests whether the request parameter Add is
+        empty. If the test evaluates to true, the page queries the database
+        for the book record identified by the request parameter and adds the
+        book to the shopping cart:</para>
+
+        <programlisting>&lt;c:if test="${!empty param.Add}"&gt;
+  &lt;c:set var="bid" value="${param.Add}"/&gt;
+  &lt;jsp:useBean id="bid"  type="java.lang.String" /&gt;
+  &lt;sql:query var="books" 
+    dataSource="${applicationScope.bookDS}"&gt;
+    select * from PUBLIC.books where id = ?
+    &lt;sql:param value="${bid}" /&gt;
+  &lt;/sql:query&gt;
+  &lt;c:forEach var="bookRow" begin="0" items="${books.rows}"&gt; 
+    &lt;jsp:useBean id="bookRow" type="java.util.Map" /&gt;
+    &lt;jsp:useBean id="addedBook"
+      class="database.BookDetails" scope="page" /&gt;
+  ...
+  &lt;% cart.add(bid, addedBook); %&gt;
+...
+&lt;/c:if&gt; </programlisting>
+
+        <para>The <emphasis role="bold">choose tag</emphasis> performs
+        conditional block execution by the embedded <emphasis role="bold">when
+        subtags</emphasis>.</para>
+
+        <para>It renders the body of the first when tag whose test condition
+        evaluates to true. If none of the test conditions of nested when tags
+        evaluates to true, then the body of an <emphasis role="bold">otherwise
+        tag</emphasis> is evaluated, if present. For example, the following
+        sample code shows how to render text based on a customer's membership
+        category:</para>
+
+        <programlisting>&lt;c:choose&gt; 
+  &lt;c:when test="${customer.category == 'trial'}" &gt; 
+    ... 
+  &lt;/c:when&gt; 
+  &lt;c:when test="${customer.category == 'member'}" &gt; 
+    ... 
+  &lt;/c:when&gt; 
+    &lt;c:when test="${customer.category == 'preferred'}" &gt; 
+    ... 
+  &lt;/c:when&gt; 
+  &lt;c:otherwise&gt; 
+    ... 
+  &lt;/c:otherwise&gt; 
+&lt;/c:choose&gt;</programlisting>
+
+        <para>The choose, when, and otherwise tags can be used to construct an
+        if-then-else statement as follows:</para>
+
+        <programlisting>&lt;c:choose&gt; 
+  &lt;c:when test="${count == 0}" &gt; 
+    No records matched your selection. 
+  &lt;/c:when&gt; 
+  &lt;c:otherwise&gt; 
+    ${count} records matched your selection. 
+  &lt;/c:otherwise&gt; 
+&lt;/c:choose&gt;</programlisting>
+
+        <para><emphasis role="bold">Iterator Tags</emphasis></para>
+
+        <para>The <emphasis role="bold">forEach tag</emphasis> allows you to
+        iterate over a collection of objects. You specify the collection via
+        the items attribute, and the current item is available through a scope
+        variable named by the item attribute.</para>
+
+        <para>A large number of collection types are supported by forEach,
+        including all implementations of java.util.Collection and
+        java.util.Map. If the items attribute is of type java.util.Map, then
+        the current item will be of type java.util.Map.Entry, which has the
+        following properties:</para>
+
+        <para><emphasis role="bold">key:</emphasis> The key under which the
+        item is stored in the underlying Map</para>
+
+        <para><emphasis role="bold">value:</emphasis> The value that
+        corresponds to the key</para>
+
+        <para>Arrays of objects as well as arrays of primitive types (for
+        example, int) are also supported. For arrays of primitive types, the
+        current item for the iteration is automatically wrapped with its
+        standard wrapper class (for example, Integer for int, Float for float,
+        and so on).</para>
+
+        <para>Here's the shopping cart iteration from the preceding section,
+        now with the forEach tag:</para>
+
+        <programlisting>&lt;c:forEach var="item" items="${sessionScope.cart.items}"&gt;
+  ...
+  &lt;tr&gt; 
+    &lt;td align="right" bgcolor="#ffffff"&gt; 
+    ${item.quantity}
+  &lt;/td&gt;
+  ...
+&lt;/c:forEach&gt; </programlisting>
+
+        <para>The <emphasis role="bold">forTokens tag</emphasis> is used to
+        iterate over a collection of tokens separated by a delimiter.</para>
+      </section>
+
+      <section>
+        <title>URL Tags</title>
+
+        <para>The <emphasis role="bold">jsp:include</emphasis> element
+        provides for the inclusion of static and dynamic resources in the same
+        context as the current page. However, <emphasis
+        role="bold">jsp:include</emphasis> cannot access resources that reside
+        outside the Web application, and it causes unnecessary buffering when
+        the resource included is used by another element. The <emphasis
+        role="bold">import tag</emphasis> is a simple, generic way to access
+        URL-based resources, whose content can then be included and or
+        processed within the JSP page. For example, in XML Tag Library, import
+        is used to read in the XML document containing book information and
+        assign the content to the scoped variable xml:</para>
+
+        <programlisting>&lt;c:import url="/books.xml" var="xml" /&gt;
+&lt;x:parse doc="${xml}" var="booklist" 
+  scope="application" /&gt;</programlisting>
+
+        <para>The <emphasis role="bold">param tag</emphasis>, analogous to the
+        <emphasis role="bold">jsp:param</emphasis> tag, can be used with
+        import to specify request parameters. You can use the <emphasis
+        role="bold">url tag</emphasis> to rewrite URLs returned from a JSP
+        page. The url tag takes param subtags to include parameters in the
+        returned URL. For example, the following code rewrites the URL used to
+        add a book to the shopping cart as follows:</para>
+
+        <programlisting>&lt;c:url var="url" value="/catalog" &gt;
+  &lt;c:param name="Add" value="${bookId}" /&gt;
+&lt;/c:url&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="${url}"&gt; ... &lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</programlisting>
+
+        <para>The <emphasis role="bold">redirect tag</emphasis> sends an HTTP
+        redirect to the client. The redirect tag takes param subtags for
+        including parameters in the returned URL.</para>
+      </section>
+
+      <section>
+        <title>Miscellaneous tags</title>
+
+        <para>The <emphasis role="bold">catch tag</emphasis> provides a
+        complement to the JSP error page mechanism. It allows page authors to
+        recover gracefully from error conditions that they can control.</para>
+
+        <para>Actions that are of central importance to a page should not be
+        encapsulated in a catch; in this way their exceptions will propagate
+        instead to an error page.</para>
+
+        <para>The exception thrown is stored in the variable identified by
+        var, which always has page scope. If no exception occurred, the scoped
+        variable identified by var is removed if it existed. If var is
+        missing, the exception is simply caught and not saved.</para>
+
+        <para>The <emphasis role="bold">out tag</emphasis> evaluates an
+        expression and outputs the result of the evaluation to the current
+        JspWriter object. The syntax and attributes are as follows:</para>
+
+        <programlisting>&lt;c:out value="value" [escapeXml="{true|false}"] 
+  [default="defaultValue"] /&gt;</programlisting>
+      </section>
+    </section>
+
+    <section id="jstl_xml">
+      <title>XML Tag Library</title>
+
+      <para>The JSTL XML tag set is listed:</para>
+
+      <table>
+        <title>XML Tags</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry><emphasis role="bold">Function</emphasis></entry>
+
+              <entry><emphasis role="bold">Tags</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>Variable support</entry>
+
+              <entry><programlisting>out
+parse
+set</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>Flow control</entry>
+
+              <entry><programlisting>choose 
+  when 
+  otherwise 
+forEach 
+if</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>Transformation</entry>
+
+              <entry><programlisting>transform
+param</programlisting></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>A key aspect of dealing with XML documents is to be able to easily
+      access their content.</para>
+
+      <para>XPath, a W3C recommendation since 1999, provides an easy notation
+      for specifying and selecting parts of an XML document. In the JSTL XML
+      tags, XPath expressions specified using the select attribute are used to
+      select portions of XML data streams.</para>
+
+      <para>In addition to the standard XPath syntax, the JSTL XPath engine
+      supports the following scopes to access Web application data within an
+      XPath expression:</para>
+
+      <programlisting>$foo
+$param:
+$header:
+$cookie:
+$initParam:
+$pageScope:
+$requestScope:
+$sessionScope:
+$applicationScope:</programlisting>
+
+      <section>
+        <title>Core Tags</title>
+
+        <para>The core XML tags provide basic functionality to easily parse
+        and access XML data.</para>
+
+        <para>The <emphasis role="bold">parse tag</emphasis> parses an XML
+        document and saves the resulting object in the EL variable specified
+        by attribute <emphasis>var</emphasis>:</para>
+
+        <programlisting>&lt;c:if test="${applicationScope:booklist == null}" &gt; 
+  &lt;c:import url="${initParam.booksURL}" var="xml" /&gt;
+  &lt;x:parse doc="${xml}" var="booklist" scope="application" /&gt;
+&lt;/c:if&gt;</programlisting>
+
+        <para>The <emphasis role="bold">set tag</emphasis> evaluates an XPath
+        expression and sets the result into a JSP EL variable specified by
+        attribute <emphasis>var</emphasis>. The <emphasis role="bold">out
+        tag</emphasis> evaluates an XPath expression on the current context
+        node and outputs the result of the evaluation to the current JspWriter
+        object. The following JSP selects a book element whose
+        <command>id</command> attribute matches the request parameter
+        <command>bookId</command> and sets the <command>abook</command>
+        attribute. The <emphasis role="bold">out tag</emphasis> then selects
+        the book's title element and outputs the result.</para>
+
+        <programlisting>&lt;x:set var="abook"
+  select="$applicationScope.booklist/
+    books/book[@id=$param:bookId]" /&gt;
+  &lt;h2&gt;&lt;x:out select="$abook/title"/&gt;&lt;/h2&gt;</programlisting>
+
+        <para>As you have just seen, <command>x:set</command> stores an
+        internal XML representation of a node retrieved using an XPath
+        expression; it doesn't convert the selected node into a String and
+        store it. Thus, <command>x:set</command> is primarily useful for
+        storing parts of documents for later retrieval.</para>
+
+        <para>If you want to store a String, you must use
+        <command>x:out</command> within <command>c:set</command>. The
+        <command>x:out</command> tag converts the node to a String, and
+        <command>c:set</command> then stores the String as an EL variable. For
+        example, the following jsp stores an EL variable containing a book
+        price, which is later printed:</para>
+
+        <programlisting>&lt;c:set var="price"&gt;
+  &lt;x:out select="$abook/price"/&gt;
+&lt;/c:set&gt;
+&lt;h4&gt;ItemPrice: &lt;c:out value="${price}"/&gt;&lt;/h4&gt;</programlisting>
+
+        <para>The other option, which is more direct but requires that the
+        user have more knowledge of XPath, is to coerce the node to a String
+        manually by using XPath's string function.</para>
+
+        <programlisting>&lt;x:set var="price" select="string($abook/price)"/&gt;</programlisting>
+      </section>
+
+      <section>
+        <title>Flow Control Tags</title>
+
+        <para>The XML flow control tags parallel the behavior described in
+        Flow Control Tags for XML data streams.</para>
+
+        <para>The <emphasis role="bold">forEach tag</emphasis> is used to
+        display all the books contained in a booklist as follows:</para>
+
+        <programlisting>&lt;x:forEach var="book" 
+  select="$applicationScope:booklist/books/*"&gt;
+  &lt;tr&gt;
+    &lt;c:set var="bookId"&gt;
+      &lt;x:out select="$book/@id"/&gt;
+    &lt;/c:set&gt;=
+    &lt;td bgcolor="#ffffaa"&gt; 
+      &lt;c:url var="url"
+      value="/bookdetails" &gt;
+        &lt;c:param name="bookId" value="${bookId}" /&gt;
+        &lt;c:param name="Clear" value="0" /&gt;
+      &lt;/c:url&gt;
+      &lt;a href="${url}"&gt;
+      &lt;strong&gt;&lt;x:out select="$book/title"/&gt;&amp;nbsp;
+      &lt;/strong&gt;&lt;/a&gt;&lt;/td&gt; 
+    &lt;td bgcolor="#ffffaa" rowspan=2&gt; 
+      &lt;c:set var="price"&gt;
+        &lt;x:out select="$book/price"/&gt;
+      &lt;/c:set&gt;
+      &lt;fmt:formatNumber value="${price}" type="currency"/&gt; 
+      &amp;nbsp;
+    &lt;/td&gt; 
+    &lt;td bgcolor="#ffffaa" rowspan=2&gt; 
+    &lt;c:url var="url" value="/catalog" &gt;
+      &lt;c:param name="Add" value="${bookId}" /&gt;
+    &lt;/c:url&gt; 
+    &lt;p&gt;&lt;strong&gt;&lt;a href="${url}"&gt;&amp;nbsp;
+      &lt;fmt:message key="CartAdd"/&gt;&amp;nbsp;&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt; 
+  &lt;tr&gt; 
+    &lt;td bgcolor="#ffffff"&gt; 
+    &amp;nbsp;&amp;nbsp;&lt;fmt:message key="By"/&gt; &lt;em&gt;
+      &lt;x:out select="$book/firstname"/&gt;&amp;nbsp;
+      &lt;x:out select="$book/surname"/&gt;&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/x:forEach&gt;</programlisting>
+      </section>
+
+      <section>
+        <title>Transformation Tags</title>
+
+        <para>The <emphasis role="bold">transform tag</emphasis> applies a
+        transformation, specified by an XSLT stylesheet set by the attribute
+        <command>xslt</command>, to an XML document, specified by the
+        attribute <command>xml</command>. If the <command>xml</command>
+        attribute is not specified, the input XML document is read from the
+        tag's body content.</para>
+
+        <programlisting>   &lt;c:import var='book_xml' url='book.xml'/&gt;
+   &lt;c:import var='assignments_xsl' url='assignments.xsl'/&gt;
+   &lt;x:transform xml='${book_xml}' xslt='${assignments_xsl}' /&gt;</programlisting>
+      </section>
+    </section>
+
+    <section id="jstl_internationalization">
+      <title>Internationalization Tags</title>
+
+      <para>JSTL defines tags for setting the locale for a page, creating
+      locale-sensitive messages, and formatting and parsing data elements such
+      as numbers, currencies, dates, and times in a locale-sensitive or
+      customized manner:</para>
+
+      <table>
+        <title>Internationalization Tags</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry><emphasis role="bold">Function</emphasis></entry>
+
+              <entry><emphasis role="bold">Tags</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>Setting locale</entry>
+
+              <entry><programlisting>setLocale
+requestEncoding</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>Messaging</entry>
+
+              <entry><programlisting>bundle 
+message 
+  param 
+setBundle</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>Number and Date Formatting</entry>
+
+              <entry><programlisting>formatNumber 
+formatDate 
+parseDate 
+parseNumber 
+setTimeZone 
+timeZone</programlisting></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>JSTL i18n tags use a localization context to localize their data.
+      A localization context contains a locale and a resource bundle
+      instance.</para>
+
+      <para>To specify the localization context at deployment time, you define
+      the context parameter javax.servlet.jsp.jstl.fmt.localizationContext,
+      whose value can be a javax.servlet.jsp.jstl.fmt.LocalizationContext or a
+      String.</para>
+
+      <para>A String context parameter is interpreted as the name of a
+      resource bundle basename.</para>
+
+      <para>When a request is received, JSTL automatically sets the locale
+      based on the value retrieved from the request header and chooses the
+      correct resource bundle using the basename specified in the context
+      parameter.</para>
+    </section>
+
+    <section id="jstl_sql">
+      <title>SQL Tags</title>
+
+      <para>The JSTL SQL tags for accessing databases are designed for quick
+      prototyping and simple applications. For production applications,
+      database operations are normally encapsulated in JavaBeans
+      components:</para>
+
+      <table>
+        <title>SQL Tags</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry><emphasis role="bold">Function</emphasis></entry>
+
+              <entry><emphasis role="bold">Tags</emphasis></entry>
+            </row>
+
+            <row>
+              <entry></entry>
+
+              <entry><programlisting>setDataSource</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>SQL</entry>
+
+              <entry><programlisting>query 
+  dateParam
+  param
+transaction 
+update
+  dateParam 
+  param</programlisting></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>The <emphasis role="bold">setDataSource tag</emphasis> allows you
+      to set data source information for the database. You can provide a
+      <command>JNDI name</command> or <command>DriverManager</command>
+      parameters to set the data source information. The following statement
+      to set the data source:</para>
+
+      <programlisting>&lt;sql:setDataSource dataSource="jdbc/BookDB" /&gt;</programlisting>
+
+      <para>The <emphasis role="bold">query tag</emphasis> performs an SQL
+      query that returns a result set. For parameterized SQL queries, you use
+      a nested param tag inside the query tag.</para>
+
+      <para>In bookcatalog.jsp, the value of the Add request parameter
+      determines which book information should be retrieved from the database.
+      This parameter is saved as the attribute name bid and is passed to the
+      param tag. Notice that the query tag obtains its data source from the
+      context attribute bookDS set in the context listener.</para>
+
+      <programlisting>&lt;c:set var="bid" value="${param.Add}"/&gt;
+&lt;sql:query var="books" &gt;
+  select * from PUBLIC.books where id = ?
+  &lt;sql:param value="${bid}" /&gt;
+&lt;/sql:query&gt;</programlisting>
+
+      <para>The <emphasis role="bold">update tag</emphasis> is used to update
+      a database row. The transaction tag is used to perform a series of SQL
+      statements atomically.</para>
+
+      <para>The following JSP page uses both tags to update the database
+      inventory for each purchase. Because a shopping cart can contain more
+      than one book, the transaction tag is used to wrap multiple queries and
+      updates. First, the page establishes that there is sufficient inventory;
+      then the updates are performed.</para>
+
+      <programlisting>&lt;c:set var="sufficientInventory" value="true" /&gt;
+&lt;sql:transaction&gt;
+  &lt;c:forEach var="item" items="${sessionScope.cart.items}"&gt;
+    &lt;c:set var="book" value="${item.item}" /&gt;
+    &lt;c:set var="bookId" value="${book.bookId}" /&gt;
+
+    &lt;sql:query var="books" 
+      sql="select * from PUBLIC.books where id = ?" &gt;
+      &lt;sql:param value="${bookId}" /&gt;
+    &lt;/sql:query&gt;
+    &lt;jsp:useBean id="inventory"
+      class="database.BookInventory" /&gt;
+    &lt;c:forEach var="bookRow" begin="0"
+      items="${books.rowsByIndex}"&gt;
+      &lt;jsp:useBean id="bookRow"  type="java.lang.Object[]" /&gt;
+      &lt;jsp:setProperty name="inventory" property="quantity"
+        value="${bookRow[7]}" /&gt;
+
+      &lt;c:if test="${item.quantity &gt; inventory.quantity}"&gt;
+        &lt;c:set var="sufficientInventory" value="false" /&gt;
+        &lt;h3&gt;&lt;font color="red" size="+2"&gt; 
+        There is insufficient inventory for 
+        &lt;i&gt;${bookRow[3]}&lt;/i&gt;.&lt;/font&gt;&lt;/h3&gt;
+      &lt;/c:if&gt;
+    &lt;/c:forEach&gt;
+  &lt;/c:forEach&gt;
+
+  &lt;c:if test="${sufficientInventory == 'true'}" /&gt;
+    &lt;c:forEach var="item" items="${sessionScope.cart.items}"&gt;
+      &lt;c:set var="book" value="${item.item}" /&gt;
+      &lt;c:set var="bookId" value="${book.bookId}" /&gt;
+
+      &lt;sql:query var="books" 
+        sql="select * from PUBLIC.books where id = ?" &gt;
+        &lt;sql:param value="${bookId}" /&gt;
+      &lt;/sql:query&gt;
+
+      &lt;c:forEach var="bookRow" begin="0"
+        items="${books.rows}"&gt;            
+        &lt;sql:update var="books" sql="update PUBLIC.books set
+          inventory = inventory - ? where id = ?" &gt;
+          &lt;sql:param value="${item.quantity}" /&gt;
+          &lt;sql:param value="${bookId}" /&gt;
+        &lt;/sql:update&gt;
+      &lt;/c:forEach&gt;
+    &lt;/c:forEach&gt;
+    &lt;h3&gt;Thank You.&lt;/h3&gt;&lt;br&gt;  
+  &lt;/c:if&gt;
+&lt;/sql:transaction&gt; </programlisting>
+
+      <section>
+        <title>query Tag Result Interface</title>
+
+        <para>The Result interface is used to retrieve information from
+        objects returned from a query tag.</para>
+
+        <programlisting>public interface Result {
+  public String[] getColumnNames();
+  public int getRowCount()
+  public Map[] getRows();
+  public Object[][] getRowsByIndex();
+  public boolean isLimitedByMaxRows();
+}</programlisting>
+
+        <para>The <command>var</command> attribute set by a query tag is of
+        type <command>Result</command>. The <command>getRows</command> method
+        returns an array of maps that can be supplied to the items attribute
+        of a <emphasis role="bold">forEach tag</emphasis>. The JSTL expression
+        language converts the syntax <command>${result.rows}</command> to a
+        call to <command>result.getRows</command>. The expression
+        <command>${books.rows}</command> in the following example returns an
+        array of maps.</para>
+
+        <para>When you provide an array of maps to the <emphasis
+        role="bold">forEach tag</emphasis>, the <command>var</command>
+        attribute set by the tag is of type <command>Map</command>. To
+        retrieve information from a row, use the
+        <command>get("colname")</command> method to get a column value. The
+        JSTL expression language converts the syntax
+        <command>${map.colname}</command> to a call to
+        <command>map.get("colname")</command>. For example, the expression
+        <command>${book.title}</command> returns the value of the title entry
+        of a book map.</para>
+
+        <para>The following jsp retrieves the column values from the book map
+        as follows.</para>
+
+        <programlisting>&lt;c:forEach var="book" begin="0" items="${books.rows}"&gt;
+  &lt;h2&gt;${book.title}&lt;/h2&gt;
+  &amp;nbsp; By &lt;c:out value="${book.firstname}"&gt; &lt;c:out value="${book.surname}"/&gt;
+  &lt;c:out value="(${book.year})"/&gt;&lt;br&gt;
+  &lt;br&gt;
+  &lt;h4&gt;Critics&lt;/h4&gt;
+  &lt;blockquote&gt; &lt;c:out value="${book.description}"/&gt; &lt;/blockquote&gt;
+  &lt;h4&gt;ItemPrice: &lt;c:out value="${book.price}"/&gt; &lt;/h4&gt;
+&lt;/c:forEach&gt;</programlisting>
+      </section>
+    </section>
+
+    <section id="jstl_functions">
+      <title>Functions</title>
+
+      <para>The JSTL functions:</para>
+
+      <table>
+        <title>Functions Tags</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry><emphasis role="bold">Function</emphasis></entry>
+
+              <entry><emphasis role="bold">Tags</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>Collection length</entry>
+
+              <entry><programlisting>length</programlisting></entry>
+            </row>
+
+            <row>
+              <entry>String manipulation</entry>
+
+              <entry><programlisting>toUpperCase, toLowerCase 
+substring, substringAfter, 
+substringBefore 
+trim 
+replace 
+indexOf, startsWith, endsWith, contains, containsIgnoreCase 
+split, join 
+escapeXml</programlisting></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>Although the java.util.Collection interface defines a size method,
+      it does not conform to the JavaBeans component design pattern for
+      properties and so cannot be accessed via the JSP expression language.
+      The length function can be applied to any collection supported by the
+      c:forEach and returns the length of the collection. When applied to a
+      String, it returns the number of characters in the string.</para>
+
+      <para>For example, the index.jsp page of the hello1 application
+      introduced in Chapter 3 uses the fn:length function and the c:if tag to
+      determine whether to include a response page:</para>
+
+      <programlisting>&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" 
+  prefix="c" %&gt;
+&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/functions"
+  prefix="fn" %&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Hello&lt;/title&gt;&lt;/head&gt;
+...
+&lt;input type="text" name="username" size="25"&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;input type="submit" value="Submit"&gt;
+&lt;input type="reset" value="Reset"&gt;
+&lt;/form&gt;
+
+&lt;c:if test="${fn:length(param.username) &gt; 0}" &gt;
+  &lt;%@include file="response.jsp" %&gt;
+&lt;/c:if&gt;
+&lt;/body&gt;
+&lt;/html&gt;</programlisting>
+
+      <para>The rest of the JSTL functions are concerned with string
+      manipulation:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><command>toUpperCase, toLowerCase</command>: Changes the
+          capitalization of a string</para>
+        </listitem>
+
+        <listitem>
+          <para><command>substring, substringBefore, substringAfter</command>:
+          Gets a subset of a string</para>
+        </listitem>
+
+        <listitem>
+          <para><command>trim</command>: Trims whitespace from a string</para>
+        </listitem>
+
+        <listitem>
+          <para><command>replace</command>: Replaces characters in a
+          string</para>
+        </listitem>
+
+        <listitem>
+          <para><command>indexOf, startsWith, endsWith, contains,
+          containsIgnoreCase</command>: Checks whether a string contains
+          another string</para>
+        </listitem>
+
+        <listitem>
+          <para><command>split</command>: Splits a string into an array</para>
+        </listitem>
+
+        <listitem>
+          <para><command>join</command>: Joins a collection into a
+          string</para>
+        </listitem>
+
+        <listitem>
+          <para><command>escapeXml</command>: Escapes XML characters in a
+          string</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="jstl_lecture_notes">
+      <title id="jstl_lectures_notes">Lecture Notes</title>
+
+      <para>This chapter is based on:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><ulink
+          url="http://java.sun.com/j2ee/1.4/docs/tutorial/doc/index.html">The
+          J2EE Tutorial: Chapter 14</ulink>.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </chapter>
+
+  <chapter id="assignments" role="assignments">
+    <title>Assignments</title>
+
+    <section id="assignments_dynamic_site">
+      <title>Dynamic Sites</title>
+
+      <para>Demonstrations of two sites created by undergraduate
+      students:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><ulink url="../media/SoulMate.avi">SoulMate</ulink>: Site for
+          finding partners.</para>
+        </listitem>
+
+        <listitem>
+          <para><ulink url="../media/Boogle.avi">Boogle</ulink>: Site for
+          searching products in a store.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </chapter>
+</book>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-default-dtd-file:"/home/ldp/SGML/emacs/book-cnc-2.0.ced"
+End:
+-->

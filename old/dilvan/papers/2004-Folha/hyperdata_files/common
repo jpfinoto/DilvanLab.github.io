@@ -1,0 +1,127 @@
+/*if (navigator.appName == "Netscape"){
+document.write('<link rel="stylesheet" href="geral.css" TYPE="text/css">');
+}
+else{
+document.write('<link rel="stylesheet" href="geral.css" TYPE="text/css">');
+}*/
+
+
+var Data = new Date();
+var Hora = Data.getHours();
+var Minuto = Data.getMinutes();
+if (Minuto<10){Minuto="A"+Minuto}
+function Data1(){
+var diasemana = new Array()
+diasemana[0] = "domingo"
+diasemana[1] = "segunda-feira"
+diasemana[2] = "terça-feira"
+diasemana[3] = "quarta-feira"
+diasemana[4] = "quinta-feira"
+diasemana[5] = "sexta-feira"
+diasemana[6] = "sábado"
+var data = new Date()
+var diasem = data.getDay()
+var str = ""+diasemana[diasem];
+return str;
+}
+function Hoje(){
+var mesnome = new Array();
+mesnome[0] = "janeiro";
+mesnome[1] = "fevereiro";
+mesnome[2] = "março";
+mesnome[3] = "abril";
+mesnome[4] = "maio";
+mesnome[5] = "junho";
+mesnome[6] = "julho";
+mesnome[7] = "agosto";
+mesnome[8] = "setembro";
+mesnome[9] = "outubro";
+mesnome[10] = "novembro";
+mesnome[11] = "dezembro";
+var hoje = new Date()
+var ano = hoje.getYear()
+if (ano<2000){ ano+=1900; }
+var mes = hoje.getMonth()
+var dia = hoje.getDate()
+var str = ""+dia+" de "+mesnome[mes]+" de "+ano;
+return str;
+}
+var Data = new Date();
+var Hora = Data.getHours();
+var Minuto = Data.getMinutes();
+if (Minuto<10){Minuto="0"+Minuto.toString();}
+if (Hora<10){Hora="0"+Hora.toString();}
+/*css
+var x = '<link rel="stylesheet" href="http://www1.folha.uol.com.br/folha/geral_'
+if (navigator.appName == "Netscape"){x+='ne'}else{x+='ie'}
+document.write(x+'.css" TYPE="text/css">');*/
+
+// Rollover dos menus
+function mOvr(src,clrOver) {
+ if (!src.contains(event.fromElement)) {
+  src.style.cursor = 'hand';
+  src.bgColor = clrOver;
+  src.color = 'black'
+ }
+}
+function mOut(src,clrIn) {
+ if (!src.contains(event.toElement)) {
+  src.style.cursor = 'default';
+  src.bgColor = clrIn;
+ }
+}
+function mClk(src) {
+ if(event.srcElement.tagName=='TD'){
+  src.children.tags('A')[0].click();
+ }
+}
+
+/*mudar home do browser
+function setHomePage (url) {
+  if (document.all && document.getElementById)
+    oHomePage.setHomePage(url);
+  else if (document.layers && navigator.javaEnabled()) {
+    netscape.security.PrivilegeManager.enablePrivilege('UniversalPreferencesWrite');
+    navigator.preference('browser.startup.homepage', url);
+  }
+}*/
+
+function popeleicoes(){
+	window.open('http://www1.folha.uol.com.br/folha/mundo/2000_eua_eleicoesfinal.html','euaeleicoesfinal','width=468,height=550,toolbar=no,location=no,directories=no,scrollbars=no,resizable=no');
+}
+
+// Toca músicas pela Rádio UOL
+function radio_uol(url) {
+    window.open('http://links.folha.com.br/redir.html?url=' + url,'','width=480,height=350,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0');
+}
+
+// Abre popups da galeria
+function pop(pronde){
+	window.open(pronde,'popup','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=468,height=550');
+}
+
+// Contextual ads
+function ca_show(){
+	var ca_content = '<font size="1"><span style="font: bold 10px arial\;">Publicidade\/Links patrocinados<\/span><\/font><br>\n';
+	ca_content += '<table width="100%" border="0" cellpadding="10" cellspacing="0" class="ca1">\n';
+	ca_content += '<tr valign="top"><td>\n';
+
+	for( i = 0; i < TR_array.length; i++ ){
+		ca_content += '<p>\n';
+		ca_content += '<a href="' + TR_array[i][0] + '" target="_blank">' + TR_array[i][2] + '<\/a><br>\n';
+		ca_content += TR_array[i][3] + '<br>\n';
+		ca_content += TR_array[i][1];
+		ca_content += '<\/p>';
+ 	}
+
+	ca_content += '<p class="ca1l">\n';
+	ca_content += '<a href="http:\/\/links.folha.com.br\/redir.html?url=http:\/\/sl.terespondo.com\/promote.html?set_lang=pt&rc=' + ca_partner + '" target="_blank">Anuncie na TeRespondo<\/a>\n';
+	ca_content += '<\/p>\n'
+
+	ca_content += '<\/td><\/tr><\/table>\n';
+
+	if( document.getElementById ){
+		x = document.getElementById( "contextual_ads" );
+		x.innerHTML = ca_content;
+	}
+}

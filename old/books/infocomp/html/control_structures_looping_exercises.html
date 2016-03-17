@@ -1,0 +1,53 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>4.&nbsp;Looping Exercises</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Informatics and Computing"><link rel="up" href="control_structures.html" title="Chapter&nbsp;3.&nbsp;Control Structures"><link rel="prev" href="control_structures_looping.html" title="3.&nbsp;Looping"><link rel="next" href="arrays_and_strings.html" title="Chapter&nbsp;4.&nbsp;Arrays and Strings"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">4.&nbsp;Looping Exercises</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="control_structures_looping.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;3.&nbsp;Control Structures</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="arrays_and_strings.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="control_structures_looping_exercises"></a>4.&nbsp;Looping Exercises</h2></div></div></div><p>1- Write a program to read in 10 numbers and compute the average, maximum and minimum values.</p><p>2- Write a program to read in numbers until the number -999 is encountered. The sum of all number read until this point should be printed out.</p><p>3- Write a program which will read an integer value for a base, then read a positive integer written to that base and print its value.</p><p>4- Read in three values representing respectively</p><pre class="programlisting">a capital sum (integer number of pence), 
+a rate of interest in percent (float),
+and a number of years (integer).</pre><p>Compute the values of the capital sum with compound interest added over the given period of years. Each year's interest is calculated as <code class="code">interest = capital * interest_rate / 100</code>;</p><p>and is added to the capital sum by <code class="code">capital = capital + interest;</code></p><p>Print out money values as dolars (cents / 100.0) accurate to two decimal places.</p><p>Print out a floating value for the value with compound interest for each year up to the end of the period.</p><p>Print output year by year in a form such as: <code class="code">Original sum 30000.00 at 12.5 percent for 20 years:</code></p><pre class="programlisting">Year Interest  Sum
+----+-------+--------
+  1  3750.00 33750.00
+  2  4218.75 37968.75
+  3  4746.09 42714.84
+  4  5339.35 48054.19
+  5  6006.77 54060.96
+  6  6757.62 60818.58
+  7  7602.32 68420.90
+  8  8552.61 76973.51
+  9  9621.68 86595.19
+ 10 10824.39 97419.58</pre><p>5- Read a positive integer value, and compute the following sequence: If the number is even, halve it; if it's odd, multiply by 3 and add 1. Repeat this process until the value is 1, printing out each value. Finally print out how many of these operations you performed.</p><p>Typical output might be:</p><pre class="programlisting">Initial value is 9
+ Next value is  28
+ Next value is  14
+ Next value is   7
+ Next value is  22
+ Next value is  11
+ Next value is  34
+ Next value is  17
+ Next value is  52
+ Next value is  26
+ Next value is  13
+ Next value is  40
+ Next value is  20
+ Next value is  10
+ Next value is   5
+ Next value is  16
+ Next value is   8
+ Next value is   4
+ Next value is   2
+ Final value 1, number of steps 19</pre><p>If the input value is less than 1, print a message containing the word</p><pre class="programlisting">Error</pre><p>and perform an</p><pre class="programlisting">exit(0);</pre><p>6- Write a program to count the vowels and letters in free text given as standard input. Read text a character at a time until you encounter end-of-data.</p><p>Then print out the number of occurrences of each of the vowels a, e, i, o and u in the text, the total number of letters, and each of the vowels as an integer percentage of the letter total.</p><p>Suggested output format is:</p><pre class="programlisting">       Numbers of characters:
+        a   3 ; e   2 ; i   0 ; o   1 ; u   0 ; rest  17
+        Percentages of total:
+        a  13%; e   8%; i   0%; o   4%; u   0%; rest  73%</pre><p>Read characters to end of data using a construct such as</p><pre class="programlisting">        char ch;
+        while( (ch = getchar()) &gt;= 0) {
+            /* ch is the next character */    ....
+        }</pre><p>to read characters one at a time using getchar() until a negative value is returned.</p><p>7- Read a file of English text, and print it out one word per line, all punctuation and non-alpha characters being omitted.</p><p>For end-of-data, the program loop should read until "getchar" delivers a value &lt;= 0. When typing input, end the data by typing the end-of-file character, usually control-D. When reading from a file, "getchar" will deliver a negative value when it encounters the end of the file.</p><p>Typical output might be</p><pre class="programlisting">Read
+a
+file
+of
+English
+text
+and
+print
+it
+out
+one
+
+etc.</pre></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="control_structures_looping.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="control_structures.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="arrays_and_strings.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">3.&nbsp;Looping&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;4.&nbsp;Arrays and Strings</td></tr></table></div></body></html>

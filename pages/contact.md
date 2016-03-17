@@ -1,12 +1,15 @@
 ---
 layout: page
 title: "Contact"
-meta_title: "Contact and use our contact form"
-subheadline: "Wufoo-powered contact forms"
-teaser: "Get in touch with me? Use the contact form."
+teaser: "Want to get in touch with us?"
 permalink: "/contact/"
 ---
-If you need a fabulous contact form for your website, I suggest you use [Wufoo][1]. You can use three forms for free, you get no spam and if you get more than 100 entries you have to pay.
+#### Contact: Dilvan Moreira
 
+dilvan @ gmail.com
 
- [1]: http://www.wufoo.com/
+#### Address:
+
+SCC-ICMC-USP CP: 668<br/>
+Av. do Trabalhador São-Carlense 400<br/>
+13560-970 São Carlos - SP - Brazil

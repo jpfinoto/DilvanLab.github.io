@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>The Java Language Slide 9: Control Flow Statements</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>The Java Language:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Control Flow Statements</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><FONT COLOR="#0000FF"><A HREF="tutorial/java/nutsandbolts/while.html">Do-while
+Statement</A></FONT></H2>
+
+<BLOCKQUOTE>
+<P>The <TT>do-while</TT> loop is similar to the <TT>while</TT> loop except
+that the expression is evaluated at the bottom of the loop:</P>
+
+<BLOCKQUOTE>
+<PRE><FONT COLOR="#800000">do {
+    <I>statements
+</I>} while (<I>booleanExpression</I>);</FONT></PRE>
+</BLOCKQUOTE>
+
+<PRE>. . .
+do {
+    c = in.read();
+    . . .
+} while (c != -1);</PRE>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><FONT COLOR="#0000FF"><A HREF="tutorial/java/nutsandbolts/while.html#BREAKS">Continue
+and Break Statements</A></FONT></H2>
+
+<BLOCKQUOTE>
+<P><TT>Continue </TT>and <TT>break</TT> statements are used to continue
+or break loops or switch statements. Used without labels, they have the
+same efects as in C.</P>
+
+<P>To continue or break multiple-nested loop or switch statements, labels
+can be placed on loop and switch statements and used to <TT>break </TT>out
+or <TT>continue </TT>to the blocks named by them. For instance (from the
+<TT>String </TT>class):</P>
+
+<PRE><B>test:</B> for (int i = fromIndex; i+max1&lt;=max2; i++) {
+          if (chartAt(i)==c0){
+              for (int k=1; k&lt;max1; k++) {
+                  if (chartAt(i+k) != str.chartAt(k)) {
+                      <B>continue test</B>;
+                  }
+              }      /* end of inner for loop */
+          }
+      }              /* end of outer for loop */</PRE>
+</BLOCKQUOTE>
+</UL>
+
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<TR>
+<TD VALIGN=TOP>
+<UL>
+<P><IMG SRC="gifs/noc++.gif" HSPACE=5 HEIGHT=57 WIDTH=59 ALIGN=ABSCENTER></P>
+</UL>
+</TD>
+
+<TD>
+<H2>Labeled <TT>continues </TT>and <TT>breaks </TT>are an alternative to
+the <TT>goto</TT> statement which is not supported by Java.</H2>
+</TD>
+</TR>
+</TABLE>
+
+<UL>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><FONT COLOR="#0000FF"><A HREF="tutorial/java/nutsandbolts/while.html#BREAKS">Return
+Statement</A></FONT></H2>
+</UL>
+
+<UL>
+<BLOCKQUOTE>
+<P><TT>Return</TT> exits from the current method and jump back to the statement
+within the calling method that follows the original method call.</P>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>return ++count;</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 HEIGHT=8 WIDTH=8><A HREF="tutorial/java/exceptions/index.html">Exception
+Handling Statements</A></H2>
+
+<UL>
+<P>The calling method can use the <TT>try</TT>, <TT>catch</TT>, and <TT>finally</TT>
+to catch and handle exceptions. It will be seen together with <A HREF="tutorial/java/exceptions/index.html">Exceptions</A>.</P>
+</UL>
+</UL>
+
+<P>
+<HR></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="javalang.sld10.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="javalang.sld10.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

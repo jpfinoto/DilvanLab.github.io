@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 32: Images</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Images</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/drawing/usingImages.html">Images</A>
+</H2>
+
+<UL>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/drawing/loadingImages.html">Loading
+Images</A></H2>
+
+<BLOCKQUOTE>
+<P>The Applet class uses two <TT>getImage()</TT> methods to load images:
+</P>
+
+<UL>
+<LI><TT>public Image getImage(URL url)</TT> </LI>
+
+<LI><TT>public Image getImage(URL url, String name)</TT> </LI>
+</UL>
+
+<P>The Toolkit class declares two more <TT>getImage()</TT> methods to load
+images: </P>
+
+<UL>
+<LI><TT>public abstract Image getImage(URL url)</TT> </LI>
+
+<LI><TT>public abstract Image getImage(String filename)</TT> </LI>
+</UL>
+
+<PRE>Toolkit toolkit = Toolkit.getDefaultToolkit();
+Image image1 = toolkit.getImage(&quot;imageFile.gif&quot;);
+Image image2 = toolkit.getImage(new URL(&quot;http://java.sun.com/graphics.gif&quot;));
+</PRE>
+
+<H3>Creating Images with MemoryImageSource</H3>
+
+<BLOCKQUOTE>
+<P>With the help of an image producer such as the MemoryImageSource class,
+you can construct images from scratch: </P>
+
+<BLOCKQUOTE>
+<PRE>int w = 100;
+int h = 100;
+int[] pix = new int[w * h];
+int index = 0;
+for (int y = 0; y &lt; h; y++) {
+    int red = (y * 255) / (h - 1);
+    for (int x = 0; x &lt; w; x++) {
+          int blue = (x * 255) / (w - 1);
+          pix[index++] = (255 &lt;&lt; 24) | (red &lt;&lt; 16) | blue;
+    }
+}
+Image img = createImage(new MemoryImageSource(w, h, pix, 0, w));
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/drawing/drawingImages.html">Displaying
+Images</A> </H2>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<LI>Normal size in the upper left corner of the Component area (0, 0):
+</LI>
+
+<DL>
+<PRE>g.drawImage(image, 0, 0, this);</PRE>
+</DL>
+
+<LI>Scaled to be 300 pixels wide and 62 pixels tall, starting at the coordinates
+(90, 0): </LI>
+
+<DL>
+<PRE>g.drawImage(myImage, 90, 0, 300, 62, this);</PRE>
+</DL>
+</BLOCKQUOTE>
+
+<P><B><FONT COLOR="#FF0000"><FONT SIZE=+1>Note:</FONT></FONT></B> The <TT>drawImage()</TT>
+method returns after displaying the image data that has been loaded, so
+far.</P>
+</BLOCKQUOTE>
+</UL>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld33.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld33.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

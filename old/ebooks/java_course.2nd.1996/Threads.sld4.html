@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Threads Slide 4: Threads Attributes</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Threads:</FONT> </FONT><B><FONT COLOR="#0000FF">Threads
+Attributes</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<UL>
+<UL>
+<H3><BR>
+Not Runnable</H3>
+</UL>
+</UL>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<P><B>Definition:</B> A thread enters the &quot;Not Runnable&quot; state
+when one of these four events occurs:</P>
+
+<BLOCKQUOTE>
+<LI>Someone invokes its <TT>sleep()</TT> method.</LI>
+
+<LI>Someone invokes its <TT>suspend()</TT> method.</LI>
+
+<LI>The thread uses its <TT>wait()</TT> method to wait on a condition variable.</LI>
+
+<LI>The thread is blocking on I/O.</LI>
+</BLOCKQUOTE>
+
+<P><B>Note: E</B>ven if the processor becomes available a &quot;Not Runnable&quot;
+thread does not run.</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<UL>
+<UL>
+<UL>
+<H4>Leaving the &quot;Not Runnable&quot; state:</H4>
+</UL>
+</UL>
+</UL>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<DL>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<LI>If a thread has been put to sleep, then the specified number of milliseconds
+must elapse.</LI>
+
+<LI>If a thread has been suspended, then someone must call its <TT>resume()</TT>
+method.</LI>
+
+<LI>If a thread is waiting on a condition variable, whatever object owns
+the variable must relinquish it by calling either <TT>notify()</TT> or
+<TT>notifyAll()</TT>.</LI>
+
+<LI>If a thread is blocked on I/O, then the I/O must complete.</LI>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<H3>Dead</H3>
+
+<BLOCKQUOTE>
+<H4>From natural causes:</H4>
+
+<P>A thread dies naturally when its <TT>run()</TT> method exits normally.</P>
+
+<H4>Being killed:</H4>
+
+<P>A thread is killed when its <TT>stop()</TT> method is called.</P>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>T<FONT COLOR="#800000">hread myThread = new MyThreadClass();
+myThread.start();
+try {
+    Thread.currentThread().sleep(10000);
+} catch (InterruptedException e){
+}
+<B>myThread.stop();</B></FONT></PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>The <TT>stop()</TT> method throws a ThreadDeath object at the thread
+to kill it.</P>
+</BLOCKQUOTE>
+</DL>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Threads.sld5.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Threads.sld5.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 10: Sockets and Streams</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Sockets and Streams</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/sockets/clientServer.html">Writing
+the Server Side of a Stream Socket</A></H2>
+
+<BLOCKQUOTE>
+<H3><BR>
+<IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Listenning
+and Communicating:</FONT><BR>
+<BR>
+</H3>
+
+<UL>
+<LI><FONT SIZE=+1><B><FONT COLOR="#800080">Request channel:</FONT></B><FONT COLOR="#000000">
+Server do the listening.</FONT></FONT><BR>
+<BR>
+</LI>
+
+<LI><FONT SIZE=+1><B><FONT COLOR="#800080">Communication channel:</FONT></B><FONT COLOR="#000000">
+Created for each connection</FONT></FONT><BR>
+<BR>
+<BR>
+<BR>
+</LI>
+</UL>
+
+<H3><IMG SRC="gifs/Servers5.gif" HEIGHT=125 WIDTH=483><BR>
+<BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Knock
+Knock Server:</FONT><BR>
+</H3>
+
+<BLOCKQUOTE>
+<PRE><FONT SIZE=+1>Server: Knock! Knock!
+<B>Client: Who's there?
+</B>Server: Turnip
+<B>Client: Turnip who?
+</B>Server: Turnip the heat, it's cold in here! Want another? (y/n)</FONT></PRE>
+</BLOCKQUOTE>
+
+<H3><BR>
+<BR>
+<IMG SRC="gifs/smallgreenball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><FONT COLOR="#0000FF">Classes:</FONT><BR>
+</H3>
+
+<BLOCKQUOTE>
+<LI><B>KnockKnockServer:</B> Implements the server</LI>
+
+<LI><B>KKState:</B> Implements the application. it keeps track of the current
+joke, the current state and serves up the various text pieces of the joke
+depending on the current state.</LI>
+
+<LI><B>KnockKnockClient: </B>Implements the client.</LI>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P><BR>
+<BR>
+<BR>
+</P>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld11.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld11.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,22 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Testing</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="dynamic_analysis.html" title="Chapter&nbsp;18.&nbsp;Dynamic Analysis"><link rel="prev" href="dynamic_analysis_defensive_programming.html" title="1.&nbsp;Defensive Programming"><link rel="next" href="dynamic_analysis_criteria.html" title="3.&nbsp;Criteria"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Testing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="dynamic_analysis_defensive_programming.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;18.&nbsp;Dynamic Analysis</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="dynamic_analysis_criteria.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="dynamic_analysis.html">Dynamic Analysis</a></span> &gt; <span class="breadcrumb-node">Testing</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="dynamic_analysis_testing"></a>2.&nbsp;Testing</h2></div></div></div><p>Testing is much more effective, and much less painful, if you
+      approach it systematically.</p><p>What properties you want to test for:</p><div class="itemizedlist"><ul type="disc"><li><p>what modules you want to test, and what order you&#8217;ll test them
+          in;</p></li><li><p>how you&#8217;ll generate test cases;</p></li><li><p>how you&#8217;ll check the results;</p></li><li><p>when you&#8217;ll know that you&#8217;re done.</p></li></ul></div><p>Deciding what properties to test for will require knowledge of the
+      problem domain,</p><p>Choosing modules is more straightforward.</p><p>Checking results can be hard.</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="dynamic_analysis_regression_tests"></a>2.1.&nbsp;Regression Tests</h3></div></div></div><p>It&#8217;s a bad idea to do ad hoc testing that can&#8217;t be
+        repeated.</p><p><span class="bold"><strong>Regression Tests</strong></span>: a suite of
+        tests that can be reexecuted from a file.</p><p><span class="bold"><strong>Test first
+        programming</strong></span>:encourages construction of regression tests
+        even before any application code is written. It is an important part
+        of the new development doctrine called <span class="bold"><strong>extreme
+        programming</strong></span>. JUnit, the testing framework that you've been
+        using, was designed for this.</p></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="dynamic_analysis_defensive_programming.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="dynamic_analysis.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="dynamic_analysis_criteria.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Defensive Programming&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Criteria</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

@@ -1,0 +1,114 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Swing Containers</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="gui.html" title="Chapter&nbsp;10.&nbsp;Graphic User Interface"><link rel="prev" href="gui_overview.html" title="1.&nbsp;Overview"><link rel="next" href="gui_swing_components.html" title="3.&nbsp;Swing Components"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Swing
+      Containers</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="gui_overview.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;10.&nbsp;Graphic User Interface</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="gui_swing_components.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="gui.html">Graphic User Interface</a></span> &gt; <span class="breadcrumb-node">Swing
+      Containers</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="gui_swing_containers"></a>2.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/components/toplevel.html" target="_top">Swing
+      Containers</a></h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3658"></a>2.1.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/components/frame.html" target="_top">JFrames</a></h3></div></div></div><p>The <code class="classname">JFrame</code> class provides windows for
+        applets and applications. GUI based applications generally uses at
+        least one frame.</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3667"></a>2.1.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">public class FrameWindow extends JFrame {
+    boolean inAnApplet;
+    JTextArea output;
+
+    public FrameWindow() {
+        // Calls the Frame constructor and adds components to the window
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                if (inAnApplet)
+                    dispose();
+                else System.exit(0);
+            }
+        });
+    }
+
+    . . .
+
+    public static void main(String args[]) {
+        FrameWindow window = new FrameWindow();
+        window.inAnApplet = false;
+        window.setTitle("FrameWindow Application");
+        window.setSize(450, 200);
+        window.setVisible(true);
+    }
+}</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3672"></a>2.1.2.&nbsp;Other methods provided by
+          <code class="classname">JFrame</code></h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><code class="methodname">String getTitle()</code> and void
+              <code class="methodname">setTitle(String)</code></p><p>Returns or sets (respectively) the title of the frame's
+              window.</p></li><li><p><code class="methodname">Image getIconImage()</code> and
+              <code class="methodname">void setIconImage(Image)</code></p><p>Returns or sets (respectively) the image displayed when
+              the window is iconified.</p></li><li><p><code class="methodname">JMenuBar getJMenuBar()</code> and void
+              <code class="methodname">setJMenuBar(JMenuBar)</code></p><p>Returns or sets (respectively) the menu bar for this
+              frame.</p></li></ul></div><p><a class="ulink" href="../audio/Swing2.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3709"></a>2.2.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/components/panel.html" target="_top">Panels</a></h3></div></div></div><p>The <code class="classname">JPanel</code> class is a general-purpose
+        <code class="classname">Container</code> subclass. You can use it as-is to
+        hold components, or you can define a subclass to perform special
+        functionality, such as event handling for the objects the
+        <code class="classname">JPanel</code> contains.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../../images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>The<code class="classname"> JApplet</code> class is a
+          <code class="classname">JPanel</code> subclass with special hooks to run in
+          a browser or in other applet viewer.</p></td></tr></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3733"></a>2.2.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">JPanel p = new JPanel();
+p.add(new JButton("Button 1"));
+p.add(new JButton("Button 2"));
+p.add(new JButton("Button 3"));</pre><p>A <code class="classname">JPanel</code> subclass that draws a frame
+          border around its contents.</p><div class="figure"><a name="d0e3743"></a><p class="title"><b>Figure&nbsp;10.6.&nbsp;JPanel subclass.</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI16.gif" width="457" height="96" alt="JPanel subclass."></div></div></div><br class="figure-break"><pre class="programlisting">class FramedArea extends JPanel {
+    public FramedArea() {
+        . . .
+        // Set the layout manager.
+        // Add any components to this panel.
+    }
+
+    // Ensure that no component is placed on top of the frame.
+    // The inset values were determined by trial and error.
+    public Insets getInsets() {
+        return new Insets(4, 4, 5, 5);
+    }
+
+    //Draw the frame at this Panel's edges.
+    public void paint(Graphics g) {
+        Dimension d = getSize();
+        Color bg = getBackground();
+        g.setColor(bg);
+        g.draw3DRect(0, 0, d.width - 1, d.height - 1, true);
+        g.draw3DRect(3, 3, d.width - 7, d.height - 7, false);
+    }
+}</pre><p><a class="ulink" href="../audio/Swing3.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e3755"></a>2.3.&nbsp;<a class="ulink" href="/library/books/tutorial1.02/ui/components/dialog.html" target="_top">Dialogs</a></h3></div></div></div><p>Swing provides support for custom dialogs with the
+        <code class="classname">JDialog</code> class. It also provides a useful class,
+        <code class="classname">JOptionPane</code>, that enables the creation of a
+        variety of standard dialogs through its class methods.</p><div class="figure"><a name="d0e3767"></a><p class="title"><b>Figure&nbsp;10.7.&nbsp;Dialog</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI41.jpg" width="298" height="108.99999999999999" alt="Dialog"></div></div></div><br class="figure-break"><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3773"></a>2.3.1.&nbsp;Code Example</h4></div></div></div><pre class="programlisting">class SimpleDialog extends JDialog implements ActionListener {
+    JFrame parent;
+    JTextField field;
+    JButton setButton;
+
+    SimpleDialog(JFrame parent, String title) {
+        super(parent, title, false);
+        ...
+        // Create and add components, such as the set button.   
+        // Initialize this dialog to its preferred size.
+        pack();
+    }
+
+    public void actionPerformed(ActionEvent event) {
+        Object source = event.getSource();
+        if (source == setButton)
+            parent.setTitle(field.getText());
+    }
+}
+     
+// Here's the code that brings up the dialog:
+SimpleDialog dialog = new SimpleDialog(this, "A Simple Dialog");
+dialog.setVisible(true);</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="d0e3778"></a>2.3.2.&nbsp;<a class="ulink" href="http://java.sun.com/docs/books/tutorial/uiswing/components/dialog.html" target="_top">JOptionPane</a></h4></div></div></div><p>The <code class="classname">JOptionPane</code> class displays standard
+          dialogs that prompts the user for input or shows messages. Some of
+          it's main methods are:</p><div class="informaltable"><table border="1"><colgroup><col><col></colgroup><tbody><tr><td><span class="bold"><strong>Method Name</strong></span></td><td><span class="bold"><strong>Description</strong></span></td></tr><tr><td><code class="methodname">showConfirmDialog</code></td><td>Asks a confirming question, showing the buttons
+                  yes,no or cancel.</td></tr><tr><td><code class="methodname">showInputDialog</code></td><td>Prompt the user for some input.</td></tr><tr><td><code class="methodname">showMessageDialog</code></td><td>Tells the user about something.</td></tr><tr><td><code class="methodname">showOptionDialog</code></td><td>The unification of the above three.</td></tr></tbody></table></div><p>The example below cretes a dialog that promps user to choose
+          an option in a list.</p><pre class="programlisting">Object[] options = { "Option 0", "Option 1", "Option 2", "Option 3" };
+JOptionPane.showInputDialog(this, "Message", "Title", JOptionPane.QUESTION_MESSAGE,
+                            null, options, options[2]); </pre><div class="figure"><a name="d0e3825"></a><p class="title"><b>Figure&nbsp;10.8.&nbsp;A JOptionPane input dialog</b></p><div class="figure-contents"><div class="mediaobject"><img src="../xml/img/GUI43.gif" width="268" height="125.99999999999999" alt="A JOptionPane input dialog"></div></div></div><br class="figure-break"><p><a class="ulink" href="../audio/Swing4.wav" target="_top"><img src="../xml/img/asf.gif">Audio in
+          Portuguese</a></p></div></div></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="gui_overview.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="gui.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="gui_swing_components.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Overview&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Swing
+      Components</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Exceptions Slide 1: What are exceptions.</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b6Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Exceptions:</FONT>
+</FONT><B><FONT COLOR="#0000FF">What are exceptions</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/java/exceptions/definition.html">What
+are Exceptions</A></H2>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><B>Definition</B>:</H3>
+
+<P>An <I>exception</I> is an event that occurs during the execution of
+a program that disrupts the normal flow of instructions.</P>
+
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP>Throwing
+an exception</H3>
+
+<P>It happens when an error occurs the method creates an <B>exception object</B>
+and hands it off to the runtime system.</P>
+
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP>The
+exception object</H3>
+
+<P>The exception object contains information about the exception, including
+its type and the state of the program when the error occurred.</P>
+
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP>Catching
+an exception</H3>
+
+<P>It happens when the exception object bubbles up through the call stack
+until an appropriate exception handler is found. The handler catches the
+exception.</P>
+
+<H3><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=5 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP>Advantages</H3>
+
+<H4><FONT COLOR="#800080">Advantage 1: Separating Error Handling Code from
+&quot;Regular&quot; Code</FONT></H4>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<CENTER><TABLE>
+<TR ALIGN=LEFT VALIGN=TOP>
+<TD>
+<PRE>errorCodeType <B>readFile {
+</B>    initialize errorCode = 0;
+    <B>open the file;
+</B>    if (theFileIsOpen) {
+        <B>determine the length of the file;
+</B>        if (gotTheFileLength) {
+            <B>allocate that much memory;
+</B>            if (gotEnoughMemory) {
+                <B>read the file into memory;
+</B>                if (readFailed) {
+                    errorCode = -1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+            } else {
+                errorCode = -2;
+            }
+        } else {
+            errorCode = -3;
+        }
+        <B>close the file;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;.&nbsp;.</B></PRE>
+</TD>
+
+<TD>
+<UL>
+<PRE><B>readFile {
+</B>    try {
+        <B>open the file;
+        determine its size;
+        allocate that much memory;
+        read the file into memory;
+        close the file;
+</B>    } catch (fileOpenFailed) {
+        doSomething;
+    } catch (sizeDeterminationFailed) {
+        doSomething;
+    } catch (memoryAllocationFailed) {
+        doSomething;
+    } catch (readFailed) {
+        doSomething;
+    } catch (fileCloseFailed) {
+        doSomething;
+    }
+<B>}</B></PRE>
+</UL>
+</TD>
+</TR>
+</TABLE></CENTER>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Exceptions.sld2.html"><IMG SRC="gifs/next.gif" BORDER=2 HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Exceptions.sld2.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

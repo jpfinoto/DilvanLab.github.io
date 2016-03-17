@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>GUI Slide 24: Layout Managers</TITLE>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>GUI:</FONT> </FONT><B><FONT COLOR="#0000FF">Layout
+Managers</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49></TD>
+</TR>
+</TABLE>
+
+<BLOCKQUOTE>
+<H2><BR>
+<BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/ui/layout/flow.html">FlowLayout</A></H2>
+
+<CENTER><P><BR>
+<IMG SRC="gifs/GUI22.gif" HEIGHT=87 WIDTH=417></P></CENTER>
+
+<CENTER><P><BR>
+<IMG SRC="gifs/GUI23.gif" HEIGHT=116 WIDTH=346><BR>
+</P></CENTER>
+
+<BLOCKQUOTE>
+<H3><BR>
+Behavior:</H3>
+
+<P>FlowLayout puts components in a row, sized at their preferred size.
+If the horizontal space in the container is too small to put all the components
+in one row, FlowLayout uses multiple rows.</P>
+
+<H3><BR>
+Code Example:</H3>
+</BLOCKQUOTE>
+
+<PRE>          setLayout(new FlowLayout());
+          setFont(new Font(&quot;Helvetica&quot;, Font.PLAIN, 14));
+             
+          add(new Button(&quot;Button 1&quot;));
+          add(new Button(&quot;2&quot;));
+          add(new Button(&quot;Button 3&quot;));
+          add(new Button(&quot;Long-Named Button 4&quot;));
+          add(new Button(&quot;Button 5&quot;));</PRE>
+
+<BLOCKQUOTE>
+<H3><BR>
+FlowLayout constructors:</H3>
+</BLOCKQUOTE>
+
+<PRE>          public FlowLayout()
+          public FlowLayout(int alignment)
+          public FlowLayout(int alignment,
+                            int horizontalGap, int verticalGap)</PRE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<H4>Alignment argument must have the value: </H4>
+
+<P>FlowLayout.LEFT, FlowLayout.CENTER, or FlowLayout.RIGHT. <BR>
+<BR>
+<BR>
+</P>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P><APPLET code="PgCount.class"
+codebase="pgcounter" align="baseline"
+width="560" height="40"></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD>&nbsp;</TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="GUI.sld25.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="GUI.sld25.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>

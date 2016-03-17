@@ -1,0 +1,242 @@
+<html>
+<head>
+<title>Resultados do Reconhecimento de Voz</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#3333FF" onLoad="" link="#33FF33" vlink="#99FFFF">
+<p align="center"><font color="#FFFFFF" size="4"><b><font size="5">Resultados</font></b></font> 
+</p>
+<p><font color="#FFFFFF" size="4">Como j&aacute; mencionado, os objetos <a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank"><i>Result</i></a> 
+  s&atilde;o o resultado do reconhecimento realizado pelas aplica&ccedil;&otilde;es 
+  SDK Java. Eles s&atilde;o os respons&aacute;veis pela gera&ccedil;&atilde;o 
+  de eventos de reconhecimento ou <a href="../../ref/api/javax/speech/recognition/ResultEvent.html" target="_blank"><i>ResultEvent</i></a> 
+  que podem ser interceptados pelos <i>ResultListeners</i>. Estes eventos por 
+  sua vez, segundo a API de programa&ccedil;&atilde;o JAVA, s&atilde;o implementados 
+  de maneira a se permitir o acesso ao objeto que originalmente gerou o evento, 
+  isto &eacute; feito atrav&eacute;s do m&eacute;todo getSource* e no caso de 
+  um <i>ResultEvent</i> ser&aacute; retornado um objeto <i>Result</i> ou herdeiro 
+  dele.</font></p>
+<p><font size="2" color="#FFFFFF"><b>* o m&eacute;todo getSource pertence &agrave; 
+  interface da classe java.util.EventObject da qual ResultEvent &eacute; derivada</b></font></p>
+<p><font size="4" color="#FFFFFF">No entanto o modelo de tratamento de eventos 
+  de reconhecimento n&atilde;o &eacute; t&atilde;o simples e necessita de esclarecimentos 
+  mais profundos. Primeiramente devemos saber os poss&iacute;veis estados dos 
+  objetos Result ou, simplesmente, dos resultados:</font></p>
+<ul>
+  <li><font color="#FFFFFF" size="4">FINALIZED: </font> 
+    <ul>
+      <li><font color="#FFFFFF" size="4">ACCEPTED: o item de &aacute;udio foi 
+        compreendido e foi encontrada uma associa&ccedil;&atilde;o com uma das 
+        gram&aacute;ticas ativas.</font></li>
+      <li><font color="#FFFFFF" size="4">REJECTED: o item de &aacute;udio foi 
+        compreendido mas o reconhecedor considera baixa a possibilidade de acerto, 
+        isto &eacute;, o reconhecimento n&atilde;o foi bem realizado e &eacute; 
+        poss&iacute;vel ter ocorrido um erro.</font></li>
+    </ul>
+  </li>
+  <li><font color="#FFFFFF" size="4">UNFINALIZED: o item de &aacute;udio foi compreendido 
+    e est&aacute; sendo processado, no entanto n&atilde;o se pode determinar ainda 
+    se h&aacute; uma associa&ccedil;&atilde;o com uma das gram&aacute;ticas ativas.</font></li>
+</ul>
+<p><font color="#FFFFFF" size="4">A seguir temos uma ilustra&ccedil;&atilde;o 
+  do ciclo de reconhecimento e de alguns eventos relacionados:</font></p>
+<p align="center"><img src="../../imagens/ilustracoes/resultados/reconhecedor_cicle.gif" width="900" height="750"> 
+</p>
+<p align="center"><b>Figura 8 - Ciclo do reconhecedor e alguns de seus eventos.</b></p>
+<p><font size="4" color="#FFFFFF">Observando a figura acima podemos estabelecer 
+  a rela&ccedil;&atilde;o entre os estados de um objeto Result e os eventos que 
+  os ouvidores de resultados est&atilde;o aptos a interceptar:</font></p>
+<ul>
+  <li><font size="4" color="#FFFFFF">Um evento <code>RESULT_CREATED</code> indica 
+    a cria&ccedil;&atilde;o de objeto <code>Result</code>. Um resultado rec&eacute;m 
+    criado est&aacute; no estado <code>UNFINALIZED.</code></font> 
+  <li><font size="4" color="#FFFFFF">No estado <code>UNFINALIZED</code>: um evento 
+    <code>RESULT_UPDATED</code> indica mudan&ccedil;as (atualiza&ccedil;&otilde;es) 
+    nos tokens (<a href="../../ref/api/javax/speech/recognition/ResultToken.html" target="_blank"><i>ResultToken</i></a>) 
+    finalizados ou n&atilde;o. Um evento <code>GRAMMAR_FINALIZED</code> indica 
+    que a gram&aacute;tica correspondente a este resultado foi identificada.</font></li>
+  <li><font size="4" color="#FFFFFF">O evento <code>RESULT_ACCEPTED</code> ocorre 
+    quando da finaliza&ccedil;&atilde;o e aceita&ccedil;&atilde;o de um resultado 
+    ao indicar uma transi&ccedil;&atilde;o de <code>UNFINALIZED</code> para <code>ACCEPTED</code>.</font> 
+  </li>
+  <li><font size="4" color="#FFFFFF">O evento <code>RESULT_REJECTED</code> ocorre 
+    quando da finaliza&ccedil;&atilde;o e rejei&ccedil;&atilde;o de um resultado 
+    ao indicar uma transi&ccedil;&atilde;o de <code>UNFINALIZED</code> para <code>REJECTED</code>. 
+    </font> 
+  <li><font size="4" color="#FFFFFF">No estado de finalizado (<code>ACCEPTED</code> 
+    ou <code>REJECTED)</code>eventos de <code>AUDIO_RELEASED</code> e <code>TRAINING_INFO_RELEASED</code> 
+    podem ser disparados.</font>
+</ul>
+<p><font size="4" color="#FFFFFF">Os tipos de objeto Result:</font></p>
+<ul>
+  <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/Result.html" target="_blank">Result</a>: 
+    &eacute; a forma mais primitiva de resultado criado pelos reconhecedores. 
+    Ela &eacute; a forma utilizada at&eacute; que o ciclo de reconhecimento seja 
+    finalizado e todas as informa&ccedil;&otilde;es relevantes a uma dada entrada 
+    de &aacute;udio estejam dispon&iacute;veis, sendo que o estado do objeto pode 
+    ser FINALIZED ou UNFINALIZED.</font></li>
+  <li><font size="4" color="#FFFFFF"> <a href="../../ref/api/javax/speech/recognition/FinalResult.html" target="_blank">FinalResult</a>: 
+    resultado criado quando tivermos todas as informa&ccedil;&otilde;es referentes 
+    a uma entrada de &aacute;udio, isto &eacute;, trata-se de um resultado completo 
+    que pode fornecer todos os dados poss&iacute;veis decorrentes de um reconhecimento 
+    completado, sendo que o estado &eacute; obrigatoriamente ACCEPTED ou REJECTED, 
+    isto &eacute; FINALIZED.</font></li>
+</ul>
+<p><font size="4" color="#FFFFFF">No entanto, as informa&ccedil;&otilde;es dispon&iacute;veis 
+  em um resultado s&atilde;o determinadas em fun&ccedil;&atilde;o do tipo da gram&aacute;tica 
+  a qual ele foi associado. Portanto, completando o modelo temos que a interface 
+  FinalResult &eacute; herdada por duas outras interfaces implementadas exclusivamente 
+  (ou uma ou a outra) pelo reconhecedor para cada resultado</font><font size="4" color="#FFFFFF"> 
+  finalizado, s&atilde;o elas:</font></p>
+<ul>
+  <li><font size="4" color="#FFFFFF"><a href="../../ref/api/javax/speech/recognition/FinalRuleResult.html" target="_blank">FinalRuleResult</a>: 
+    &eacute; o resultado final decorrente de uma entrada de &aacute;udio associada 
+    a uma gram&aacute;tica de regras (<a href="../../ref/api/javax/speech/recognition/RuleGrammar.html" target="_blank">RuleGrammar</a>), 
+    sendo que o estado &eacute; obrigatoriamente ACCEPTED ou REJECTED, isto &eacute; 
+    FINALIZED. </font></li>
+  <li><a href="../../ref/api/javax/speech/recognition/FinalDictationResult.html" target="_blank"><font size="4" color="#FFFFFF">FinalDictationResult</font></a><font size="4" color="#FFFFFF">: 
+    &eacute; o resultado final decorrente de uma entrada de &aacute;udio associada 
+    a uma gram&aacute;tica de ditado (<a href="../../ref/api/javax/speech/recognition/DictationGrammar.html" target="_blank">DictationGrammar</a>), 
+    sendo que o estado &eacute; obrigatoriamente ACCEPTED ou REJECTED, isto &eacute; 
+    FINALIZED.</font></li>
+</ul>
+<p><font size="4" color="#FFFFFF">Este esquema de cria&ccedil;&atilde;o de resultados 
+  pode ser utilizado nas seguintes situa&ccedil;&otilde;es:</font></p>
+<blockquote>
+  <p><font size="4" color="#FFFFFF">1) &Eacute; &uacute;til ter acesso aos resultados 
+    criados pelos reconhecedores antes mesmo que ele sejam finalizados, para isso 
+    temos a implementa&ccedil;&atilde;o de objetos <i>Result.</i></font></p>
+  <p><font size="4" color="#FFFFFF">2) Podemos ter ambos os tipos de gram&aacute;ticas 
+    associadas a um mesmo reconhecedor e num dado instante precisarmos de dados 
+    que n&atilde;o s&atilde;o relevantes a um resultado decorrente de uma gram&aacute;tica 
+    de ditado ou de regras, mas sim de um resultado finalizado simplesmente. Para 
+    tanto podemos utilizar apenas a interface <i>FinalResult</i> sem a necessidade 
+    de testar a natureza do resultado.</font></p>
+  <p><font size="4" color="#FFFFFF">3) Possuindo dois tipos de resultados finalizados 
+    podemos ter dados adicionais referentes ao tipo de gram&aacute;tica associada 
+    ao resultado criado, aumentando o controle sobre as aplica&ccedil;&otilde;es.</font></p>
+</blockquote>
+<p> <font size="4" color="#FFFFFF">Para a correta utiliza&ccedil;&atilde;o destas 
+  possibilidades utiliza-se a t&eacute;cnica de <i>casting</i> do resultado fornecido 
+  atrav&eacute;s do m&eacute;todo getSource, sendo que o casting adequado deve 
+  ser usado em fun&ccedil;&atilde;o do momento durante o ciclo de reconhecimento.</font></p>
+<table width="88%" border="1" height="142" align="center">
+  <tr> 
+    <td> 
+      <p><font size="3" color="#FFFFFF">static ResultListener ruleListener = new 
+        ResultAdapter() {</font></p>
+      <blockquote> 
+        <p><font size="3" color="#FFFFFF">public void <font color="#FF0000"><b>resultCreated</b></font>(ResultEvent 
+          evento)}<br>
+          {</font></p>
+        <blockquote> 
+          <p><font color="#FFFFFF" size="3">//ap&oacute;s a cria&ccedil;&atilde;o 
+            de um resultado, este ainda n&atilde;o est&aacute; finalizado<br>
+            //n&atilde;o pode ser feito o casting para um FinalResult<br>
+            Result resultado_reconhecedor = (Result) evento.getSource( );</font></p>
+        </blockquote>
+        <p><font size="3" color="#FFFFFF"> }<br>
+          </font><font size="3" color="#FFFFFF"> public void<b><font color="#FF0000"> 
+          grammarFinalized</font></b>(ResultEvent evento)}<br>
+          {<br>
+          </font></p>
+        <blockquote> 
+          <p><font size="3" color="#FFFFFF"> //quando da identifica&ccedil;&atilde;o 
+            da gram&aacute;tica, ainda assim n&atilde;o temos <br>
+            //um resultado finalizado<br>
+            Result resultado_reconhecedor = (Result) evento.getSource( );</font></p>
+        </blockquote>
+        <p><font size="3" color="#FFFFFF">}<br>
+          </font><font size="3" color="#FFFFFF">public void <b><font color="#FF0000">resultUpdated</font></b>(ResultEvent 
+          evento)}<br>
+          {<br>
+          </font></p>
+        <blockquote> 
+          <p><font size="3" color="#FFFFFF"> //quando os tokens do resultado s&atilde;o 
+            atualizados indica que ainda<br>
+            //est&aacute; ocorrendo reconhecimento e portanto n&atilde;o um FinalResult 
+            <br>
+            Result resultado_reconhecedor = (Result) evento.getSource( );</font></p>
+        </blockquote>
+        <p><font size="3" color="#FFFFFF">}<br>
+          </font><font size="3" color="#FFFFFF">public void <b><font color="#FF0000">resultAccepted</font></b>(ResultEvent 
+          evento)}<br>
+          {<br>
+          </font></p>
+        <blockquote> 
+          <p><font size="3" color="#FFFFFF"> //quando temos um resultado aceito, 
+            com certeza trata-se de um <br>
+            //resultado finalizado, podemos realizar o casting para qualquer<br>
+            //um dos tr&ecirc;s tipos de resultados:</font></p>
+          <blockquote> 
+            <p><font color="#FFFFFF" size="3">//utilizamos o casting para Result 
+              se n&atilde;o sabemos se a gram&aacute;tica<br>
+              //associada &eacute; uma gram&aacute;tica de regras ou de ditado 
+              e precisamos<br>
+              //apenas utilizar m&eacute;todos b&aacute;sicos como addResultListener<br>
+              Result resultado_reconhecedor = (Result) evento.getSource( );</font></p>
+            <p><font color="#FFFFFF" size="3">//utilizamos o casting para FinalResult 
+              se n&atilde;o sabemos se a<br>
+              //gram&aacute;tica associada &eacute; uma gram&aacute;tica de regras 
+              ou de ditado e //precisamos de m&eacute;todos como releaseAudio 
+              e releaseTrainingInfo <br>
+              Result resultado_reconhecedor = (FinalResult) evento.getSource( 
+              );</font></p>
+            <p><font color="#FFFFFF" size="3">//utilizamos o casting para FinalResult 
+              se n&atilde;o sabemos se a<br>
+              //gram&aacute;tica associada &eacute; uma gram&aacute;tica de regras 
+              ou de ditado e //precisamos de m&eacute;todos espec&iacute;ficos 
+              como //FinalRuleResult.getRuleGrammar ou //FinalDictationResult.getAlternativeTokens<br>
+              //Caso ambas os tipos de gram&aacute;ticas possam estar associados 
+              //devemos //realizar o teste<br>
+              Result resultado = evento.getSource();<br>
+              if (resultado.getGrammar() instanceof RuleGrammar)<br>
+              {</font></p>
+            <blockquote> 
+              <p><font size="3" color="#FFFFFF"> resultado_reconhecedor = (FinalRuleResult) 
+                resultado;</font></p>
+            </blockquote>
+            <p><font color="#FFFFFF" size="3">}else</font></p>
+            <p><font color="#FFFFFF" size="3">{</font></p>
+            <blockquote> 
+              <p><font size="3" color="#FFFFFF">resultado_reconhecedor = (FinalDictationResult) 
+                resultado;</font></p>
+            </blockquote>
+            <p><font color="#FFFFFF" size="3">}</font></p>
+          </blockquote>
+        </blockquote>
+        <p><font size="3" color="#FFFFFF">}<br>
+          </font><font size="3" color="#FFFFFF">public void <b><font color="#FF0000">resultRejected</font></b>(ResultEvent 
+          evento)}<br>
+          {</font></p>
+        <blockquote> 
+          <p><font size="3" color="#FFFFFF"><br>
+            //idem resulAccepted</font> </p>
+        </blockquote>
+        <p><font size="3" color="#FFFFFF">} <br>
+          </font><font size="3" color="#FFFFFF">public void <b><font color="#FF0000">audioReleased</font></b>(ResultEvent 
+          evento)}<br>
+          {</font></p>
+        <blockquote> 
+          <p><font size="3" color="#FFFFFF"><br>
+            //idem resulAccepted</font> </p>
+        </blockquote>
+        <p><font size="3" color="#FFFFFF"><br>
+          }<br>
+          public void <b><font color="#FF0000">trainingInfoReleased</font></b>(ResultEvent 
+          evento)}<br>
+          {</font></p>
+        <blockquote> 
+          <p><font size="3" color="#FFFFFF">//idem resulAccepted</font> </p>
+        </blockquote>
+        <p><font size="3" color="#FFFFFF"> } </font></p>
+      </blockquote>
+      <p><font size="3" color="#FFFFFF">};</font></p>
+    </td>
+  </tr>
+</table>
+<p align="center"><b>Tabela 10 - Implementa&ccedil;&atilde;o de um ouvidor de 
+  resultados utilizando corretamente os diferentes tipos de objeto Result.</b></p>
+</body>
+</html>

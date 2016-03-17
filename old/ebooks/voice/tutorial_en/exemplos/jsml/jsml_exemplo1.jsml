@@ -1,0 +1,5 @@
+<PARA><EMP><PROS RATE="+10" VOL="+100%"><SENT>This sample is being read from a file.<MARKER MARK="first"/></SENT></PROS>
+<SENT><PROS RATE= "50" VOL="+80%">Another sentence now is being read, it's intended to 
+<EMP LEVEL="strong">demonstrate</EMP> the tags that might be used with the JSML markuplanguage.</PROS></SENT>
+<PROS RATE= "10" VOL="200%"><SENT>What you must know is that the
+<SAYAS SUB="JSML">Java Speech Markup Language</SAYAS> is a meta language for multiple purpose.</SENT></PROS></EMP></PARA>

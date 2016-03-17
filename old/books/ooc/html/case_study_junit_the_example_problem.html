@@ -1,0 +1,122 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;The Example Problem</title><link rel="stylesheet" href="../../html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.74.3"><link rel="home" href="index.html" title="Object Oriented Computing"><link rel="up" href="case_study_junit.html" title="Chapter&nbsp;13.&nbsp;Case Study: JUnit"><link rel="prev" href="case_study_junit_overview.html" title="1.&nbsp;Overview"><link rel="next" href="case_study_junit_making_a_test_suite.html" title="3.&nbsp;Making a Test Suite"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;The Example Problem</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="case_study_junit_overview.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;13.&nbsp;Case Study: JUnit</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="case_study_junit_making_a_test_suite.html"><img src="../../images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="breadcrumbs"><a href="/moodle/course/view.php?id=4">OOC</a> &gt;
+     <span class="breadcrumb-link"><a href="index.html">Object Oriented Computing</a></span> &gt; <span class="breadcrumb-link"><a href="case_study_junit.html">Case Study: JUnit</a></span> &gt; <span class="breadcrumb-node">The Example Problem</span></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="case_study_junit_the_example_problem"></a>2.&nbsp;The Example Problem</h2></div></div></div><p>Every programmer knows they should write tests for their code. Few
+      do. The universal response to "Why not?" is "I'm in too much of a
+      hurry." This quickly becomes a vicious cycle:</p><div class="itemizedlist"><ul type="disc"><li><p>The more pressure you feel, the fewer tests you write.</p></li><li><p>The fewer tests you write, the less productive you are and the
+          less stable your code becomes.</p></li><li><p>The less productive and accurate you are, the more pressure
+          you feel.</p></li></ul></div><p>The program we will write solves the problem of representing
+      arithmetic with multiple currencies. You cannot just convert one
+      currency into another for doing arithmetic since there is no single
+      conversion rate - you may need to compare the value of a portfolio at
+      yesterday's rate and today's rate.</p><p>Let's start simple and define a class Money to represent a value
+      in a single currency.</p><pre class="programlisting">class Money {
+    private int fAmount;
+    private String fCurrency;
+    public Money(int amount, String currency) {
+        fAmount= amount;
+        fCurrency= currency;
+    }
+
+    public int amount() {
+        return fAmount;
+    }
+
+    public String currency() {
+        return fCurrency;
+    }
+}</pre><p>When you add two Moneys of the same currency, the resulting Money
+      has as its amount the sum of the other two amounts:</p><pre class="programlisting">public Money add(Money m) {
+    return new Money(amount()+m.amount(), currency());
+}</pre><p>Now, instead of just coding on, we want to get immediate feedback
+      and practice "code a little, test a little, code a little, test a
+      little".</p><p>JUnit defines how to structure your test cases and provides the
+      tools to run them:</p><div class="orderedlist"><ol type="1"><li><p>You implement a test in a subclass of
+          <span class="command"><strong>TestCase</strong></span>. To test our Money implementation we
+          therefore define <span class="command"><strong>MoneyTest</strong></span> as a subclass of
+          <span class="command"><strong>TestCase</strong></span>.</p></li><li><p>Classes are contained in packages and we have to decide where
+          to put <span class="command"><strong>MoneyTest</strong></span>. Our current practice is to put
+          <span class="command"><strong>MoneyTest</strong></span> in the same package as the classes
+          under test. In this way a test case has access to the package
+          private methods.</p></li><li><p>We add a test method <span class="command"><strong>testSimpleAdd</strong></span>, that
+          will exercise the simple version of <span class="command"><strong>Money.add()</strong></span>
+          above. A JUnit test method is an ordinary method without any
+          parameters:</p><pre class="programlisting">public class MoneyTest extends TestCase {
+    //&#8230;
+    public void testSimpleAdd() {
+        Money m12CHF= new Money(12, "CHF");  // (1)
+        Money m14CHF= new Money(14, "CHF");        
+        Money expected= new Money(26, "CHF");
+        Money result= m12CHF.add(m14CHF);    // (2)
+        Assert.assertTrue(expected.equals(result));     // (3)
+    }
+}</pre></li></ol></div><p>The <span class="command"><strong>testSimpleAdd()</strong></span> test case consists
+      of:</p><div class="orderedlist"><ol type="1"><li><p>Code which creates the objects we will interact with during
+          the test. This testing context is commonly referred to as a test's
+          fixture. All we need for the <span class="command"><strong>testSimpleAdd</strong></span> test
+          are some <span class="command"><strong>Money</strong></span> objects.</p></li><li><p>Code which exercises the objects in the fixture.</p></li><li><p>Code which verifies the result.</p></li></ol></div><p>Before we can verify the result we need a way to test that two
+      Money objects are equal. We override the method
+      <span class="command"><strong>equals</strong></span>. Before we implement <span class="command"><strong>equals</strong></span>
+      let's a write a test for equals in <span class="command"><strong>MoneyTest</strong></span>.</p><pre class="programlisting">public void testEquals() {
+    Money m12CHF= new Money(12, "CHF");
+    Money m14CHF= new Money(14, "CHF");
+
+    Assert.assertTrue(!m12CHF.equals(null));
+    Assert.assertEquals(m12CHF, m12CHF);
+    Assert.assertEquals(m12CHF, new Money(12, "CHF")); // (1)
+    Assert.assertTrue(!m12CHF.equals(m14CHF));
+}</pre><p>The <span class="command"><strong>equals</strong></span> method in Object returns true when
+      both objects are the same: Two Monies are considered equal if they have
+      the same currency and value. To test this property we have added a test
+      (1) to verify that Monies are equal when they have the same value but
+      are not the same object.</p><p>Next let's write the equals method in Money:</p><pre class="programlisting">public boolean equals(Object anObject) {
+    if (anObject instanceof Money) {
+        Money aMoney= (Money)anObject;
+        return aMoney.currency().equals(currency())
+            &amp;&amp; amount() == aMoney.amount();
+    }
+    return false;
+}</pre><p>As an aside, <span class="emphasis"><em>it is a recommended practice to also
+      override the method hashCode whenever you override method
+      equals</em></span>.</p><p><span class="bold"><strong>assertTrue:</strong></span> With an
+      <span class="command"><strong>equals</strong></span> method in hand we can verify the outcome of
+      <span class="command"><strong>testSimpleAdd</strong></span>. In JUnit you do so by a calling
+      <span class="command"><strong>Assert.assertTrue</strong></span>, which triggers a failure that is
+      recorded by JUnit when the argument isn't true.</p><p><span class="bold"><strong>assertEquals:</strong></span> Since assertions
+      for equality are very common, there is also an
+      <span class="command"><strong>Assert.assertEquals</strong></span> convenience method. In addition
+      to testing for equality with equals, it reports the printed value of the
+      two objects in the case they differ.</p><p>Now that we have implemented two test cases we notice some code
+      duplication for setting-up the tests. With JUnit you can initialize test
+      variables by overriding the <span class="command"><strong>setUp</strong></span> method.</p><p>The symmetric operation to <span class="command"><strong>setUp</strong></span> is
+      <span class="command"><strong>tearDown</strong></span> which you can override to clean up the test
+      at the end.</p><pre class="programlisting">public class MoneyTest extends TestCase {
+    private Money f12CHF;
+    private Money f14CHF;   
+
+    protected void setUp() {
+        f12CHF= new Money(12, "CHF");
+        f14CHF= new Money(14, "CHF");
+    }
+
+    public void testEquals() {
+        Assert.assertTrue(!f12CHF.equals(null));
+        Assert.assertEquals(f12CHF, f12CHF);
+        Assert.assertEquals(f12CHF, new Money(12, "CHF"));
+        Assert.assertTrue(!f12CHF.equals(f14CHF));
+    }
+
+    public void testSimpleAdd() {
+        Money expected= new Money(26, "CHF");
+        Money result= f12CHF.add(f14CHF);
+        Assert.assertTrue(expected.equals(result));
+    }
+}</pre></div><copyright><p class="copyright">Copyright &copy; 1998-2009 Dilvan Moreira</p></copyright><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="case_study_junit_overview.html"><img src="../../images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="case_study_junit.html"><img src="../../images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="case_study_junit_making_a_test_suite.html"><img src="../../images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Overview&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="../../images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;Making a Test Suite</td></tr></table></div><script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+   </script><script type="text/javascript">
+      try {
+         var pageTracker = _gat._getTracker("UA-7961659-1");
+         pageTracker._trackPageview();
+      } catch(err) {}
+   </script></body></html>

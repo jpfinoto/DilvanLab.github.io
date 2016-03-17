@@ -1,0 +1,65 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>2.&nbsp;Core Tag Library</title><link rel="stylesheet" href="html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Hypermedia"><link rel="up" href="jstl.html" title="Chapter&nbsp;6.&nbsp;JSP Standard Tag Library"><link rel="prev" href="jstl_introduction.html" title="1.&nbsp;Introduction"><link rel="next" href="jstl_xml.html" title="3.&nbsp;XML Tag Library"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.&nbsp;Core Tag Library</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="jstl_introduction.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;6.&nbsp;JSP Standard Tag Library</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="jstl_xml.html"><img src="images/next.gif" alt="Next"></a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="jstl_core"></a>2.&nbsp;Core Tag Library</h2></div></div></div><p>Core tags include those related to variables and flow control, as well as a generic way to access URL-based resources whose content can then be included or processed within the JSP page:</p><div class="table"><a name="d0e1867"></a><p class="title"><b>Table&nbsp;6.2.&nbsp;Core Tags</b></p><table summary="Core Tags" border="1"><colgroup><col width="50%"><col width="50%"></colgroup><tbody><tr><td><span class="bold"><strong>Function</strong></span></td><td><span class="bold"><strong>Tags</strong></span></td></tr><tr><td>Variable support</td><td><pre class="programlisting">remove
+set</pre></td></tr><tr><td>Flow control</td><td><pre class="programlisting">choose 
+  when 
+  otherwise 
+forEach 
+forTokens 
+if</pre></td></tr><tr><td>URL management</td><td><pre class="programlisting">import 
+  param 
+redirect 
+  param 
+url 
+  param</pre></td></tr><tr><td>Miscellaneous</td><td><pre class="programlisting">catch
+out</pre></td></tr></tbody></table></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1903"></a>2.1.&nbsp;Variable Support</h3></div></div></div><p>The set tag sets the value of an EL variable or the property of an EL variable in any of the JSP scopes (page, request, session, or application). If the variable does not already exist, it is created.</p><p>The JSP EL variable or property can be set either from the attribute value:</p><pre class="programlisting">&lt;c:set var="foo" scope="session" value="..."/&gt; </pre><p>or from the body of the tag:</p><pre class="programlisting">&lt;c:set var="foo"&gt;
+   ...  
+&lt;/c:set&gt;</pre><p>For example, the following sets an EL variable named bookID with the value of the request parameter named Remove:</p><pre class="programlisting">&lt;c:set var="bookId" value="${param.Remove}"/&gt;</pre><p>To remove an EL variable, you use the remove tag. When the bookstore JSP page bookreceipt.jsp is invoked, the shopping session is finished, so the cart session attribute is removed as follows:</p><pre class="programlisting">&lt;c:remove var="cart" scope="session"/&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1924"></a>2.2.&nbsp;Flow Control</h3></div></div></div><p>To execute flow control logic, a page author must generally resort to using scriptlets. Now he can use flow control tags:</p><p><span class="bold"><strong>Conditional Tags</strong></span></p><p>The <span class="bold"><strong>if tag</strong></span> allows the conditional execution of its body according to the value of the test attribute.</p><p>The following example tests whether the request parameter Add is empty. If the test evaluates to true, the page queries the database for the book record identified by the request parameter and adds the book to the shopping cart:</p><pre class="programlisting">&lt;c:if test="${!empty param.Add}"&gt;
+  &lt;c:set var="bid" value="${param.Add}"/&gt;
+  &lt;jsp:useBean id="bid"  type="java.lang.String" /&gt;
+  &lt;sql:query var="books" 
+    dataSource="${applicationScope.bookDS}"&gt;
+    select * from PUBLIC.books where id = ?
+    &lt;sql:param value="${bid}" /&gt;
+  &lt;/sql:query&gt;
+  &lt;c:forEach var="bookRow" begin="0" items="${books.rows}"&gt; 
+    &lt;jsp:useBean id="bookRow" type="java.util.Map" /&gt;
+    &lt;jsp:useBean id="addedBook"
+      class="database.BookDetails" scope="page" /&gt;
+  ...
+  &lt;% cart.add(bid, addedBook); %&gt;
+...
+&lt;/c:if&gt; </pre><p>The <span class="bold"><strong>choose tag</strong></span> performs conditional block execution by the embedded <span class="bold"><strong>when subtags</strong></span>.</p><p>It renders the body of the first when tag whose test condition evaluates to true. If none of the test conditions of nested when tags evaluates to true, then the body of an <span class="bold"><strong>otherwise tag</strong></span> is evaluated, if present. For example, the following sample code shows how to render text based on a customer's membership category:</p><pre class="programlisting">&lt;c:choose&gt; 
+  &lt;c:when test="${customer.category == 'trial'}" &gt; 
+    ... 
+  &lt;/c:when&gt; 
+  &lt;c:when test="${customer.category == 'member'}" &gt; 
+    ... 
+  &lt;/c:when&gt; 
+    &lt;c:when test="${customer.category == 'preferred'}" &gt; 
+    ... 
+  &lt;/c:when&gt; 
+  &lt;c:otherwise&gt; 
+    ... 
+  &lt;/c:otherwise&gt; 
+&lt;/c:choose&gt;</pre><p>The choose, when, and otherwise tags can be used to construct an if-then-else statement as follows:</p><pre class="programlisting">&lt;c:choose&gt; 
+  &lt;c:when test="${count == 0}" &gt; 
+    No records matched your selection. 
+  &lt;/c:when&gt; 
+  &lt;c:otherwise&gt; 
+    ${count} records matched your selection. 
+  &lt;/c:otherwise&gt; 
+&lt;/c:choose&gt;</pre><p><span class="bold"><strong>Iterator Tags</strong></span></p><p>The <span class="bold"><strong>forEach tag</strong></span> allows you to iterate over a collection of objects. You specify the collection via the items attribute, and the current item is available through a scope variable named by the item attribute.</p><p>A large number of collection types are supported by forEach, including all implementations of java.util.Collection and java.util.Map. If the items attribute is of type java.util.Map, then the current item will be of type java.util.Map.Entry, which has the following properties:</p><p><span class="bold"><strong>key:</strong></span> The key under which the item is stored in the underlying Map</p><p><span class="bold"><strong>value:</strong></span> The value that corresponds to the key</p><p>Arrays of objects as well as arrays of primitive types (for example, int) are also supported. For arrays of primitive types, the current item for the iteration is automatically wrapped with its standard wrapper class (for example, Integer for int, Float for float, and so on).</p><p>Here's the shopping cart iteration from the preceding section, now with the forEach tag:</p><pre class="programlisting">&lt;c:forEach var="item" items="${sessionScope.cart.items}"&gt;
+  ...
+  &lt;tr&gt; 
+    &lt;td align="right" bgcolor="#ffffff"&gt; 
+    ${item.quantity}
+  &lt;/td&gt;
+  ...
+&lt;/c:forEach&gt; </pre><p>The <span class="bold"><strong>forTokens tag</strong></span> is used to iterate over a collection of tokens separated by a delimiter.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e1989"></a>2.3.&nbsp;URL Tags</h3></div></div></div><p>The <span class="bold"><strong>jsp:include</strong></span> element provides for the inclusion of static and dynamic resources in the same context as the current page. However, <span class="bold"><strong>jsp:include</strong></span> cannot access resources that reside outside the Web application, and it causes unnecessary buffering when the resource included is used by another element. The <span class="bold"><strong>import tag</strong></span> is a simple, generic way to access URL-based resources, whose content can then be included and or processed within the JSP page. For example, in XML Tag Library, import is used to read in the XML document containing book information and assign the content to the scoped variable xml:</p><pre class="programlisting">&lt;c:import url="/books.xml" var="xml" /&gt;
+&lt;x:parse doc="${xml}" var="booklist" 
+  scope="application" /&gt;</pre><p>The <span class="bold"><strong>param tag</strong></span>, analogous to the <span class="bold"><strong>jsp:param</strong></span> tag, can be used with import to specify request parameters. You can use the <span class="bold"><strong>url tag</strong></span> to rewrite URLs returned from a JSP page. The url tag takes param subtags to include parameters in the returned URL. For example, the following code rewrites the URL used to add a book to the shopping cart as follows:</p><pre class="programlisting">&lt;c:url var="url" value="/catalog" &gt;
+  &lt;c:param name="Add" value="${bookId}" /&gt;
+&lt;/c:url&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="${url}"&gt; ... &lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;</pre><p>The <span class="bold"><strong>redirect tag</strong></span> sends an HTTP redirect to the client. The redirect tag takes param subtags for including parameters in the returned URL.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d0e2023"></a>2.4.&nbsp;Miscellaneous tags</h3></div></div></div><p>The <span class="bold"><strong>catch tag</strong></span> provides a complement to the JSP error page mechanism. It allows page authors to recover gracefully from error conditions that they can control.</p><p>Actions that are of central importance to a page should not be encapsulated in a catch; in this way their exceptions will propagate instead to an error page.</p><p>The exception thrown is stored in the variable identified by var, which always has page scope. If no exception occurred, the scoped variable identified by var is removed if it existed. If var is missing, the exception is simply caught and not saved.</p><p>The <span class="bold"><strong>out tag</strong></span> evaluates an expression and outputs the result of the evaluation to the current JspWriter object. The syntax and attributes are as follows:</p><pre class="programlisting">&lt;c:out value="value" [escapeXml="{true|false}"] 
+  [default="defaultValue"] /&gt;</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="jstl_introduction.html"><img src="images/prev.gif" alt="Prev"></a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="jstl.html"><img src="images/up.gif" alt="Up"></a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="jstl_xml.html"><img src="images/next.gif" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">1.&nbsp;Introduction&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.gif" alt="Home"></a></td><td width="40%" align="right" valign="top">&nbsp;3.&nbsp;XML Tag Library</td></tr></table></div></body></html>

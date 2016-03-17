@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Distributed Programming Slide 16: Security Manager</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+   <META NAME="Author" CONTENT="Dilvan de Abreu Moreira">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000EE" VLINK="#551A8B" ALINK="#FF0000">
+
+<TABLE CELLSPACING=0 WIDTH="100%" >
+<TR>
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+
+<TD>
+<H1 ALIGN=CENTER><FONT COLOR="#000000"><FONT SIZE=+2>Distributed Programming:</FONT>
+</FONT><B><FONT COLOR="#0000FF">Security Manager</FONT></B></H1>
+</TD>
+
+<TD><IMG SRC="gifs/cup.gif" HEIGHT=85 WIDTH=49 ALIGN=ABSCENTER></TD>
+</TR>
+</TABLE>
+
+<H2><BR>
+<BR>
+<BR>
+<IMG SRC="gifs/smallredball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/security/index.html">Security
+Manager </A></H2>
+
+<P><BR>
+</P>
+
+<BLOCKQUOTE>
+<H2><IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/security/intro.html">Introducing
+the Security Manager</A></H2>
+
+<BLOCKQUOTE>
+<H3><BR>
+Definition:</H3>
+
+<P>The security manager is an application-wide object that determines whether
+potentially threatening operations should be allowed. </P>
+
+<P>The classes in the Java packages cooperate with the security manager
+by asking the application's security manager for permission to perform
+certain operations. </P>
+
+<H3><BR>
+Default:</H3>
+
+<P>An application does not have a security manager. It allows all operations
+that are subject to security restrictions. </P>
+
+<P><B><FONT SIZE=+1><FONT COLOR="#FF0000">Note:</FONT> </FONT></B>The existing
+browsers and applet viewers <B><FONT COLOR="#FF0000"><FONT SIZE=+1>do create</FONT></FONT></B>
+their own security manager when starting up. </P>
+</BLOCKQUOTE>
+
+<H2><BR>
+<IMG SRC="gifs/smallyellowball.gif" HSPACE=5 VSPACE=10 HEIGHT=8 WIDTH=8 ALIGN=TEXTTOP><A HREF="tutorial/networking/security/writingSMgr.html">Writing
+a Security Manager</A></H2>
+
+<BLOCKQUOTE>
+<H3><BR>
+Why to write one?</H3>
+
+<P>To impose a stricter policy security policy.</P>
+
+<H3><BR>
+The example's policy:</H3>
+
+<P>The policy implemented by our example prompts the user for a password
+when the application attempts to open a file for reading or for writing.
+</P>
+</BLOCKQUOTE>
+
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>
+
+
+</PRE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>
+<HR><APPLET 
+    codebase="pgcounter"
+    code=PgCount.class
+    width=560
+    height=40 ></APPLET></P>
+
+<UL>
+<TABLE WIDTH="100%" >
+<TR>
+<TD><A HREF="Welcome.html"><IMG SRC="gifs/top.gif" HEIGHT=40 WIDTH=40></A><FONT SIZE=+1><A HREF="Welcome.html">Contents</A></FONT></TD>
+
+<TD></TD>
+
+<TD><A HREF="mailto:d.moreira@ieee.org"><IMG SRC="gifs/comments.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="mailto:d.moreira@ieee.org">Questions?</A></FONT></B></TD>
+
+<TD><A HREF="Servers.sld17.html"><IMG SRC="gifs/next.gif" HEIGHT=40 WIDTH=40></A><B><FONT SIZE=+1><A HREF="Servers.sld17.html">Next</A></FONT></B></TD>
+</TR>
+</TABLE>
+</UL>
+
+</BODY>
+</HTML>
